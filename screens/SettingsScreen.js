@@ -57,6 +57,21 @@ class SettingsScreen extends React.Component {
     this.props.setHeroSelect(false)
   }
 
+  _getToggleIcon(toggle) {
+    let openedSection = true;
+    if(toggle === TOGGLE_ACTIONS) {
+      openedSection = this.props.toggleActions
+    } else if (toggle === TOGGLE_BUILDS) {
+      openedSection = this.props.toggleBuilds
+    }
+
+    if(openedSection) {
+      return require('../assets/images/chevron-down-white.png')
+    } else {
+      return require('../assets/images/chevron-right-white.png')
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -73,6 +88,9 @@ class SettingsScreen extends React.Component {
               <Text style={styles.sectionHeader}>
                 Actions
               </Text>
+              <Image
+                source={this._getToggleIcon(TOGGLE_ACTIONS)}
+                style={styles.accordianIcon} /> 
             </TouchableOpacity>
 
             { this.props.toggleActions &&
@@ -110,6 +128,9 @@ class SettingsScreen extends React.Component {
               <Text style={styles.sectionHeader}>
                 Saved Builds
               </Text>
+              <Image
+                source={this._getToggleIcon(TOGGLE_BUILDS)}
+                style={styles.accordianIcon} /> 
             </TouchableOpacity>
             
             { this.props.toggleBuilds &&
@@ -166,8 +187,19 @@ class SettingsScreen extends React.Component {
                     <Text> Sign Up </Text>
                   </TouchableOpacity>
                   <View>
-                    <Text> Already have an account? <Text onPress={() => this.props.navigation.navigate('Login')} style={{color:'#e93766', fontSize: 18}}> Login </Text></Text>
+                    <Text> Already have an account? <Text onPress={() => {
+                      this.props.setCreateAccountModal(false)
+                      this.props.setLoginModal(true)
+                      }} style={{color:'#e93766', fontSize: 18}}> Login </Text>
+                    </Text>
                   </View>
+
+                  <TouchableOpacity
+                    style={styles.skillModalButtons}
+                    onPress={() => this.props.setCreateAccountModal(false)}
+                  >
+                    <Text> Cancel </Text>
+                  </TouchableOpacity>
                 </View>
             </View>
           </Modal>
@@ -312,6 +344,13 @@ const styles = StyleSheet.create({
     borderColor: '#dedede', 
     borderWidth: 1, 
     marginHorizontal: 20
+  },
+  accordianIcon: {
+    position:'absolute', 
+    top: 20, 
+    right: 20, 
+    width: 24, 
+    height: 24
   }
 });
 

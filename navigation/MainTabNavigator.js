@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Image } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -23,13 +23,9 @@ const HomeStack = createStackNavigator(
 HomeStack.navigationOptions = {
   tabBarLabel: 'Skills',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-person`
-          : 'md-person'
-      }
+    <Image
+      source={require('../assets/images/person-white.png')}
+      style={{width: 20, height: 20}}
     />
   ),
 };
@@ -46,7 +42,10 @@ const StatsStack = createStackNavigator(
 StatsStack.navigationOptions = {
   tabBarLabel: 'Stats',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-calculator' : 'md-calculator'} />
+    <Image
+      source={require('../assets/images/calculator-white.png')}
+      style={{width: 20, height: 20}}
+    />
   ),
 };
 
@@ -62,7 +61,9 @@ const SettingsStack = createStackNavigator(
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-settings' : 'md-settings'} />
+    <Image
+      source={require('../assets/images/bl3Icon.png')}
+      style={{width: 20, height: 20}}/>
   ),
 };
 
