@@ -7,11 +7,12 @@ import {
     RED,
     BLUE,
 } from './constants';
-const newStat = (type, value, description) => {
+const newStat = (type, values, preText = "+", postText = "") => {
     return {
         type,
-        value,
-        description
+        values,
+        preText,
+        postText
     }
 }
 
@@ -59,8 +60,8 @@ export default {
                 description: "Maximum Health is increased, and constantly regenerates health.",
                 image: require('../assets/images/skills/adrenaline.png'),
                 stats: [
-                    newStat("Max Health", 6, "+6%", ),
-                    newStat("Health Regeneration", 0.3, "0.3% of Max Health/sec", ),
+                    newStat("Max Health", [6,9,12,15,18], "+", "%"),
+                    newStat("Health Regeneration", [0.3, 0.6, 0.9, 1.2, 1.5], "+" , "% of Max Health/sec"),
                 ]
             },
             {

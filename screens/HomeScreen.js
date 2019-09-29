@@ -278,17 +278,44 @@ class HomeScreen extends React.Component {
                   </Text>
                 }
 
+                { !!(this.props.ranked[this.props.modalSkill.title] && this.props.ranked[this.props.modalSkill.title] > 0) &&
+                  <Text style={{color:'#fff'}}>Current Rank:</Text>
+                }
                 {this.props.modalSkill.stats && 
                   this.props.modalSkill.stats.map(stat => {
                     return (
                       <View key={stat.type} style={{marginBottom: 5, flexDirection:'row', flexWrap:'wrap'}}>
-                        <Text style={{color:'yellow'}}>{stat.type}:</Text>
-                        <Text style={{color:'#fff'}}> {stat.description}</Text>
+                        { !!(this.props.ranked[this.props.modalSkill.title] && this.props.ranked[this.props.modalSkill.title] > 0) &&
+                          <View style={{marginTop: 10}}>
+                            <Text style={{color:'yellow'}}>{stat.type}:</Text>
+                            <Text style={{color:'#fff'}}> {stat.preText}{stat.values[this.props.ranked[this.props.modalSkill.title] ? this.props.ranked[this.props.modalSkill.title] - 1 : 1]}{stat.postText}</Text>
+                          </View>
+                        }
                       </View>
                     )
                   })
                 }
 
+                { (!this.props.ranked[this.props.modalSkill.title] || this.props.ranked[this.props.modalSkill.title] < this.props.modalSkill.maxRanks) &&
+                  <Text style={{color:'#fff', marginTop: 10}}>Next Rank:</Text>
+                }
+                {this.props.modalSkill.stats && 
+                  this.props.modalSkill.stats.map(stat => {
+                    return (
+                      <View key={stat.type} style={{marginBottom: 5, flexDirection:'row', flexWrap:'wrap'}}>
+                        { (!this.props.ranked[this.props.modalSkill.title] || this.props.ranked[this.props.modalSkill.title] < this.props.modalSkill.maxRanks) &&
+                          <View>
+                            <Text style={{color:'yellow'}}>{stat.type}:</Text>
+                            <Text style={{color:'#fff'}}>
+                              {stat.preText}{stat.values[this.props.ranked[this.props.modalSkill.title] ? this.props.ranked[this.props.modalSkill.title] : 0]}{stat.postText}
+                            </Text>
+                          </View>
+                        }
+                      </View>
+                    )
+                  })
+                }
+                
                 { this._isEquippedSkill(this.props.modalSkill) && 
                   <TouchableOpacity
                     style={styles.skillModalButtons}
