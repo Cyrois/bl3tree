@@ -70,13 +70,13 @@ class HomeScreen extends React.Component {
   }
 
   _isEquippedSkill = (skill) => {
-    for (key in this.props[this.props.selectedHero].equipped) {
-      if(this.props[this.props.selectedHero].equipped[key] && skill.title === this.props[this.props.selectedHero].equipped[key].title) {
+    const keys = Object.keys(this.props[this.props.selectedHero].equipped)
+    for (const key of keys) {
+      if(this.props[this.props.selectedHero].equipped[key] && (skill.title === this.props[this.props.selectedHero].equipped[key].title)) {
         return true
-      } else {
-        return false
       }
     }
+    return false;
   }
 
   _unselectSkill = (skillTitle) => {
