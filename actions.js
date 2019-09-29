@@ -1,4 +1,4 @@
-import { SET_CHARACTER, ADD_SKILL, ADD_STAT, SET_MODAL_SKILL, SET_FLAK_PET, SET_FLAK_ACTION, SET_FLAK_AUGMENT, RANK_SKILL, REMOVE_SKILL, SET_HERO_SELECT, SELECT_HERO, TOGGLE_QUICK_SELECT, RESET, SET_SAVE_BUILD_MODAL, SET_CREATE_ACCOUNT_MODAL, SET_ACCOUNT_EMAIL, SET_ACCOUNT_PASSWORD, SET_CHARACTER_SKILL, SET_SELECTED_MODAL_SKILL } from './types.js';
+import { SET_CHARACTER, ADD_SKILL, ADD_STAT, SET_MODAL_SKILL, SET_FLAK_PET, SET_FLAK_ACTION, SET_FLAK_AUGMENT, RANK_SKILL, REMOVE_SKILL, SET_HERO_SELECT, SELECT_HERO, TOGGLE_QUICK_SELECT, RESET, SET_SAVE_BUILD_MODAL, SET_CREATE_ACCOUNT_MODAL, SET_ACCOUNT_EMAIL, SET_ACCOUNT_PASSWORD, SET_CHARACTER_SKILL, SET_SELECTED_MODAL_SKILL, TOGGLE } from './types.js';
 
 const setCharacter = () => {
     return {
@@ -110,9 +110,10 @@ const selectHero = (hero) =>  {
     }
 }
 
-const toggleQuickSelect = () =>  {
+const toggle = (type) =>  {
     return {
-        type: TOGGLE_QUICK_SELECT,
+        type: TOGGLE,
+        data: type,
     }
 }
 
@@ -133,8 +134,7 @@ const actionCreators = {
     setSaveBuildModal,
     setHeroSelect,
     selectHero,
-    toggleQuickSelect
-
+    toggle
 }
 
 export { actionCreators };

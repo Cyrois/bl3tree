@@ -1,4 +1,4 @@
-import { SET_CHARACTER, ADD_SKILL, ADD_STAT, SET_MODAL_SKILL, RANK_SKILL, REMOVE_SKILL, SET_HERO_SELECT, SELECT_HERO, TOGGLE_QUICK_SELECT, RESET, SET_SAVE_BUILD_MODAL, SET_CREATE_ACCOUNT_MODAL, SET_ACCOUNT_PASSWORD, SET_ACCOUNT_EMAIL, SET_CHARACTER_SKILL, SET_SELECTED_MODAL_SKILL } from './types.js';
+import { SET_CHARACTER, ADD_SKILL, ADD_STAT, SET_MODAL_SKILL, RANK_SKILL, REMOVE_SKILL, SET_HERO_SELECT, SELECT_HERO, TOGGLE_QUICK_SELECT, RESET, SET_SAVE_BUILD_MODAL, SET_CREATE_ACCOUNT_MODAL, SET_ACCOUNT_PASSWORD, SET_ACCOUNT_EMAIL, SET_CHARACTER_SKILL, SET_SELECTED_MODAL_SKILL, TOGGLE_ACTIONS, TOGGLE_BUILDS, TOGGLE } from './types.js';
 import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, MAX_POINTS } from './data/constants';
 import flakSkills from './data/flakSkills.js';
 import mozeSkills from './data/mozeSkills.js';
@@ -33,6 +33,8 @@ const intialState = {
     heroSelectModalVisible: false,
     selectedHero: FLAK,
     quickSelectEnabled: false,
+    toggleActions: true,
+    toggleBuilds: true,
 }
 
 //Helper Functions
@@ -164,9 +166,21 @@ const selectHero = (state, hero) => {
   }
 }
 
-const toggleQuickSelect = (state) => {
+const toggle = (state, type) => {
   const newState = {...state}
-  newState.quickSelectEnabled = !newState.quickSelectEnabled
+  console.log("in toggle")
+  console.log(type)
+  switch (type) {
+    case TOGGLE_QUICK_SELECT: 
+      newState.quickSelectEnabled = !newState.quickSelectEnabled
+      break;
+    case TOGGLE_ACTIONS: 
+      newState.toggleActions = !newState.toggleActions
+      break;
+    case TOGGLE_BUILDS: 
+      newState.toggleBuilds = !newState.toggleBuilds
+      break;
+  }
   return newState
 }
 
@@ -202,8 +216,8 @@ const reducer = (state = intialState, action) => {
       return setHeroSelect(state, action.data)
     case SELECT_HERO:
       return selectHero(state, action.data)
-    case TOGGLE_QUICK_SELECT:
-      return toggleQuickSelect(state)
+    case TOGGLE:
+      return toggle(state, action.data)
     default:
       return state
   }

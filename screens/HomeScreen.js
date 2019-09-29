@@ -17,6 +17,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators as actions } from '../actions';
 import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA } from '../data/constants';
+import { TOGGLE_QUICK_SELECT } from '../types.js';
 
 class HomeScreen extends React.Component {
   _getSkillBackgroundImage(skillType) {
@@ -165,7 +166,7 @@ class HomeScreen extends React.Component {
                     <View style={styles.skillContainer}>
                       <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.pet, true, "an action")}>
                         <Image
-                          source={require('../assets/images/rise_to_the_occasion.png')}
+                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
                           style={styles.skillImage} />
                       </TouchableOpacity>
                     </View>
@@ -176,7 +177,7 @@ class HomeScreen extends React.Component {
                     <View style={styles.skillContainer}>
                       <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.augment2, true, "an action")}>
                         <Image
-                          source={require('../assets/images/robot-dev.png')}
+                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
                           style={styles.skillImage} />
                       </TouchableOpacity>
                     </View>
@@ -186,7 +187,7 @@ class HomeScreen extends React.Component {
                     <View style={styles.skillContainer}>
                       <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.pet, true, "an augment")}>
                         <Image
-                          source={require('../assets/images/rise_to_the_occasion.png')}
+                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
                           style={styles.skillImage} />
                       </TouchableOpacity>
                     </View>
@@ -197,7 +198,7 @@ class HomeScreen extends React.Component {
                     <View style={styles.skillContainer}>
                       <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.augment2, true, "an augment")}>
                         <Image
-                          source={require('../assets/images/robot-dev.png')}
+                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
                           style={styles.skillImage} />
                       </TouchableOpacity>
                     </View>
@@ -223,6 +224,16 @@ class HomeScreen extends React.Component {
                   onPress={() => this.props.reset()}
                 >
                   <Text style={styles.resetPointsText}> Reset Points </Text>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.resetPointsBtnContainer}>
+                <TouchableOpacity
+                  style={styles.resetPointsBtn}
+                  onPress={() => this.props.toggle(TOGGLE_QUICK_SELECT)}
+                >
+                  <Text style={styles.resetPointsText}> {this.props.quickSelectEnabled ? "Disable Quick Select" : "Enable Quick Select"} </Text>
+                  <Text style={styles.resetPointsText}> (Auto Rank Up) </Text>
                 </TouchableOpacity>
               </View>
           </ScrollView>
@@ -513,7 +524,8 @@ const styles = StyleSheet.create({
   resetPointsBtn: {
     backgroundColor: 'rgba(3, 59, 135, 0.5)',
     padding: 10,
-    margin:20,
+    marginHorizontal: 20,
+    marginBottom: 10,
     borderWidth: 3,
     borderRadius: 4,
     borderColor: '#fff',
@@ -582,6 +594,7 @@ mapDispatchToProps = dispatch => {
     addStat: bindActionCreators(actions.addStat, dispatch),
     reset: bindActionCreators(actions.reset, dispatch),
     setModalSkill: bindActionCreators(actions.setModalSkill, dispatch),
+    toggle: bindActionCreators(actions.toggle, dispatch),
   }
 }
 

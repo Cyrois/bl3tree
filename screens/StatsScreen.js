@@ -78,7 +78,7 @@ class StatsScreen extends React.Component {
                       <ImageBackground source={this._getSkillBackgroundImage(PET)} 
                           style={styles.skillImageBg}>
                         <Image
-                          source={require('../assets/images/adrenaline.png')}
+                          source={require('../assets/images/skills/adrenaline.png')}
                           style={styles.skillImage} />
                       </ImageBackground>
                     </TouchableOpacity>
@@ -88,7 +88,7 @@ class StatsScreen extends React.Component {
                       <ImageBackground source={this._getSkillBackgroundImage(ACTION)} 
                           style={styles.skillImageBg}>
                         <Image
-                          source={require('../assets/images/adrenaline.png')}
+                          source={require('../assets/images/skills/adrenaline.png')}
                           style={styles.skillImage} />
                       </ImageBackground>
                     </TouchableOpacity>
@@ -98,7 +98,7 @@ class StatsScreen extends React.Component {
                       <ImageBackground source={this._getSkillBackgroundImage(AUGMENT)} 
                           style={styles.skillImageBg}>
                         <Image
-                          source={require('../assets/images/adrenaline.png')}
+                          source={require('../assets/images/skills/adrenaline.png')}
                           style={styles.skillImage} />
                       </ImageBackground>
                     </TouchableOpacity>
@@ -108,7 +108,7 @@ class StatsScreen extends React.Component {
                       <ImageBackground source={this._getSkillBackgroundImage(AUGMENT)} 
                           style={styles.skillImageBg}>
                         <Image
-                          source={require('../assets/images/adrenaline.png')}
+                          source={require('../assets/images/skills/adrenaline.png')}
                           style={styles.skillImage} />
                       </ImageBackground>
                     </TouchableOpacity>

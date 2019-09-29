@@ -9,7 +9,8 @@ import {
   TouchableOpacity,
   View,
   Modal,
-  TextInput
+  TextInput,
+  Image
 } from 'react-native';
 
 import TabBarIcon from '../components/TabBarIcon';
@@ -17,6 +18,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators as actions } from '../actions';
 import { FLAK, MOZE, ZANE, AMARA } from '../data/constants';
+import { TOGGLE_QUICK_SELECT, TOGGLE_BUILDS, TOGGLE_ACTIONS } from '../types';
 
 class SettingsScreen extends React.Component {
   // firestore = firestore().collection('builds');
@@ -27,6 +29,14 @@ class SettingsScreen extends React.Component {
   //   })
   // }
   
+  _toggleActions(toggle) {
+    this.props.toggleLandingOptions(toggle)
+  }
+  
+  _toggleBuilds(toggle) {
+    this.props.toggleBuilds(toggle)
+  }
+
   _handleSignUp = () => {
     console.log(this.props.email)
     console.log(this.props.password)
@@ -51,49 +61,78 @@ class SettingsScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.contentContainer}>
-            <Text style={styles.sectionHeader}>
-              Settings
-            </Text>
+            <View style={styles.bl3LogoContainer}>
+              <Image
+                source={require('../assets/images/bl3Icon.jpeg')}
+                style={styles.bl3Logo} /> 
+            </View>
+            
+            <TouchableOpacity
+                onPress={() => this.props.toggle(TOGGLE_ACTIONS)}
+              >
+              <Text style={styles.sectionHeader}>
+                Actions
+              </Text>
+            </TouchableOpacity>
+
+            { this.props.toggleActions &&
+              <View>
+                <TouchableOpacity
+                  style={styles.mainButton}
+                  onPress={() => this.props.setCreateAccountModal(true)}
+                >
+                  <Text style={styles.mainButtonText}> Create Account </Text>
+                </TouchableOpacity>
+                
+                <View style={styles.divider}></View>
+
+                <TouchableOpacity
+                  style={styles.mainButton}
+                  onPress={() => this.props.setSaveBuildModal(true)}
+                >
+                  <Text style={styles.mainButtonText}> Save Build </Text>
+                </TouchableOpacity>
+
+                <View style={styles.divider}></View>
+
+                <TouchableOpacity
+                  style={styles.mainButton}
+                  onPress={() => this.props.setHeroSelect(true)}
+                >
+                  <Text style={styles.mainButtonText}> Change Hero </Text>
+                </TouchableOpacity>
+              </View>
+            }
 
             <TouchableOpacity
-              style={styles.mainButton}
-              onPress={() => this.props.setCreateAccountModal(true)}
-            >
-              <Text style={styles.mainButtonText}> Create Account </Text>
+                onPress={() => this.props.toggle(TOGGLE_BUILDS)}
+              >
+              <Text style={styles.sectionHeader}>
+                Saved Builds
+              </Text>
             </TouchableOpacity>
             
-            <View style={styles.divider}></View>
+            { this.props.toggleBuilds &&
+              <View>
+                <TouchableOpacity
+                  style={styles.mainButton}
+                  onPress={() => this.props.setSaveBuildModal(true)}
+                >
+                  <Text style={styles.mainButtonText}> Save Build </Text>
+                </TouchableOpacity>
 
-            <TouchableOpacity
-              style={styles.mainButton}
-              onPress={() => this.props.setSaveBuildModal(true)}
-            >
-              <Text style={styles.mainButtonText}> Save Build </Text>
-            </TouchableOpacity>
+                <View style={styles.divider}></View>
 
-            <View style={styles.divider}></View>
+                <TouchableOpacity
+                  style={styles.mainButton}
+                  onPress={() => this.props.setHeroSelect(true)}
+                >
+                  <Text style={styles.mainButtonText}> Change Hero </Text>
+                </TouchableOpacity>
 
-            <TouchableOpacity
-              style={styles.mainButton}
-              onPress={() => this.props.setHeroSelect(true)}
-            >
-              <Text style={styles.mainButtonText}> Change Hero </Text>
-            </TouchableOpacity>
-
-            <View style={styles.divider}></View>
-
-            <View style={styles.divider}></View>
-
-            <TouchableOpacity
-              style={styles.mainButton}
-              onPress={() => this.props.toggleQuickSelect()}
-            >
-              <Text style={styles.mainButtonText}> {this.props.quickSelectEnabled ? "Disable Quick Select" : "Enable Quick Select"} </Text>
-            </TouchableOpacity>
-
-            <Text style={styles.sectionHeader}>
-              Saved Builds
-            </Text>
+                <View style={styles.divider}></View>
+              </View>
+            }
         </ScrollView>
 
         <View>
@@ -230,6 +269,10 @@ const styles = StyleSheet.create({
   contentContainer: {
     
   },
+  bl3LogoContainer: {
+    marginVertical: 40,
+    alignItems: 'center',
+  },
   sectionHeader: {
     fontSize: 40, 
     textAlign: 'center', 
@@ -284,7 +327,7 @@ mapDispatchToProps = dispatch => {
     setSaveBuildModal: bindActionCreators(actions.setSaveBuildModal, dispatch),
     setHeroSelect: bindActionCreators(actions.setHeroSelect, dispatch),
     selectHero: bindActionCreators(actions.selectHero, dispatch),
-    toggleQuickSelect: bindActionCreators(actions.toggleQuickSelect, dispatch),
+    toggle: bindActionCreators(actions.toggle, dispatch),
   }
 }
 
