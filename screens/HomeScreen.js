@@ -121,7 +121,7 @@ class HomeScreen extends React.Component {
                   }
                 </Text>
               </View>
-             
+
               {
                 this.props.selectedHero === FLAK &&
                 <View>
@@ -216,6 +216,15 @@ class HomeScreen extends React.Component {
                   }
                 </View>
               }
+
+              <View style={styles.resetPointsBtnContainer}>
+                <TouchableOpacity
+                  style={styles.resetPointsBtn}
+                  onPress={() => this.props.reset()}
+                >
+                  <Text style={styles.resetPointsText}> Reset Points </Text>
+                </TouchableOpacity>
+              </View>
           </ScrollView>
         </View>
         
@@ -496,6 +505,28 @@ const styles = StyleSheet.create({
     backgroundColor: '#fbfbfb',
     paddingVertical: 20,
   },
+  resetPointsBtnContainer: {
+    backgroundColor: 'rgba(3, 59, 135, 0.5)',
+    color: 'rgba(3, 59, 135, 0.5)',
+    padding: 10,
+  },
+  resetPointsBtn: {
+    backgroundColor: 'rgba(3, 59, 135, 0.5)',
+    padding: 10,
+    margin:20,
+    borderWidth: 3,
+    borderRadius: 4,
+    borderColor: '#fff',
+    textAlign: 'center',
+  },
+  resetPointsText: {
+    fontSize: 16,
+    color: '#fff',
+    textAlign: 'center',
+  },
+
+
+  // Modal Styles
   outerModal: {
     backgroundColor: 'rgba(80,80,80,0.9)',
     paddingTop: '20%',
@@ -549,6 +580,7 @@ mapDispatchToProps = dispatch => {
     removeSkill: bindActionCreators(actions.removeSkill, dispatch),
     rankSkill: bindActionCreators(actions.rankSkill, dispatch),
     addStat: bindActionCreators(actions.addStat, dispatch),
+    reset: bindActionCreators(actions.reset, dispatch),
     setModalSkill: bindActionCreators(actions.setModalSkill, dispatch),
   }
 }

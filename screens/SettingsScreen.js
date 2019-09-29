@@ -82,13 +82,6 @@ class SettingsScreen extends React.Component {
 
             <View style={styles.divider}></View>
 
-            <TouchableOpacity
-              style={styles.mainButton}
-              onPress={() => this.props.reset()}
-            >
-              <Text style={styles.mainButtonText}> Reset Points </Text>
-            </TouchableOpacity>
-
             <View style={styles.divider}></View>
 
             <TouchableOpacity
@@ -291,7 +284,6 @@ mapDispatchToProps = dispatch => {
     setSaveBuildModal: bindActionCreators(actions.setSaveBuildModal, dispatch),
     setHeroSelect: bindActionCreators(actions.setHeroSelect, dispatch),
     selectHero: bindActionCreators(actions.selectHero, dispatch),
-    reset: bindActionCreators(actions.reset, dispatch),
     toggleQuickSelect: bindActionCreators(actions.toggleQuickSelect, dispatch),
   }
 }
