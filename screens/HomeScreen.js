@@ -16,7 +16,7 @@ import SkillButton from '../components/SkillButton.js';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators as actions } from '../actions';
-import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA } from '../data/constants';
+import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, YELLOW_FONT, RED_BG, TITLE_FONT, TEXT_FONT } from '../data/constants';
 import { TOGGLE_QUICK_SELECT } from '../types.js';
 
 class HomeScreen extends React.Component {
@@ -117,7 +117,7 @@ class HomeScreen extends React.Component {
           <ScrollView
             contentContainerStyle={styles.contentContainer}>
               <View style={styles.heroContainer}>
-                <Text style={{color:'#fff', fontSize: 40, textAlign: 'center'}}>{
+                <Text style={styles.characterHeader}>{
                   this.props.selectedHero === FLAK ? "FL4K" : this.props.selectedHero.toUpperCase()
                   }
                 </Text>
@@ -250,7 +250,7 @@ class HomeScreen extends React.Component {
             }}>
             <View style={styles.outerModal}>
               <View style={styles.innerModal}>
-                <Text style={{color:'yellow', fontSize: 30, marginBottom: 10}}>{this.props.modalSkill.title}</Text>
+                <Text style={styles.modalSkillTitle}>{this.props.modalSkill.title}</Text>
 
                 <View style={styles.modalSkillContainer}>
                   <ImageBackground source={this._getSkillBackgroundImage(this.props.modalSkill.type)} 
@@ -261,7 +261,7 @@ class HomeScreen extends React.Component {
                   </ImageBackground>
                 </View>
                 
-                <Text style={{color:'#fff', marginBottom: 10}}>
+                <Text style={{...styles.defaultFont, marginBottom: 10, fontSize: 18}}>
                   {
                     this.props.modalSkill.type === PASSIVE && 'Passive Ability' ||
                     this.props.modalSkill.type === ACTION && 'Action Skill' ||
@@ -270,25 +270,25 @@ class HomeScreen extends React.Component {
                   }
                 </Text>
 
-                <Text style={{color:'#fff', marginBottom: 10}}>{this.props.modalSkill.description}</Text>
+                <Text style={{...styles.defaultFont, marginBottom: 10}}>{this.props.modalSkill.description}</Text>
 
                 {this.props.modalSkill.type === PASSIVE && 
-                  <Text style={{color:'#fff', marginBottom: 10}}>
+                  <Text style={{...styles.defaultFont, marginBottom: 10}}>
                     Rank: {this.props.ranked[this.props.modalSkill.title] ? this.props.ranked[this.props.modalSkill.title] : 0}/{this.props.modalSkill.maxRanks}
                   </Text>
                 }
 
                 { !!(this.props.ranked[this.props.modalSkill.title] && this.props.ranked[this.props.modalSkill.title] > 0) &&
-                  <Text style={{color:'#fff'}}>Current Rank:</Text>
+                  <Text style={styles.defaultFont}>Current Rank:</Text>
                 }
                 {this.props.modalSkill.stats && 
                   this.props.modalSkill.stats.map(stat => {
                     return (
-                      <View key={stat.type} style={{marginBottom: 5, flexDirection:'row', flexWrap:'wrap'}}>
+                      <View key={stat.type} style={{flexDirection:'row', flexWrap:'wrap'}}>
                         { !!(this.props.ranked[this.props.modalSkill.title] && this.props.ranked[this.props.modalSkill.title] > 0) &&
-                          <View style={{marginTop: 10}}>
-                            <Text style={{color:'yellow'}}>{stat.type}:</Text>
-                            <Text style={{color:'#fff'}}> {stat.preText}{stat.values[this.props.ranked[this.props.modalSkill.title] ? this.props.ranked[this.props.modalSkill.title] - 1 : 1]}{stat.postText}</Text>
+                          <View style={{marginTop: 5}}>
+                            <Text style={{...styles.defaultFont, color:YELLOW_FONT}}>{stat.type}:</Text>
+                            <Text style={styles.defaultFont}> {stat.preText}{stat.values[this.props.ranked[this.props.modalSkill.title] ? this.props.ranked[this.props.modalSkill.title] - 1 : 1]}{stat.postText}</Text>
                           </View>
                         }
                       </View>
@@ -296,8 +296,8 @@ class HomeScreen extends React.Component {
                   })
                 }
 
-                { (!this.props.ranked[this.props.modalSkill.title] || this.props.ranked[this.props.modalSkill.title] < this.props.modalSkill.maxRanks) &&
-                  <Text style={{color:'#fff', marginTop: 10}}>Next Rank:</Text>
+                { this.props.modalSkill.type === PASSIVE && (!this.props.ranked[this.props.modalSkill.title] || this.props.ranked[this.props.modalSkill.title] < this.props.modalSkill.maxRanks) &&
+                  <Text style={{...styles.defaultFont, marginVertical: 10}}>Next Rank:</Text>
                 }
                 {this.props.modalSkill.stats && 
                   this.props.modalSkill.stats.map(stat => {
@@ -305,8 +305,8 @@ class HomeScreen extends React.Component {
                       <View key={stat.type} style={{marginBottom: 5, flexDirection:'row', flexWrap:'wrap'}}>
                         { (!this.props.ranked[this.props.modalSkill.title] || this.props.ranked[this.props.modalSkill.title] < this.props.modalSkill.maxRanks) &&
                           <View>
-                            <Text style={{color:'yellow'}}>{stat.type}:</Text>
-                            <Text style={{color:'#fff'}}>
+                            <Text style={{...styles.defaultFont, color:YELLOW_FONT}}>{stat.type}:</Text>
+                            <Text style={styles.defaultFont}>
                               {stat.preText}{stat.values[this.props.ranked[this.props.modalSkill.title] ? this.props.ranked[this.props.modalSkill.title] : 0]}{stat.postText}
                             </Text>
                           </View>
@@ -321,7 +321,7 @@ class HomeScreen extends React.Component {
                     style={styles.skillModalButtons}
                     onPress={() => this._unselectSkill(this.props.modalSkill.title)}
                   >
-                    <Text> Unselect </Text>
+                    <Text style={{...styles.defaultFont, ...styles.skillModalBtnText}}> Unselect </Text>
                   </TouchableOpacity>
                 }
 
@@ -341,7 +341,7 @@ class HomeScreen extends React.Component {
                               this.props.rankSkill(this.props.modalSkill, this.props.modalSkill.maxRanks * -1)
                               this._setModal(false, "")
                             }}>
-                            <Text> Clear </Text>
+                            <Text style={{...styles.defaultFont, color: 'black'}}> Clear </Text>
                           </TouchableOpacity>
                         </View>
                         <View style={{}}>
@@ -353,7 +353,7 @@ class HomeScreen extends React.Component {
                               this._setModal(true, this.props.modalSkill)
                             }}
                           >
-                            <Text> -1 </Text>
+                            <Text style={{...styles.defaultFont, color: 'black'}}> -1 </Text>
                           </TouchableOpacity>
                         </View>
                         <View style={{}}>
@@ -364,7 +364,7 @@ class HomeScreen extends React.Component {
                               this.props.rankSkill(this.props.modalSkill, 1)
                               this._setModal(true, this.props.modalSkill)
                             }}>
-                            <Text> +1</Text>
+                            <Text style={{...styles.defaultFont, color: 'black'}}> +1</Text>
                           </TouchableOpacity>
                         </View>
                         <View style={{}}>
@@ -376,7 +376,7 @@ class HomeScreen extends React.Component {
                               this._setModal(false, "")
                             }}
                           >
-                            <Text> Max </Text>
+                            <Text style={{...styles.defaultFont, color: 'black'}}> Max </Text>
                           </TouchableOpacity>
                         </View>
                       </View>
@@ -392,7 +392,7 @@ class HomeScreen extends React.Component {
                         this._setModal(false, "")
                       }}
                     >
-                      <Text> Assign Pet </Text>
+                      <Text style={{...styles.defaultFont, color: 'black'}}> Assign Pet </Text>
                     </TouchableOpacity>
                   }
 
@@ -439,7 +439,7 @@ class HomeScreen extends React.Component {
                     style={styles.skillModalButtons}
                     onPress={() => this._setModal(false, "")}
                   >
-                    <Text> Close </Text>
+                    <Text style={{...styles.defaultFont, color: 'black'}}> Close </Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -468,6 +468,15 @@ const styles = StyleSheet.create({
   heroContainer: {
     backgroundColor: 'rgba(30, 39, 58, 0.5)'
   },
+  characterHeader: {
+    color:YELLOW_FONT, 
+    backgroundColor: RED_BG, 
+    fontSize: 40, 
+    textAlign: 'center', 
+    fontFamily: TITLE_FONT
+  },
+
+  //TREES
   treeContainer: {
     paddingTop: 10,
     paddingBottom: 20,
@@ -475,21 +484,25 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
   },
   greenSkillTree: {
-    backgroundColor: 'rgba(69, 133, 4, 0.5)',
+    backgroundColor: 'rgba(69, 133, 4, 0.75)',
   },
   redSkillTree: {
-    backgroundColor: 'rgba(99, 33, 6, 0.5)',
+    backgroundColor: 'rgba(99, 33, 6, 0.75)',
   },
   blueSkillTree: {
-    backgroundColor: 'rgba(3, 59, 135, 0.5)',
+    backgroundColor: 'rgba(3, 59, 135, 0.75)',
   },
   treeTitle: {
-    color:'#fff', 
     fontSize: 30, 
     textAlign: 'center',
     paddingTop: 10,
-    paddingBottom: 10,
+    paddingBottom: 15,
+    color:YELLOW_FONT, 
+    textAlign: 'center', 
+    fontFamily: TITLE_FONT
   },
+
+  //MODAL
   skillContainer: {
     width: '20%',
     height: 86,
@@ -523,35 +536,17 @@ const styles = StyleSheet.create({
     marginTop: 4,
     resizeMode: 'contain',
   },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
-  },
+
+  //BOTTOM BTNS
   resetPointsBtnContainer: {
-    backgroundColor: 'rgba(3, 59, 135, 0.5)',
+    backgroundColor: 'rgba(3, 59, 135, 0.75)',
     color: 'rgba(3, 59, 135, 0.5)',
     padding: 10,
   },
   resetPointsBtn: {
-    backgroundColor: 'rgba(3, 59, 135, 0.5)',
+    backgroundColor: 'rgba(3, 59, 135, 0.75)',
     padding: 10,
-    marginHorizontal: 20,
+    marginHorizontal: 40,
     marginBottom: 10,
     borderWidth: 3,
     borderRadius: 4,
@@ -567,7 +562,7 @@ const styles = StyleSheet.create({
 
   // Modal Styles
   outerModal: {
-    backgroundColor: 'rgba(80,80,80,0.9)',
+    backgroundColor: 'rgba(80,80,80,0.96)',
     paddingTop: '20%',
     paddingBottom: '10%',
     paddingHorizontal: 20,
@@ -576,15 +571,25 @@ const styles = StyleSheet.create({
   innerModal: {
     backgroundColor: 'rgb(3, 59, 135)',
     borderRadius: 5,
+    borderWidth: 5,
+    borderColor: YELLOW_FONT,
     padding: 30,
     width: '100%'
   },
   skillModalButtons: {
     marginVertical: 10,
     alignItems: 'center',
-    backgroundColor: '#b0ad00',
+    backgroundColor: YELLOW_FONT,
     color: '#fff',
     padding: 10
+  },
+  skillModalBtnText: {
+  },
+  modalSkillTitle: {
+    color: YELLOW_FONT, 
+    fontSize: 30, 
+    marginBottom: 10, 
+    fontFamily: "YoungPatriotSemi-Bold"
   },
   modalSkillContainer: {
     width: 90,
@@ -605,6 +610,10 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     zIndex: 90000
   },
+  defaultFont: {
+    fontFamily: TEXT_FONT,
+    color: '#fff'
+  }
 });
 
 mapStateToProps = state => {

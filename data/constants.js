@@ -19,6 +19,12 @@ const BLUE = 'blue'
 const MAX_POINTS = 48
 const MAX_HEALTH = 'max_health';
 
+//Styles
+const TITLE_FONT = "YoungPatriotSemi-Bold"
+const TEXT_FONT = "Montserrat"
+const YELLOW_FONT = "rgb(255,232,9)"
+const RED_BG = "rgb(135, 33, 14)"
+
 export { 
     PASSIVE,
     AUGMENT,
@@ -33,5 +39,10 @@ export {
     RED,
     BLUE,
 
-    MAX_POINTS
+    MAX_POINTS,
+
+    TITLE_FONT,
+    TEXT_FONT,
+    YELLOW_FONT,
+    RED_BG
 };

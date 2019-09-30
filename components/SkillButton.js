@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
-import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA } from '../data/constants';
+import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, TITLE_FONT } from '../data/constants';
 
 class SkillButton extends React.Component {
     constructor(props) {
@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
       resizeMode: 'contain',
     },
     pointslotBg: {
-      width: 36,
-      height: 25,
+      width: 38,
+      height: 26,
       position: 'absolute',
       right: 0,
       bottom: 0,
@@ -67,9 +67,10 @@ const styles = StyleSheet.create({
     },
     pointslotText: {
       color: '#fff',
-      fontSize: 16,
-      paddingLeft: 6,
-      paddingTop: 1,
+      fontSize: 22,
+      paddingLeft: 9,
+      paddingTop: 2,
+      fontFamily: TITLE_FONT
     },
     skillImage: {
       width: "90%",

@@ -18,7 +18,7 @@ import { MonoText } from '../components/StyledText';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators as actions } from '../actions';
-import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA } from '../data/constants';
+import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, RED_BG, YELLOW_FONT, TITLE_FONT } from '../data/constants';
 
 class StatsScreen extends React.Component {
   _getSkillBackgroundImage(skillType) {
@@ -65,7 +65,7 @@ class StatsScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.contentContainer}>
           <View style={styles.selectedSkillsContainer}>
-            <Text style={{color:'#fff', fontSize: 40, textAlign: 'center'}}>{
+            <Text style={styles.sectionHeader}>{
               this.props.selectedHero === FLAK ? "FL4K" : this.props.selectedHero.toUpperCase()
               }
             </Text>
@@ -73,7 +73,7 @@ class StatsScreen extends React.Component {
               this.props.selectedHero === FLAK &&
               <View>
                 <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
-                  <View style={styles.skillContainer}>
+                  <View style={styles.skillContainerAction}>
                     <TouchableOpacity onPress={() => this._onSkillPress(this.props.flak.equipped.pet, true, "a pet")}>
                       <ImageBackground source={this._getSkillBackgroundImage(PET)} 
                           style={styles.skillImageBg}>
@@ -83,7 +83,7 @@ class StatsScreen extends React.Component {
                       </ImageBackground>
                     </TouchableOpacity>
                   </View>
-                  <View style={styles.skillContainer}>
+                  <View style={styles.skillContainerAction}>
                     <TouchableOpacity onPress={() => this._onSkillPress(this.props.flak.equipped.action, true, "an action")}>
                       <ImageBackground source={this._getSkillBackgroundImage(ACTION)} 
                           style={styles.skillImageBg}>
@@ -93,7 +93,7 @@ class StatsScreen extends React.Component {
                       </ImageBackground>
                     </TouchableOpacity>
                   </View>
-                  <View style={styles.skillContainer}>
+                  <View style={styles.skillContainerAugment}>
                     <TouchableOpacity onPress={() => this._onSkillPress(this.props.flak.equipped.augment1, true, "an augment")}>
                       <ImageBackground source={this._getSkillBackgroundImage(AUGMENT)} 
                           style={styles.skillImageBg}>
@@ -103,7 +103,7 @@ class StatsScreen extends React.Component {
                       </ImageBackground>
                     </TouchableOpacity>
                   </View>
-                  <View style={styles.skillContainer}>
+                  <View style={styles.skillContainerAugment}>
                     <TouchableOpacity onPress={() => this._onSkillPress(this.props.flak.equipped.augment2, true, "an augment")}>
                       <ImageBackground source={this._getSkillBackgroundImage(AUGMENT)} 
                           style={styles.skillImageBg}>
@@ -119,11 +119,11 @@ class StatsScreen extends React.Component {
           </View>
 
           <View style={styles.statsSummaryContainer}>
-            <Text style={{color:'#fff', fontSize: 30, textAlign: 'center'}}>STATS SUMMARY</Text>
+            <Text style={styles.statsSummaryHeader}>STATS SUMMARY</Text>
 
-            <View style={{marginBottom: 5, flexDirection:'row', flexWrap:'wrap', justifyContent: 'center'}}>
-              <Text style={styles.defaultFont}>Points Left:</Text>
-              <Text style={styles.defaultFont}> {this.props.pointsLeft}</Text>
+            <View style={styles.pointsLeftText}>
+              <Text style={styles.pointsLeftText}>Points Left:</Text>
+              <Text style={styles.pointsLeftText}> {this.props.pointsLeft}</Text>
             </View>
             
             {
@@ -210,6 +210,14 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
   },
+  sectionHeader: {
+    fontSize: 40, 
+    textAlign: 'center', 
+    backgroundColor: RED_BG,
+    color: YELLOW_FONT,
+    paddingVertical: 10,
+    fontFamily: TITLE_FONT
+  },
   defaultFont: {
     color:'#fff', 
     fontSize: 20
@@ -218,11 +226,17 @@ const styles = StyleSheet.create({
     color:'yellow', 
   },
   skillContainer: {
-    width: '18%',
-    height: 80,
     resizeMode: 'contain',
     marginTop: 5,
     marginHorizontal: 4,
+  },
+  skillContainerAugment: { //TODO Might need platform specific styling
+    width: '20%',
+    height: 82,
+  },
+  skillContainerAction: {
+    width: '20%',
+    height: 88,
   },
   skillImageBg: {
     margin: 2,
@@ -238,13 +252,29 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   selectedSkillsContainer: {
-    backgroundColor: 'rgba(30, 39, 58, 0.5)'
+    backgroundColor: RED_BG,
   },
   statsSummaryContainer: {
     backgroundColor: 'rgb(3, 59, 135)',
     paddingHorizontal: 20,
     color: '#fff',
     height: 800
+  },
+  statsSummaryHeader: {
+    paddingVertical: 10,
+    color: YELLOW_FONT, 
+    fontSize: 30, 
+    textAlign: 'center',
+    fontFamily: TITLE_FONT,
+  },
+  pointsLeftText: {
+    marginBottom: 5, 
+    flexDirection:'row', 
+    flexWrap:'wrap', 
+    justifyContent: 'center',
+    color: YELLOW_FONT, 
+    fontSize: 20, 
+    fontFamily: TITLE_FONT,
   },
   outerModal: {
     backgroundColor: 'rgba(80,80,80,0.9)',

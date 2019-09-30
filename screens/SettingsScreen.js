@@ -17,7 +17,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators as actions } from '../actions';
-import { FLAK, MOZE, ZANE, AMARA } from '../data/constants';
+import { FLAK, MOZE, ZANE, AMARA, YELLOW_FONT, RED_BG, TITLE_FONT } from '../data/constants';
 import { TOGGLE_QUICK_SELECT, TOGGLE_BUILDS, TOGGLE_ACTIONS } from '../types';
 
 class SettingsScreen extends React.Component {
@@ -308,10 +308,10 @@ const styles = StyleSheet.create({
   sectionHeader: {
     fontSize: 40, 
     textAlign: 'center', 
-    backgroundColor: 'rgba(135, 33, 14, 1)',
-    color: "rgb(255,232,9)",
+    backgroundColor: RED_BG,
+    color: YELLOW_FONT,
     paddingVertical: 10,
-    fontFamily: "YoungPatriotSemi-Italic"
+    fontFamily: TITLE_FONT
   },
   mainButton: {
     marginVertical: 10,
@@ -320,7 +320,7 @@ const styles = StyleSheet.create({
   },
   mainButtonText: {
     fontSize: 16,
-    fontFamily: "Monsterrat"
+    // fontFamily: "Monsterrat"
   },
   outerModal: {
     backgroundColor: 'rgba(80,80,80,0.8)',
