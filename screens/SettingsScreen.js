@@ -86,7 +86,7 @@ class SettingsScreen extends React.Component {
                 onPress={() => this.props.toggle(TOGGLE_ACTIONS)}
               >
               <Text style={styles.sectionHeader}>
-                Actions
+                Main Menu
               </Text>
               <Image
                 source={this._getToggleIcon(TOGGLE_ACTIONS)}
@@ -308,10 +308,10 @@ const styles = StyleSheet.create({
   sectionHeader: {
     fontSize: 40, 
     textAlign: 'center', 
-    backgroundColor: 'rgba(30, 39, 58, 0.5)',
-    color: "#fff",
-    paddingTop: 5,
-    paddingBottom: 10,
+    backgroundColor: 'rgba(135, 33, 14, 1)',
+    color: "rgb(255,232,9)",
+    paddingVertical: 10,
+    fontFamily: "YoungPatriotSemi-Italic"
   },
   mainButton: {
     marginVertical: 10,
@@ -320,6 +320,7 @@ const styles = StyleSheet.create({
   },
   mainButtonText: {
     fontSize: 16,
+    fontFamily: "Monsterrat"
   },
   outerModal: {
     backgroundColor: 'rgba(80,80,80,0.8)',
@@ -347,7 +348,7 @@ const styles = StyleSheet.create({
   },
   accordianIcon: {
     position:'absolute', 
-    top: 20, 
+    top: '30%', 
     right: 20, 
     width: 24, 
     height: 24

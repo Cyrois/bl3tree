@@ -12,6 +12,7 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		27309C692341697E00B7C16A /* YoungPatriotSemi-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = DFF8EA3025C24E1A8B32D13A /* YoungPatriotSemi-Italic.otf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -20,6 +21,9 @@
 		9548EF9F35EC60DC1496068A /* libPods-bl3tree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F58C14F079B0D573A39CA97 /* libPods-bl3tree.a */; };
 		9906882D00AD0E18AD001960 /* libPods-bl3tree-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB38E9CF1A0419BD27F2E3A /* libPods-bl3tree-tvOS.a */; };
 		990ACC4D9F6E5E642AC36C62 /* libPods-bl3tree-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C2EE935E067DCE62E8BEE80 /* libPods-bl3tree-tvOSTests.a */; };
+		BAAE2CF22BFF4DBDA8B14A79 /* YoungPatriot-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 79F99006866F4512A485EC9E /* YoungPatriot-SemiBoldItalic.otf */; };
+		CEA759274A324D55984C0B99 /* SpaceMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C37C52A3CD746D8ABB901C7 /* SpaceMono-Regular.ttf */; };
+		E5864B1B1A0E4FDBB07E2DC2 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E88833293F5F4011A709F781 /* Montserrat.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,15 +57,26 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = bl3tree/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = bl3tree/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = bl3tree/main.m; sourceTree = "<group>"; };
+		1CBC4A1F297048A1844C09C2 /* youngpatriotsemibold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = youngpatriotsemibold.otf; path = ../assets/fonts/youngpatriotsemibold.otf; sourceTree = "<group>"; };
+		27A3AAB1130C4F29AA4EFA79 /* YoungPatriotSemi-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "YoungPatriotSemi-Bold.otf"; path = "../assets/fonts/YoungPatriotSemi-Bold.otf"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* bl3tree-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bl3tree-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* bl3tree-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bl3tree-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		31AB16AFD0004A9FA6B128C3 /* Accuratist.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Accuratist.otf; path = ../assets/fonts/Accuratist.otf; sourceTree = "<group>"; };
 		4BD7FD5737ED3800CC961133 /* Pods-bl3treeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bl3treeTests.debug.xcconfig"; path = "Target Support Files/Pods-bl3treeTests/Pods-bl3treeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4C2EE935E067DCE62E8BEE80 /* libPods-bl3tree-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bl3tree-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		541E0BA243884C2FA842B02F /* youngpatriotsemiboldital.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = youngpatriotsemiboldital.ttf; path = ../assets/fonts/youngpatriotsemiboldital.ttf; sourceTree = "<group>"; };
 		6695985765B7479405E67F68 /* Pods-bl3tree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bl3tree.debug.xcconfig"; path = "Target Support Files/Pods-bl3tree/Pods-bl3tree.debug.xcconfig"; sourceTree = "<group>"; };
 		6790B9F29D17525D8D906A75 /* Pods-bl3tree-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bl3tree-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-bl3tree-tvOSTests/Pods-bl3tree-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		6C6D4D6BDCB74E3BA4F772F0 /* youngpatriotsemibold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = youngpatriotsemibold.ttf; path = ../assets/fonts/youngpatriotsemibold.ttf; sourceTree = "<group>"; };
+		79F99006866F4512A485EC9E /* YoungPatriot-SemiBoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "YoungPatriot-SemiBoldItalic.otf"; path = "../assets/fonts/YoungPatriot-SemiBoldItalic.otf"; sourceTree = "<group>"; };
 		7F58C14F079B0D573A39CA97 /* libPods-bl3tree.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bl3tree.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		80A85DC4909548D7B20A7D15 /* YoungPatriotSemi-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "YoungPatriotSemi-Bold.ttf"; path = "../assets/fonts/YoungPatriotSemi-Bold.ttf"; sourceTree = "<group>"; };
+		953376923DAF4807843203F6 /* YoungPatriotSemi-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "YoungPatriotSemi-Italic.ttf"; path = "../assets/fonts/YoungPatriotSemi-Italic.ttf"; sourceTree = "<group>"; };
+		9C37C52A3CD746D8ABB901C7 /* SpaceMono-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SpaceMono-Regular.ttf"; path = "../assets/fonts/SpaceMono-Regular.ttf"; sourceTree = "<group>"; };
 		BA0688521E07CF988F29E3CE /* libPods-bl3treeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bl3treeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDEEDA9F2BF8572EB7924E8B /* Pods-bl3treeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bl3treeTests.release.xcconfig"; path = "Target Support Files/Pods-bl3treeTests/Pods-bl3treeTests.release.xcconfig"; sourceTree = "<group>"; };
+		DFF8EA3025C24E1A8B32D13A /* YoungPatriotSemi-Italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "YoungPatriotSemi-Italic.otf"; path = "../assets/fonts/YoungPatriotSemi-Italic.otf"; sourceTree = "<group>"; };
+		E88833293F5F4011A709F781 /* Montserrat.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Montserrat.ttf; path = ../assets/fonts/Montserrat.ttf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F216A9D4DB14C63B9D54D907 /* Pods-bl3tree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bl3tree.release.xcconfig"; path = "Target Support Files/Pods-bl3tree/Pods-bl3tree.release.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +180,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				E6FC86D5B5338BB0F7593B7C /* Pods */,
+				CC1B16461BF849D7A9F167B2 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -182,6 +198,24 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		CC1B16461BF849D7A9F167B2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9C37C52A3CD746D8ABB901C7 /* SpaceMono-Regular.ttf */,
+				27A3AAB1130C4F29AA4EFA79 /* YoungPatriotSemi-Bold.otf */,
+				541E0BA243884C2FA842B02F /* youngpatriotsemiboldital.ttf */,
+				DFF8EA3025C24E1A8B32D13A /* YoungPatriotSemi-Italic.otf */,
+				953376923DAF4807843203F6 /* YoungPatriotSemi-Italic.ttf */,
+				80A85DC4909548D7B20A7D15 /* YoungPatriotSemi-Bold.ttf */,
+				1CBC4A1F297048A1844C09C2 /* youngpatriotsemibold.otf */,
+				6C6D4D6BDCB74E3BA4F772F0 /* youngpatriotsemibold.ttf */,
+				79F99006866F4512A485EC9E /* YoungPatriot-SemiBoldItalic.otf */,
+				31AB16AFD0004A9FA6B128C3 /* Accuratist.otf */,
+				E88833293F5F4011A709F781 /* Montserrat.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		E6FC86D5B5338BB0F7593B7C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,7 +228,6 @@
 				4BD7FD5737ED3800CC961133 /* Pods-bl3treeTests.debug.xcconfig */,
 				BDEEDA9F2BF8572EB7924E8B /* Pods-bl3treeTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -285,7 +318,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 940;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -305,7 +338,7 @@
 			};
 			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "bl3tree" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -336,8 +369,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27309C692341697E00B7C16A /* YoungPatriotSemi-Italic.otf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				CEA759274A324D55984C0B99 /* SpaceMono-Regular.ttf in Resources */,
+				BAAE2CF22BFF4DBDA8B14A79 /* YoungPatriot-SemiBoldItalic.otf in Resources */,
+				E5864B1B1A0E4FDBB07E2DC2 /* Montserrat.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
