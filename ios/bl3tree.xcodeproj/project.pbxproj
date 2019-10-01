@@ -13,6 +13,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		27309C692341697E00B7C16A /* YoungPatriotSemi-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = DFF8EA3025C24E1A8B32D13A /* YoungPatriotSemi-Italic.otf */; };
+		27E56A4823431EF900E7159F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27E56A4723431EF900E7159F /* GoogleService-Info.plist */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -57,8 +58,8 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = bl3tree/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = bl3tree/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = bl3tree/main.m; sourceTree = "<group>"; };
-		1CBC4A1F297048A1844C09C2 /* youngpatriotsemibold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = youngpatriotsemibold.otf; path = ../assets/fonts/youngpatriotsemibold.otf; sourceTree = "<group>"; };
 		27A3AAB1130C4F29AA4EFA79 /* YoungPatriotSemi-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "YoungPatriotSemi-Bold.otf"; path = "../assets/fonts/YoungPatriotSemi-Bold.otf"; sourceTree = "<group>"; };
+		27E56A4723431EF900E7159F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* bl3tree-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bl3tree-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* bl3tree-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bl3tree-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31AB16AFD0004A9FA6B128C3 /* Accuratist.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Accuratist.otf; path = ../assets/fonts/Accuratist.otf; sourceTree = "<group>"; };
@@ -140,6 +141,7 @@
 		13B07FAE1A68108700A75B9A /* bl3tree */ = {
 			isa = PBXGroup;
 			children = (
+				27E56A4723431EF900E7159F /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -207,7 +209,6 @@
 				DFF8EA3025C24E1A8B32D13A /* YoungPatriotSemi-Italic.otf */,
 				953376923DAF4807843203F6 /* YoungPatriotSemi-Italic.ttf */,
 				80A85DC4909548D7B20A7D15 /* YoungPatriotSemi-Bold.ttf */,
-				1CBC4A1F297048A1844C09C2 /* youngpatriotsemibold.otf */,
 				6C6D4D6BDCB74E3BA4F772F0 /* youngpatriotsemibold.ttf */,
 				79F99006866F4512A485EC9E /* YoungPatriot-SemiBoldItalic.otf */,
 				31AB16AFD0004A9FA6B128C3 /* Accuratist.otf */,
@@ -263,6 +264,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				5C6C0DFAE593539BDA8402EF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -375,6 +377,7 @@
 				CEA759274A324D55984C0B99 /* SpaceMono-Regular.ttf in Resources */,
 				BAAE2CF22BFF4DBDA8B14A79 /* YoungPatriot-SemiBoldItalic.otf in Resources */,
 				E5864B1B1A0E4FDBB07E2DC2 /* Montserrat.ttf in Resources */,
+				27E56A4823431EF900E7159F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +426,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		5C6C0DFAE593539BDA8402EF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-bl3tree/Pods-bl3tree-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/gRPCCertificates-Cpp.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Cpp.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bl3tree/Pods-bl3tree-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		6275D4D96AF9DE428F2264A9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

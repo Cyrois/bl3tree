@@ -1,7 +1,7 @@
 import React from 'react';
 import { Platform } from 'react-native';
 // import firestore from '@react-native-firebase/firestore';
-// import firebase from 'react-native-firebase';
+import firebase from 'react-native-firebase';
 import {
   ScrollView,
   StyleSheet,
@@ -22,12 +22,6 @@ import { TOGGLE_QUICK_SELECT, TOGGLE_BUILDS, TOGGLE_ACTIONS } from '../types';
 
 class SettingsScreen extends React.Component {
   // firestore = firestore().collection('builds');
-
-  // componentDidMount() {
-  //   firebase.auth().onAuthStateChanged(user => {
-  //     console.log(user ? "user logged in" : 'SignUp')
-  //   })
-  // }
   
   _toggleActions(toggle) {
     this.props.toggleLandingOptions(toggle)
@@ -38,13 +32,15 @@ class SettingsScreen extends React.Component {
   }
 
   _handleSignUp = () => {
-    console.log(this.props.email)
-    console.log(this.props.password)
-    // firebase
-    //   .auth()
-    //   .createUserWithEmailAndPassword(this.state.email, this.state.password)
-    //   .then(() => console.log("User signed up"))
-    //   .catch(error => console.log("Unable to sign up user"))
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(this.props.email, this.props.password)
+      .then(() => console.log("User signed up"))
+      .catch(error => console.log("Unable to sign up user"))
+  }
+
+  _isUserLoggedIn = () => {
+    return !!firebase.auth().currentUser;
   }
 
   _selectHero(hero) {
@@ -95,12 +91,15 @@ class SettingsScreen extends React.Component {
 
             { this.props.toggleActions &&
               <View>
-                <TouchableOpacity
-                  style={styles.mainButton}
-                  onPress={() => this.props.setCreateAccountModal(true)}
-                >
-                  <Text style={styles.mainButtonText}> Create Account </Text>
-                </TouchableOpacity>
+                {
+                  !this._isUserLoggedIn &&
+                  <TouchableOpacity
+                    style={styles.mainButton}
+                    onPress={() => this.props.setCreateAccountModal(true)}
+                  >
+                    <Text style={styles.mainButtonText}> Create Account </Text>
+                  </TouchableOpacity>
+                }
                 
                 <View style={styles.divider}></View>
 
