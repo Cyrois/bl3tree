@@ -1,4 +1,4 @@
-import { SET_CHARACTER, ADD_SKILL, ADD_STAT, SET_MODAL_SKILL, RANK_SKILL, REMOVE_SKILL, SET_HERO_SELECT, SELECT_HERO, TOGGLE_QUICK_SELECT, RESET, SET_SAVE_BUILD_MODAL, SET_CREATE_ACCOUNT_MODAL, SET_ACCOUNT_PASSWORD, SET_ACCOUNT_EMAIL, SET_CHARACTER_SKILL, SET_SELECTED_MODAL_SKILL, TOGGLE_ACTIONS, TOGGLE_BUILDS, TOGGLE } from './types.js';
+import { SET_CHARACTER, ADD_SKILL, ADD_STAT, SET_MODAL_SKILL, RANK_SKILL, REMOVE_SKILL, SET_HERO_SELECT, SELECT_HERO, TOGGLE_QUICK_SELECT, RESET, SET_SAVE_BUILD_MODAL, SET_CREATE_ACCOUNT_MODAL, SET_ACCOUNT_PASSWORD, SET_ACCOUNT_EMAIL, SET_CHARACTER_SKILL, SET_SELECTED_MODAL_SKILL, TOGGLE_ACTIONS, TOGGLE_BUILDS, TOGGLE, SET_CURRENT_BUILD_NAME } from './types.js';
 import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, MAX_POINTS } from './data/constants';
 import flakSkills from './data/flakSkills.js';
 import mozeSkills from './data/mozeSkills.js';
@@ -29,6 +29,7 @@ const intialState = {
     createAccountModalVisible: false,
     email: '',
     password: '',
+    buildName: '',
     saveBuildModalVisible: false,
     heroSelectModalVisible: false,
     selectedHero: FLAK,
@@ -145,6 +146,13 @@ const setAccountPassword = (state, password) => {
   }
 }
 
+const setCurrentBuildName = (state, buildName) => {
+  return {
+    ...state,
+    buildName: buildName
+  }
+}
+
 const setSaveBuildModal = (state, modalVisible) => {
   return {
     ...state,
@@ -168,8 +176,6 @@ const selectHero = (state, hero) => {
 
 const toggle = (state, type) => {
   const newState = {...state}
-  console.log("in toggle")
-  console.log(type)
   switch (type) {
     case TOGGLE_QUICK_SELECT: 
       newState.quickSelectEnabled = !newState.quickSelectEnabled
@@ -210,6 +216,8 @@ const reducer = (state = intialState, action) => {
       return setAccountEmail(state, action.data)
     case SET_ACCOUNT_PASSWORD:
       return setAccountPassword(state, action.data)
+    case SET_CURRENT_BUILD_NAME:
+      return setCurrentBuildName(state, action.data)
     case SET_SAVE_BUILD_MODAL:
       return setSaveBuildModal(state, action.data)
     case SET_HERO_SELECT:

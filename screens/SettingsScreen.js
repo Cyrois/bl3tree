@@ -17,12 +17,22 @@ import TabBarIcon from '../components/TabBarIcon';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators as actions } from '../actions';
-import { FLAK, MOZE, ZANE, AMARA, YELLOW_FONT, RED_BG, TITLE_FONT } from '../data/constants';
+import { FLAK, MOZE, ZANE, AMARA, YELLOW_FONT, RED_BG, TITLE_FONT, TEXT_FONT } from '../data/constants';
 import { TOGGLE_QUICK_SELECT, TOGGLE_BUILDS, TOGGLE_ACTIONS } from '../types';
 
 class SettingsScreen extends React.Component {
-  // firestore = firestore().collection('builds');
+  // buildsStore = firestore().collection('builds');
   
+  constructor(props) {
+    super(props);
+    this.buildNameTextInput = React.createRef();
+  }
+
+  componentDidMount() {
+    const { currentUser } = firebase.auth()
+    this.props.setAccountEmail(currentUser.email)
+  }
+
   _toggleActions(toggle) {
     this.props.toggleLandingOptions(toggle)
   }
@@ -48,9 +58,22 @@ class SettingsScreen extends React.Component {
     this.props.setHeroSelect(false)
   }
 
-  _saveBuild(hero) {
-    this.props.selectHero(hero)
-    this.props.setHeroSelect(false)
+  _saveBuild() {
+    console.log("saving build")
+    let document = {
+      user: this.props.email,
+      name: this.props.buildName,
+      // build: build,
+      complete: false,
+    }
+    console.log(document)
+    // buildsStore.add({
+    //   user: this.props.email,
+    //   name: this.props.buildName,
+    //   // build: build,
+    //   complete: false,
+    // });
+    // setTodo('');
   }
 
   _getToggleIcon(toggle) {
@@ -77,6 +100,15 @@ class SettingsScreen extends React.Component {
                 source={require('../assets/images/bl3Icon.jpeg')}
                 style={styles.bl3Logo} /> 
             </View>
+            
+            {
+              this._isUserLoggedIn() && 
+                <View>
+                  <Text style={{...styles.sectionHeader, fontSize: 14, fontFamily: TEXT_FONT}}>
+                    Logged In As: {this.props.email}
+                  </Text>
+                </View>
+            }
             
             <TouchableOpacity
                 onPress={() => this.props.toggle(TOGGLE_ACTIONS)}
@@ -105,7 +137,10 @@ class SettingsScreen extends React.Component {
 
                 <TouchableOpacity
                   style={styles.mainButton}
-                  onPress={() => this.props.setSaveBuildModal(true)}
+                  onPress={() => {
+                    this.buildNameTextInput = true
+                    this.props.setSaveBuildModal(true)
+                  }}
                 >
                   <Text style={styles.mainButtonText}> Save Build </Text>
                 </TouchableOpacity>
@@ -136,18 +171,11 @@ class SettingsScreen extends React.Component {
               <View>
                 <TouchableOpacity
                   style={styles.mainButton}
-                  onPress={() => this.props.setSaveBuildModal(true)}
+                  onPress={() => {
+                    this.props.setSaveBuildModal(true)
+                  }}
                 >
-                  <Text style={styles.mainButtonText}> Save Build </Text>
-                </TouchableOpacity>
-
-                <View style={styles.divider}></View>
-
-                <TouchableOpacity
-                  style={styles.mainButton}
-                  onPress={() => this.props.setHeroSelect(true)}
-                >
-                  <Text style={styles.mainButtonText}> Change Hero </Text>
+                  <Text style={styles.mainButtonText}> Build 1 </Text>
                 </TouchableOpacity>
 
                 <View style={styles.divider}></View>
@@ -163,7 +191,7 @@ class SettingsScreen extends React.Component {
             onRequestClose={() => this.props.setCreateAccountModal(false)}>
             <View style={styles.outerModal}>
               <View style={styles.innerModal}>
-                <Text style={{color:'#e93766', fontSize: 40}}>Sign Up</Text>
+                <Text style={styles.modalHeader}>Sign Up</Text>
                   <TextInput
                     placeholder="Email"
                     autoCapitalize="none"
@@ -180,24 +208,25 @@ class SettingsScreen extends React.Component {
                     value={this.props.password}
                   />
                   <TouchableOpacity
-                    style={styles.skillModalButtons}
+                    style={styles.modalBtns}
                     onPress={this._handleSignUp}
                   >
-                    <Text> Sign Up </Text>
+                    <Text style={styles.modalBtnText}> Create New Account </Text>
                   </TouchableOpacity>
-                  <View>
-                    <Text> Already have an account? <Text onPress={() => {
+                  
+                  <View style={{marginTop: 20}}>
+                    <Text style={{fontFamily: TEXT_FONT}}> Already have an account? <Text onPress={() => {
                       this.props.setCreateAccountModal(false)
                       this.props.setLoginModal(true)
-                      }} style={{color:'#e93766', fontSize: 18}}> Login </Text>
+                      }} style={{color: RED_BG, fontFamily: TEXT_FONT}}> Login </Text>
                     </Text>
                   </View>
 
                   <TouchableOpacity
-                    style={styles.skillModalButtons}
+                    style={styles.modalBtns}
                     onPress={() => this.props.setCreateAccountModal(false)}
                   >
-                    <Text> Cancel </Text>
+                    <Text style={styles.modalBtnText}> Cancel </Text>
                   </TouchableOpacity>
                 </View>
             </View>
@@ -212,29 +241,33 @@ class SettingsScreen extends React.Component {
             onRequestClose={() => this.props.setSaveBuildModal(false)}>
             <View style={styles.outerModal}>
               <View style={styles.innerModal}>
-                <Text>Name your build:</Text>
+                <Text style={{...styles.modalHeader, fontSize: 30}}>Name your build:</Text>
 
                 <TextInput
-                  style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-                  onChangeText={text => onChangeText(text)}
-                  value=""
+                  autoFocus={!!this.buildNameTextInput}
+                  ref={this.buildNameTextInput}
+                  placeholder="Type a Name"
+                  autoCapitalize="words"
+                  style={{...styles.heroBtnText, marginVertical: 50}}
+                  onChangeText={buildName => this.props.setCurrentBuildName(buildName)}
+                  value={this.props.buildName}
                 />
                   
                 <TouchableOpacity
-                  style={styles.skillModalButtons}
+                  style={styles.modalBtns}
                   onPress={() => {
-                    this.props.saveBuild()
+                    this._saveBuild()
                     this.props.setSaveBuildModal(false)
                   }}
                 >
-                  <Text> Save </Text>
+                  <Text style={styles.modalBtnText}> Save </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                  style={styles.skillModalButtons}
+                  style={styles.modalBtns}
                   onPress={() => this.props.setSaveBuildModal(false)}
                 >
-                  <Text> Close </Text>
+                  <Text style={styles.modalBtnText}> Close </Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -251,31 +284,38 @@ class SettingsScreen extends React.Component {
               <View style={styles.innerModal}>
   
                   <TouchableOpacity
-                    style={styles.skillModalButtons}
+                    style={styles.modalBtns}
                     onPress={() => this._selectHero(FLAK)}
                   >
-                    <Text> Fl4k </Text>
+                    <Text style={styles.heroBtnText}> Fl4k </Text>
                   </TouchableOpacity>
 
                   <TouchableOpacity
-                    style={styles.skillModalButtons}
+                    style={styles.modalBtns}
                     onPress={() => this._selectHero(MOZE)}
                   >
-                    <Text> Moze </Text>
+                    <Text style={styles.heroBtnText}> Moze </Text>
                   </TouchableOpacity>
 
                   <TouchableOpacity
-                    style={styles.skillModalButtons}
+                    style={styles.modalBtns}
                     onPress={() => this._selectHero(ZANE)}
                   >
-                    <Text> Zane </Text>
+                    <Text style={styles.heroBtnText}> Zane </Text>
                   </TouchableOpacity>
 
                   <TouchableOpacity
-                    style={styles.skillModalButtons}
+                    style={styles.modalBtns}
                     onPress={() => this._selectHero(AMARA)}
                   >
-                    <Text> Amara </Text>
+                    <Text style={styles.heroBtnText}> Amara </Text>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity
+                    style={{marginTop: 20, ...styles.modalBtns}}
+                    onPress={() => this.props.setHeroSelect(false)}
+                  >
+                    <Text style={styles.modalBtnText}> Close </Text>
                   </TouchableOpacity>
               </View>
             </View>
@@ -322,8 +362,8 @@ const styles = StyleSheet.create({
     // fontFamily: "Monsterrat"
   },
   outerModal: {
-    backgroundColor: 'rgba(80,80,80,0.8)',
-    paddingTop: '20%',
+    backgroundColor: 'rgba(80,80,80,0.96)',
+    paddingTop: '25%',
     paddingBottom: '10%',
     paddingHorizontal: 20,
     height: '100%',
@@ -331,14 +371,33 @@ const styles = StyleSheet.create({
   innerModal: {
     backgroundColor: '#fff',
     padding: 20,
-    height: '100%',
     width: '100%'
   },
-  skillModalButtons: {
+  modalHeader: {
+    color: RED_BG, 
+    fontSize: 40, 
+    fontFamily: TEXT_FONT
+  },
+  modalBtns: {
     marginVertical: 10,
     alignItems: 'center',
-    backgroundColor: '#ddd',
+    backgroundColor: RED_BG,
     padding: 10
+  },
+  modalBtnText: {
+    color: YELLOW_FONT,
+    fontFamily: TEXT_FONT
+  },
+  heroBtnText: {
+    fontSize: 30, 
+    textAlign: 'center', 
+    backgroundColor: RED_BG,
+    color: YELLOW_FONT,
+    paddingVertical: 5,
+    fontFamily: TITLE_FONT
+  },
+  textInput: {
+    fontFamily: TEXT_FONT
   },
   divider: {
     borderColor: '#dedede', 
@@ -363,6 +422,7 @@ mapDispatchToProps = dispatch => {
     setCreateAccountModal: bindActionCreators(actions.setCreateAccountModal, dispatch),
     setAccountEmail: bindActionCreators(actions.setAccountEmail, dispatch),
     setAccountPassword: bindActionCreators(actions.setAccountPassword, dispatch),
+    setCurrentBuildName: bindActionCreators(actions.setCurrentBuildName, dispatch),
     setSaveBuildModal: bindActionCreators(actions.setSaveBuildModal, dispatch),
     setHeroSelect: bindActionCreators(actions.setHeroSelect, dispatch),
     selectHero: bindActionCreators(actions.selectHero, dispatch),
