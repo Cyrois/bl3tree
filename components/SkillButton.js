@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
-import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, TITLE_FONT } from '../data/constants';
+import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, TITLE_FONT, ELEMENT } from '../data/constants';
 
 class SkillButton extends React.Component {
     constructor(props) {
@@ -17,14 +17,16 @@ class SkillButton extends React.Component {
 
     _getSkillBackgroundImage(skillType) {
         switch (skillType) {
-            case PASSIVE:
+          case PASSIVE:
             return require("../assets/images/backgrounds/skill-bg-passive-disabled.png")
-            case AUGMENT:
+          case AUGMENT:
             return require("../assets/images/backgrounds/skill-bg-augment-disabled.png")
-            case ACTION:
+          case ACTION:
             return require("../assets/images/backgrounds/skill-bg-action-default.png")
-            case PET:
+          case PET:
             return require("../assets/images/backgrounds/skill-bg-pet-default.png")
+          case ELEMENT:
+          return require("../assets/images/backgrounds/skill-bg-pet-default.png")
         }
     }
 

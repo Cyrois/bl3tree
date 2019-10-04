@@ -5,10 +5,12 @@ export default {
     equipped: {
         action1: null,
         augment1: null,
-        action2: null,
         augment2: null,
+        action2: null,
+        augment3: null,
+        augment4: null,
     },
-    hunter: [
+    doubledAgent: [
         [{
                 hide: true
             },
@@ -17,8 +19,8 @@ export default {
             },
             {
                 title: "Railgun",
-                type: "action",
-                description: "",
+                type: ACTION,
+                description: "This weapon fires electrified high-velocity projectiles that deal Shock Damage",
             },
             {
                 hide: true
@@ -27,59 +29,58 @@ export default {
                 hide: true
             },
         ],
-        [{
+        [
+            {
                 hide: true
             },
             {
-                title: "Interplanetary Stalker",
+                title: "Selfless Vengeance",
                 type: PASSIVE,
                 maxRanks: 5,
-                description: "Hunter Kill Skill: Gains a stack of Interplanetary Stalker when an enemy is killed, which gives a bonus to all damage dealt. Gains a unique stacking bonus depending on the type of enemy killed.",
+                description: "When reloading, lose a small bit of health to grant additional Incendiary Damage to you and allies for a period of time.",
                 stats: [
-                    newStat("Damage", 2, "2+% /stack", ),
-                    newStat("Human Bonus", 3, "+3 Action Skill Damage /stack", ),
-                    newStat("Robot Bonus", 1.5, "+1.5% Corrosive Damage/Stack"),
-                    newStat("Beast Bonus", 2, "+2% Movement Speed /stack"),
+                    newStat("Current Health Removed", [1.0], "+", "%"),
                 ]
             },
             {
-                title: "Leave No Trace",
+                title: "Security Bear",
                 type: PASSIVE,
-                maxRanks: 3,
-                description: "After scoring a critical hit, chance for 1 ammo to be added to magazine.",
+                maxRanks: 1,
+                description: "Grants Iron Bear a bubble shield that reduces damage taken, and can be reactivated after a time.",
                 stats: [
-                    newStat("Chance to add ammo", 12, "+12%"),
+                    newStat("20% of Iron Bear Max Health added as Shields Bubble Recharge Delay", 5, "5 sec"),
                 ]
             },
             {
-                title: "Second Intention",
+                title: "Armored Infantry",
                 type: PASSIVE,
                 maxRanks: 5,
-                description: "Hunter Kill Skill: Gain increased reload speed when an enemy is killed, bonus increases if critical kill",
+                description: "While shield is active, gain Damage Reduction and increased Gun Damage.",
                 stats: [
-                    newStat("Reload Speed", 3, "+3%"),
-                    newStat("Critical Kill Reload Speed", 6, "+6%"),
-                    newStat("Critical Kill Reload", 5, "5 seconds"),
+                    newStat("Damage Reduction", 3, "+3.0%"),
+                    newStat("Gun Damage", 3, "+3.0%"),
                 ]
             },
             {
                 hide: true
             },
         ],
-        [{
-                title: "Rakk Open a Cold One",
-                type: "augment",
-                description: "Converts Rakk damage to Cryo Damage",
+        [
+            {
+                title: "Hell on Rails",
+                type: AUGMENT,
+                description: "Railgun now fires superheated rounds that deal Incendiary Damage, but drain +30% fuel per shot.",
             },
             {
-                title: "Hunter's Eye",
+                title: "Browning in Brass",
                 type: PASSIVE,
                 maxRanks: 5,
-                description: "Gain bonuses when fighting different types of enemies",
+                description: "Kill Skill - Grants a stack of Drowning in Bass for each kill that reduces Fire Rate but increases Gun Damage for you and allies.",
                 stats: [
-                    newStat("Critical Hit Damage", 3, "+3% vs. Humans"),
-                    newStat("Armor Damage", 6, "+6% vs. Robots"),
-                    newStat("Damage Reduction", 5, "+5% vs. Beasts"),
+                    newStat("Moze Fire Rate", -0.5, "+0.5% per stack"),
+                    newStat("Gun Damage", 4.0, "+4.0% per stack"),
+                    newStat("Max Drowning in Brass Stacks", 3, ""),
+                    newStat("Drowning in Brass Duration", 15, "15 seconds"),
                 ]
             },
             {
@@ -104,6 +105,62 @@ export default {
                 ]
             },
             {
+                hide: true,
+            },
+        ],
+        [
+            {
+                title: "Hell on Rails",
+                type: AUGMENT,
+                description: "Railgun now fires superheated rounds that deal Incendiary Damage, but drain +30% fuel per shot.",
+            },
+            {
+                hide: true,
+            },
+            {
+                title: "Head Count",
+                type: PASSIVE,
+                maxRanks: 3,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 3, "% vs. Humans"),
+                    newStat("Cooldown Time Reduction Chance", 10, "+10%"),
+                    newStat("Cooldown Time", -2, "-2s"),
+                ]
+            },
+            {
+                hide: true,
+            },
+            {
+                title: "Head Count",
+                type: AUGMENT,
+                maxRanks: 5,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 4, "+4%"),
+                    newStat("Handling", 17, "+17%"),
+                ]
+            },
+        ],
+        [
+            {
+                title: "Hell on Rails",
+                type: AUGMENT,
+                description: "Railgun now fires superheated rounds that deal Incendiary Damage, but drain +30% fuel per shot.",
+            },
+            {
+                title: "Browning in Brass",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "Kill Skill - Grants a stack of Drowning in Bass for each kill that reduces Fire Rate but increases Gun Damage for you and allies.",
+                stats: [
+                    newStat("Moze Fire Rate", -0.5, "+0.5% per stack"),
+                    newStat("Gun Damage", 4.0, "+4.0% per stack"),
+                    newStat("Max Drowning in Brass Stacks", 3, ""),
+                    newStat("Drowning in Brass Duration", 15, "15 seconds"),
+                ]
+            },
+            {
                 title: "Head Count",
                 type: PASSIVE,
                 maxRanks: 5,
@@ -113,45 +170,94 @@ export default {
                     newStat("Handling", 17, "+17%"),
                 ]
             },
-        ],
-        [{},
             {
-                hide: true
+                title: "Head Count",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 4, "+4%"),
+                    newStat("Handling", 17, "+17%"),
+                ]
             },
             {
-                title: "Sic'em"
-            },
-            {
-                title: "Furious Attack"
-            },
-            {},
-        ],
-        [{},
-            {
-                title: "Self-Repairing System"
-            },
-            {
-                hide: true
-            },
-            {
-                title: "Furious Attack"
-            },
-            {},
-        ],
-        [{},
-            {
-                hide: true
-            },
-            {
-                title: "Sic'em"
-            },
-            {
-                hide: true
-            },
-            {
-                hide: true
+                title: "Head Count",
+                type: AUGMENT,
+                maxRanks: 5,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 4, "+4%"),
+                    newStat("Handling", 17, "+17%"),
+                ]
             },
         ],
+        [
+            {
+                hide: true
+            },
+            {
+                title: "Browning in Brass",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "Kill Skill - Grants a stack of Drowning in Bass for each kill that reduces Fire Rate but increases Gun Damage for you and allies.",
+                stats: [
+                    newStat("Moze Fire Rate", -0.5, "+0.5% per stack"),
+                    newStat("Gun Damage", 4.0, "+4.0% per stack"),
+                    newStat("Max Drowning in Brass Stacks", 3, ""),
+                    newStat("Drowning in Brass Duration", 15, "15 seconds"),
+                ]
+            },
+            {
+                title: "Head Count",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 4, "+4%"),
+                    newStat("Handling", 17, "+17%"),
+                ]
+            },
+            {
+                title: "Head Count",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 4, "+4%"),
+                    newStat("Handling", 17, "+17%"),
+                ]
+            },
+            {
+                hide: true,
+            },
+        ],
+        [
+            {
+                hide: true
+            },
+            {
+                hide: true
+            },
+            {
+                title: "Head Count",
+                type: PASSIVE,
+                maxRanks: 3,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 3, "% vs. Humans"),
+                    newStat("Cooldown Time Reduction Chance", 10, "+10%"),
+                    newStat("Cooldown Time", -2, "-2s"),
+                ]
+            },
+            {
+                hide: true
+            },
+            {
+                hide: true
+            },
+        ],
+    ],
+    hitman: [
         [{
                 hide: true
             },
@@ -159,7 +265,213 @@ export default {
                 hide: true
             },
             {
-                title: "Sic'em"
+                title: "Railgun",
+                type: ACTION,
+                description: "This weapon fires electrified high-velocity projectiles that deal Shock Damage",
+            },
+            {
+                hide: true
+            },
+            {
+                hide: true
+            },
+        ],
+        [
+            {
+                hide: true
+            },
+            {
+                title: "Selfless Vengeance",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "When reloading, lose a small bit of health to grant additional Incendiary Damage to you and allies for a period of time.",
+                stats: [
+                    newStat("Current Health Removed", [1.0], "+", "%"),
+                ]
+            },
+            {
+                title: "Security Bear",
+                type: PASSIVE,
+                maxRanks: 1,
+                description: "Grants Iron Bear a bubble shield that reduces damage taken, and can be reactivated after a time.",
+                stats: [
+                    newStat("20% of Iron Bear Max Health added as Shields Bubble Recharge Delay", 5, "5 sec"),
+                ]
+            },
+            {
+                title: "Armored Infantry",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "While shield is active, gain Damage Reduction and increased Gun Damage.",
+                stats: [
+                    newStat("Damage Reduction", 3, "+3.0%"),
+                    newStat("Gun Damage", 3, "+3.0%"),
+                ]
+            },
+            {
+                hide: true
+            },
+        ],
+        [
+            {
+                title: "Hell on Rails",
+                type: AUGMENT,
+                description: "Railgun now fires superheated rounds that deal Incendiary Damage, but drain +30% fuel per shot.",
+            },
+            {
+                title: "Browning in Brass",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "Kill Skill - Grants a stack of Drowning in Bass for each kill that reduces Fire Rate but increases Gun Damage for you and allies.",
+                stats: [
+                    newStat("Moze Fire Rate", -0.5, "+0.5% per stack"),
+                    newStat("Gun Damage", 4.0, "+4.0% per stack"),
+                    newStat("Max Drowning in Brass Stacks", 3, ""),
+                    newStat("Drowning in Brass Duration", 15, "15 seconds"),
+                ]
+            },
+            {
+                title: "Head Count",
+                type: PASSIVE,
+                maxRanks: 3,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 3, "% vs. Humans"),
+                    newStat("Cooldown Time Reduction Chance", 10, "+10%"),
+                    newStat("Cooldown Time", -2, "-2s"),
+                ]
+            },
+            {
+                title: "Head Count",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 4, "+4%"),
+                    newStat("Handling", 17, "+17%"),
+                ]
+            },
+            {
+                hide: true,
+            },
+        ],
+        [
+            {
+                title: "Hell on Rails",
+                type: AUGMENT,
+                description: "Railgun now fires superheated rounds that deal Incendiary Damage, but drain +30% fuel per shot.",
+            },
+            {
+                hide: true,
+            },
+            {
+                title: "Head Count",
+                type: PASSIVE,
+                maxRanks: 3,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 3, "% vs. Humans"),
+                    newStat("Cooldown Time Reduction Chance", 10, "+10%"),
+                    newStat("Cooldown Time", -2, "-2s"),
+                ]
+            },
+            {
+                hide: true,
+            },
+            {
+                title: "Head Count",
+                type: AUGMENT,
+                maxRanks: 5,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 4, "+4%"),
+                    newStat("Handling", 17, "+17%"),
+                ]
+            },
+        ],
+        [
+            {
+                title: "Hell on Rails",
+                type: AUGMENT,
+                description: "Railgun now fires superheated rounds that deal Incendiary Damage, but drain +30% fuel per shot.",
+            },
+            {
+                title: "Browning in Brass",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "Kill Skill - Grants a stack of Drowning in Bass for each kill that reduces Fire Rate but increases Gun Damage for you and allies.",
+                stats: [
+                    newStat("Moze Fire Rate", -0.5, "+0.5% per stack"),
+                    newStat("Gun Damage", 4.0, "+4.0% per stack"),
+                    newStat("Max Drowning in Brass Stacks", 3, ""),
+                    newStat("Drowning in Brass Duration", 15, "15 seconds"),
+                ]
+            },
+            {
+                hide: true,
+            },
+            {
+                title: "Head Count",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 4, "+4%"),
+                    newStat("Handling", 17, "+17%"),
+                ]
+            },
+            {
+                title: "Head Count",
+                type: AUGMENT,
+                maxRanks: 5,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 4, "+4%"),
+                    newStat("Handling", 17, "+17%"),
+                ]
+            },
+        ],
+        [
+            {
+                hide: true
+            },
+            {
+                hide: true,
+            },
+            {
+                title: "Head Count",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 4, "+4%"),
+                    newStat("Handling", 17, "+17%"),
+                ]
+            },
+            {
+                hide: true,
+            },
+            {
+                hide: true,
+            },
+        ],
+        [
+            {
+                hide: true
+            },
+            {
+                hide: true
+            },
+            {
+                title: "Head Count",
+                type: PASSIVE,
+                maxRanks: 3,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 3, "% vs. Humans"),
+                    newStat("Cooldown Time Reduction Chance", 10, "+10%"),
+                    newStat("Cooldown Time", -2, "-2s"),
+                ]
             },
             {
                 hide: true
@@ -169,11 +481,252 @@ export default {
             },
         ],
     ],
-    red: [
-
-    ],
-    blue: [
-
+    underCover: [
+        [{
+                hide: true
+            },
+            {
+                hide: true
+            },
+            {
+                title: "Railgun",
+                type: ACTION,
+                description: "This weapon fires electrified high-velocity projectiles that deal Shock Damage",
+            },
+            {
+                hide: true
+            },
+            {
+                hide: true
+            },
+        ],
+        [
+            {
+                hide: true
+            },
+            {
+                title: "Selfless Vengeance",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "When reloading, lose a small bit of health to grant additional Incendiary Damage to you and allies for a period of time.",
+                stats: [
+                    newStat("Current Health Removed", [1.0], "+", "%"),
+                ]
+            },
+            {
+                title: "Security Bear",
+                type: PASSIVE,
+                maxRanks: 1,
+                description: "Grants Iron Bear a bubble shield that reduces damage taken, and can be reactivated after a time.",
+                stats: [
+                    newStat("20% of Iron Bear Max Health added as Shields Bubble Recharge Delay", 5, "5 sec"),
+                ]
+            },
+            {
+                title: "Armored Infantry",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "While shield is active, gain Damage Reduction and increased Gun Damage.",
+                stats: [
+                    newStat("Damage Reduction", 3, "+3.0%"),
+                    newStat("Gun Damage", 3, "+3.0%"),
+                ]
+            },
+            {
+                hide: true
+            },
+        ],
+        [
+            {
+                title: "Hell on Rails",
+                type: AUGMENT,
+                description: "Railgun now fires superheated rounds that deal Incendiary Damage, but drain +30% fuel per shot.",
+            },
+            {
+                title: "Browning in Brass",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "Kill Skill - Grants a stack of Drowning in Bass for each kill that reduces Fire Rate but increases Gun Damage for you and allies.",
+                stats: [
+                    newStat("Moze Fire Rate", -0.5, "+0.5% per stack"),
+                    newStat("Gun Damage", 4.0, "+4.0% per stack"),
+                    newStat("Max Drowning in Brass Stacks", 3, ""),
+                    newStat("Drowning in Brass Duration", 15, "15 seconds"),
+                ]
+            },
+            {
+                title: "Head Count",
+                type: PASSIVE,
+                maxRanks: 3,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 3, "% vs. Humans"),
+                    newStat("Cooldown Time Reduction Chance", 10, "+10%"),
+                    newStat("Cooldown Time", -2, "-2s"),
+                ]
+            },
+            {
+                title: "Head Count",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 4, "+4%"),
+                    newStat("Handling", 17, "+17%"),
+                ]
+            },
+            {
+                hide: true,
+            },
+        ],
+        [
+            {
+                title: "Hell on Rails",
+                type: AUGMENT,
+                description: "Railgun now fires superheated rounds that deal Incendiary Damage, but drain +30% fuel per shot.",
+            },
+            {
+                hide: true,
+            },
+            {
+                title: "Head Count",
+                type: PASSIVE,
+                maxRanks: 3,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 3, "% vs. Humans"),
+                    newStat("Cooldown Time Reduction Chance", 10, "+10%"),
+                    newStat("Cooldown Time", -2, "-2s"),
+                ]
+            },
+            {
+                hide: true,
+            },
+            {
+                title: "Head Count",
+                type: AUGMENT,
+                maxRanks: 5,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 4, "+4%"),
+                    newStat("Handling", 17, "+17%"),
+                ]
+            },
+        ],
+        [
+            {
+                title: "Hell on Rails",
+                type: AUGMENT,
+                description: "Railgun now fires superheated rounds that deal Incendiary Damage, but drain +30% fuel per shot.",
+            },
+            {
+                title: "Browning in Brass",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "Kill Skill - Grants a stack of Drowning in Bass for each kill that reduces Fire Rate but increases Gun Damage for you and allies.",
+                stats: [
+                    newStat("Moze Fire Rate", -0.5, "+0.5% per stack"),
+                    newStat("Gun Damage", 4.0, "+4.0% per stack"),
+                    newStat("Max Drowning in Brass Stacks", 3, ""),
+                    newStat("Drowning in Brass Duration", 15, "15 seconds"),
+                ]
+            },
+            {
+                title: "Head Count",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 4, "+4%"),
+                    newStat("Handling", 17, "+17%"),
+                ]
+            },
+            {
+                title: "Head Count",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 4, "+4%"),
+                    newStat("Handling", 17, "+17%"),
+                ]
+            },
+            {
+                title: "Head Count",
+                type: AUGMENT,
+                maxRanks: 5,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 4, "+4%"),
+                    newStat("Handling", 17, "+17%"),
+                ]
+            },
+        ],
+        [
+            {
+                hide: true
+            },
+            {
+                title: "Browning in Brass",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "Kill Skill - Grants a stack of Drowning in Bass for each kill that reduces Fire Rate but increases Gun Damage for you and allies.",
+                stats: [
+                    newStat("Moze Fire Rate", -0.5, "+0.5% per stack"),
+                    newStat("Gun Damage", 4.0, "+4.0% per stack"),
+                    newStat("Max Drowning in Brass Stacks", 3, ""),
+                    newStat("Drowning in Brass Duration", 15, "15 seconds"),
+                ]
+            },
+            {
+                title: "Head Count",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 4, "+4%"),
+                    newStat("Handling", 17, "+17%"),
+                ]
+            },
+            {
+                title: "Head Count",
+                type: PASSIVE,
+                maxRanks: 5,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 4, "+4%"),
+                    newStat("Handling", 17, "+17%"),
+                ]
+            },
+            {
+                hide: true,
+            },
+        ],
+        [
+            {
+                hide: true
+            },
+            {
+                hide: true
+            },
+            {
+                title: "Head Count",
+                type: PASSIVE,
+                maxRanks: 3,
+                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                stats: [
+                    newStat("Critical Hit Damage", 3, "% vs. Humans"),
+                    newStat("Cooldown Time Reduction Chance", 10, "+10%"),
+                    newStat("Cooldown Time", -2, "-2s"),
+                ]
+            },
+            {
+                hide: true
+            },
+            {
+                hide: true
+            },
+        ],
     ],
 
 }
