@@ -32,14 +32,14 @@ export default {
                 row: 0,
                 type: PET,
                 description: "Pet is armed with a Pistol, and increases player's Movement Speed. Can be commanded to throw a Radiation Barrel at enemies.",
-                image: require('../assets/images/skills/hunter/Ambush_Predator.jpg'),
+                image: require('../assets/images/skills/stalker/BasicJabbermon.png'),
             },
             {
                 title: "Fade Away",
                 row: 0,
                 type: ACTION,
                 description: "Grants cloaking, allowing you to fire 3 shots while cloaked, which are automatic +200% damage critical hits. Movement Speed is increased by +25%, and Health Regeneration by +3% of Max HP while Cloaking for 15 seconds with a 45 second cooldown.",
-                image: require('../assets/images/skills/hunter/Big_Game.png'),
+                image: require('../assets/images/skills/stalker/FadeAway.png'),
             },
             {
                 hide: true
@@ -58,7 +58,7 @@ export default {
                 type: PASSIVE,
                 maxRanks: 5,
                 description: "Maximum Health is increased, and constantly regenerates health.",
-                image: require('../assets/images/skills/adrenaline.png'),
+                image: require('../assets/images/skills/stalker/SelfRepairingSystem.png'),
                 stats: [
                     newStat("Max Health", [6,9,12,15,18], "+", "%"),
                     newStat("Health Regeneration", [0.3, 0.6, 0.9, 1.2, 1.5], "+" , "% of Max Health/sec"),

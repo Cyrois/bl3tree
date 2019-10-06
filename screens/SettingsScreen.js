@@ -74,7 +74,7 @@ class SettingsScreen extends React.Component {
         <ScrollView contentContainerStyle={styles.contentContainer}>
             <View style={styles.bl3LogoContainer}>
               <Image
-                source={require('../assets/images/bl3Icon.jpeg')}
+                source={require('../assets/images/bl3Logo.jpeg')}
                 style={styles.bl3Logo} /> 
             </View>
             
