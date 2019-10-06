@@ -48,8 +48,8 @@ class SettingsScreen extends React.Component {
             }
             builds.push(build)
         });
+        this.props.loadBuilds(builds)
     });
-    this.props.loadBuilds(builds)
   }
 
   _toggleActions(toggle) {
@@ -99,7 +99,7 @@ class SettingsScreen extends React.Component {
       build: build,
     }
     this.buildsStore.add(document)
-      .then(this._loadBuilds)
+      .then(() => this._loadBuilds())
       .catch(error => console.log(error))
   }
 
