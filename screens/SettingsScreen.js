@@ -21,11 +21,11 @@ import { FLAK, MOZE, ZANE, AMARA, YELLOW_FONT, RED_BG, TITLE_FONT, TEXT_FONT } f
 import { TOGGLE_QUICK_SELECT, TOGGLE_BUILDS, TOGGLE_ACTIONS } from '../types';
 
 class SettingsScreen extends React.Component {
-  // buildsStore = firestore().collection('builds');
   
   constructor(props) {
     super(props);
     this.buildNameTextInput = React.createRef();
+    this.buildsStore = firebase.firestore().collection('builds');
   }
 
   componentDidMount() {
@@ -67,12 +67,17 @@ class SettingsScreen extends React.Component {
       complete: false,
     }
     console.log(document)
-    // buildsStore.add({
-    //   user: this.props.email,
-    //   name: this.props.buildName,
-    //   // build: build,
-    //   complete: false,
-    // });
+    this.buildsStore.add({
+      user: this.props.email,
+      name: this.props.buildName,
+      // build: build,
+      complete: false,
+    })
+    .then(doc => {
+      console.log("saved build")
+      const data = doc.data();
+      console.log(data);
+    });
     // setTodo('');
   }
 
