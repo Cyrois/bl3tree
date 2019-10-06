@@ -33,11 +33,16 @@ class SettingsScreen extends React.Component {
   }
 
   componentDidMount() {
-    const { currentUser } = firebase.auth()
-    this.props.setAccountEmail(currentUser.email)
+    firebase.auth().onAuthStateChanged(user => {
+      this.props.setAccountEmail(user.email)
+      console.log("componentdidmount loading builds")
+      this._loadBuilds()
+    })
   }
 
   _loadBuilds() {
+    console.log("_loadBuilds")
+    console.log(this.props.email)
     let builds = []
     this.buildsStore.where("user", "==", this.props.email).get()
     .then(querySnapshot => {
@@ -50,6 +55,9 @@ class SettingsScreen extends React.Component {
         });
     });
     this.props.loadBuilds(builds)
+    this.props.toggle(TOGGLE_BUILDS)
+    this.props.toggle(TOGGLE_BUILDS)
+    console.log(this.props.builds)
   }
 
   _toggleActions(toggle) {
@@ -68,8 +76,20 @@ class SettingsScreen extends React.Component {
       .catch(error => console.log("Unable to sign up user"))
   }
 
+  _handleLogin = () => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(this.props.email, this.props.password)
+      .then(() => console.log("User signed in"))
+      .catch(error => console.log("Unable to sign up user"))
+  }
+
   _isUserLoggedIn = () => {
-    // console.log(firebase.auth().currentUser)
+    //TODO figure out why sometimes the email does not show
+    let googleUser = firebase.auth().currentUser;
+    console.log("_isUserLoggedIn")
+    console.log(googleUser)
+    this.props.setAccountEmail(googleUser.email);
     return !!firebase.auth().currentUser;
   }
 
@@ -89,7 +109,7 @@ class SettingsScreen extends React.Component {
       name: this.props.buildName,
       build: build,
     }
-    this.buildsStore.add(document).then(this.loadBuilds)
+    this.buildsStore.add(document).then(this._loadBuilds)
   }
 
   _getToggleIcon(toggle) {
@@ -185,13 +205,14 @@ class SettingsScreen extends React.Component {
             
             { this.props.toggleBuilds &&
               this.props.builds.map((build, index) => {
+                console.log("build", build)
                 return (
-                  <View>
+                  <View key={build.id}>
                     <TouchableOpacity
                       style={styles.mainButton}
                       onPress={() => {
-                        //TODO open a modal here instead
-                        this.props.loadSavedBuild(build.id)
+                        this.buildIdToLoad = build.id
+                        this.props.confirmLoadBuild(true)
                       }}
                     >
                       <Text style={styles.mainButtonText}> {build.name} </Text>
@@ -345,6 +366,39 @@ class SettingsScreen extends React.Component {
             </View>
           </Modal>
         </View>
+
+        <View>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={this.props.confirmLoadModalVisible}
+            onRequestClose={() => this.props.confirmLoadBuild(false)}>
+            <View style={styles.outerModal}>
+              <View style={styles.innerModal}>
+                <Text style={styles.modalHeader}>Are you sure?</Text>
+
+                <Text style={styles.mainButtonText}>Unsaved Changes will be lost</Text>
+                
+                <TouchableOpacity
+                  style={{marginTop: 20, ...styles.modalBtns}}
+                  onPress={() => {
+                    this.props.loadSavedBuild(this.buildIdToLoad)
+                    this.props.confirmLoadBuild(false)
+                  }}
+                >
+                  <Text style={styles.modalBtnText}> Continue </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={{marginTop: 20, ...styles.modalBtns}}
+                  onPress={() => this.props.confirmLoadBuild(false)}
+                >
+                  <Text style={styles.modalBtnText}> Close </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
+        </View>
       </View>
     );
   }
@@ -449,6 +503,7 @@ mapDispatchToProps = dispatch => {
     setCurrentBuildName: bindActionCreators(actions.setCurrentBuildName, dispatch),
     loadBuilds: bindActionCreators(actions.loadBuilds, dispatch),
     loadSavedBuild: bindActionCreators(actions.loadSavedBuild, dispatch),
+    confirmLoadBuild: bindActionCreators(actions.confirmLoadBuild, dispatch),
     setSaveBuildModal: bindActionCreators(actions.setSaveBuildModal, dispatch),
     setHeroSelect: bindActionCreators(actions.setHeroSelect, dispatch),
     selectHero: bindActionCreators(actions.selectHero, dispatch),

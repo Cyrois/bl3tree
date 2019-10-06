@@ -1,4 +1,4 @@
-import { SET_CHARACTER, ADD_SKILL, ADD_STAT, SET_MODAL_SKILL, RANK_SKILL, REMOVE_SKILL, SET_HERO_SELECT, SELECT_HERO, TOGGLE_QUICK_SELECT, RESET, SET_SAVE_BUILD_MODAL, SET_CREATE_ACCOUNT_MODAL, SET_ACCOUNT_PASSWORD, SET_ACCOUNT_EMAIL, SET_CHARACTER_SKILL, SET_SELECTED_MODAL_SKILL, TOGGLE_ACTIONS, TOGGLE_BUILDS, TOGGLE, SET_CURRENT_BUILD_NAME, LOAD_BUILDS, LOAD_SAVED_BUILD } from './types.js';
+import { SET_CHARACTER, ADD_SKILL, ADD_STAT, SET_MODAL_SKILL, RANK_SKILL, REMOVE_SKILL, SET_HERO_SELECT, SELECT_HERO, TOGGLE_QUICK_SELECT, RESET, SET_SAVE_BUILD_MODAL, SET_CREATE_ACCOUNT_MODAL, SET_ACCOUNT_PASSWORD, SET_ACCOUNT_EMAIL, SET_CHARACTER_SKILL, SET_SELECTED_MODAL_SKILL, TOGGLE_ACTIONS, TOGGLE_BUILDS, TOGGLE, SET_CURRENT_BUILD_NAME, LOAD_BUILDS, LOAD_SAVED_BUILD, SET_CONFIRM_LOAD } from './types.js';
 import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, MAX_POINTS } from './data/constants';
 import flakSkills from './data/flakSkills.js';
 import mozeSkills from './data/mozeSkills.js';
@@ -33,6 +33,7 @@ const intialState = {
     builds: [],
     saveBuildModalVisible: false,
     heroSelectModalVisible: false,
+    confirmLoadModalVisible: false,
     selectedHero: FLAK,
     quickSelectEnabled: false,
     toggleActions: true,
@@ -171,6 +172,13 @@ const loadSavedBuild = (state, buildId) => {
   return newState
 }
 
+const setConfirmLoad = (state, modalVisible) => {
+  return {
+    ...state,
+    confirmLoadModalVisible: modalVisible
+  }
+}
+
 const setSaveBuildModal = (state, modalVisible) => {
   return {
     ...state,
@@ -240,6 +248,8 @@ const reducer = (state = intialState, action) => {
       return loadBuilds(state, action.data)
     case LOAD_SAVED_BUILD:
       return loadSavedBuild(state, action.data)
+    case SET_CONFIRM_LOAD:
+      return setConfirmLoad(state, action.data)
     case SET_SAVE_BUILD_MODAL:
       return setSaveBuildModal(state, action.data)
     case SET_HERO_SELECT:
