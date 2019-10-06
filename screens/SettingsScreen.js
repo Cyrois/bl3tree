@@ -98,12 +98,12 @@ class SettingsScreen extends React.Component {
       name: this.props.buildName,
       build: build,
     }
-    this.buildsStore.add(document).then(this._loadBuilds)
+    this.buildsStore.add(document)
+      .then(this._loadBuilds)
+      .catch(error => console.log(error))
   }
 
   _loadBuildCode(id) {
-    console.log(id)
-    id = "OhFaCIVtshVd5yFAOUI7"
     this.buildsStore.doc(id).get().then(doc => {
       if (!doc.exists) {
         console.log('No such document!');
@@ -112,6 +112,10 @@ class SettingsScreen extends React.Component {
         console.log('Document data:', doc.data());
       }
     })
+  }
+
+  _deleteSavedBuild(id) {
+    this.buildsStore.doc(id).delete().then(() => this._loadBuilds()).catch(error => console.log(error))
   }
 
   _getToggleIcon(toggle) {
@@ -342,9 +346,11 @@ class SettingsScreen extends React.Component {
               <View style={styles.innerModal}>
                 <Text style={{...styles.modalHeader, fontSize: 30}}>Enter Build Code:</Text>
 
+                <Text style={{...styles.mainButtonText, marginTop: 10}}>Unsaved Changes will be lost</Text>
+
                 <TextInput
                   placeholder="Enter Code"
-                  style={{...styles.heroBtnText, marginVertical: 50}}
+                  style={{...styles.heroBtnText, marginVertical: 40, fontFamily: TEXT_FONT}}
                   onChangeText={code => this.props.setBuildCode(code)}
                   value={this.props.buildCode}
                 />
@@ -428,7 +434,7 @@ class SettingsScreen extends React.Component {
               <View style={styles.innerModal}>
                 <Text style={styles.modalHeader}>Are you sure?</Text>
 
-                <Text style={styles.mainButtonText}>Unsaved Changes will be lost</Text>
+                <Text style={{...styles.mainButtonText, marginTop: 10}}>Unsaved Changes will be lost</Text>
                 
                 <TouchableOpacity
                   style={{marginTop: 20, ...styles.modalBtns}}
@@ -437,7 +443,17 @@ class SettingsScreen extends React.Component {
                     this.props.confirmLoadBuild(false)
                   }}
                 >
-                  <Text style={styles.modalBtnText}> Continue </Text>
+                  <Text style={styles.modalBtnText}> Load Build </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={{marginTop: 20, ...styles.modalBtns}}
+                  onPress={() => {
+                    this._deleteSavedBuild(this.buildIdToLoad)
+                    this.props.confirmLoadBuild(false)
+                  }}
+                >
+                  <Text style={styles.modalBtnText}> Delete Build </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
