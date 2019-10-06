@@ -1,4 +1,4 @@
-import { SET_CHARACTER, ADD_SKILL, ADD_STAT, SET_MODAL_SKILL, RANK_SKILL, REMOVE_SKILL, SET_HERO_SELECT, SELECT_HERO, TOGGLE_QUICK_SELECT, RESET, SET_SAVE_BUILD_MODAL, SET_CREATE_ACCOUNT_MODAL, SET_ACCOUNT_PASSWORD, SET_ACCOUNT_EMAIL, SET_CHARACTER_SKILL, SET_SELECTED_MODAL_SKILL, TOGGLE_ACTIONS, TOGGLE_BUILDS, TOGGLE, SET_CURRENT_BUILD_NAME } from './types.js';
+import { SET_CHARACTER, ADD_SKILL, ADD_STAT, SET_MODAL_SKILL, RANK_SKILL, REMOVE_SKILL, SET_HERO_SELECT, SELECT_HERO, TOGGLE_QUICK_SELECT, RESET, SET_SAVE_BUILD_MODAL, SET_CREATE_ACCOUNT_MODAL, SET_ACCOUNT_PASSWORD, SET_ACCOUNT_EMAIL, SET_CHARACTER_SKILL, SET_SELECTED_MODAL_SKILL, TOGGLE_ACTIONS, TOGGLE_BUILDS, TOGGLE, SET_CURRENT_BUILD_NAME, LOAD_BUILDS, LOAD_SAVED_BUILD } from './types.js';
 import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, MAX_POINTS } from './data/constants';
 import flakSkills from './data/flakSkills.js';
 import mozeSkills from './data/mozeSkills.js';
@@ -30,6 +30,7 @@ const intialState = {
     email: '',
     password: '',
     buildName: '',
+    builds: [],
     saveBuildModalVisible: false,
     heroSelectModalVisible: false,
     selectedHero: FLAK,
@@ -153,6 +154,23 @@ const setCurrentBuildName = (state, buildName) => {
   }
 }
 
+const loadBuilds = (state, builds) => {
+  return {
+    ...state,
+    builds: builds
+  }
+}
+
+const loadSavedBuild = (state, buildId) => {
+  const newState = {...state}
+  let buildToLoad = newState.builds.find(build => build.id === buildId);
+  let selectedHero = buildToLoad.build.hero
+  newState.selectedHero = selectedHero
+  newState.ranked = buildToLoad.build.ranked
+  newState[selectedHero].equipped = buildToLoad.build.skills
+  return newState
+}
+
 const setSaveBuildModal = (state, modalVisible) => {
   return {
     ...state,
@@ -218,6 +236,10 @@ const reducer = (state = intialState, action) => {
       return setAccountPassword(state, action.data)
     case SET_CURRENT_BUILD_NAME:
       return setCurrentBuildName(state, action.data)
+    case LOAD_BUILDS:
+      return loadBuilds(state, action.data)
+    case LOAD_SAVED_BUILD:
+      return loadSavedBuild(state, action.data)
     case SET_SAVE_BUILD_MODAL:
       return setSaveBuildModal(state, action.data)
     case SET_HERO_SELECT:

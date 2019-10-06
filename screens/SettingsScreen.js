@@ -26,11 +26,30 @@ class SettingsScreen extends React.Component {
     super(props);
     this.buildNameTextInput = React.createRef();
     this.buildsStore = firebase.firestore().collection('builds');
+    
+    if(this._isUserLoggedIn) {
+      this._loadBuilds()
+    }
   }
 
   componentDidMount() {
     const { currentUser } = firebase.auth()
     this.props.setAccountEmail(currentUser.email)
+  }
+
+  _loadBuilds() {
+    let builds = []
+    this.buildsStore.where("user", "==", this.props.email).get()
+    .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+            let build = {
+              id: doc.id,
+              ...doc.data()
+            }
+            builds.push(build)
+        });
+    });
+    this.props.loadBuilds(builds)
   }
 
   _toggleActions(toggle) {
@@ -50,6 +69,7 @@ class SettingsScreen extends React.Component {
   }
 
   _isUserLoggedIn = () => {
+    // console.log(firebase.auth().currentUser)
     return !!firebase.auth().currentUser;
   }
 
@@ -59,26 +79,17 @@ class SettingsScreen extends React.Component {
   }
 
   _saveBuild() {
-    console.log("saving build")
+    let build = {
+      hero: this.props.selectedHero,
+      skills: this.props[this.props.selectedHero].equipped,
+      ranked: this.props.ranked
+    }
     let document = {
       user: this.props.email,
       name: this.props.buildName,
-      // build: build,
-      complete: false,
+      build: build,
     }
-    console.log(document)
-    this.buildsStore.add({
-      user: this.props.email,
-      name: this.props.buildName,
-      // build: build,
-      complete: false,
-    })
-    .then(doc => {
-      console.log("saved build")
-      const data = doc.data();
-      console.log(data);
-    });
-    // setTodo('');
+    this.buildsStore.add(document).then(this.loadBuilds)
   }
 
   _getToggleIcon(toggle) {
@@ -173,18 +184,26 @@ class SettingsScreen extends React.Component {
             </TouchableOpacity>
             
             { this.props.toggleBuilds &&
-              <View>
-                <TouchableOpacity
-                  style={styles.mainButton}
-                  onPress={() => {
-                    this.props.setSaveBuildModal(true)
-                  }}
-                >
-                  <Text style={styles.mainButtonText}> Build 1 </Text>
-                </TouchableOpacity>
-
-                <View style={styles.divider}></View>
-              </View>
+              this.props.builds.map((build, index) => {
+                return (
+                  <View>
+                    <TouchableOpacity
+                      style={styles.mainButton}
+                      onPress={() => {
+                        //TODO open a modal here instead
+                        this.props.loadSavedBuild(build.id)
+                      }}
+                    >
+                      <Text style={styles.mainButtonText}> {build.name} </Text>
+                    </TouchableOpacity>
+                    
+                    {
+                      index < (this.props.builds.length - 1) &&
+                      <View style={styles.divider}></View>
+                    }
+                  </View>
+                )
+              })
             }
         </ScrollView>
 
@@ -428,6 +447,8 @@ mapDispatchToProps = dispatch => {
     setAccountEmail: bindActionCreators(actions.setAccountEmail, dispatch),
     setAccountPassword: bindActionCreators(actions.setAccountPassword, dispatch),
     setCurrentBuildName: bindActionCreators(actions.setCurrentBuildName, dispatch),
+    loadBuilds: bindActionCreators(actions.loadBuilds, dispatch),
+    loadSavedBuild: bindActionCreators(actions.loadSavedBuild, dispatch),
     setSaveBuildModal: bindActionCreators(actions.setSaveBuildModal, dispatch),
     setHeroSelect: bindActionCreators(actions.setHeroSelect, dispatch),
     selectHero: bindActionCreators(actions.selectHero, dispatch),

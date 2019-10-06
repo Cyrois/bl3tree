@@ -1,4 +1,4 @@
-import { SET_CHARACTER, ADD_SKILL, ADD_STAT, SET_MODAL_SKILL, SET_FLAK_PET, SET_FLAK_ACTION, SET_FLAK_AUGMENT, RANK_SKILL, REMOVE_SKILL, SET_HERO_SELECT, SELECT_HERO, TOGGLE_QUICK_SELECT, RESET, SET_SAVE_BUILD_MODAL, SET_CREATE_ACCOUNT_MODAL, SET_ACCOUNT_EMAIL, SET_ACCOUNT_PASSWORD, SET_CHARACTER_SKILL, SET_SELECTED_MODAL_SKILL, TOGGLE, SET_CURRENT_BUILD_NAME } from './types.js';
+import { SET_CHARACTER, ADD_SKILL, ADD_STAT, SET_MODAL_SKILL, SET_FLAK_PET, SET_FLAK_ACTION, SET_FLAK_AUGMENT, RANK_SKILL, REMOVE_SKILL, SET_HERO_SELECT, SELECT_HERO, TOGGLE_QUICK_SELECT, RESET, SET_SAVE_BUILD_MODAL, SET_CREATE_ACCOUNT_MODAL, SET_ACCOUNT_EMAIL, SET_ACCOUNT_PASSWORD, SET_CHARACTER_SKILL, SET_SELECTED_MODAL_SKILL, TOGGLE, SET_CURRENT_BUILD_NAME, LOAD_BUILDS, LOAD_SAVED_BUILD } from './types.js';
 
 const setCharacter = () => {
     return {
@@ -96,6 +96,20 @@ const setCurrentBuildName = (buildName) =>  {
     }
 }
 
+const loadBuilds = builds => {
+    return {
+        type: LOAD_BUILDS,
+        data: builds
+    }
+}
+
+const loadSavedBuild = buildId => {
+    return {
+        type: LOAD_SAVED_BUILD,
+        data: buildId
+    }
+}
+
 const setSaveBuildModal = (visible) =>  {
     return {
         type: SET_SAVE_BUILD_MODAL,
@@ -139,6 +153,8 @@ const actionCreators = {
     setAccountEmail,
     setAccountPassword,
     setCurrentBuildName,
+    loadBuilds,
+    loadSavedBuild,
     setSaveBuildModal,
     setHeroSelect,
     selectHero,
