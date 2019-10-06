@@ -1,6 +1,4 @@
 import React from 'react';
-import { Platform } from 'react-native';
-// import firestore from '@react-native-firebase/firestore';
 import firebase from 'react-native-firebase';
 import {
   ScrollView,
@@ -18,7 +16,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators as actions } from '../actions';
 import { FLAK, MOZE, ZANE, AMARA, YELLOW_FONT, RED_BG, TITLE_FONT, TEXT_FONT } from '../data/constants';
-import { TOGGLE_QUICK_SELECT, TOGGLE_BUILDS, TOGGLE_ACTIONS } from '../types';
+import { TOGGLE_BUILDS, TOGGLE_ACTIONS } from '../types';
 
 class SettingsScreen extends React.Component {
   
@@ -35,14 +33,11 @@ class SettingsScreen extends React.Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       this.props.setAccountEmail(user.email)
-      console.log("componentdidmount loading builds")
       this._loadBuilds()
     })
   }
 
   _loadBuilds() {
-    console.log("_loadBuilds")
-    console.log(this.props.email)
     let builds = []
     this.buildsStore.where("user", "==", this.props.email).get()
     .then(querySnapshot => {
@@ -55,9 +50,6 @@ class SettingsScreen extends React.Component {
         });
     });
     this.props.loadBuilds(builds)
-    this.props.toggle(TOGGLE_BUILDS)
-    this.props.toggle(TOGGLE_BUILDS)
-    console.log(this.props.builds)
   }
 
   _toggleActions(toggle) {
@@ -85,10 +77,7 @@ class SettingsScreen extends React.Component {
   }
 
   _isUserLoggedIn = () => {
-    //TODO figure out why sometimes the email does not show
     let googleUser = firebase.auth().currentUser;
-    console.log("_isUserLoggedIn")
-    console.log(googleUser)
     this.props.setAccountEmail(googleUser.email);
     return !!firebase.auth().currentUser;
   }
@@ -110,6 +99,19 @@ class SettingsScreen extends React.Component {
       build: build,
     }
     this.buildsStore.add(document).then(this._loadBuilds)
+  }
+
+  _loadBuildCode(id) {
+    console.log(id)
+    id = "OhFaCIVtshVd5yFAOUI7"
+    this.buildsStore.doc(id).get().then(doc => {
+      if (!doc.exists) {
+        console.log('No such document!');
+      } else {
+        this.props.loadBuild(doc.data())
+        console.log('Document data:', doc.data());
+      }
+    })
   }
 
   _getToggleIcon(toggle) {
@@ -185,6 +187,18 @@ class SettingsScreen extends React.Component {
 
                 <TouchableOpacity
                   style={styles.mainButton}
+                  onPress={() => {
+                    this.buildNameTextInput = true
+                    this.props.loadBuildCodeModal(true)
+                  }}
+                >
+                  <Text style={styles.mainButtonText}> Load Build Code </Text>
+                </TouchableOpacity>
+
+                <View style={styles.divider}></View>
+
+                <TouchableOpacity
+                  style={styles.mainButton}
                   onPress={() => this.props.setHeroSelect(true)}
                 >
                   <Text style={styles.mainButtonText}> Change Hero </Text>
@@ -205,7 +219,6 @@ class SettingsScreen extends React.Component {
             
             { this.props.toggleBuilds &&
               this.props.builds.map((build, index) => {
-                console.log("build", build)
                 return (
                   <View key={build.id}>
                     <TouchableOpacity
@@ -311,6 +324,44 @@ class SettingsScreen extends React.Component {
                 <TouchableOpacity
                   style={styles.modalBtns}
                   onPress={() => this.props.setSaveBuildModal(false)}
+                >
+                  <Text style={styles.modalBtnText}> Close </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
+        </View>
+
+        <View>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={this.props.loadBuildCodeModalVisible}
+            onRequestClose={() => this.props.loadBuildCodeModal(false)}>
+            <View style={styles.outerModal}>
+              <View style={styles.innerModal}>
+                <Text style={{...styles.modalHeader, fontSize: 30}}>Enter Build Code:</Text>
+
+                <TextInput
+                  placeholder="Enter Code"
+                  style={{...styles.heroBtnText, marginVertical: 50}}
+                  onChangeText={code => this.props.setBuildCode(code)}
+                  value={this.props.buildCode}
+                />
+                  
+                <TouchableOpacity
+                  style={styles.modalBtns}
+                  onPress={() => {
+                    this._loadBuildCode(this.loadBuildCode)
+                    this.props.loadBuildCodeModal(false)
+                  }}
+                >
+                  <Text style={styles.modalBtnText}> Enter </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={styles.modalBtns}
+                  onPress={() => this.props.loadBuildCodeModal(false)}
                 >
                   <Text style={styles.modalBtnText}> Close </Text>
                 </TouchableOpacity>
@@ -502,7 +553,10 @@ mapDispatchToProps = dispatch => {
     setAccountPassword: bindActionCreators(actions.setAccountPassword, dispatch),
     setCurrentBuildName: bindActionCreators(actions.setCurrentBuildName, dispatch),
     loadBuilds: bindActionCreators(actions.loadBuilds, dispatch),
+    loadBuild: bindActionCreators(actions.loadBuild, dispatch),
     loadSavedBuild: bindActionCreators(actions.loadSavedBuild, dispatch),
+    loadBuildCodeModal: bindActionCreators(actions.loadBuildCodeModal, dispatch),
+    setBuildCode: bindActionCreators(actions.setBuildCode, dispatch),
     confirmLoadBuild: bindActionCreators(actions.confirmLoadBuild, dispatch),
     setSaveBuildModal: bindActionCreators(actions.setSaveBuildModal, dispatch),
     setHeroSelect: bindActionCreators(actions.setHeroSelect, dispatch),
