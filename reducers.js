@@ -1,4 +1,4 @@
-import { SET_CHARACTER, ADD_SKILL, ADD_STAT, SET_MODAL_SKILL, RANK_SKILL, REMOVE_SKILL, SET_HERO_SELECT, SELECT_HERO, TOGGLE_QUICK_SELECT, RESET, SET_SAVE_BUILD_MODAL, SET_CREATE_ACCOUNT_MODAL, SET_ACCOUNT_PASSWORD, SET_ACCOUNT_EMAIL, SET_CHARACTER_SKILL, SET_SELECTED_MODAL_SKILL, TOGGLE_ACTIONS, TOGGLE_BUILDS, TOGGLE, SET_CURRENT_BUILD_NAME } from './types.js';
+import { SET_CHARACTER, ADD_SKILL, ADD_STAT, SET_MODAL_SKILL, RANK_SKILL, REMOVE_SKILL, SET_HERO_SELECT, SELECT_HERO, TOGGLE_QUICK_SELECT, RESET, SET_SAVE_BUILD_MODAL, SET_CREATE_ACCOUNT_MODAL, SET_ACCOUNT_PASSWORD, SET_ACCOUNT_EMAIL, SET_CHARACTER_SKILL, SET_SELECTED_MODAL_SKILL, TOGGLE_ACTIONS, TOGGLE_BUILDS, TOGGLE, SET_CURRENT_BUILD_NAME, LOAD_BUILDS, LOAD_SAVED_BUILD, SET_CONFIRM_LOAD, LOAD_BUILD_CODE, SET_BUILD_CODE, LOAD_BUILD } from './types.js';
 import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, MAX_POINTS } from './data/constants';
 import flakSkills from './data/flakSkills.js';
 import mozeSkills from './data/mozeSkills.js';
@@ -30,8 +30,12 @@ const intialState = {
     email: '',
     password: '',
     buildName: '',
+    buildCode: '',
+    builds: [],
     saveBuildModalVisible: false,
     heroSelectModalVisible: false,
+    loadBuildCodeModalVisible: false,
+    confirmLoadModalVisible: false,
     selectedHero: FLAK,
     quickSelectEnabled: false,
     toggleActions: true,
@@ -153,6 +157,49 @@ const setCurrentBuildName = (state, buildName) => {
   }
 }
 
+const loadBuilds = (state, builds) => {
+  return {
+    ...state,
+    builds: builds
+  }
+}
+
+const loadSavedBuild = (state, buildId) => {
+  const newState = {...state}
+  let buildToLoad = newState.builds.find(build => build.id === buildId);
+  return loadBuild(newState, buildToLoad)
+}
+
+const loadBuild = (state, buildToLoad) => {
+  const newState = {...state}
+  let selectedHero = buildToLoad.build.hero
+  newState.selectedHero = selectedHero
+  newState.ranked = buildToLoad.build.ranked
+  newState[selectedHero].equipped = buildToLoad.build.skills
+  return newState
+}
+
+const loadBuildCodeModal = (state, modalVisible) => {
+  return {
+    ...state,
+    loadBuildCodeModalVisible: modalVisible
+  }
+}
+
+const setBuildCode = (state, code) => {
+  return {
+    ...state,
+    buildCode: code
+  }
+}
+
+const setConfirmLoad = (state, modalVisible) => {
+  return {
+    ...state,
+    confirmLoadModalVisible: modalVisible
+  }
+}
+
 const setSaveBuildModal = (state, modalVisible) => {
   return {
     ...state,
@@ -218,6 +265,18 @@ const reducer = (state = intialState, action) => {
       return setAccountPassword(state, action.data)
     case SET_CURRENT_BUILD_NAME:
       return setCurrentBuildName(state, action.data)
+    case LOAD_BUILDS:
+      return loadBuilds(state, action.data)
+    case LOAD_BUILD:
+      return loadBuild(state, action.data)
+    case LOAD_SAVED_BUILD:
+      return loadSavedBuild(state, action.data)
+    case LOAD_BUILD_CODE:
+      return loadBuildCodeModal(state, action.data)
+    case SET_BUILD_CODE:
+      return setBuildCode(state, action.data)
+    case SET_CONFIRM_LOAD:
+      return setConfirmLoad(state, action.data)
     case SET_SAVE_BUILD_MODAL:
       return setSaveBuildModal(state, action.data)
     case SET_HERO_SELECT:

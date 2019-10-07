@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "316933052702",
+    "firebase_url": "https://borderlands-564fd.firebaseio.com",
+    "project_id": "borderlands-564fd",
+    "storage_bucket": "borderlands-564fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:316933052702:android:dcd065c58111896d38110f",
+        "android_client_info": {
+          "package_name": "com.bl3tree"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "316933052702-44kqsp523ttgkf4kk3ckbtkfj84kqvkg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8YdIt4sJ8KvGwdW727U5xZx4exmqNrDg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "316933052702-44kqsp523ttgkf4kk3ckbtkfj84kqvkg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

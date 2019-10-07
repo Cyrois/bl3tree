@@ -1,7 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
-// import firestore from '@react-native-firebase/firestore';
-// import firebase from 'react-native-firebase';
+import firebase from 'react-native-firebase';
 import {
   ScrollView,
   StyleSheet,
@@ -18,13 +16,40 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators as actions } from '../actions';
 import { FLAK, MOZE, ZANE, AMARA, YELLOW_FONT, RED_BG, TITLE_FONT, TEXT_FONT } from '../data/constants';
-import { TOGGLE_QUICK_SELECT, TOGGLE_BUILDS, TOGGLE_ACTIONS } from '../types';
+import { TOGGLE_BUILDS, TOGGLE_ACTIONS } from '../types';
 
 class SettingsScreen extends React.Component {
-  // firestore = firestore().collection('builds');
+  
   constructor(props) {
     super(props);
     this.buildNameTextInput = React.createRef();
+    this.buildsStore = firebase.firestore().collection('builds');
+    
+    if(this._isUserLoggedIn) {
+      this._loadBuilds()
+    }
+  }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      this.props.setAccountEmail(user.email)
+      this._loadBuilds()
+    })
+  }
+
+  _loadBuilds() {
+    let builds = []
+    this.buildsStore.where("user", "==", this.props.email).get()
+    .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+            let build = {
+              id: doc.id,
+              ...doc.data()
+            }
+            builds.push(build)
+        });
+        this.props.loadBuilds(builds)
+    });
   }
 
   _toggleActions(toggle) {
@@ -38,9 +63,23 @@ class SettingsScreen extends React.Component {
   _handleSignUp = () => {
     firebase
       .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(() => this.props.setCreateAccountModal(false))
+      .createUserWithEmailAndPassword(this.props.email, this.props.password)
+      .then(() => console.log("User signed up"))
       .catch(error => console.log("Unable to sign up user"))
+  }
+
+  _handleLogin = () => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(this.props.email, this.props.password)
+      .then(() => console.log("User signed in"))
+      .catch(error => console.log("Unable to sign up user"))
+  }
+
+  _isUserLoggedIn = () => {
+    let googleUser = firebase.auth().currentUser;
+    this.props.setAccountEmail(googleUser.email);
+    return !!firebase.auth().currentUser;
   }
 
   _selectHero(hero) {
@@ -48,9 +87,35 @@ class SettingsScreen extends React.Component {
     this.props.setHeroSelect(false)
   }
 
-  _saveBuild(hero) {
-    this.props.selectHero(hero)
-    this.props.setHeroSelect(false)
+  _saveBuild() {
+    let build = {
+      hero: this.props.selectedHero,
+      skills: this.props[this.props.selectedHero].equipped,
+      ranked: this.props.ranked
+    }
+    let document = {
+      user: this.props.email,
+      name: this.props.buildName,
+      build: build,
+    }
+    this.buildsStore.add(document)
+      .then(() => this._loadBuilds())
+      .catch(error => console.log(error))
+  }
+
+  _loadBuildCode(id) {
+    this.buildsStore.doc(id).get().then(doc => {
+      if (!doc.exists) {
+        console.log('No such document!');
+      } else {
+        this.props.loadBuild(doc.data())
+        console.log('Document data:', doc.data());
+      }
+    })
+  }
+
+  _deleteSavedBuild(id) {
+    this.buildsStore.doc(id).delete().then(() => this._loadBuilds()).catch(error => console.log(error))
   }
 
   _getToggleIcon(toggle) {
@@ -78,6 +143,15 @@ class SettingsScreen extends React.Component {
                 style={styles.bl3Logo} /> 
             </View>
             
+            {
+              this._isUserLoggedIn() && 
+                <View>
+                  <Text style={{...styles.sectionHeader, fontSize: 14, fontFamily: TEXT_FONT}}>
+                    Logged In As: {this.props.email}
+                  </Text>
+                </View>
+            }
+            
             <TouchableOpacity
                 onPress={() => this.props.toggle(TOGGLE_ACTIONS)}
               >
@@ -91,12 +165,15 @@ class SettingsScreen extends React.Component {
 
             { this.props.toggleActions &&
               <View>
-                <TouchableOpacity
-                  style={styles.mainButton}
-                  onPress={() => this.props.setCreateAccountModal(true)}
-                >
-                  <Text style={styles.mainButtonText}> Create Account </Text>
-                </TouchableOpacity>
+                {
+                  !this._isUserLoggedIn &&
+                  <TouchableOpacity
+                    style={styles.mainButton}
+                    onPress={() => this.props.setCreateAccountModal(true)}
+                  >
+                    <Text style={styles.mainButtonText}> Create Account </Text>
+                  </TouchableOpacity>
+                }
                 
                 <View style={styles.divider}></View>
 
@@ -108,6 +185,18 @@ class SettingsScreen extends React.Component {
                   }}
                 >
                   <Text style={styles.mainButtonText}> Save Build </Text>
+                </TouchableOpacity>
+
+                <View style={styles.divider}></View>
+
+                <TouchableOpacity
+                  style={styles.mainButton}
+                  onPress={() => {
+                    this.buildNameTextInput = true
+                    this.props.loadBuildCodeModal(true)
+                  }}
+                >
+                  <Text style={styles.mainButtonText}> Load Build Code </Text>
                 </TouchableOpacity>
 
                 <View style={styles.divider}></View>
@@ -133,18 +222,26 @@ class SettingsScreen extends React.Component {
             </TouchableOpacity>
             
             { this.props.toggleBuilds &&
-              <View>
-                <TouchableOpacity
-                  style={styles.mainButton}
-                  onPress={() => {
-                    this.props.setSaveBuildModal(true)
-                  }}
-                >
-                  <Text style={styles.mainButtonText}> Build 1 </Text>
-                </TouchableOpacity>
-
-                <View style={styles.divider}></View>
-              </View>
+              this.props.builds.map((build, index) => {
+                return (
+                  <View key={build.id}>
+                    <TouchableOpacity
+                      style={styles.mainButton}
+                      onPress={() => {
+                        this.buildIdToLoad = build.id
+                        this.props.confirmLoadBuild(true)
+                      }}
+                    >
+                      <Text style={styles.mainButtonText}> {build.name} </Text>
+                    </TouchableOpacity>
+                    
+                    {
+                      index < (this.props.builds.length - 1) &&
+                      <View style={styles.divider}></View>
+                    }
+                  </View>
+                )
+              })
             }
         </ScrollView>
 
@@ -221,7 +318,7 @@ class SettingsScreen extends React.Component {
                 <TouchableOpacity
                   style={styles.modalBtns}
                   onPress={() => {
-                    this.props.saveBuild()
+                    this._saveBuild()
                     this.props.setSaveBuildModal(false)
                   }}
                 >
@@ -243,11 +340,54 @@ class SettingsScreen extends React.Component {
           <Modal
             animationType="slide"
             transparent={true}
+            visible={this.props.loadBuildCodeModalVisible}
+            onRequestClose={() => this.props.loadBuildCodeModal(false)}>
+            <View style={styles.outerModal}>
+              <View style={styles.innerModal}>
+                <Text style={{...styles.modalHeader, fontSize: 30}}>Enter Build Code:</Text>
+
+                <Text style={{...styles.mainButtonText, marginTop: 10}}>Unsaved Changes will be lost</Text>
+
+                <TextInput
+                  placeholder="Enter Code"
+                  style={{...styles.heroBtnText, marginVertical: 40, fontFamily: TEXT_FONT}}
+                  onChangeText={code => this.props.setBuildCode(code)}
+                  value={this.props.buildCode}
+                />
+                  
+                <TouchableOpacity
+                  style={styles.modalBtns}
+                  onPress={() => {
+                    this._loadBuildCode(this.loadBuildCode)
+                    this.props.loadBuildCodeModal(false)
+                  }}
+                >
+                  <Text style={styles.modalBtnText}> Enter </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={styles.modalBtns}
+                  onPress={() => this.props.loadBuildCodeModal(false)}
+                >
+                  <Text style={styles.modalBtnText}> Close </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
+        </View>
+
+        <View>
+          <Modal
+            animationType="slide"
+            transparent={true}
             visible={this.props.heroSelectModalVisible}
             onRequestClose={() => this.props.setHeroSelect(false)}>
             <View style={styles.outerModal}>
               <View style={styles.innerModal}>
-  
+                  <Text style={{...styles.modalHeader, fontSize: 30}}>Select Hero:</Text>
+
+                  <Text style={{...styles.mainButtonText, marginVertical: 10}}>Unsaved Changes will be lost</Text>
+
                   <TouchableOpacity
                     style={styles.modalBtns}
                     onPress={() => this._selectHero(FLAK)}
@@ -282,6 +422,49 @@ class SettingsScreen extends React.Component {
                   >
                     <Text style={styles.modalBtnText}> Close </Text>
                   </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
+        </View>
+
+        <View>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={this.props.confirmLoadModalVisible}
+            onRequestClose={() => this.props.confirmLoadBuild(false)}>
+            <View style={styles.outerModal}>
+              <View style={styles.innerModal}>
+                <Text style={styles.modalHeader}>Are you sure?</Text>
+
+                <Text style={{...styles.mainButtonText, marginTop: 10}}>Unsaved Changes will be lost</Text>
+                
+                <TouchableOpacity
+                  style={{marginTop: 20, ...styles.modalBtns}}
+                  onPress={() => {
+                    this.props.loadSavedBuild(this.buildIdToLoad)
+                    this.props.confirmLoadBuild(false)
+                  }}
+                >
+                  <Text style={styles.modalBtnText}> Load Build </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={{marginTop: 20, ...styles.modalBtns}}
+                  onPress={() => {
+                    this._deleteSavedBuild(this.buildIdToLoad)
+                    this.props.confirmLoadBuild(false)
+                  }}
+                >
+                  <Text style={styles.modalBtnText}> Delete Build </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={{marginTop: 20, ...styles.modalBtns}}
+                  onPress={() => this.props.confirmLoadBuild(false)}
+                >
+                  <Text style={styles.modalBtnText}> Close </Text>
+                </TouchableOpacity>
               </View>
             </View>
           </Modal>
@@ -354,7 +537,7 @@ const styles = StyleSheet.create({
     fontFamily: TEXT_FONT
   },
   heroBtnText: {
-    fontSize: 20, 
+    fontSize: 30, 
     textAlign: 'center', 
     backgroundColor: RED_BG,
     color: YELLOW_FONT,
@@ -388,6 +571,12 @@ mapDispatchToProps = dispatch => {
     setAccountEmail: bindActionCreators(actions.setAccountEmail, dispatch),
     setAccountPassword: bindActionCreators(actions.setAccountPassword, dispatch),
     setCurrentBuildName: bindActionCreators(actions.setCurrentBuildName, dispatch),
+    loadBuilds: bindActionCreators(actions.loadBuilds, dispatch),
+    loadBuild: bindActionCreators(actions.loadBuild, dispatch),
+    loadSavedBuild: bindActionCreators(actions.loadSavedBuild, dispatch),
+    loadBuildCodeModal: bindActionCreators(actions.loadBuildCodeModal, dispatch),
+    setBuildCode: bindActionCreators(actions.setBuildCode, dispatch),
+    confirmLoadBuild: bindActionCreators(actions.confirmLoadBuild, dispatch),
     setSaveBuildModal: bindActionCreators(actions.setSaveBuildModal, dispatch),
     setHeroSelect: bindActionCreators(actions.setHeroSelect, dispatch),
     selectHero: bindActionCreators(actions.selectHero, dispatch),

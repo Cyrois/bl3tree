@@ -7,6 +7,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import StatsScreen from '../screens/StatsScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import { RED, RED_BG, YELLOW_FONT } from '../data/constants';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -83,12 +84,12 @@ const tabNavigator = createBottomTabNavigator({
     inactiveTintColor: 'rgba(0,0,0,0.6)',
     showLabel: false,
     style:{
-      backgroundColor:'black',
+      backgroundColor: RED_BG,
       height: 50,
-      borderColor: 'black'
+      borderColor: RED_BG
     },
     activeTabStyle: {
-      backgroundColor: 'yellow',
+      backgroundColor: YELLOW_FONT,
       borderBottomWidth: 4,
       borderColor: 'black'
     }

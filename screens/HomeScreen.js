@@ -593,7 +593,8 @@ const styles = StyleSheet.create({
     backgroundColor: RED_BG, 
     fontSize: 40, 
     textAlign: 'center', 
-    fontFamily: TITLE_FONT
+    fontFamily: TITLE_FONT,
+    paddingVertical: 10,
   },
 
   //TREES
