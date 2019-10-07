@@ -3,6 +3,7 @@ const PASSIVE = 'passive';
 const AUGMENT = 'augment';
 const ACTION = 'action';
 const PET = 'pet';
+const ELEMENT = 'element';
 
 //Heros
 const FLAK = 'flak';
@@ -30,6 +31,8 @@ export {
     AUGMENT,
     ACTION,
     PET,
+    ELEMENT,
+    
     FLAK,
     MOZE,
     ZANE,

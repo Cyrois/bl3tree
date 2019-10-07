@@ -16,20 +16,22 @@ import SkillButton from '../components/SkillButton.js';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators as actions } from '../actions';
-import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, YELLOW_FONT, RED_BG, TITLE_FONT, TEXT_FONT } from '../data/constants';
+import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, YELLOW_FONT, RED_BG, TITLE_FONT, TEXT_FONT, ELEMENT } from '../data/constants';
 import { TOGGLE_QUICK_SELECT } from '../types.js';
 
 class HomeScreen extends React.Component {
   _getSkillBackgroundImage(skillType) {
     switch (skillType) {
         case PASSIVE:
-        return require("../assets/images/backgrounds/skill-bg-passive-disabled.png")
+          return require("../assets/images/backgrounds/skill-bg-passive-disabled.png")
         case AUGMENT:
-        return require("../assets/images/backgrounds/skill-bg-augment-disabled.png")
+          return require("../assets/images/backgrounds/skill-bg-augment-disabled.png")
         case ACTION:
-        return require("../assets/images/backgrounds/skill-bg-action-default.png")
+          return require("../assets/images/backgrounds/skill-bg-action-default.png")
+        case ELEMENT:
+          return require("../assets/images/backgrounds/skill-bg-pet-default.png")
         case PET:
-        return require("../assets/images/backgrounds/skill-bg-pet-default.png")
+          return require("../assets/images/backgrounds/skill-bg-pet-default.png")
     }
 }
 
@@ -209,11 +211,129 @@ class HomeScreen extends React.Component {
                   }
 
                   {
-                    this.props.moze.shieldOfRetribution.map(this._insertTree)
+                    this.props.moze.bottomlessMags.map(this._insertTree)
                   }
 
                   {
-                    this.props.moze.shieldOfRetribution.map(this._insertTree)
+                    this.props.moze.demolitionWoman.map(this._insertTree)
+                  }
+                </View>
+              }
+
+              {
+                this.props.selectedHero === ZANE &&
+                <View>
+                  <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                    <View style={styles.skillContainer}>
+                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.pet, true, "an action")}>
+                        <Image
+                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
+                          style={styles.skillImage} />
+                      </TouchableOpacity>
+                    </View>
+                    <View style={styles.skillContainer}>
+                    </View>
+                    <View style={styles.skillContainer}>
+                    </View>
+                    <View style={styles.skillContainer}>
+                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.augment2, true, "an action")}>
+                        <Image
+                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
+                          style={styles.skillImage} />
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+
+                  <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                    <View style={styles.skillContainer}>
+                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.pet, true, "an augment")}>
+                        <Image
+                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
+                          style={styles.skillImage} />
+                      </TouchableOpacity>
+                    </View>
+                    <View style={styles.skillContainer}>
+                    </View>
+                    <View style={styles.skillContainer}>
+                    </View>
+                    <View style={styles.skillContainer}>
+                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.augment2, true, "an augment")}>
+                        <Image
+                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
+                          style={styles.skillImage} />
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+
+                  {
+                    this.props.zane.underCover.map(this._insertTree)
+                  }
+
+                  {
+                    this.props.zane.doubledAgent.map(this._insertTree)
+                  }
+
+                  {
+                    this.props.zane.hitman.map(this._insertTree)
+                  }
+                </View>
+              }
+
+{
+                this.props.selectedHero === AMARA &&
+                <View>
+                  <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                    <View style={styles.skillContainer}>
+                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.pet, true, "an action")}>
+                        <Image
+                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
+                          style={styles.skillImage} />
+                      </TouchableOpacity>
+                    </View>
+                    <View style={styles.skillContainer}>
+                    </View>
+                    <View style={styles.skillContainer}>
+                    </View>
+                    <View style={styles.skillContainer}>
+                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.augment2, true, "an action")}>
+                        <Image
+                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
+                          style={styles.skillImage} />
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+
+                  <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                    <View style={styles.skillContainer}>
+                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.pet, true, "an augment")}>
+                        <Image
+                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
+                          style={styles.skillImage} />
+                      </TouchableOpacity>
+                    </View>
+                    <View style={styles.skillContainer}>
+                    </View>
+                    <View style={styles.skillContainer}>
+                    </View>
+                    <View style={styles.skillContainer}>
+                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.augment2, true, "an augment")}>
+                        <Image
+                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
+                          style={styles.skillImage} />
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+
+                  {
+                    this.props.amara.mysticalAssault.map(this._insertTree)
+                  }
+
+                  {
+                    this.props.amara.fistOfTheElements.map(this._insertTree)
+                  }
+
+                  {
+                    this.props.amara.brawl.map(this._insertTree)
                   }
                 </View>
               }
@@ -536,6 +656,7 @@ const styles = StyleSheet.create({
     height: "75%",
     marginTop: 4,
     resizeMode: 'contain',
+    zIndex: 9999
   },
 
   //BOTTOM BTNS

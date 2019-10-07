@@ -14,6 +14,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		27309C692341697E00B7C16A /* YoungPatriotSemi-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = DFF8EA3025C24E1A8B32D13A /* YoungPatriotSemi-Italic.otf */; };
 		27E56A4823431EF900E7159F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27E56A4723431EF900E7159F /* GoogleService-Info.plist */; };
+		27D411ED2347324F007E7847 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 27D411EC2347324E007E7847 /* images */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -60,6 +61,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = bl3tree/main.m; sourceTree = "<group>"; };
 		27A3AAB1130C4F29AA4EFA79 /* YoungPatriotSemi-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "YoungPatriotSemi-Bold.otf"; path = "../assets/fonts/YoungPatriotSemi-Bold.otf"; sourceTree = "<group>"; };
 		27E56A4723431EF900E7159F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		27D411EC2347324E007E7847 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = ../assets/images; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* bl3tree-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bl3tree-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* bl3tree-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bl3tree-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31AB16AFD0004A9FA6B128C3 /* Accuratist.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Accuratist.otf; path = ../assets/fonts/Accuratist.otf; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				27D411EC2347324E007E7847 /* images */,
 				13B07FAE1A68108700A75B9A /* bl3tree */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* bl3treeTests */,
@@ -371,6 +374,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27D411ED2347324F007E7847 /* images in Resources */,
 				27309C692341697E00B7C16A /* YoungPatriotSemi-Italic.otf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
@@ -411,7 +415,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;

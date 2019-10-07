@@ -32,14 +32,14 @@ export default {
                 row: 0,
                 type: PET,
                 description: "Pet is armed with a Pistol, and increases player's Movement Speed. Can be commanded to throw a Radiation Barrel at enemies.",
-                image: require('../assets/images/skills/rise_to_the_occasion.png'),
+                image: require('../assets/images/skills/stalker/BasicJabbermon.png'),
             },
             {
                 title: "Fade Away",
                 row: 0,
                 type: ACTION,
                 description: "Grants cloaking, allowing you to fire 3 shots while cloaked, which are automatic +200% damage critical hits. Movement Speed is increased by +25%, and Health Regeneration by +3% of Max HP while Cloaking for 15 seconds with a 45 second cooldown.",
-                image: require('../assets/images/skills/adrenaline.png'),
+                image: require('../assets/images/skills/stalker/FadeAway.png'),
             },
             {
                 hide: true
@@ -58,7 +58,7 @@ export default {
                 type: PASSIVE,
                 maxRanks: 5,
                 description: "Maximum Health is increased, and constantly regenerates health.",
-                image: require('../assets/images/skills/adrenaline.png'),
+                image: require('../assets/images/skills/stalker/SelfRepairingSystem.png'),
                 stats: [
                     newStat("Max Health", [6,9,12,15,18], "+", "%"),
                     newStat("Health Regeneration", [0.3, 0.6, 0.9, 1.2, 1.5], "+" , "% of Max Health/sec"),
@@ -309,14 +309,14 @@ export default {
                 row: 0,
                 type: PET,
                 description: "Summoning this loyal pet will cause FL4K to constantly regenerate +1% of Max Health per sec.",
-                image: require('../assets/images/skills/adrenaline.png'),
+                image: require('../assets/images/skills/SelfRepairingSystem.png'),
             },
             {
                 title: "Rakk Attack",
                 row: 0,
                 type: ACTION,
                 description: "Sends forth 2 Rakk to divebomb the target. The skill has multiple charges and deals 35 damage with a 18 second cooldown.",
-                image: require('../assets/images/skills/adrenaline.png'),
+                image: require('../assets/images/skills/hunter/Rakk_Attack!.jpg'),
             },
             {
                 hide: true
@@ -335,7 +335,7 @@ export default {
                 type: PASSIVE,
                 maxRanks: 5,
                 description: "Hunter Kill Skill: Gains a stack of Interplanetary Stalker when an enemy is killed, which gives a bonus to all damage dealt. Gains a unique stacking bonus depending on the type of enemy killed.",
-                image: require('../assets/images/skills/adrenaline.png'),
+                image: require('../assets/images/skills/hunter/Interplanetary_Stalker.jpg'),
                 stats: [
                     newStat("Damage", 2, "2+% /stack", ),
                     newStat("Human Bonus", 3, "+3 Action Skill Damage /stack", ),
