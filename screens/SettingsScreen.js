@@ -384,7 +384,10 @@ class SettingsScreen extends React.Component {
             onRequestClose={() => this.props.setHeroSelect(false)}>
             <View style={styles.outerModal}>
               <View style={styles.innerModal}>
-  
+                  <Text style={{...styles.modalHeader, fontSize: 30}}>Select Hero:</Text>
+
+                  <Text style={{...styles.mainButtonText, marginVertical: 10}}>Unsaved Changes will be lost</Text>
+
                   <TouchableOpacity
                     style={styles.modalBtns}
                     onPress={() => this._selectHero(FLAK)}
