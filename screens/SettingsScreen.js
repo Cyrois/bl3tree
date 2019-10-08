@@ -455,7 +455,7 @@ class SettingsScreen extends React.Component {
                 <TouchableOpacity
                   style={{marginTop: 20, ...styles.modalBtns}}
                   onPress={() => {
-                    Clipboard.setString('hello world');
+                    Clipboard.setString(this.buildIdToLoad);
                     this.props.confirmLoadBuild(false)
                   }}
                 >
