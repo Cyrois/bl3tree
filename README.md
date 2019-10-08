@@ -12,7 +12,6 @@ https://medium.com/@TarikHajji/add-admob-to-react-native-app-5b1e91be459
 https://stackoverflow.com/questions/35935060/how-can-i-generate-an-apk-that-can-run-without-server-with-react-native
 
 TODO:
-- Be able to copy build code to share
 - Prevent Point deduction on lower skills
 - Fix Skill Trees
 - Make sure styling is okay on Apple

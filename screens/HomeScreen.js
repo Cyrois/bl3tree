@@ -129,13 +129,9 @@ class HomeScreen extends React.Component {
                 this.props.selectedHero === FLAK &&
                 <View>
                   <View style={{...styles.greenSkillTree, ...styles.treeContainer}}>
-                    <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
-                      <View>
-                        <Text style={styles.treeTitle}>
-                          Stalker
-                        </Text>
-                      </View>
-                    </View>
+                    <Text style={styles.treeTitle}>
+                      Stalker
+                    </Text>
                     {
                       this.props.flak.stalker.map(this._insertTree)
                     }
