@@ -132,9 +132,21 @@ class HomeScreen extends React.Component {
                     <Text style={styles.treeTitle}>
                       Stalker
                     </Text>
-                    {
-                      this.props.flak.stalker.map(this._insertTree)
-                    }
+                    <View style={{width: '60%', margin: 'auto', alignSelf: 'center'}}>
+                      <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-bg-green.png")} 
+                          style={styles.skillImageBg}>
+                        {
+                          this.props.flak.stalker.map(this._insertTree)
+                        }
+                      </ImageBackground>
+                    </View>
+                      <View style={{height: '20%', width: '16%', position: 'absolute', right: '7%', top: '58%'}}>
+                        <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
+                            style={{height: '100%', width: '100%'}}>
+                        </ImageBackground>
+                      </View>
+                    
+                    
                   </View>
 
                   <View style={{...styles.redSkillTree, ...styles.treeContainer}}>

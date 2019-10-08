@@ -35,9 +35,9 @@ class SkillButton extends React.Component {
         <TouchableOpacity onPress={this.props.onSkillPress}>
             <ImageBackground source={this._getSkillBackgroundImage(this.props.skill.type)} 
                 style={styles.skillImageBg}>
-            <Image
-                source={this.props.skill.image}
-                style={styles.skillImage} /> 
+              <Image
+                  source={this.props.skill.image}
+                  style={styles.skillImage} /> 
             </ImageBackground>
             { this.props.skill.type === PASSIVE &&
             <ImageBackground source={require("../assets/images/backgrounds/pointslot-default.png")} 
