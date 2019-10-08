@@ -8,7 +8,8 @@ import {
   View,
   Modal,
   TextInput,
-  Image
+  Image,
+  Clipboard
 } from 'react-native';
 
 import TabBarIcon from '../components/TabBarIcon';
@@ -346,7 +347,9 @@ class SettingsScreen extends React.Component {
               <View style={styles.innerModal}>
                 <Text style={{...styles.modalHeader, fontSize: 30}}>Enter Build Code:</Text>
 
-                <Text style={{...styles.mainButtonText, marginTop: 10}}>Unsaved Changes will be lost</Text>
+                <Text style={{...styles.mainButtonText, marginTop: 10}}>Warning: Unsaved Changes will be lost</Text>
+                
+                <Text style={{...styles.mainButtonText, marginTop: 10}}>Loading a build code does not save it, you must save it as one of your own builds.</Text>
 
                 <TextInput
                   placeholder="Enter Code"
@@ -435,9 +438,9 @@ class SettingsScreen extends React.Component {
             onRequestClose={() => this.props.confirmLoadBuild(false)}>
             <View style={styles.outerModal}>
               <View style={styles.innerModal}>
-                <Text style={styles.modalHeader}>Are you sure?</Text>
+                <Text style={styles.modalHeader}>Select an Option:</Text>
 
-                <Text style={{...styles.mainButtonText, marginTop: 10}}>Unsaved Changes will be lost</Text>
+                <Text style={{...styles.mainButtonText, marginTop: 10}}>Warning: Unsaved Changes will be lost</Text>
                 
                 <TouchableOpacity
                   style={{marginTop: 20, ...styles.modalBtns}}
@@ -452,8 +455,18 @@ class SettingsScreen extends React.Component {
                 <TouchableOpacity
                   style={{marginTop: 20, ...styles.modalBtns}}
                   onPress={() => {
-                    this._deleteSavedBuild(this.buildIdToLoad)
+                    Clipboard.setString('hello world');
                     this.props.confirmLoadBuild(false)
+                  }}
+                >
+                  <Text style={styles.modalBtnText}> Copy Shareable Code </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={{marginTop: 20, ...styles.modalBtns}}
+                  onPress={() => {
+                    this.props.confirmLoadBuild(false)
+                    this.props.deleteBuildModal(true)
                   }}
                 >
                   <Text style={styles.modalBtnText}> Delete Build </Text>
@@ -462,6 +475,37 @@ class SettingsScreen extends React.Component {
                 <TouchableOpacity
                   style={{marginTop: 20, ...styles.modalBtns}}
                   onPress={() => this.props.confirmLoadBuild(false)}
+                >
+                  <Text style={styles.modalBtnText}> Close </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
+        </View>
+
+        <View>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={this.props.confirmDeleteModalVisible}
+            onRequestClose={() => this.props.deleteBuildModal(false)}>
+            <View style={styles.outerModal}>
+              <View style={styles.innerModal}>
+                <Text style={styles.modalHeader}>Are you sure?</Text>
+
+                <TouchableOpacity
+                  style={{marginTop: 20, ...styles.modalBtns}}
+                  onPress={() => {
+                    this._deleteSavedBuild(this.buildIdToLoad)
+                    this.props.deleteBuildModal(false)
+                  }}
+                >
+                  <Text style={styles.modalBtnText}> Delete Build </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={{marginTop: 20, ...styles.modalBtns}}
+                  onPress={() => this.props.deleteBuildModal(false)}
                 >
                   <Text style={styles.modalBtnText}> Close </Text>
                 </TouchableOpacity>
@@ -575,6 +619,7 @@ mapDispatchToProps = dispatch => {
     loadBuild: bindActionCreators(actions.loadBuild, dispatch),
     loadSavedBuild: bindActionCreators(actions.loadSavedBuild, dispatch),
     loadBuildCodeModal: bindActionCreators(actions.loadBuildCodeModal, dispatch),
+    deleteBuildModal: bindActionCreators(actions.deleteBuildModal, dispatch),
     setBuildCode: bindActionCreators(actions.setBuildCode, dispatch),
     confirmLoadBuild: bindActionCreators(actions.confirmLoadBuild, dispatch),
     setSaveBuildModal: bindActionCreators(actions.setSaveBuildModal, dispatch),
