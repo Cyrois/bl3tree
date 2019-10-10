@@ -39,22 +39,15 @@ class HomeScreen extends React.Component {
     this.props.setModalSkill({modalVisible: visible, modalSkill: skill, showingEquippedSkill: pressedEquippedSkill})
   }
 
-  _onSkillPress = (skill, pressedEquippedSkill = false, textToShow = "") => {
-    if(!skill || skill === null) {
-      Alert.alert(
-        'Oops!',
-        `Please select ${textToShow} first`,
-      );
-    } else {
-      if(this.props.quickSelectEnabled && skill.type === PASSIVE) {
-        if(!this.props.ranked[skill.title] || this.props.ranked[skill.title] < skill.maxRanks) {
-          this._setModal(true, "")
-          this.props.rankSkill(skill, 1)
-          this._setModal(false, "")
-        }
-      } else {
-        this._setModal(true, skill, pressedEquippedSkill)
+  _onSkillPress = (skill, rowIndex) => {
+    if(this.props.quickSelectEnabled && skill.type === PASSIVE) {
+      if(!this.props.ranked[skill.title] || this.props.ranked[skill.title] < skill.maxRanks) {
+        this._setModal(true, "")
+        this.props.rankSkill(skill, 1)
+        this._setModal(false, "")
       }
+    } else {
+      this._setModal(true, skill, pressedEquippedSkill)
     }
   }
 
@@ -175,7 +168,7 @@ class HomeScreen extends React.Component {
                       </ImageBackground>
                     </View>
 
-                    <View style={{width: '64%', margin: 'auto', alignSelf: 'center', elevation: (Platform.OS === 'android') ? 30 : 0}}>
+                    <View style={{width: '64%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
                         this.props.flak.stalker.map(this._insertTree)
                       }
@@ -552,20 +545,19 @@ const styles = StyleSheet.create({
     height: '96%', 
     width: '66%', 
     alignSelf: 'center', 
-    elevation: (Platform.OS === 'android') ? 10 : 0
+    zIndex: 100,
   },
   defaultShelf: {
     height: '10.5%', 
     width: '18%', 
     position: 'absolute',
-    zIndex: -100,
-    elevation: (Platform.OS === 'android') ? 20 : 0
+    zIndex: 200,
   },
   flippedShelf: {
     height: '100%', 
     width: '100%', 
     transform:[{scaleX: -1}],
-    zIndex: -100,
+    zIndex: 200,
   },
 
   //Skills
@@ -574,6 +566,7 @@ const styles = StyleSheet.create({
     height: 86,
     padding: 2,
     marginHorizontal: 54,
+    zIndex: 300,
   },
 
   //BOTTOM BTNS
