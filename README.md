@@ -13,6 +13,7 @@ https://stackoverflow.com/questions/35935060/how-can-i-generate-an-apk-that-can-
 
 TODO:
 - Prevent Point deduction on lower skills
+- Update the stat summary, wasnt I only handling the passive skills?
 - Fix Skill Trees
 - Make sure styling is okay on Apple
 - Login Feature

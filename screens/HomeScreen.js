@@ -133,13 +133,13 @@ class HomeScreen extends React.Component {
                       Stalker
                     </Text>
 
-                    <View style={{...styles.defaultShelf, right: '4.5%', top: '49%'}}>
+                    <View style={{...styles.defaultShelf, right: '4.5%', top: '48.5%'}}>
                       <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
                           style={{height: '100%', width: '100%'}}>
                       </ImageBackground>
                     </View>
 
-                    <View style={{...styles.defaultShelf, right: '4.5%', top: '62%'}}>
+                    <View style={{...styles.defaultShelf, right: '4.5%', top: '61.5%'}}>
                       <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
                           style={{height: '100%', width: '100%'}}>
                       </ImageBackground>
@@ -151,13 +151,13 @@ class HomeScreen extends React.Component {
                       </ImageBackground>
                     </View>
 
-                    <View style={{...styles.defaultShelf, left: '4.5%', top: '49%'}}>
+                    <View style={{...styles.defaultShelf, left: '4.5%', top: '48.5%'}}>
                       <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
                           style={styles.flippedShelf}>
                       </ImageBackground>
                     </View>
 
-                    <View style={{...styles.defaultShelf, left: '4.5%', top: '62%'}}>
+                    <View style={{...styles.defaultShelf, left: '4.5%', top: '61.5%'}}>
                       <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
                           style={styles.flippedShelf}>
                       </ImageBackground>
@@ -642,7 +642,7 @@ const styles = StyleSheet.create({
   //TREES
   treeContainer: {
     // paddingTop: 10,
-    paddingBottom: 40,
+    paddingBottom: 60,
     paddingRight: 5,
     paddingLeft: 10,
   },
@@ -672,7 +672,7 @@ const styles = StyleSheet.create({
     elevation: (Platform.OS === 'android') ? 10 : 0
   },
   defaultShelf: {
-    height: '10%', 
+    height: '10.5%', 
     width: '18%', 
     position: 'absolute',
     zIndex: -100,
@@ -690,7 +690,6 @@ const styles = StyleSheet.create({
     width: '24%',
     height: 86,
     padding: 2,
-    marginTop: 5,
     marginHorizontal: 54,
   },
   skillImage: {
