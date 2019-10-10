@@ -92,16 +92,16 @@ class HomeScreen extends React.Component {
     this._setModal(false, "")
   }
 
-  _insertTree = (row, index) => {
+  _insertTree = (row, rowIndex) => {
     return (
-      <View key={"row_" + index} style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+      <View key={"row_" + rowIndex} style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
         {
-          row.map((skill, index) => {
+          row.map((skill, colIndex) => {
             return (
-              <View style={styles.skillContainer} key={"col_" + index}>
+              <View style={styles.skillContainer} key={"col_" + colIndex}>
                 {
                   !skill.hide && (
-                    <SkillButton skill={skill} onSkillPress={() => this._onSkillPress(skill)}></SkillButton>
+                    <SkillButton skill={skill} onSkillPress={() => this._onSkillPress(skill, rowIndex)}></SkillButton>
                   )
                 }
               </View>
@@ -207,45 +207,6 @@ class HomeScreen extends React.Component {
                 this.props.selectedHero === MOZE &&
                 <View>
                   <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
-                    <View style={styles.skillContainer}>
-                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.pet, true, "an action")}>
-                        <Image
-                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
-                          style={styles.skillImage} />
-                      </TouchableOpacity>
-                    </View>
-                    <View style={styles.skillContainer}>
-                    </View>
-                    <View style={styles.skillContainer}>
-                    </View>
-                    <View style={styles.skillContainer}>
-                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.augment2, true, "an action")}>
-                        <Image
-                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
-                          style={styles.skillImage} />
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-
-                  <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
-                    <View style={styles.skillContainer}>
-                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.pet, true, "an augment")}>
-                        <Image
-                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
-                          style={styles.skillImage} />
-                      </TouchableOpacity>
-                    </View>
-                    <View style={styles.skillContainer}>
-                    </View>
-                    <View style={styles.skillContainer}>
-                    </View>
-                    <View style={styles.skillContainer}>
-                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.augment2, true, "an augment")}>
-                        <Image
-                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
-                          style={styles.skillImage} />
-                      </TouchableOpacity>
-                    </View>
                   </View>
 
                   {
@@ -266,45 +227,6 @@ class HomeScreen extends React.Component {
                 this.props.selectedHero === ZANE &&
                 <View>
                   <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
-                    <View style={styles.skillContainer}>
-                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.pet, true, "an action")}>
-                        <Image
-                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
-                          style={styles.skillImage} />
-                      </TouchableOpacity>
-                    </View>
-                    <View style={styles.skillContainer}>
-                    </View>
-                    <View style={styles.skillContainer}>
-                    </View>
-                    <View style={styles.skillContainer}>
-                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.augment2, true, "an action")}>
-                        <Image
-                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
-                          style={styles.skillImage} />
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-
-                  <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
-                    <View style={styles.skillContainer}>
-                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.pet, true, "an augment")}>
-                        <Image
-                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
-                          style={styles.skillImage} />
-                      </TouchableOpacity>
-                    </View>
-                    <View style={styles.skillContainer}>
-                    </View>
-                    <View style={styles.skillContainer}>
-                    </View>
-                    <View style={styles.skillContainer}>
-                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.augment2, true, "an augment")}>
-                        <Image
-                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
-                          style={styles.skillImage} />
-                      </TouchableOpacity>
-                    </View>
                   </View>
 
                   {
@@ -325,45 +247,6 @@ class HomeScreen extends React.Component {
                 this.props.selectedHero === AMARA &&
                 <View>
                   <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
-                    <View style={styles.skillContainer}>
-                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.pet, true, "an action")}>
-                        <Image
-                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
-                          style={styles.skillImage} />
-                      </TouchableOpacity>
-                    </View>
-                    <View style={styles.skillContainer}>
-                    </View>
-                    <View style={styles.skillContainer}>
-                    </View>
-                    <View style={styles.skillContainer}>
-                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.augment2, true, "an action")}>
-                        <Image
-                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
-                          style={styles.skillImage} />
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-
-                  <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
-                    <View style={styles.skillContainer}>
-                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.pet, true, "an augment")}>
-                        <Image
-                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
-                          style={styles.skillImage} />
-                      </TouchableOpacity>
-                    </View>
-                    <View style={styles.skillContainer}>
-                    </View>
-                    <View style={styles.skillContainer}>
-                    </View>
-                    <View style={styles.skillContainer}>
-                      <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.augment2, true, "an augment")}>
-                        <Image
-                          source={require('../assets/images/skills/rise_to_the_occasion.png')}
-                          style={styles.skillImage} />
-                      </TouchableOpacity>
-                    </View>
                   </View>
 
                   {
@@ -691,13 +574,6 @@ const styles = StyleSheet.create({
     height: 86,
     padding: 2,
     marginHorizontal: 54,
-  },
-  skillImage: {
-    width: "90%",
-    height: "75%",
-    marginTop: 4,
-    resizeMode: 'contain',
-    zIndex: 9999
   },
 
   //BOTTOM BTNS
