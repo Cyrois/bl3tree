@@ -33,7 +33,7 @@ class SkillButton extends React.Component {
   render() {
     return (
         <TouchableOpacity onPress={this.props.onSkillPress}>
-            <ImageBackground source={this._getSkillBackgroundImage(this.props.skill.type)} 
+            <ImageBackground resizeMode='contain' source={this._getSkillBackgroundImage(this.props.skill.type)} 
                 style={styles.skillImageBg}>
               <Image
                   source={this.props.skill.image}
@@ -53,9 +53,14 @@ class SkillButton extends React.Component {
 
 const styles = StyleSheet.create({
     skillImageBg: {
-      margin: 2,
-      width: "90%",
-      height: "90%",
+      width: "100%",
+      height: "100%",
+      resizeMode: 'contain',
+    },
+    skillImage: {
+      width: "80%",
+      height: "70%",
+      marginTop: 10,
       resizeMode: 'contain',
     },
     pointslotBg: {
@@ -64,7 +69,6 @@ const styles = StyleSheet.create({
       position: 'absolute',
       right: 0,
       bottom: 0,
-      zIndex: 9000,
       resizeMode: 'contain',
     },
     pointslotText: {
@@ -72,13 +76,7 @@ const styles = StyleSheet.create({
       fontSize: 22,
       paddingLeft: 9,
       paddingTop: 2,
-      fontFamily: TITLE_FONT
-    },
-    skillImage: {
-      width: "90%",
-      height: "75%",
-      marginTop: 4,
-      resizeMode: 'contain',
+      fontFamily: TITLE_FONT,
     },
 });
 

@@ -132,20 +132,54 @@ class HomeScreen extends React.Component {
                     <Text style={styles.treeTitle}>
                       Stalker
                     </Text>
-                    <View style={{width: '60%', margin: 'auto', alignSelf: 'center'}}>
-                      <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-bg-green.png")} 
-                          style={styles.skillImageBg}>
-                        {
-                          this.props.flak.stalker.map(this._insertTree)
-                        }
+
+                    <View style={{...styles.defaultShelf, right: '7%', top: '48%'}}>
+                      <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
+                          style={{height: '100%', width: '100%'}}>
                       </ImageBackground>
                     </View>
-                      <View style={{height: '20%', width: '16%', position: 'absolute', right: '7%', top: '58%'}}>
-                        <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
-                            style={{height: '100%', width: '100%'}}>
-                        </ImageBackground>
-                      </View>
-                    
+
+                    <View style={{...styles.defaultShelf, right: '7%', top: '61%'}}>
+                      <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
+                          style={{height: '100%', width: '100%'}}>
+                      </ImageBackground>
+                    </View>
+                      
+                    <View style={{...styles.defaultShelf, left: '7%', top: '36%'}}>
+                      <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
+                          style={styles.flippedShelf}>
+                      </ImageBackground>
+                    </View>
+
+                    <View style={{...styles.defaultShelf, left: '7%', top: '46%'}}>
+                      <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
+                          style={styles.flippedShelf}>
+                      </ImageBackground>
+                    </View>
+
+                    <View style={{...styles.defaultShelf, left: '7%', top: '61%'}}>
+                      <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
+                          style={styles.flippedShelf}>
+                      </ImageBackground>
+                    </View>
+
+                    <View style={{...styles.defaultShelf, left: '7%', top: '70%'}}>
+                      <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
+                          style={styles.flippedShelf}>
+                      </ImageBackground>
+                    </View>
+
+                    <View style={{position: 'absolute', height: '100%', width: '60%', alignSelf: 'center', top: '3%', elevation: (Platform.OS === 'android') ? 10 : 0}}>
+                      <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-bg-green.png")} 
+                          style={{width: '100%', height: '100%'}}>
+                      </ImageBackground>
+                    </View>
+
+                    <View style={{width: '64%', margin: 'auto', alignSelf: 'center', elevation: (Platform.OS === 'android') ? 30 : 0}}>
+                      {
+                        this.props.flak.stalker.map(this._insertTree)
+                      }
+                    </View>
                     
                   </View>
 
@@ -607,8 +641,8 @@ const styles = StyleSheet.create({
 
   //TREES
   treeContainer: {
-    paddingTop: 10,
-    paddingBottom: 20,
+    // paddingTop: 10,
+    paddingBottom: 40,
     paddingRight: 5,
     paddingLeft: 5,
   },
@@ -624,21 +658,33 @@ const styles = StyleSheet.create({
   treeTitle: {
     fontSize: 30, 
     textAlign: 'center',
-    paddingTop: 10,
-    paddingBottom: 15,
+    paddingTop: 15,
     color:YELLOW_FONT, 
     textAlign: 'center', 
     fontFamily: TITLE_FONT
   },
+  defaultShelf: {
+    height: '12%', 
+    width: '16%', 
+    position: 'absolute',
+    zIndex: -100,
+    elevation: (Platform.OS === 'android') ? 20 : 0
+  },
+  flippedShelf: {
+    height: '100%', 
+    width: '100%', 
+    transform:[{scaleX: -1}],
+    zIndex: -100,
+  },
 
   //MODAL
   skillContainer: {
-    width: '20%',
+    width: '24%',
     height: 86,
     resizeMode: 'contain',
     padding: 2,
     marginTop: 5,
-    marginHorizontal: 4,
+    marginHorizontal: 60,
   },
   skillImageBg: {
     margin: 2,
@@ -743,7 +789,7 @@ const styles = StyleSheet.create({
   defaultFont: {
     fontFamily: TEXT_FONT,
     color: '#fff'
-  }
+  },
 });
 
 mapStateToProps = state => {

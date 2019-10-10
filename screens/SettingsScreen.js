@@ -33,8 +33,10 @@ class SettingsScreen extends React.Component {
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
-      this.props.setAccountEmail(user.email)
-      this._loadBuilds()
+      if(user) {
+        this.props.setAccountEmail(user.email)
+        this._loadBuilds()
+      }
     })
   }
 
@@ -79,8 +81,11 @@ class SettingsScreen extends React.Component {
 
   _isUserLoggedIn = () => {
     let googleUser = firebase.auth().currentUser;
-    this.props.setAccountEmail(googleUser.email);
-    return !!firebase.auth().currentUser;
+    if(googleUser) {
+      this.props.setAccountEmail(googleUser.email);
+      return !!firebase.auth().currentUser;
+    }
+    return false
   }
 
   _selectHero(hero) {
