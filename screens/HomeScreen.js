@@ -133,44 +133,44 @@ class HomeScreen extends React.Component {
                       Stalker
                     </Text>
 
-                    <View style={{...styles.defaultShelf, right: '7%', top: '48%'}}>
+                    <View style={{...styles.defaultShelf, right: '4.5%', top: '49%'}}>
                       <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
                           style={{height: '100%', width: '100%'}}>
                       </ImageBackground>
                     </View>
 
-                    <View style={{...styles.defaultShelf, right: '7%', top: '61%'}}>
+                    <View style={{...styles.defaultShelf, right: '4.5%', top: '62%'}}>
                       <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
                           style={{height: '100%', width: '100%'}}>
                       </ImageBackground>
                     </View>
                       
-                    <View style={{...styles.defaultShelf, left: '7%', top: '36%'}}>
+                    <View style={{...styles.defaultShelf, left: '4.5%', top: '35%'}}>
                       <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
                           style={styles.flippedShelf}>
                       </ImageBackground>
                     </View>
 
-                    <View style={{...styles.defaultShelf, left: '7%', top: '46%'}}>
+                    <View style={{...styles.defaultShelf, left: '4.5%', top: '49%'}}>
                       <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
                           style={styles.flippedShelf}>
                       </ImageBackground>
                     </View>
 
-                    <View style={{...styles.defaultShelf, left: '7%', top: '61%'}}>
+                    <View style={{...styles.defaultShelf, left: '4.5%', top: '62%'}}>
                       <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
                           style={styles.flippedShelf}>
                       </ImageBackground>
                     </View>
 
-                    <View style={{...styles.defaultShelf, left: '7%', top: '70%'}}>
+                    <View style={{...styles.defaultShelf, left: '4.5%', top: '75%'}}>
                       <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
                           style={styles.flippedShelf}>
                       </ImageBackground>
                     </View>
 
-                    <View style={{position: 'absolute', height: '100%', width: '60%', alignSelf: 'center', top: '3%', elevation: (Platform.OS === 'android') ? 10 : 0}}>
-                      <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-bg-green.png")} 
+                    <View style={styles.branch}>
+                      <ImageBackground resizeMode='stretch' source={require("../assets/images/backgrounds/branch-bg-green.png")} 
                           style={{width: '100%', height: '100%'}}>
                       </ImageBackground>
                     </View>
@@ -644,7 +644,7 @@ const styles = StyleSheet.create({
     // paddingTop: 10,
     paddingBottom: 40,
     paddingRight: 5,
-    paddingLeft: 5,
+    paddingLeft: 10,
   },
   greenSkillTree: {
     backgroundColor: 'rgba(69, 133, 4, 0.75)',
@@ -663,9 +663,17 @@ const styles = StyleSheet.create({
     textAlign: 'center', 
     fontFamily: TITLE_FONT
   },
+  branch: {
+    position: 'absolute', 
+    top: '10%',
+    height: '96%', 
+    width: '66%', 
+    alignSelf: 'center', 
+    elevation: (Platform.OS === 'android') ? 10 : 0
+  },
   defaultShelf: {
-    height: '12%', 
-    width: '16%', 
+    height: '10%', 
+    width: '18%', 
     position: 'absolute',
     zIndex: -100,
     elevation: (Platform.OS === 'android') ? 20 : 0
@@ -677,33 +685,13 @@ const styles = StyleSheet.create({
     zIndex: -100,
   },
 
-  //MODAL
+  //Skills
   skillContainer: {
     width: '24%',
     height: 86,
-    resizeMode: 'contain',
     padding: 2,
     marginTop: 5,
-    marginHorizontal: 60,
-  },
-  skillImageBg: {
-    margin: 2,
-    resizeMode: 'contain',
-  },
-  pointslotBg: {
-    width: 36,
-    height: 25,
-    position: 'absolute',
-    right: 0,
-    bottom: 0,
-    zIndex: 9000,
-    resizeMode: 'contain',
-  },
-  pointslotText: {
-    color: '#fff',
-    fontSize: 16,
-    paddingLeft: 6,
-    paddingTop: 1,
+    marginHorizontal: 54,
   },
   skillImage: {
     width: "90%",

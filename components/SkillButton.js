@@ -55,12 +55,12 @@ const styles = StyleSheet.create({
     skillImageBg: {
       width: "100%",
       height: "100%",
-      resizeMode: 'contain',
     },
     skillImage: {
       width: "80%",
       height: "70%",
-      marginTop: 10,
+      marginTop: 12,
+      marginLeft: 4,
       resizeMode: 'contain',
     },
     pointslotBg: {
