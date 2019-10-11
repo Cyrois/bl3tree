@@ -49,7 +49,7 @@ class HomeScreen extends React.Component {
         this._setModal(false, "")
       }
     } else {
-      this._setModal(true, skill, pressedEquippedSkill)
+      this._setModal(true, skill)
     }
   }
 
@@ -78,7 +78,7 @@ class HomeScreen extends React.Component {
 
   _unselectSkill = (skillTitle) => {
     const equippedSkills = {...this.props[this.props.selectedHero].equipped}
-    for(key in equippedSkills) {
+    for(const key in equippedSkills) {
       if(equippedSkills[key] && equippedSkills[key].title === skillTitle) {
         equippedSkills[key] = null
       }
@@ -348,7 +348,7 @@ class HomeScreen extends React.Component {
                     style={styles.skillModalButtons}
                     onPress={() => this._unselectSkill(this.props.modalSkill.title)}
                   >
-                    <Text style={{...styles.defaultFont, ...styles.skillModalBtnText}}> Unselect </Text>
+                    <Text style={{...styles.defaultFont, ...styles.skillModalBtnText, color: 'black'}}> Unselect </Text>
                   </TouchableOpacity>
                 }
 
