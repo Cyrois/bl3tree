@@ -35,35 +35,36 @@ class HomeScreen extends React.Component {
         case PET:
           return require("../assets/images/backgrounds/skill-bg-pet-default.png")
     }
-}
+  }
 
-  _setModal(visible, skill, pressedEquippedSkill = false) {
-    this.props.setModalSkill({modalVisible: visible, modalSkill: skill, showingEquippedSkill: pressedEquippedSkill})
+  _setModal(visible, skill, rowIndex = 0, pressedEquippedSkill = false) {
+    this.props.setModalSkill({modalVisible: visible, modalSkill: skill, showingEquippedSkill: pressedEquippedSkill, rowIndex: rowIndex})
   }
 
   _onSkillPress = (skill, rowIndex) => {
     if(this.props.quickSelectEnabled && skill.type === PASSIVE) {
       if(!this.props.ranked[skill.title] || this.props.ranked[skill.title] < skill.maxRanks) {
         this._setModal(true, "")
-        this.props.rankSkill(skill, 1)
+        this.props.rankSkill(skill, 1, rowIndex)
         this._setModal(false, "")
       }
     } else {
-      this._setModal(true, skill)
+      this._setModal(true, skill, rowIndex)
     }
   }
 
   _isAbleToUseSkill = (skill) => {
-    if(skill.row == 0) {
+    if(this.props.rowIndex == 1) {
       return true;
     }
-    let pointsUsedForTree = this.props.pointsSpent[skill.tree]
-    let pointsRequired = skill.row ? (skill.row - 1) * 5 : 0;
-    if(pointsUsedForTree >= pointsRequired) {
-      return true
-    } else {
-      return false;
+    let totalPointsForBranch = 0;
+    for(let i = 1; i < this.props.rowIndex; i++) {
+      totalPointsForBranch += this.props.pointsSpent[skill.tree][`row${i}`]
     }
+    if(totalPointsForBranch >= (this.props.rowIndex - 1) * 5) {
+      return true
+    }
+    return false
   }
 
   _isEquippedSkill = (skill) => {
@@ -365,7 +366,7 @@ class HomeScreen extends React.Component {
                             style={styles.skillModalButtons}
                             onPress={() => {
                               this._setModal(false, "")
-                              this.props.rankSkill(this.props.modalSkill, this.props.modalSkill.maxRanks * -1)
+                              this.props.rankSkill(this.props.modalSkill, (this.props.ranked[this.props.modalSkill.title] ? this.props.ranked[this.props.modalSkill.title] : 0) * -1, this.props.rowIndex)
                               this._setModal(false, "")
                             }}>
                             <Text style={{...styles.defaultFont, color: 'black'}}> Clear </Text>
@@ -376,8 +377,8 @@ class HomeScreen extends React.Component {
                             style={styles.skillModalButtons}
                             onPress={() => {
                               this._setModal(false, "")
-                              this.props.rankSkill(this.props.modalSkill, -1)
-                              this._setModal(true, this.props.modalSkill)
+                              this.props.rankSkill(this.props.modalSkill, -1, this.props.rowIndex)
+                              this._setModal(true, this.props.modalSkill, this.props.rowIndex)
                             }}
                           >
                             <Text style={{...styles.defaultFont, color: 'black'}}> -1 </Text>
@@ -388,8 +389,8 @@ class HomeScreen extends React.Component {
                             style={styles.skillModalButtons}
                             onPress={() => {
                               this._setModal(false, "")
-                              this.props.rankSkill(this.props.modalSkill, 1)
-                              this._setModal(true, this.props.modalSkill)
+                              this.props.rankSkill(this.props.modalSkill, 1, this.props.rowIndex)
+                              this._setModal(true, this.props.modalSkill, this.props.rowIndex)
                             }}>
                             <Text style={{...styles.defaultFont, color: 'black'}}> +1</Text>
                           </TouchableOpacity>
@@ -399,7 +400,7 @@ class HomeScreen extends React.Component {
                             style={styles.skillModalButtons}
                             onPress={() => {
                               this._setModal(false, "")
-                              this.props.rankSkill(this.props.modalSkill, this.props.modalSkill.maxRanks)
+                              this.props.rankSkill(this.props.modalSkill, this.props.modalSkill.maxRanks, this.props.rowIndex)
                               this._setModal(false, "")
                             }}
                           >
@@ -648,7 +649,6 @@ mapDispatchToProps = dispatch => {
     addSkill: bindActionCreators(actions.addSkill, dispatch),
     removeSkill: bindActionCreators(actions.removeSkill, dispatch),
     rankSkill: bindActionCreators(actions.rankSkill, dispatch),
-    addStat: bindActionCreators(actions.addStat, dispatch),
     reset: bindActionCreators(actions.reset, dispatch),
     setModalSkill: bindActionCreators(actions.setModalSkill, dispatch),
     toggle: bindActionCreators(actions.toggle, dispatch),

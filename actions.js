@@ -26,25 +26,19 @@ const removeSkill = (character, equippedSkills) =>  {
     }
 }
 
-const rankSkill = (skill, amount) =>  {
+const rankSkill = (skill, amount, rowIndex) =>  {
     return {
         type: RANK_SKILL,
         skill: skill,
-        amount: amount
+        amount: amount,
+        rowIndex: rowIndex
     }
 }
 
-const addStat = () =>  {
-    return {
-        type: ADD_STAT
-    }
-}
-
-const setModalSkill = (modalData, pressedEquippedSkill = false) =>  {
+const setModalSkill = (modalData) =>  {
     return {
         type: SET_MODAL_SKILL,
         data: modalData,
-        showingEquippedSkill: pressedEquippedSkill,
     }
 }
 
@@ -179,7 +173,6 @@ const actionCreators = {
     addSkill,
     removeSkill,
     rankSkill,
-    addStat,
     setModalSkill,
     setSelectedModalSkill,
     setCharacterSkill,
