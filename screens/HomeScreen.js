@@ -14,6 +14,7 @@ import {
 
 import SkillButton from '../components/SkillButton.js';
 import BranchShelf from '../components/BranchShelf.js';
+import Branch from '../components/Branch.js';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators as actions } from '../actions';
@@ -133,12 +134,7 @@ class HomeScreen extends React.Component {
                     <BranchShelf color={GREEN} horizontal='4.5%' top='48.5%' flipped={true}></BranchShelf>
                     <BranchShelf color={GREEN} horizontal='4.5%' top='61.5%' flipped={true}></BranchShelf>
                     <BranchShelf color={GREEN} horizontal='4.5%' top='75%' flipped={true}></BranchShelf>
-
-                    <View style={styles.branch}>
-                      <ImageBackground resizeMode='stretch' source={require("../assets/images/backgrounds/branch-bg-green.png")} 
-                          style={{width: '100%', height: '100%'}}>
-                      </ImageBackground>
-                    </View>
+                    <Branch color={GREEN}></Branch>
 
                     <View style={{width: '64%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
@@ -151,18 +147,40 @@ class HomeScreen extends React.Component {
                     <Text style={styles.treeTitle}>
                       Hunter
                     </Text>
-                    {
-                      this.props.flak.hunter.map(this._insertTree)
-                    }
+
+                    <BranchShelf color={RED} horizontal='4.5%' top='48.5%'></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='61.5%'></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='35%' flipped={true}></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='48.5%' flipped={true}></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='61.5%' flipped={true}></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='75%' flipped={true}></BranchShelf>
+                    <Branch color={RED}></Branch>
+
+                    <View style={{width: '64%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
+                      {
+                        this.props.flak.hunter.map(this._insertTree)
+                      }
+                    </View>
                   </View>
 
                   <View style={{...styles.blueSkillTree, ...styles.treeContainer}}>
                     <Text style={styles.treeTitle}>
                       Master
                     </Text>
-                    {
-                      this.props.flak.master.map(this._insertTree)
-                    }
+                    
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='48.5%'></BranchShelf>
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='61.5%'></BranchShelf>
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='35%' flipped={true}></BranchShelf>
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='48.5%' flipped={true}></BranchShelf>
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='61.5%' flipped={true}></BranchShelf>
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='75%' flipped={true}></BranchShelf>
+                    <Branch color={BLUE}></Branch>
+
+                    <View style={{width: '64%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
+                      {
+                        this.props.flak.master.map(this._insertTree)
+                      }
+                    </View>
                   </View>
                 </View>
               }
