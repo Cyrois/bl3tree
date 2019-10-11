@@ -137,7 +137,7 @@ class HomeScreen extends React.Component {
                     <BranchShelf color={GREEN} horizontal='4.5%' top='75%' flipped={true}></BranchShelf>
                     <Branch color={GREEN}></Branch>
 
-                    <View style={{width: '64%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
+                    <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
                         this.props.flak.stalker.map(this._insertTree)
                       }
@@ -529,34 +529,13 @@ const styles = StyleSheet.create({
     textAlign: 'center', 
     fontFamily: TITLE_FONT
   },
-  branch: {
-    position: 'absolute', 
-    top: '10%',
-    height: '96%', 
-    width: '66%', 
-    alignSelf: 'center', 
-    zIndex: 100,
-  },
-  defaultShelf: {
-    height: '10.5%', 
-    width: '18%', 
-    position: 'absolute',
-    zIndex: 200,
-  },
-  flippedShelf: {
-    height: '100%', 
-    width: '100%', 
-    transform:[{scaleX: -1}],
-    zIndex: 200,
-  },
 
   //Skills
   skillContainer: {
-    width: '24%',
+    width: '16%',
     height: 86,
     padding: 2,
-    marginHorizontal: 54,
-    zIndex: 300,
+    marginHorizontal: Platform.OS === 'ios' ? -12 : -18,
   },
 
   //BOTTOM BTNS
