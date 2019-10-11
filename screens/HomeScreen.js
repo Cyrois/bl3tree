@@ -13,10 +13,11 @@ import {
 } from 'react-native';
 
 import SkillButton from '../components/SkillButton.js';
+import BranchShelf from '../components/BranchShelf.js';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators as actions } from '../actions';
-import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, YELLOW_FONT, RED_BG, TITLE_FONT, TEXT_FONT, ELEMENT } from '../data/constants';
+import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, YELLOW_FONT, RED_BG, TITLE_FONT, TEXT_FONT, ELEMENT, GREEN, RED, BLUE } from '../data/constants';
 import { TOGGLE_QUICK_SELECT } from '../types.js';
 
 class HomeScreen extends React.Component {
@@ -126,41 +127,12 @@ class HomeScreen extends React.Component {
                       Stalker
                     </Text>
 
-                    <View style={{...styles.defaultShelf, right: '4.5%', top: '48.5%'}}>
-                      <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
-                          style={{height: '100%', width: '100%'}}>
-                      </ImageBackground>
-                    </View>
-
-                    <View style={{...styles.defaultShelf, right: '4.5%', top: '61.5%'}}>
-                      <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
-                          style={{height: '100%', width: '100%'}}>
-                      </ImageBackground>
-                    </View>
-                      
-                    <View style={{...styles.defaultShelf, left: '4.5%', top: '35%'}}>
-                      <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
-                          style={styles.flippedShelf}>
-                      </ImageBackground>
-                    </View>
-
-                    <View style={{...styles.defaultShelf, left: '4.5%', top: '48.5%'}}>
-                      <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
-                          style={styles.flippedShelf}>
-                      </ImageBackground>
-                    </View>
-
-                    <View style={{...styles.defaultShelf, left: '4.5%', top: '61.5%'}}>
-                      <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
-                          style={styles.flippedShelf}>
-                      </ImageBackground>
-                    </View>
-
-                    <View style={{...styles.defaultShelf, left: '4.5%', top: '75%'}}>
-                      <ImageBackground resizeMode='contain' source={require("../assets/images/backgrounds/branch-shelf-r-green.png")} 
-                          style={styles.flippedShelf}>
-                      </ImageBackground>
-                    </View>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='48.5%'></BranchShelf>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='61.5%'></BranchShelf>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='35%' flipped={true}></BranchShelf>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='48.5%' flipped={true}></BranchShelf>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='61.5%' flipped={true}></BranchShelf>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='75%' flipped={true}></BranchShelf>
 
                     <View style={styles.branch}>
                       <ImageBackground resizeMode='stretch' source={require("../assets/images/backgrounds/branch-bg-green.png")} 
@@ -173,7 +145,6 @@ class HomeScreen extends React.Component {
                         this.props.flak.stalker.map(this._insertTree)
                       }
                     </View>
-                    
                   </View>
 
                   <View style={{...styles.redSkillTree, ...styles.treeContainer}}>
