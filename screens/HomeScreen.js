@@ -157,7 +157,7 @@ class HomeScreen extends React.Component {
                     <BranchShelf color={RED} horizontal='4.5%' top='75%' flipped={true}></BranchShelf>
                     <Branch color={RED}></Branch>
 
-                    <View style={{width: '64%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
+                    <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
                         this.props.flak.hunter.map(this._insertTree)
                       }
@@ -177,7 +177,7 @@ class HomeScreen extends React.Component {
                     <BranchShelf color={BLUE} horizontal='4.5%' top='75%' flipped={true}></BranchShelf>
                     <Branch color={BLUE}></Branch>
 
-                    <View style={{width: '64%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
+                    <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
                         this.props.flak.master.map(this._insertTree)
                       }
@@ -316,7 +316,7 @@ class HomeScreen extends React.Component {
                         { !!(this.props.ranked[this.props.modalSkill.title] && this.props.ranked[this.props.modalSkill.title] > 0) &&
                           <View style={{marginTop: 5}}>
                             <Text style={{...styles.defaultFont, color:YELLOW_FONT}}>{stat.type}:</Text>
-                            <Text style={styles.defaultFont}> {stat.preText}{stat.values[this.props.ranked[this.props.modalSkill.title] ? this.props.ranked[this.props.modalSkill.title] - 1 : 1]}{stat.postText}</Text>
+                            <Text style={styles.defaultFont}> {stat.preText}{stat.values[this.props.ranked[this.props.modalSkill.title] ? this.props.ranked[this.props.modalSkill.title] - 1 : 0]}{stat.postText}</Text>
                           </View>
                         }
                       </View>
