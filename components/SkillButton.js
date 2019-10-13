@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
       width: "80%",
       height: "70%",
       marginTop: 12,
-      marginLeft: 6,
+      marginLeft: 5.5,
       resizeMode: 'contain',
     },
     pointslotBg: {

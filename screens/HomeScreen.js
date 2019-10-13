@@ -189,60 +189,192 @@ class HomeScreen extends React.Component {
               {
                 this.props.selectedHero === MOZE &&
                 <View>
-                  <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                  <View style={{...styles.redSkillTree, ...styles.treeContainer}}>
+                    <Text style={styles.treeTitle}>
+                      Sheild of Retribution
+                    </Text>
+
+                    <BranchShelf color={RED} horizontal='4.5%' top='35%'></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='48.5%'></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='61.5%'></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='75%'></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='35%' flipped={true}></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='48.5%' flipped={true}></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='61.5%' flipped={true}></BranchShelf>
+                    <Branch color={RED}></Branch>
+
+                    <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
+                      {
+                        this.props.moze.shieldOfRetribution.map(this._insertTree)
+                      }
+                    </View>
                   </View>
 
-                  {
-                    this.props.moze.shieldOfRetribution.map(this._insertTree)
-                  }
+                  <View style={{...styles.greenSkillTree, ...styles.treeContainer}}>
+                    <Text style={styles.treeTitle}>
+                      Bottomless Mags
+                    </Text>
 
-                  {
-                    this.props.moze.bottomlessMags.map(this._insertTree)
-                  }
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='35%'></BranchShelf>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='48.5%'></BranchShelf>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='61.5%'></BranchShelf>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='75%'></BranchShelf>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='35%' flipped={true}></BranchShelf>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='48.5%' flipped={true}></BranchShelf>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='61.5%' flipped={true}></BranchShelf>
+                    <Branch color={GREEN}></Branch>
 
-                  {
-                    this.props.moze.demolitionWoman.map(this._insertTree)
-                  }
+                    <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
+                      {
+                        this.props.moze.bottomlessMags.map(this._insertTree)
+                      }
+                    </View>
+                  </View>
+
+                  <View style={{...styles.blueSkillTree, ...styles.treeContainer}}>
+                    <Text style={styles.treeTitle}>
+                      Demolition Woman
+                    </Text>
+
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='35%'></BranchShelf>
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='48.5%'></BranchShelf>
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='61.5%'></BranchShelf>
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='75%'></BranchShelf>
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='35%' flipped={true}></BranchShelf>
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='48.5%' flipped={true}></BranchShelf>
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='61.5%' flipped={true}></BranchShelf>
+                    <Branch color={BLUE}></Branch>
+
+                    <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
+                      {
+                        this.props.moze.demolitionWoman.map(this._insertTree)
+                      }
+                    </View>
+                  </View>
                 </View>
               }
 
               {
                 this.props.selectedHero === ZANE &&
                 <View>
-                  <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                  <View style={{...styles.redSkillTree, ...styles.treeContainer}}>
+                    <Text style={styles.treeTitle}>
+                      Under Cover
+                    </Text>
+
+                    <BranchShelf color={RED} horizontal='4.5%' top='48.5%'></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='61.5%'></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='35%' flipped={true}></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='48.5%' flipped={true}></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='61.5%' flipped={true}></BranchShelf>
+                    <Branch color={RED}></Branch>
+
+                    <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
+                      {
+                        this.props.zane.underCover.map(this._insertTree)
+                      }
+                    </View>
                   </View>
 
-                  {
-                    this.props.zane.underCover.map(this._insertTree)
-                  }
+                  <View style={{...styles.blueSkillTree, ...styles.treeContainer}}>
+                    <Text style={styles.treeTitle}>
+                      Doubled Agent
+                    </Text>
 
-                  {
-                    this.props.zane.doubledAgent.map(this._insertTree)
-                  }
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='48.5%'></BranchShelf>
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='61.5%'></BranchShelf>
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='35%' flipped={true}></BranchShelf>
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='48.5%' flipped={true}></BranchShelf>
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='61.5%' flipped={true}></BranchShelf>
+                    <Branch color={BLUE}></Branch>
 
-                  {
-                    this.props.zane.hitman.map(this._insertTree)
-                  }
+                    <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
+                      {
+                        this.props.zane.doubledAgent.map(this._insertTree)
+                      }
+                    </View>
+                  </View>
+
+                  <View style={{...styles.greenSkillTree, ...styles.treeContainer}}>
+                    <Text style={styles.treeTitle}>
+                      Hitman
+                    </Text>
+
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='48.5%'></BranchShelf>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='61.5%'></BranchShelf>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='35%' flipped={true}></BranchShelf>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='48.5%' flipped={true}></BranchShelf>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='61.5%' flipped={true}></BranchShelf>
+                    <Branch color={GREEN}></Branch>
+
+                    <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
+                      {
+                        this.props.zane.hitman.map(this._insertTree)
+                      }
+                    </View>
+                  </View>
                 </View>
               }
 
-{
+              {
                 this.props.selectedHero === AMARA &&
                 <View>
-                  <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                  <View style={{...styles.blueSkillTree, ...styles.treeContainer}}>
+                    <Text style={styles.treeTitle}>
+                      Mystical Assault
+                    </Text>
+
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='35%'></BranchShelf>
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='48.5%'></BranchShelf>
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='75%'></BranchShelf>
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='48.5%' flipped={true}></BranchShelf>
+                    <BranchShelf color={BLUE} horizontal='4.5%' top='61.5%' flipped={true}></BranchShelf>
+                    <Branch color={BLUE}></Branch>
+
+                    <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
+                      {
+                        this.props.amara.mysticalAssault.map(this._insertTree)
+                      }
+                    </View>
                   </View>
 
-                  {
-                    this.props.amara.mysticalAssault.map(this._insertTree)
-                  }
+                  <View style={{...styles.redSkillTree, ...styles.treeContainer}}>
+                    <Text style={styles.treeTitle}>
+                      Fist of the Elements
+                    </Text>
 
-                  {
-                    this.props.amara.fistOfTheElements.map(this._insertTree)
-                  }
+                    <BranchShelf color={RED} horizontal='4.5%' top='35%'></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='48.5%'></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='75%'></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='48.5%' flipped={true}></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='61.5%' flipped={true}></BranchShelf>
+                    <Branch color={RED}></Branch>
 
-                  {
-                    this.props.amara.brawl.map(this._insertTree)
-                  }
+                    <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
+                      {
+                        this.props.amara.fistOfTheElements.map(this._insertTree)
+                      }
+                    </View>
+                  </View>
+
+                  <View style={{...styles.greenSkillTree, ...styles.treeContainer}}>
+                    <Text style={styles.treeTitle}>
+                      Brawl
+                    </Text>
+
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='35%'></BranchShelf>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='48.5%'></BranchShelf>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='75%'></BranchShelf>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='48.5%' flipped={true}></BranchShelf>
+                    <BranchShelf color={GREEN} horizontal='4.5%' top='61.5%' flipped={true}></BranchShelf>
+                    <Branch color={GREEN}></Branch>
+
+                    <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
+                      {
+                        this.props.amara.brawl.map(this._insertTree)
+                      }
+                    </View>
+                  </View>
                 </View>
               }
 
