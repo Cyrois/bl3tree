@@ -202,7 +202,10 @@ class SettingsScreen extends React.Component {
                   </TouchableOpacity>
                 }
                 
-                <View style={styles.divider}></View>
+                {
+                  !this._isUserLoggedIn &&
+                  <View style={styles.divider}></View>
+                }
 
                 <TouchableOpacity
                   style={styles.mainButton}
