@@ -26,7 +26,7 @@ class StatsScreen extends React.Component {
       case PASSIVE:
         return require("../assets/images/backgrounds/skill-bg-passive-disabled.png")
       case AUGMENT:
-        return require("../assets/images/backgrounds/skill-bg-augment-disabled.png")
+        return require("../assets/images/backgrounds/skill-bg-augment.png")
       case ACTION:
         return require("../assets/images/backgrounds/skill-bg-action-default.png")
       case PET:
@@ -71,45 +71,53 @@ class StatsScreen extends React.Component {
             </Text>
             {
               this.props.selectedHero === FLAK &&
-              <View>
+              <View style={{height: '10%'}}>
                 <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
                   <View style={styles.skillContainerAction}>
                     <TouchableOpacity onPress={() => this._onSkillPress(this.props.flak.equipped.pet, true, "a pet")}>
                       <ImageBackground source={this._getSkillBackgroundImage(PET)} 
-                          style={styles.skillImageBg}>
+                          style={styles.skillImageBg}
+                          resizeMode='contain'>
                         <Image
                           source={require('../assets/images/skills/adrenaline.png')}
-                          style={styles.skillImage} />
+                          style={styles.skillImage} 
+                          resizeMode='contain'/>
                       </ImageBackground>
                     </TouchableOpacity>
                   </View>
                   <View style={styles.skillContainerAction}>
                     <TouchableOpacity onPress={() => this._onSkillPress(this.props.flak.equipped.action, true, "an action")}>
                       <ImageBackground source={this._getSkillBackgroundImage(ACTION)} 
-                          style={styles.skillImageBg}>
+                          style={styles.skillImageBg}
+                          resizeMode='contain'>
                         <Image
                           source={require('../assets/images/skills/adrenaline.png')}
-                          style={styles.skillImage} />
+                          style={styles.skillImage} 
+                          resizeMode='contain'/>
                       </ImageBackground>
                     </TouchableOpacity>
                   </View>
                   <View style={styles.skillContainerAugment}>
                     <TouchableOpacity onPress={() => this._onSkillPress(this.props.flak.equipped.augment1, true, "an augment")}>
                       <ImageBackground source={this._getSkillBackgroundImage(AUGMENT)} 
-                          style={styles.skillImageBg}>
+                          style={styles.skillImageBg}
+                          resizeMode='contain'>
                         <Image
                           source={require('../assets/images/skills/adrenaline.png')}
-                          style={styles.skillImage} />
+                          style={styles.skillImage} 
+                          resizeMode='contain'/>
                       </ImageBackground>
                     </TouchableOpacity>
                   </View>
                   <View style={styles.skillContainerAugment}>
                     <TouchableOpacity onPress={() => this._onSkillPress(this.props.flak.equipped.augment2, true, "an augment")}>
                       <ImageBackground source={this._getSkillBackgroundImage(AUGMENT)} 
-                          style={styles.skillImageBg}>
+                          style={styles.skillImageBg}
+                          resizeMode='contain'>
                         <Image
                           source={require('../assets/images/skills/adrenaline.png')}
-                          style={styles.skillImage} />
+                          style={styles.skillImage} 
+                          resizeMode='contain'/>
                       </ImageBackground>
                     </TouchableOpacity>
                   </View>
@@ -226,29 +234,29 @@ const styles = StyleSheet.create({
     color:'yellow', 
   },
   skillContainer: {
-    resizeMode: 'contain',
-    marginTop: 5,
-    marginHorizontal: 4,
+    width: '12%',
+    height: 86,
+    padding: 2,
+    marginHorizontal: Platform.OS === 'ios' ? -12 : -18,
   },
-  skillContainerAugment: { //TODO Might need platform specific styling
+  skillContainerAugment: {
     width: '20%',
-    height: 82,
+    height: 76,
+    paddingTop: 4,
   },
   skillContainerAction: {
     width: '20%',
-    height: 88,
+    height: 76,
   },
   skillImageBg: {
-    margin: 2,
-    width: "90%",
-    height: "90%",
-    resizeMode: 'contain',
+    width: "100%",
+    height: "100%",
   },
   skillImage: {
     width: "80%",
-    height: "65%",
-    marginTop: 7,
-    marginLeft: 3,
+    height: "70%",
+    marginTop: 12,
+    marginLeft: 7,
     resizeMode: 'contain',
   },
   selectedSkillsContainer: {

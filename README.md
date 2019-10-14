@@ -12,6 +12,8 @@ https://medium.com/@TarikHajji/add-admob-to-react-native-app-5b1e91be459
 https://stackoverflow.com/questions/35935060/how-can-i-generate-an-apk-that-can-run-without-server-with-react-native
 
 TODO:
+- Stats page needs to use skill image
+- Get the correct background image for action and augments
 - Fix Skill Trees
 - Make sure styling is okay on Apple
 - Integrate Admobs
