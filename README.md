@@ -21,4 +21,3 @@ TODO:
 
 Nice to Have:
 - Link up with third party applications to share builds
-- Convert modal to full page or use touchableOpacity

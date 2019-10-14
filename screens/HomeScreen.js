@@ -408,7 +408,7 @@ class HomeScreen extends React.Component {
             onRequestClose={() => {
               this._setModal(false, "");
             }}>
-            <View style={styles.outerModal}>
+            <TouchableOpacity style={styles.outerModal} onPress={() => {this._setModal(false, "")}}>
               <View style={styles.innerModal}>
                 <Text style={styles.modalSkillTitle}>{this.props.modalSkill.title}</Text>
 
@@ -603,7 +603,7 @@ class HomeScreen extends React.Component {
                   </TouchableOpacity>
                 </View>
               </View>
-            </View>
+            </TouchableOpacity>
           </Modal>
         </View>
       </View>
