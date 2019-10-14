@@ -14,7 +14,6 @@ https://stackoverflow.com/questions/35935060/how-can-i-generate-an-apk-that-can-
 TODO:
 - Fix Skill Trees
 - Make sure styling is okay on Apple
-- Login Feature
 - Integrate Admobs
 - Figure out how to make a paid version - no ads on paid version
 - Deploy to Google Play Store
