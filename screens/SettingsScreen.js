@@ -26,7 +26,9 @@ class SettingsScreen extends React.Component {
     this.buildNameTextInput = React.createRef();
     this.buildsStore = firebase.firestore().collection('builds');
     
-    if(this._isUserLoggedIn) {
+    let googleUser = firebase.auth().currentUser;
+    if(googleUser) {
+      this.props.setAccountEmail(googleUser.email);
       this._loadBuilds()
     }
   }
@@ -67,25 +69,34 @@ class SettingsScreen extends React.Component {
     firebase
       .auth()
       .createUserWithEmailAndPassword(this.props.email, this.props.password)
-      .then(() => console.log("User signed up"))
-      .catch(error => console.log("Unable to sign up user"))
+      .then(() => {
+        this.props.setCreateAccountModal(false)
+        this.props.setCreateError('')
+      })
+      .catch(error => {
+        this.props.setCreateError(error.message)
+      })
   }
 
-  _handleLogin = () => {
+  _handleSignIn = () => {
     firebase
       .auth()
       .signInWithEmailAndPassword(this.props.email, this.props.password)
-      .then(() => console.log("User signed in"))
-      .catch(error => console.log("Unable to sign up user"))
+      .then(() => {
+        this.props.setLoginModal(false)
+        this.props.setCreateError('')
+      })
+      .catch(error => {
+        if(error.code === "auth/unknown") {
+          this.props.setLoginError("We detected something unusual, please try again later.")
+        } else {
+          this.props.setLoginError(error.message)
+        }
+      })
   }
 
   _isUserLoggedIn = () => {
-    let googleUser = firebase.auth().currentUser;
-    if(googleUser) {
-      this.props.setAccountEmail(googleUser.email);
-      return !!firebase.auth().currentUser;
-    }
-    return false
+    return !!firebase.auth().currentUser;
   }
 
   _selectHero(hero) {
@@ -180,6 +191,16 @@ class SettingsScreen extends React.Component {
                     <Text style={styles.mainButtonText}> Create Account </Text>
                   </TouchableOpacity>
                 }
+
+                {
+                  !this._isUserLoggedIn &&
+                  <TouchableOpacity
+                    style={styles.mainButton}
+                    onPress={() => this.props.setLoginModal(true)}
+                  >
+                    <Text style={styles.mainButtonText}> Log In </Text>
+                  </TouchableOpacity>
+                }
                 
                 <View style={styles.divider}></View>
 
@@ -267,6 +288,7 @@ class SettingsScreen extends React.Component {
                     onChangeText={email => this.props.setAccountEmail(email)}
                     value={this.props.email}
                   />
+
                   <TextInput
                     secureTextEntry
                     placeholder="Password"
@@ -275,6 +297,11 @@ class SettingsScreen extends React.Component {
                     onChangeText={password => this.props.setAccountPassword(password)}
                     value={this.props.password}
                   />
+
+                  {
+                    !!this.props.createAccountError &&
+                    <Text>{this.props.createAccountError}</Text>
+                  }
                   <TouchableOpacity
                     style={styles.modalBtns}
                     onPress={this._handleSignUp}
@@ -301,6 +328,61 @@ class SettingsScreen extends React.Component {
           </Modal>
         </View>
 
+        <View>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={this.props.loginModalVisible}
+            onRequestClose={() => this.props.setLoginModal(false)}>
+            <View style={styles.outerModal}>
+              <View style={styles.innerModal}>
+                <Text style={styles.modalHeader}>Login</Text>
+                  <TextInput
+                    placeholder="Email"
+                    autoCapitalize="none"
+                    style={styles.textInput}
+                    onChangeText={email => this.props.setAccountEmail(email)}
+                    value={this.props.email}
+                  />
+                  <TextInput
+                    secureTextEntry
+                    placeholder="Password"
+                    autoCapitalize="none"
+                    style={styles.textInput}
+                    onChangeText={password => this.props.setAccountPassword(password)}
+                    value={this.props.password}
+                  />
+
+                  {
+                    !!this.props.loginAccountError &&
+                    <Text>{this.props.loginAccountError}</Text>
+                  }
+                  <TouchableOpacity
+                    style={styles.modalBtns}
+                    onPress={this._handleSignIn}
+                  >
+                    <Text style={styles.modalBtnText}> Sign In </Text>
+                  </TouchableOpacity>
+                  
+                  <View style={{marginTop: 20}}>
+                    <Text style={{fontFamily: TEXT_FONT}}> Don't have an account? <Text onPress={() => {
+                      this.props.setCreateAccountModal(true)
+                      this.props.setLoginModal(false)
+                      }} style={{color: RED_BG, fontFamily: TEXT_FONT}}> Sign Up </Text>
+                    </Text>
+                  </View>
+
+                  <TouchableOpacity
+                    style={styles.modalBtns}
+                    onPress={() => this.props.setLoginModal(false)}
+                  >
+                    <Text style={styles.modalBtnText}> Cancel </Text>
+                  </TouchableOpacity>
+                </View>
+            </View>
+          </Modal>
+        </View>
+        
         <View>
           <Modal
             animationType="slide"
@@ -617,6 +699,9 @@ mapStateToProps = state => {
 mapDispatchToProps = dispatch => {
   return {
     setCreateAccountModal: bindActionCreators(actions.setCreateAccountModal, dispatch),
+    setCreateError: bindActionCreators(actions.setCreateError, dispatch),
+    setLoginModal: bindActionCreators(actions.setLoginModal, dispatch),
+    setLoginError: bindActionCreators(actions.setLoginError, dispatch),
     setAccountEmail: bindActionCreators(actions.setAccountEmail, dispatch),
     setAccountPassword: bindActionCreators(actions.setAccountPassword, dispatch),
     setCurrentBuildName: bindActionCreators(actions.setCurrentBuildName, dispatch),

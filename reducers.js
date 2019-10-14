@@ -25,7 +25,10 @@ import {
   LOAD_BUILD_CODE,
   SET_BUILD_CODE,
   LOAD_BUILD,
-  SET_CONFIRM_DELETE
+  SET_CONFIRM_DELETE,
+  SET_LOGIN_MODAL,
+  SET_LOGIN_ERROR,
+  SET_CREATE_ERROR
 } from './types.js';
 import {
   PASSIVE,
@@ -94,6 +97,9 @@ const intialState = {
   zane: zaneSkills,
   amara: amaraSkills,
   createAccountModalVisible: false,
+  createAccountError: '',
+  loginModalVisible: false,
+  loginAccountError: '',
   email: '',
   password: '',
   buildName: '',
@@ -288,6 +294,27 @@ const setCreateAccountModal = (state, modalVisible) => {
   }
 }
 
+const setCreateError = (state, error) => {
+  return {
+    ...state,
+    createAccountError: error
+  }
+}
+
+const setLoginModal = (state, modalVisible) => {
+  return {
+    ...state,
+    loginModalVisible: modalVisible
+  }
+}
+
+const setLoginError = (state, error) => {
+  return {
+    ...state,
+    loginAccountError: error
+  }
+}
+
 const setAccountEmail = (state, email) => {
   return {
     ...state,
@@ -422,6 +449,12 @@ const reducer = (state = intialState, action) => {
       return setCharacterSkill(state, action.data)
     case SET_CREATE_ACCOUNT_MODAL:
       return setCreateAccountModal(state, action.data)
+    case SET_CREATE_ERROR:
+      return setCreateError(state, action.data)
+    case SET_LOGIN_MODAL:
+      return setLoginModal(state, action.data)
+    case SET_LOGIN_ERROR:
+      return setLoginError(state, action.data)
     case SET_ACCOUNT_EMAIL:
       return setAccountEmail(state, action.data)
     case SET_ACCOUNT_PASSWORD:
