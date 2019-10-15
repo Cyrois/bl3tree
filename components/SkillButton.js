@@ -20,7 +20,7 @@ class SkillButton extends React.Component {
           case PASSIVE:
             return require("../assets/images/backgrounds/skill-bg-passive-disabled.png")
           case AUGMENT:
-            return require("../assets/images/backgrounds/skill-bg-augment-disabled.png")
+            return require("../assets/images/backgrounds/skill-bg-augment.png")
           case ACTION:
             return require("../assets/images/backgrounds/skill-bg-action-default.png")
           case PET:
