@@ -6,15 +6,8 @@ import {
     GREEN,
     RED,
     BLUE,
+    newStat
 } from './constants';
-const newStat = (type, values, preText, postText) => {
-    return {
-        type,
-        values,
-        preText,
-        postText
-    }
-}
 
 export default {
     equipped: {

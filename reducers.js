@@ -110,7 +110,7 @@ const intialState = {
   loadBuildCodeModalVisible: false,
   confirmLoadModalVisible: false,
   confirmDeleteModalVisible: false,
-  selectedHero: FLAK,
+  selectedHero: MOZE,
   quickSelectEnabled: false,
   toggleActions: true,
   toggleBuilds: true,

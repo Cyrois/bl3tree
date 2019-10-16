@@ -26,6 +26,16 @@ const TEXT_FONT = "Montserrat"
 const YELLOW_FONT = "rgb(255,232,9)"
 const RED_BG = "rgb(135, 33, 14)"
 
+//functions
+const newStat = (type, values, preText, postText) => {
+    return {
+        type,
+        values,
+        preText,
+        postText
+    }
+}
+
 export { 
     PASSIVE,
     AUGMENT,
@@ -47,5 +57,7 @@ export {
     TITLE_FONT,
     TEXT_FONT,
     YELLOW_FONT,
-    RED_BG
+    RED_BG,
+
+    newStat
 };
