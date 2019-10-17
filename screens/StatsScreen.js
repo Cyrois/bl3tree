@@ -56,7 +56,7 @@ class StatsScreen extends React.Component {
         equippedSkills[key] = null
       }
     }
-    this.props.removeSkill("flak", equippedSkills)
+    this.props.removeSkill(this.props.selectedHero, equippedSkills)
     this._setModal(false, "")
   }
 
@@ -89,14 +89,14 @@ class StatsScreen extends React.Component {
                     </TouchableOpacity>
                   </View>
                   <View style={styles.skillContainerAction}>
-                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.flak.equipped.action, true, "an action")}>
+                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.flak.equipped.action1, true, "an action")}>
                       <ImageBackground source={this._getSkillBackgroundImage(ACTION)} 
                           style={styles.skillImageBg}
                           resizeMode='contain'>
                         {
-                          this.props.flak.equipped.action &&
+                          this.props.flak.equipped.action1 &&
                           <Image
-                            source={this.props.flak.equipped.action.image}
+                            source={this.props.flak.equipped.action1.image}
                             style={styles.skillImage} 
                             resizeMode='contain'/>
                         }
@@ -206,6 +206,177 @@ class StatsScreen extends React.Component {
                           this.props.moze.equipped.augment2 &&
                           <Image
                             source={this.props.moze.equipped.augment2.image}
+                            style={styles.skillImage} 
+                            resizeMode='contain'/>
+                        }
+                      </ImageBackground>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+            }
+
+            {
+              this.props.selectedHero === ZANE &&
+              <View style={{height: '22%'}}>
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                  <View style={styles.skillContainerAction}>
+                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.zane.equipped.action1, true, "an action")}>
+                      <ImageBackground source={this._getSkillBackgroundImage(ACTION)} 
+                          style={styles.skillImageBg}
+                          resizeMode='contain'>
+                        {
+                          this.props.zane.equipped.action1 &&
+                          <Image
+                            source={this.props.zane.equipped.action1.image}
+                            style={styles.skillImage} 
+                            resizeMode='contain'/>
+                        }
+                      </ImageBackground>
+                    </TouchableOpacity>
+                  </View>
+                  <View style={styles.skillContainerAugment}>
+                  </View>
+                  <View style={styles.skillContainerAction}>
+                  </View>
+                  <View style={styles.skillContainerAugment}>
+                  <TouchableOpacity onPress={() => this._onSkillPress(this.props.zane.equipped.action2, true, "an action")}>
+                      <ImageBackground source={this._getSkillBackgroundImage(ACTION)} 
+                          style={styles.skillImageBg}
+                          resizeMode='contain'>
+                        {
+                          this.props.zane.equipped.action2 &&
+                          <Image
+                            source={this.props.zane.equipped.action2.image}
+                            style={styles.skillImage} 
+                            resizeMode='contain'/>
+                        }
+                      </ImageBackground>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                  <View style={styles.skillContainerAugment}>
+                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.zane.equipped.augment1, true, "an augment")}>
+                      <ImageBackground source={this._getSkillBackgroundImage(AUGMENT)} 
+                          style={styles.skillImageBg}
+                          resizeMode='contain'>
+                        {
+                          this.props.zane.equipped.augment1 &&
+                          <Image
+                            source={this.props.zane.equipped.augment1.image}
+                            style={styles.skillImage} 
+                            resizeMode='contain'/>
+                        }
+                      </ImageBackground>
+                    </TouchableOpacity>
+                  </View>
+                  <View style={styles.skillContainerAction}>
+                  </View>
+                  <View style={styles.skillContainerAction}>
+                  </View>
+                  <View style={styles.skillContainerAugment}>
+                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.zane.equipped.augment2, true, "an augment")}>
+                      <ImageBackground source={this._getSkillBackgroundImage(AUGMENT)} 
+                          style={styles.skillImageBg}
+                          resizeMode='contain'>
+                        {
+                          this.props.zane.equipped.augment2 &&
+                          <Image
+                            source={this.props.zane.equipped.augment2.image}
+                            style={styles.skillImage} 
+                            resizeMode='contain'/>
+                        }
+                      </ImageBackground>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                  <View style={styles.skillContainerAugment}>
+                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.zane.equipped.augment3, true, "an augment")}>
+                      <ImageBackground source={this._getSkillBackgroundImage(AUGMENT)} 
+                          style={styles.skillImageBg}
+                          resizeMode='contain'>
+                        {
+                          this.props.zane.equipped.augment3 &&
+                          <Image
+                            source={this.props.zane.equipped.augment3.image}
+                            style={styles.skillImage} 
+                            resizeMode='contain'/>
+                        }
+                      </ImageBackground>
+                    </TouchableOpacity>
+                  </View>
+                  <View style={styles.skillContainerAction}>
+                  </View>
+                  <View style={styles.skillContainerAction}>
+                  </View>
+                  <View style={styles.skillContainerAugment}>
+                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.zane.equipped.augment4, true, "an augment")}>
+                      <ImageBackground source={this._getSkillBackgroundImage(AUGMENT)} 
+                          style={styles.skillImageBg}
+                          resizeMode='contain'>
+                        {
+                          this.props.zane.equipped.augment4 &&
+                          <Image
+                            source={this.props.zane.equipped.augment4.image}
+                            style={styles.skillImage} 
+                            resizeMode='contain'/>
+                        }
+                      </ImageBackground>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+            }
+
+            {
+              this.props.selectedHero === AMARA &&
+              <View style={{height: '10%'}}>
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                  <View style={styles.skillContainerAction}>
+                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.amara.equipped.action1, true, "an action")}>
+                      <ImageBackground source={this._getSkillBackgroundImage(ACTION)} 
+                          style={styles.skillImageBg}
+                          resizeMode='contain'>
+                        {
+                          this.props.amara.equipped.action1 &&
+                          <Image
+                            source={this.props.amara.equipped.action1.image}
+                            style={styles.skillImage} 
+                            resizeMode='contain'/>
+                        }
+                      </ImageBackground>
+                    </TouchableOpacity>
+                  </View>
+
+                  <View style={styles.skillContainerAugment}>
+                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.amara.equipped.augment1, true, "an augment")}>
+                      <ImageBackground source={this._getSkillBackgroundImage(AUGMENT)} 
+                          style={styles.skillImageBg}
+                          resizeMode='contain'>
+                        {
+                          this.props.amara.equipped.augment1 &&
+                          <Image
+                            source={this.props.amara.equipped.augment1.image}
+                            style={styles.skillImage} 
+                            resizeMode='contain'/>
+                        }
+                      </ImageBackground>
+                    </TouchableOpacity>
+                  </View>
+
+                  <View style={styles.skillContainerAction}>
+                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.amara.equipped.element1, true, "an action element")}>
+                      <ImageBackground source={this._getSkillBackgroundImage(PET)} 
+                          style={styles.skillImageBg}
+                          resizeMode='contain'>
+                        {
+                          this.props.amara.equipped.element1 &&
+                          <Image
+                            source={this.props.amara.equipped.element1.image}
                             style={styles.skillImage} 
                             resizeMode='contain'/>
                         }

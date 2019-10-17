@@ -5,7 +5,7 @@ export default {
     equipped: {
         action1: null,
         augment1: null,
-        action2: null,
+        element1: null,
     },
     mysticalAssault: [
         [{

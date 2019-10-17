@@ -574,6 +574,7 @@ class HomeScreen extends React.Component {
                     this.props.modalSkill.type === ACTION && 
                     this._isAbleToUseSkill(this.props.modalSkill) && 
                     !this._isEquippedSkill(this.props.modalSkill) &&
+                    (this.props.selectHero === MOZE || this.props.selectHero === ZANE) && 
                     <TouchableOpacity
                       style={styles.skillModalButtons}
                       onPress={() => {
@@ -586,7 +587,10 @@ class HomeScreen extends React.Component {
                   }
 
                   {
-                    this.props.modalSkill.type === AUGMENT && this._isAbleToUseSkill(this.props.modalSkill) && !this._isEquippedSkill(this.props.modalSkill) &&
+                    this.props.modalSkill.type === AUGMENT && 
+                    this._isAbleToUseSkill(this.props.modalSkill) && 
+                    !this._isEquippedSkill(this.props.modalSkill) &&
+                    (this.props.selectHero !== ZANE) && 
                     <TouchableOpacity
                       style={styles.skillModalButtons}
                       onPress={() => {
@@ -599,7 +603,11 @@ class HomeScreen extends React.Component {
                   }
 
                   {
-                    this.props.modalSkill.type === AUGMENT && this._isAbleToUseSkill(this.props.modalSkill) && !this._isEquippedSkill(this.props.modalSkill) &&
+                    this.props.modalSkill.type === AUGMENT && 
+                    this._isAbleToUseSkill(this.props.modalSkill) && 
+                    !this._isEquippedSkill(this.props.modalSkill) &&
+                    (this.props.selectHero !== AMARA) && 
+                    (this.props.selectHero !== ZANE) &&  
                     <TouchableOpacity
                       style={styles.skillModalButtons}
                       onPress={() => {

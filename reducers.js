@@ -112,7 +112,7 @@ const intialState = {
   loadBuildCodeModalVisible: false,
   confirmLoadModalVisible: false,
   confirmDeleteModalVisible: false,
-  selectedHero: MOZE,
+  selectedHero: AMARA,
   quickSelectEnabled: false,
   toggleActions: true,
   toggleBuilds: true,
