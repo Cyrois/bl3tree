@@ -136,6 +136,85 @@ class StatsScreen extends React.Component {
                 </View>
               </View>
             }
+
+            {
+              this.props.selectedHero === MOZE &&
+              <View style={{height: '16%'}}>
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                  <View style={styles.skillContainerAction}>
+                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.action1, true, "an action")}>
+                      <ImageBackground source={this._getSkillBackgroundImage(ACTION)} 
+                          style={styles.skillImageBg}
+                          resizeMode='contain'>
+                        {
+                          this.props.moze.equipped.action1 &&
+                          <Image
+                            source={this.props.moze.equipped.action1.image}
+                            style={styles.skillImage} 
+                            resizeMode='contain'/>
+                        }
+                      </ImageBackground>
+                    </TouchableOpacity>
+                  </View>
+                  <View style={styles.skillContainerAugment}>
+                  </View>
+                  <View style={styles.skillContainerAction}>
+                  </View>
+                  <View style={styles.skillContainerAugment}>
+                  <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.action2, true, "an action")}>
+                      <ImageBackground source={this._getSkillBackgroundImage(ACTION)} 
+                          style={styles.skillImageBg}
+                          resizeMode='contain'>
+                        {
+                          this.props.moze.equipped.action2 &&
+                          <Image
+                            source={this.props.moze.equipped.action2.image}
+                            style={styles.skillImage} 
+                            resizeMode='contain'/>
+                        }
+                      </ImageBackground>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                  <View style={styles.skillContainerAugment}>
+                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.augment1, true, "an augment")}>
+                      <ImageBackground source={this._getSkillBackgroundImage(AUGMENT)} 
+                          style={styles.skillImageBg}
+                          resizeMode='contain'>
+                        {
+                          this.props.moze.equipped.augment1 &&
+                          <Image
+                            source={this.props.moze.equipped.augment1.image}
+                            style={styles.skillImage} 
+                            resizeMode='contain'/>
+                        }
+                      </ImageBackground>
+                    </TouchableOpacity>
+                  </View>
+                  <View style={styles.skillContainerAction}>
+                  </View>
+                  <View style={styles.skillContainerAction}>
+                  </View>
+                  <View style={styles.skillContainerAugment}>
+                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.augment2, true, "an augment")}>
+                      <ImageBackground source={this._getSkillBackgroundImage(AUGMENT)} 
+                          style={styles.skillImageBg}
+                          resizeMode='contain'>
+                        {
+                          this.props.moze.equipped.augment2 &&
+                          <Image
+                            source={this.props.moze.equipped.augment2.image}
+                            style={styles.skillImage} 
+                            resizeMode='contain'/>
+                        }
+                      </ImageBackground>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+            }
           </View>
 
           <View style={styles.statsSummaryContainer}>

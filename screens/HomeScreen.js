@@ -84,7 +84,7 @@ class HomeScreen extends React.Component {
         equippedSkills[key] = null
       }
     }
-    this.props.removeSkill("flak", equippedSkills)
+    this.props.removeSkill(this.props.selectedHero, equippedSkills)
     this._setModal(false, "")
   }
 
@@ -562,11 +562,26 @@ class HomeScreen extends React.Component {
                     <TouchableOpacity
                       style={styles.skillModalButtons}
                       onPress={() => {
-                        this.props.setCharacterSkill(this.props.selectedHero, ACTION, "", this.props.modalSkill)
+                        this.props.setCharacterSkill(this.props.selectedHero, ACTION, "1", this.props.modalSkill)
                         this._setModal(false, "")
                       }}
                     >
-                      <Text> Equip </Text>
+                      <Text> Equip Slot 1 </Text>
+                    </TouchableOpacity>
+                  }
+
+                  {
+                    this.props.modalSkill.type === ACTION && 
+                    this._isAbleToUseSkill(this.props.modalSkill) && 
+                    !this._isEquippedSkill(this.props.modalSkill) &&
+                    <TouchableOpacity
+                      style={styles.skillModalButtons}
+                      onPress={() => {
+                        this.props.setCharacterSkill(this.props.selectedHero, ACTION, "2", this.props.modalSkill)
+                        this._setModal(false, "")
+                      }}
+                    >
+                      <Text> Equip Slot 2 </Text>
                     </TouchableOpacity>
                   }
 

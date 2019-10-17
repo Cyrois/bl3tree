@@ -16,7 +16,7 @@ const MASTER = 'master'
 export default {
     equipped: {
         pet: null,
-        action: null,
+        action1: null,
         augment1: null,
         augment2: null,
     },
