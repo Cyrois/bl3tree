@@ -78,10 +78,13 @@ class StatsScreen extends React.Component {
                       <ImageBackground source={this._getSkillBackgroundImage(PET)} 
                           style={styles.skillImageBg}
                           resizeMode='contain'>
-                        <Image
-                          source={require('../assets/images/skills/adrenaline.png')}
-                          style={styles.skillImage} 
-                          resizeMode='contain'/>
+                        {
+                          this.props.flak.equipped.pet &&
+                          <Image
+                            source={this.props.flak.equipped.pet.image}
+                            style={styles.skillImage} 
+                            resizeMode='contain'/>
+                        }
                       </ImageBackground>
                     </TouchableOpacity>
                   </View>
@@ -90,10 +93,13 @@ class StatsScreen extends React.Component {
                       <ImageBackground source={this._getSkillBackgroundImage(ACTION)} 
                           style={styles.skillImageBg}
                           resizeMode='contain'>
-                        <Image
-                          source={require('../assets/images/skills/adrenaline.png')}
-                          style={styles.skillImage} 
-                          resizeMode='contain'/>
+                        {
+                          this.props.flak.equipped.action &&
+                          <Image
+                            source={this.props.flak.equipped.action.image}
+                            style={styles.skillImage} 
+                            resizeMode='contain'/>
+                        }
                       </ImageBackground>
                     </TouchableOpacity>
                   </View>
@@ -102,10 +108,13 @@ class StatsScreen extends React.Component {
                       <ImageBackground source={this._getSkillBackgroundImage(AUGMENT)} 
                           style={styles.skillImageBg}
                           resizeMode='contain'>
-                        <Image
-                          source={require('../assets/images/skills/adrenaline.png')}
-                          style={styles.skillImage} 
-                          resizeMode='contain'/>
+                        {
+                          this.props.flak.equipped.augment1 &&
+                          <Image
+                            source={this.props.flak.equipped.augment1.image}
+                            style={styles.skillImage} 
+                            resizeMode='contain'/>
+                        }
                       </ImageBackground>
                     </TouchableOpacity>
                   </View>
@@ -114,10 +123,13 @@ class StatsScreen extends React.Component {
                       <ImageBackground source={this._getSkillBackgroundImage(AUGMENT)} 
                           style={styles.skillImageBg}
                           resizeMode='contain'>
-                        <Image
-                          source={require('../assets/images/skills/adrenaline.png')}
-                          style={styles.skillImage} 
-                          resizeMode='contain'/>
+                        {
+                          this.props.flak.equipped.augment2 &&
+                          <Image
+                            source={this.props.flak.equipped.augment2.image}
+                            style={styles.skillImage} 
+                            resizeMode='contain'/>
+                        }
                       </ImageBackground>
                     </TouchableOpacity>
                   </View>

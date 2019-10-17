@@ -112,7 +112,7 @@ const intialState = {
   loadBuildCodeModalVisible: false,
   confirmLoadModalVisible: false,
   confirmDeleteModalVisible: false,
-  selectedHero: MOZE,
+  selectedHero: FLAK,
   quickSelectEnabled: false,
   toggleActions: true,
   toggleBuilds: true,
@@ -359,7 +359,7 @@ const loadBuild = (state, buildToLoad) => {
     ...reset(state)
   }
   let selectedHero = buildToLoad.build.hero
-  
+
   newState.selectedHero = selectedHero
   newState[selectedHero].equipped = buildToLoad.build.skills
   return newState

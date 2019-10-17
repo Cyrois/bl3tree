@@ -107,19 +107,21 @@ class SettingsScreen extends React.Component {
   }
 
   _saveBuild() {
-    let build = {
-      hero: this.props.selectedHero,
-      skills: this.props[this.props.selectedHero].equipped,
-      ranked: this.props.ranked
+    if(this._isUserLoggedIn) {
+      let build = {
+        hero: this.props.selectedHero,
+        skills: this.props[this.props.selectedHero].equipped,
+        ranked: this.props.ranked
+      }
+      let document = {
+        user: this.props.userId,
+        name: this.props.buildName,
+        build: build,
+      }
+      this.buildsStore.add(document)
+        .then(() => this._loadBuilds())
+        .catch(error => console.log(error))
     }
-    let document = {
-      user: this.props.userId,
-      name: this.props.buildName,
-      build: build,
-    }
-    this.buildsStore.add(document)
-      .then(() => this._loadBuilds())
-      .catch(error => console.log(error))
   }
 
   _loadBuildCode(id) {
