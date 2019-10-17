@@ -29,6 +29,7 @@ class SettingsScreen extends React.Component {
     let googleUser = firebase.auth().currentUser;
     if(googleUser) {
       this.props.setAccountEmail(googleUser.email);
+      this.props.setAccountId(googleUser.uid);
       this._loadBuilds()
     }
   }
@@ -37,6 +38,7 @@ class SettingsScreen extends React.Component {
     firebase.auth().onAuthStateChanged(user => {
       if(user) {
         this.props.setAccountEmail(user.email)
+        this.props.setAccountId(user.uid);
         this._loadBuilds()
       }
     })
@@ -111,7 +113,7 @@ class SettingsScreen extends React.Component {
       ranked: this.props.ranked
     }
     let document = {
-      user: this.props.email,
+      user: this.props.userId,
       name: this.props.buildName,
       build: build,
     }
@@ -708,6 +710,7 @@ mapDispatchToProps = dispatch => {
     setLoginError: bindActionCreators(actions.setLoginError, dispatch),
     setAccountEmail: bindActionCreators(actions.setAccountEmail, dispatch),
     setAccountPassword: bindActionCreators(actions.setAccountPassword, dispatch),
+    setAccountId: bindActionCreators(actions.setAccountId, dispatch),
     setCurrentBuildName: bindActionCreators(actions.setCurrentBuildName, dispatch),
     loadBuilds: bindActionCreators(actions.loadBuilds, dispatch),
     loadBuild: bindActionCreators(actions.loadBuild, dispatch),

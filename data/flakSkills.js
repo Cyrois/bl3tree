@@ -9,6 +9,10 @@ import {
     newStat
 } from './constants';
 
+const STALKER = 'stalker'
+const HUNTER = 'hunter'
+const MASTER = 'master'
+
 export default {
     equipped: {
         pet: null,
@@ -24,6 +28,7 @@ export default {
                 title: "Jabber Sidekick",
                 row: 0,
                 type: PET,
+                tree: STALKER,
                 description: "Pet is armed with a Pistol, and increases player's Movement Speed by 5%. Can be commanded to throw a Radiation Barrel at enemies.",
                 image: require('../assets/images/skills/flak/BasicJabbermon.png'),
             },
@@ -49,6 +54,7 @@ export default {
                 row: 1,
                 tree: GREEN,
                 type: PASSIVE,
+                tree: STALKER,
                 maxRanks: 5,
                 description: "Maximum Health is increased, and constantly regenerates health.",
                 image: require('../assets/images/skills/flak/SelfRepairingSystem.png'),
@@ -62,6 +68,7 @@ export default {
                 row: 1,
                 tree: GREEN,
                 type: PASSIVE,
+                tree: STALKER,
                 maxRanks: 3,
                 description: "Lowers Attack Command Cooldown and increases Damage.",
                 image: require('../assets/images/skills/flak/SicEm.png'),
@@ -75,6 +82,7 @@ export default {
                 row: 1,
                 tree: GREEN,
                 type: PASSIVE,
+                tree: STALKER,
                 maxRanks: 5,
                 description: "Hunter Skill - Gain stack of Furious Attacks after shooting an enemy, which increases Handling and Gun Damage.",
                 image: require('../assets/images/skills/flak/FuriousAttack.png'),

@@ -88,11 +88,12 @@ class HomeScreen extends React.Component {
     this._setModal(false, "")
   }
 
-  _insertTree = (row, rowIndex) => {
+  _insertTree = (row, rowIndex, color) => {
     return (
       <View key={"row_" + rowIndex} style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
         {
           row.map((skill, colIndex) => {
+            skill.tree = color
             return (
               <View style={styles.skillContainer} key={"col_" + colIndex}>
                 {
@@ -139,7 +140,7 @@ class HomeScreen extends React.Component {
 
                     <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
-                        this.props.flak.stalker.map(this._insertTree)
+                        this.props.flak.stalker.map((row, rowIndex) => this._insertTree(row, rowIndex, GREEN))
                       }
                     </View>
                   </View>
@@ -159,7 +160,7 @@ class HomeScreen extends React.Component {
 
                     <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
-                        this.props.flak.hunter.map(this._insertTree)
+                        this.props.flak.hunter.map((row, rowIndex) => this._insertTree(row, rowIndex, RED))
                       }
                     </View>
                   </View>
@@ -179,7 +180,7 @@ class HomeScreen extends React.Component {
 
                     <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
-                        this.props.flak.master.map(this._insertTree)
+                        this.props.flak.master.map((row, rowIndex) => this._insertTree(row, rowIndex, BLUE))
                       }
                     </View>
                   </View>
@@ -205,7 +206,7 @@ class HomeScreen extends React.Component {
 
                     <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
-                        this.props.moze.shieldOfRetribution.map(this._insertTree)
+                        this.props.moze.shieldOfRetribution.map((row, rowIndex) => this._insertTree(row, rowIndex, RED))
                       }
                     </View>
                   </View>
@@ -226,7 +227,7 @@ class HomeScreen extends React.Component {
 
                     <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
-                        this.props.moze.bottomlessMags.map(this._insertTree)
+                        this.props.moze.bottomlessMags.map((row, rowIndex) => this._insertTree(row, rowIndex, GREEN))
                       }
                     </View>
                   </View>
@@ -247,7 +248,7 @@ class HomeScreen extends React.Component {
 
                     <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
-                        this.props.moze.demolitionWoman.map(this._insertTree)
+                        this.props.moze.demolitionWoman.map((row, rowIndex) => this._insertTree(row, rowIndex, BLUE))
                       }
                     </View>
                   </View>
@@ -271,7 +272,7 @@ class HomeScreen extends React.Component {
 
                     <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
-                        this.props.zane.underCover.map(this._insertTree)
+                        this.props.zane.underCover.map((row, rowIndex) => this._insertTree(row, rowIndex, RED))
                       }
                     </View>
                   </View>
@@ -290,7 +291,7 @@ class HomeScreen extends React.Component {
 
                     <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
-                        this.props.zane.doubledAgent.map(this._insertTree)
+                        this.props.zane.doubledAgent.map((row, rowIndex) => this._insertTree(row, rowIndex, BLUE))
                       }
                     </View>
                   </View>
@@ -309,7 +310,7 @@ class HomeScreen extends React.Component {
 
                     <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
-                        this.props.zane.hitman.map(this._insertTree)
+                        this.props.zane.hitman.map((row, rowIndex) => this._insertTree(row, rowIndex, GREEN))
                       }
                     </View>
                   </View>
@@ -333,7 +334,7 @@ class HomeScreen extends React.Component {
 
                     <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
-                        this.props.amara.mysticalAssault.map(this._insertTree)
+                        this.props.amara.mysticalAssault.map((row, rowIndex) => this._insertTree(row, rowIndex, BLUE))
                       }
                     </View>
                   </View>
@@ -352,7 +353,7 @@ class HomeScreen extends React.Component {
 
                     <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
-                        this.props.amara.fistOfTheElements.map(this._insertTree)
+                        this.props.amara.fistOfTheElements.map((row, rowIndex) => this._insertTree(row, rowIndex, RED))
                       }
                     </View>
                   </View>
@@ -371,7 +372,7 @@ class HomeScreen extends React.Component {
 
                     <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
-                        this.props.amara.brawl.map(this._insertTree)
+                        this.props.amara.brawl.map((row, rowIndex) => this._insertTree(row, rowIndex, GREEN))
                       }
                     </View>
                   </View>

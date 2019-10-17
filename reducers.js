@@ -28,7 +28,8 @@ import {
   SET_CONFIRM_DELETE,
   SET_LOGIN_MODAL,
   SET_LOGIN_ERROR,
-  SET_CREATE_ERROR
+  SET_CREATE_ERROR,
+  SET_ACCOUNT_ID
 } from './types.js';
 import {
   PASSIVE,
@@ -102,6 +103,7 @@ const intialState = {
   loginAccountError: '',
   email: '',
   password: '',
+  userId: '',
   buildName: '',
   buildCode: '',
   builds: [],
@@ -250,12 +252,6 @@ const applyRankSkill = (state, skill, amount, rowIndex) => {
   return newState
 }
 
-const applyAddStat = state => {
-  return {
-    ...state,
-  }
-}
-
 const setModalSkill = (state, modalData, showingEquippedSkill, rowIndex) => {
   return {
     ...state,
@@ -329,6 +325,13 @@ const setAccountPassword = (state, password) => {
   }
 }
 
+const setAccountId = (state, id) => {
+  return {
+    ...state,
+    userId: id
+  }
+}
+
 const setCurrentBuildName = (state, buildName) => {
   return {
     ...state,
@@ -353,11 +356,11 @@ const loadSavedBuild = (state, buildId) => {
 
 const loadBuild = (state, buildToLoad) => {
   const newState = {
-    ...state
+    ...reset(state)
   }
   let selectedHero = buildToLoad.build.hero
+  
   newState.selectedHero = selectedHero
-  newState.ranked = buildToLoad.build.ranked
   newState[selectedHero].equipped = buildToLoad.build.skills
   return newState
 }
@@ -459,6 +462,8 @@ const reducer = (state = intialState, action) => {
       return setAccountEmail(state, action.data)
     case SET_ACCOUNT_PASSWORD:
       return setAccountPassword(state, action.data)
+    case SET_ACCOUNT_ID:
+      return setAccountId(state, action.data)
     case SET_CURRENT_BUILD_NAME:
       return setCurrentBuildName(state, action.data)
     case LOAD_BUILDS:
