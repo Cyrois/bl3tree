@@ -13,7 +13,6 @@ https://stackoverflow.com/questions/35935060/how-can-i-generate-an-apk-that-can-
 
 TODO:
 - Some passive skills have no stats
-- Fix modal display and click issue
 - Style the stats page modal
 - Integrate Admobs
 - Figure out how to make a paid version - no ads on paid version

@@ -416,10 +416,12 @@ class HomeScreen extends React.Component {
 
                 <View style={styles.modalSkillContainer}>
                   <ImageBackground source={this._getSkillBackgroundImage(this.props.modalSkill.type)} 
-                      style={styles.modalSkillImageBg}>
+                      style={styles.modalSkillImageBg}
+                      resizeMode='contain'>
                   <Image
                       source={this.props.modalSkill.image}
-                      style={styles.modalSkillImage} /> 
+                      style={styles.modalSkillImage} 
+                      resizeMode='contain'/> 
                   </ImageBackground>
                 </View>
                 
@@ -721,7 +723,7 @@ const styles = StyleSheet.create({
   // Modal Styles
   outerModal: {
     backgroundColor: 'rgba(80,80,80,0.96)',
-    paddingTop: '20%',
+    paddingTop: '25%',
     paddingBottom: '10%',
     paddingHorizontal: 20,
     height: '100%',
@@ -753,17 +755,15 @@ const styles = StyleSheet.create({
     width: 90,
     height: 100,
     position: 'absolute',
-    top: -50,
+    top: -58,
     right: 20,
   },
   modalSkillImageBg: {
-    margin: 2,
-    resizeMode: 'contain',
   },
   modalSkillImage: {
     width: "90%",
     height: "78%",
-    marginTop: 8,
+    marginTop: 6,
     marginLeft: 4,
     resizeMode: 'contain',
     zIndex: 90000

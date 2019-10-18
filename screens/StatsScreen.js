@@ -18,7 +18,7 @@ import { MonoText } from '../components/StyledText';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators as actions } from '../actions';
-import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, RED_BG, YELLOW_FONT, TITLE_FONT } from '../data/constants';
+import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, RED_BG, YELLOW_FONT, TITLE_FONT, TEXT_FONT } from '../data/constants';
 
 class StatsScreen extends React.Component {
   _getSkillBackgroundImage(skillType) {
@@ -417,9 +417,20 @@ class StatsScreen extends React.Component {
             onRequestClose={() => {
               this._setModal(false, "");
             }}>
-            <View style={styles.outerModal}>
-              <View style={styles.innerModal}>
-                <Text style={{color:'yellow', fontSize: 30, marginBottom: 10}}>{this.props.modalSkill.title}</Text>
+            <TouchableOpacity style={styles.outerModal} onPress={() => {this._setModal(false, "")}}>
+              <TouchableOpacity style={styles.innerModal} onPress={() => {}}>
+                <Text style={styles.modalSkillTitle}>{this.props.modalSkill.title}</Text>
+
+                <View style={styles.modalSkillContainer}>
+                  <ImageBackground source={this._getSkillBackgroundImage(this.props.modalSkill.type)} 
+                      style={styles.modalSkillImageBg}
+                      resizeMode='contain'>
+                  <Image
+                      source={this.props.modalSkill.image}
+                      style={styles.modalSkillImage} 
+                      resizeMode='contain'/> 
+                  </ImageBackground>
+                </View>
                 
                 <Text style={{color:'#fff', marginBottom: 10}}>
                   {
@@ -457,8 +468,8 @@ class StatsScreen extends React.Component {
                 >
                   <Text> Close </Text>
                 </TouchableOpacity>
-              </View>
-            </View>
+              </TouchableOpacity>
+            </TouchableOpacity>
           </Modal>
         </View>
         
@@ -527,6 +538,7 @@ const styles = StyleSheet.create({
   statsSummaryContainer: {
     backgroundColor: 'rgb(3, 59, 135)',
     paddingHorizontal: 20,
+    paddingVertical: 10,
     color: '#fff',
     height: 800
   },
@@ -546,25 +558,59 @@ const styles = StyleSheet.create({
     fontSize: 20, 
     fontFamily: TITLE_FONT,
   },
+  
+  // Modal Styles
   outerModal: {
-    backgroundColor: 'rgba(80,80,80,0.9)',
-    paddingTop: '20%',
+    backgroundColor: 'rgba(80,80,80,0.96)',
+    paddingTop: '25%',
     paddingBottom: '10%',
     paddingHorizontal: 20,
     height: '100%',
   },
   innerModal: {
     backgroundColor: 'rgb(3, 59, 135)',
+    borderRadius: 5,
+    borderWidth: 5,
+    borderColor: YELLOW_FONT,
     padding: 30,
     width: '100%'
   },
   skillModalButtons: {
     marginVertical: 10,
     alignItems: 'center',
-    backgroundColor: '#b0ad00',
+    backgroundColor: YELLOW_FONT,
     color: '#fff',
     padding: 10
-  }
+  },
+  skillModalBtnText: {
+  },
+  modalSkillTitle: {
+    color: YELLOW_FONT, 
+    fontSize: 30, 
+    marginBottom: 10, 
+    fontFamily: "YoungPatriotSemi-Bold"
+  },
+  modalSkillContainer: {
+    width: 90,
+    height: 100,
+    position: 'absolute',
+    top: -58,
+    right: 20,
+  },
+  modalSkillImageBg: {
+  },
+  modalSkillImage: {
+    width: "90%",
+    height: "78%",
+    marginTop: 6,
+    marginLeft: 4,
+    resizeMode: 'contain',
+    zIndex: 90000
+  },
+  defaultFont: {
+    fontFamily: TEXT_FONT,
+    color: '#fff'
+  },
 });
 
 mapStateToProps = state => {
