@@ -12,8 +12,6 @@ https://medium.com/@TarikHajji/add-admob-to-react-native-app-5b1e91be459
 https://stackoverflow.com/questions/35935060/how-can-i-generate-an-apk-that-can-run-without-server-with-react-native
 
 TODO:
-- Some passive skills have no stats
-- Style the stats page modal
 - Integrate Admobs
 - Figure out how to make a paid version - no ads on paid version
 - Deploy to Google Play Store
