@@ -155,8 +155,6 @@ export default {
                 type: AUGMENT,
                 description: "Pet will taunt for 6 seconds after Fade Away ends, drawing the attention of all enemies in a radius. Pet also gains +80% Damage Reduction after taunting.",
                 image: require('../assets/images/skills/flak/NotMyCircus.png'),
-                stats: [
-                ]
             },
             {
                 hide: true
@@ -169,7 +167,6 @@ export default {
                 maxRanks: 1,
                 description: "When attempting to Fight for Your Life, Pet will attempt to revive player.",
                 image: require('../assets/images/skills/flak/LickTheWounds.png'),
-                stats: []
             },
             {
                 title: "Turn Tail and Run",

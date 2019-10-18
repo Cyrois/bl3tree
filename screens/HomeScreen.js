@@ -20,6 +20,7 @@ import { bindActionCreators } from 'redux';
 import { actionCreators as actions } from '../actions';
 import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, YELLOW_FONT, RED_BG, TITLE_FONT, TEXT_FONT, ELEMENT, GREEN, RED, BLUE } from '../data/constants';
 import { TOGGLE_QUICK_SELECT } from '../types.js';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 class HomeScreen extends React.Component {
   _getSkillBackgroundImage(skillType) {
@@ -410,7 +411,7 @@ class HomeScreen extends React.Component {
               this._setModal(false, "");
             }}>
             <TouchableOpacity style={styles.outerModal} onPress={() => {this._setModal(false, "")}}>
-              <View style={styles.innerModal} onPress={() => {}}>
+              <TouchableOpacity style={styles.innerModal} onPress={() => {}}>
                 <Text style={styles.modalSkillTitle}>{this.props.modalSkill.title}</Text>
 
                 <View style={styles.modalSkillContainer}>
@@ -626,7 +627,7 @@ class HomeScreen extends React.Component {
                     <Text style={{...styles.defaultFont, color: 'black'}}> Close </Text>
                   </TouchableOpacity>
                 </View>
-              </View>
+              </TouchableOpacity>
             </TouchableOpacity>
           </Modal>
         </View>
