@@ -410,7 +410,7 @@ class HomeScreen extends React.Component {
               this._setModal(false, "");
             }}>
             <TouchableOpacity style={styles.outerModal} onPress={() => {this._setModal(false, "")}}>
-              <View style={styles.innerModal}>
+              <View style={styles.innerModal} onPress={() => {}}>
                 <Text style={styles.modalSkillTitle}>{this.props.modalSkill.title}</Text>
 
                 <View style={styles.modalSkillContainer}>

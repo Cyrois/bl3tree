@@ -112,7 +112,7 @@ const intialState = {
   loadBuildCodeModalVisible: false,
   confirmLoadModalVisible: false,
   confirmDeleteModalVisible: false,
-  selectedHero: AMARA,
+  selectedHero: FLAK,
   quickSelectEnabled: false,
   toggleActions: true,
   toggleBuilds: true,
@@ -224,8 +224,8 @@ const applyRankSkill = (state, skill, amount, rowIndex) => {
   }
 
   if (canPerformChange) {
-    // console.log("performing rank change...")
     let newAmount = newState.ranked[skill.title] ? newState.ranked[skill.title] : 0
+    let oldAmount = newAmount
 
     //Calculate the ranked skill
     newAmount += amount
@@ -237,18 +237,24 @@ const applyRankSkill = (state, skill, amount, rowIndex) => {
     newState.ranked[skill.title] = newAmount
 
     //Calculate points
-    newState.pointsLeft = newState.pointsLeft - amount
-    let pointsSpent = newState.pointsSpent[skill.tree][`row${rowIndex}`]
-    newState.pointsSpent[skill.tree][`row${rowIndex}`] = pointsSpent + amount
+    newState.pointsLeft = newState.pointsLeft + oldAmount - newAmount
+    let pointsSpentOnTree = newState.pointsSpent[skill.tree][`row${rowIndex}`]
+    newState.pointsSpent[skill.tree][`row${rowIndex}`] = pointsSpentOnTree + newAmount - oldAmount
 
     //Calculate the skill stats
     for (const stat of skill.stats) {
-      let newStatCount = newState.stats[stat.type] ? newState.stats[stat.type] : 0
-      newState.stats[stat.type] = newStatCount + (stat.value * amount)
+      let statSum = newState.stats[stat.type] ? newState.stats[stat.type] : 0
+      if(newAmount > 0) {
+        if(oldAmount > 0) {
+          statSum = statSum - stat.values[oldAmount - 1]
+        }
+        statSum = statSum + stat.values[newAmount - 1]
+      } else { //newAmount is 0
+        statSum = statSum - stat.values[oldAmount - 1]
+      }
+      newState.stats[stat.type] = statSum
     }
   }
-  // console.log(newState.pointsSpent)
-  // console.log(newState.pointsLeft)
   return newState
 }
 
