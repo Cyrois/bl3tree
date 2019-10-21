@@ -713,7 +713,9 @@ export default {
                 type: AUGMENT,
                 description: "Player damage is increased during Gamma Burst by 20%.",
                 image: require('../assets/images/skills/flak/EmphaticRage.png'),
-                stats: ["Player Damage", [20], "+", "%"]
+                stats: [
+                    newStat("Player Damage", [20], "+", "%")
+                ]
             },
             {
                 hide: true

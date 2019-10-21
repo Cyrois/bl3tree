@@ -460,12 +460,12 @@ class HomeScreen extends React.Component {
                   })
                 }
 
-                { this.props.modalSkill.type === PASSIVE && 
-                  (!this.props.ranked[this.props.modalSkill.title] || this.props.ranked[this.props.modalSkill.title] < this.props.modalSkill.maxRanks) &&
+                { (!this.props.ranked[this.props.modalSkill.title] || this.props.ranked[this.props.modalSkill.title] < this.props.modalSkill.maxRanks) &&
                   (Array.isArray(this.props.modalSkill.stats) && !!this.props.modalSkill.stats.length) &&
                   <Text style={{...styles.defaultFont, marginVertical: 10}}>Next Rank:</Text>
                 }
-                {this.props.modalSkill.stats && 
+                { this.props.modalSkill.stats && 
+                  (Array.isArray(this.props.modalSkill.stats) && !!this.props.modalSkill.stats.length) &&
                   this.props.modalSkill.stats.map(stat => {
                     return (
                       <View key={stat.type} style={{marginBottom: 5, flexDirection:'row', flexWrap:'wrap'}}>
