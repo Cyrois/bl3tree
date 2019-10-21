@@ -46,7 +46,7 @@ class SettingsScreen extends React.Component {
 
   _loadBuilds() {
     let builds = []
-    this.buildsStore.where("user", "==", this.props.email).get()
+    this.buildsStore.where("user", "==", this.props.userId).get()
     .then(querySnapshot => {
         querySnapshot.forEach(doc => {
             let build = {
