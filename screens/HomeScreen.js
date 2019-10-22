@@ -347,9 +347,9 @@ class HomeScreen extends React.Component {
 
                     <BranchShelf color={RED} horizontal='4.5%' top='35%'></BranchShelf>
                     <BranchShelf color={RED} horizontal='4.5%' top='48.5%'></BranchShelf>
-                    <BranchShelf color={RED} horizontal='4.5%' top='75%'></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='61.5%'></BranchShelf>
                     <BranchShelf color={RED} horizontal='4.5%' top='48.5%' flipped={true}></BranchShelf>
-                    <BranchShelf color={RED} horizontal='4.5%' top='61.5%' flipped={true}></BranchShelf>
+                    <BranchShelf color={RED} horizontal='4.5%' top='75%' flipped={true}></BranchShelf>
                     <Branch color={RED}></Branch>
 
                     <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>

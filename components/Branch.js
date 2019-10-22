@@ -38,7 +38,7 @@ class Branch extends React.Component {
 const styles = StyleSheet.create({
   branch: {
     position: 'absolute', 
-    top: '10%',
+    top: '11%',
     height: '96%', 
     width: '66%', 
     alignSelf: 'center', 
