@@ -27,6 +27,7 @@ class SettingsScreen extends React.Component {
     this.buildsStore = firebase.firestore().collection('builds');
     
     let googleUser = firebase.auth().currentUser;
+    console.log(googleUser)
     if(googleUser) {
       this.props.setAccountEmail(googleUser.email);
       this.props.setAccountId(googleUser.uid);
@@ -68,6 +69,7 @@ class SettingsScreen extends React.Component {
   }
 
   _handleSignUp = () => {
+    console.log("hit sign up")
     firebase
       .auth()
       .createUserWithEmailAndPassword(this.props.email, this.props.password)
@@ -76,6 +78,7 @@ class SettingsScreen extends React.Component {
         this.props.setCreateError('')
       })
       .catch(error => {
+        console.log(error)
         this.props.setCreateError(error.message)
       })
   }
@@ -89,6 +92,7 @@ class SettingsScreen extends React.Component {
         this.props.setCreateError('')
       })
       .catch(error => {
+        console.log(error)
         if(error.code === "auth/unknown") {
           this.props.setLoginError("We detected something unusual, please try again later.")
         } else {
@@ -187,7 +191,7 @@ class SettingsScreen extends React.Component {
             { this.props.toggleActions &&
               <View>
                 {
-                  !this._isUserLoggedIn &&
+                  !this._isUserLoggedIn() &&
                   <TouchableOpacity
                     style={styles.mainButton}
                     onPress={() => this.props.setCreateAccountModal(true)}
@@ -195,9 +199,14 @@ class SettingsScreen extends React.Component {
                     <Text style={styles.mainButtonText}> Create Account </Text>
                   </TouchableOpacity>
                 }
+                
+                {
+                  !this._isUserLoggedIn() &&
+                  <View style={styles.divider}></View>
+                }
 
                 {
-                  !this._isUserLoggedIn &&
+                  !this._isUserLoggedIn() &&
                   <TouchableOpacity
                     style={styles.mainButton}
                     onPress={() => this.props.setLoginModal(true)}
@@ -207,7 +216,7 @@ class SettingsScreen extends React.Component {
                 }
                 
                 {
-                  !this._isUserLoggedIn &&
+                  !this._isUserLoggedIn() &&
                   <View style={styles.divider}></View>
                 }
 

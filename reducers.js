@@ -177,15 +177,12 @@ const applyRemoveSkill = (state, character, equippedSkills) => {
 }
 
 const applyRankSkill = (state, skill, amount, rowIndex) => {
-  //TODO will need to update the reset logic after this
   //Calculate points
   const newState = {
     ...state
   }
   let pointsLeft = newState.pointsLeft
   let canPerformChange = false;
-  // console.log("rowIndex: " + rowIndex)
-  // console.log("amount: " + amount)
   if (pointsLeft > 0 && pointsLeft >= amount) {
     if (amount > 0) {
       if (rowIndex == 1) { //Can always add first row
@@ -208,7 +205,6 @@ const applyRankSkill = (state, skill, amount, rowIndex) => {
           break;
         }
       }
-      // console.log("greatestRowWithPoint: " + greatestRowWithPoint)
       if(greatestRowWithPoint === rowIndex) {
         canPerformChange = true;
       }
@@ -368,6 +364,7 @@ const loadBuild = (state, buildToLoad) => {
 
   newState.selectedHero = selectedHero
   newState[selectedHero].equipped = buildToLoad.build.skills
+  newState.ranked = buildToLoad.build.ranked
   return newState
 }
 
