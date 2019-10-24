@@ -14,8 +14,8 @@ https://facebook.github.io/react-native/docs/signed-apk-android
 android/app/build/outputs/bundle/release/app.aab
 
 TODO:
-- Load build needs to recalculate the stats
 - Fix modal flicker
+- Fix the other modal inside click
 - Do not allow other actions if not logged in
 - Integrate Admobs
 - Figure out how to make a paid version - no ads on paid version

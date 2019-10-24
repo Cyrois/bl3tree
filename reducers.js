@@ -205,7 +205,7 @@ const applyRankSkill = (state, skill, amount, rowIndex) => {
           break;
         }
       }
-      if(greatestRowWithPoint === rowIndex) {
+      if (greatestRowWithPoint === rowIndex) {
         canPerformChange = true;
       }
       //get total points up to highest row, excluding highest row
@@ -240,8 +240,8 @@ const applyRankSkill = (state, skill, amount, rowIndex) => {
     //Calculate the skill stats
     for (const stat of skill.stats) {
       let statSum = newState.stats[stat.type] ? newState.stats[stat.type] : 0
-      if(newAmount > 0) {
-        if(oldAmount > 0) {
+      if (newAmount > 0) {
+        if (oldAmount > 0) {
           statSum = statSum - stat.values[oldAmount - 1]
         }
         statSum = statSum + stat.values[newAmount - 1]
@@ -364,7 +364,49 @@ const loadBuild = (state, buildToLoad) => {
 
   newState.selectedHero = selectedHero
   newState[selectedHero].equipped = buildToLoad.build.skills
-  newState.ranked = buildToLoad.build.ranked
+  let rankedSkills = buildToLoad.build.ranked
+  newState.ranked = rankedSkills
+
+  let heroSkills = []
+  switch (selectedHero) {
+    case FLAK:
+      heroSkills = newState.flak.stalker.flat()
+      heroSkills = heroSkills.concat(newState.flak.hunter.flat())
+      heroSkills = heroSkills.concat(newState.flak.master.flat())
+      break;
+    case MOZE:
+      heroSkills = newState.moze.bottomlessMags.flat()
+      heroSkills = heroSkills.concat(newState.moze.shieldOfRetribution.flat())
+      heroSkills = heroSkills.concat(newState.moze.demolitionWoman.flat())
+      break;
+    case ZANE:
+      heroSkills = newState.zane.underCover.flat()
+      heroSkills = heroSkills.concat(newState.zane.doubledAgent.flat())
+      heroSkills = heroSkills.concat(newState.zane.hitman.flat())
+      break;
+    case AMARA:
+      heroSkills = newState.amara.mysticalAssault.flat()
+      heroSkills = heroSkills.concat(newState.amara.fistOfTheElements.flat())
+      heroSkills = heroSkills.concat(newState.amara.brawl.flat())
+      break;
+  }
+
+  heroSkills.forEach((skill) => {
+    if (rankedSkills[skill.title] > 0) {
+      skill.stats.forEach((stat) => {
+        let statSum = newState.stats[stat.type] ? newState.stats[stat.type] : 0
+        statSum += stat.values[rankedSkills[skill.title] - 1]
+        newState.stats[stat.type] = statSum
+      })
+    }
+  })
+
+  let pointsLeft = 48
+  const rankedValues = Object.values(rankedSkills)
+  rankedValues.forEach((value) => {
+    pointsLeft -= value
+  })
+  newState.pointsLeft = pointsLeft
   return newState
 }
 
