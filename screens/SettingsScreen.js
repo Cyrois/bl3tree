@@ -502,7 +502,7 @@ class SettingsScreen extends React.Component {
                     <Text style={styles.heroBtnText}> Fl4k </Text>
                   </TouchableOpacity>
 
-                  <TouchableOpacity
+                  {/* <TouchableOpacity
                     style={styles.modalBtns}
                     onPress={() => this._selectHero(MOZE)}
                   >
@@ -521,7 +521,7 @@ class SettingsScreen extends React.Component {
                     onPress={() => this._selectHero(AMARA)}
                   >
                     <Text style={styles.heroBtnText}> Amara </Text>
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
 
                   <TouchableOpacity
                     style={{marginTop: 20, ...styles.modalBtns}}
