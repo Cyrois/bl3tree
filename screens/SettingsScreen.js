@@ -295,7 +295,7 @@ class SettingsScreen extends React.Component {
             visible={this.props.createAccountModalVisible}
             onRequestClose={() => this.props.setCreateAccountModal(false)}>
             <TouchableOpacity style={styles.outerModal} onPress={() => {this.props.setCreateAccountModal(false)}}>
-              <View style={styles.innerModal}>
+              <TouchableOpacity style={styles.innerModal} onPress={(e) => {e.preventDefault()}} activeOpacity={1}>
                 <Text style={styles.modalHeader}>Sign Up</Text>
                 
                 <TextInput
@@ -340,7 +340,7 @@ class SettingsScreen extends React.Component {
                 >
                   <Text style={styles.modalBtnText}> Cancel </Text>
                 </TouchableOpacity>
-              </View>
+              </TouchableOpacity>
             </TouchableOpacity>
           </Modal>
         </View>
@@ -352,7 +352,7 @@ class SettingsScreen extends React.Component {
             visible={this.props.loginModalVisible}
             onRequestClose={() => this.props.setLoginModal(false)}>
             <TouchableOpacity style={styles.outerModal} onPress={() => {this.props.setLoginModal(false)}}>
-              <View style={styles.innerModal}>
+              <TouchableOpacity style={styles.innerModal} onPress={(e) => {e.preventDefault()}} activeOpacity={1}>
                 <Text style={styles.modalHeader}>Login</Text>
                   <TextInput
                     placeholder="Email"
@@ -395,7 +395,7 @@ class SettingsScreen extends React.Component {
                   >
                     <Text style={styles.modalBtnText}> Cancel </Text>
                   </TouchableOpacity>
-                </View>
+                </TouchableOpacity>
             </TouchableOpacity>
           </Modal>
         </View>
@@ -407,7 +407,7 @@ class SettingsScreen extends React.Component {
             visible={this.props.saveBuildModalVisible}
             onRequestClose={() => this.props.setSaveBuildModal(false)}>
             <TouchableOpacity style={styles.outerModal} onPress={() => {this.props.setSaveBuildModal(false)}}>
-              <View style={styles.innerModal}>
+              <TouchableOpacity style={styles.innerModal} onPress={(e) => {e.preventDefault()}} activeOpacity={1}>
                 <Text style={{...styles.modalHeader, fontSize: 30}}>Name your build:</Text>
 
                 <TextInput
@@ -436,7 +436,7 @@ class SettingsScreen extends React.Component {
                 >
                   <Text style={styles.modalBtnText}> Close </Text>
                 </TouchableOpacity>
-              </View>
+              </TouchableOpacity>
             </TouchableOpacity>
           </Modal>
         </View>
@@ -448,7 +448,7 @@ class SettingsScreen extends React.Component {
             visible={this.props.loadBuildCodeModalVisible}
             onRequestClose={() => this.props.loadBuildCodeModal(false)}>
             <TouchableOpacity style={styles.outerModal} onPress={() => {this.props.loadBuildCodeModal(false)}}>
-              <View style={styles.innerModal}>
+              <TouchableOpacity style={styles.innerModal} onPress={(e) => {e.preventDefault()}} activeOpacity={1}>
                 <Text style={{...styles.modalHeader, fontSize: 30}}>Enter Build Code:</Text>
 
                 <Text style={{...styles.mainButtonText, marginTop: 10}}>Warning: Unsaved Changes will be lost</Text>
@@ -478,7 +478,7 @@ class SettingsScreen extends React.Component {
                 >
                   <Text style={styles.modalBtnText}> Close </Text>
                 </TouchableOpacity>
-              </View>
+              </TouchableOpacity>
             </TouchableOpacity>
           </Modal>
         </View>
@@ -490,7 +490,7 @@ class SettingsScreen extends React.Component {
             visible={this.props.heroSelectModalVisible}
             onRequestClose={() => this.props.setHeroSelect(false)}>
             <TouchableOpacity style={styles.outerModal} onPress={() => {this.props.setHeroSelect(false)}}>
-              <View style={styles.innerModal}>
+              <TouchableOpacity style={styles.innerModal} onPress={(e) => {e.preventDefault()}} activeOpacity={1}>
                   <Text style={{...styles.modalHeader, fontSize: 30}}>Select Hero:</Text>
 
                   <Text style={{...styles.mainButtonText, marginVertical: 10}}>Unsaved Changes will be lost</Text>
@@ -502,14 +502,14 @@ class SettingsScreen extends React.Component {
                     <Text style={styles.heroBtnText}> Fl4k </Text>
                   </TouchableOpacity>
 
-                  {/* <TouchableOpacity
+                  <TouchableOpacity
                     style={styles.modalBtns}
                     onPress={() => this._selectHero(MOZE)}
                   >
                     <Text style={styles.heroBtnText}> Moze </Text>
                   </TouchableOpacity>
 
-                  <TouchableOpacity
+                  {/* <TouchableOpacity
                     style={styles.modalBtns}
                     onPress={() => this._selectHero(ZANE)}
                   >
@@ -529,7 +529,7 @@ class SettingsScreen extends React.Component {
                   >
                     <Text style={styles.modalBtnText}> Close </Text>
                   </TouchableOpacity>
-              </View>
+              </TouchableOpacity>
             </TouchableOpacity>
           </Modal>
         </View>
@@ -541,7 +541,7 @@ class SettingsScreen extends React.Component {
             visible={this.props.confirmLoadModalVisible}
             onRequestClose={() => this.props.confirmLoadBuild(false)}>
             <TouchableOpacity style={styles.outerModal} onPress={() => {this.props.confirmLoadBuild(false)}}>
-              <View style={styles.innerModal}>
+              <TouchableOpacity style={styles.innerModal} onPress={(e) => {e.preventDefault()}} activeOpacity={1}>
                 <Text style={styles.modalHeader}>Select an Option:</Text>
 
                 <Text style={{...styles.mainButtonText, marginTop: 10}}>Warning: Unsaved Changes will be lost</Text>
@@ -582,7 +582,7 @@ class SettingsScreen extends React.Component {
                 >
                   <Text style={styles.modalBtnText}> Close </Text>
                 </TouchableOpacity>
-              </View>
+              </TouchableOpacity>
             </TouchableOpacity>
           </Modal>
         </View>
@@ -594,7 +594,7 @@ class SettingsScreen extends React.Component {
             visible={this.props.confirmDeleteModalVisible}
             onRequestClose={() => this.props.deleteBuildModal(false)}>
             <TouchableOpacity style={styles.outerModal} onPress={() => {this.props.deleteBuildModal(false)}}>
-              <View style={styles.innerModal}>
+              <TouchableOpacity style={styles.innerModal} onPress={(e) => {e.preventDefault()}} activeOpacity={1}>
                 <Text style={styles.modalHeader}>Are you sure?</Text>
 
                 <TouchableOpacity
@@ -613,7 +613,7 @@ class SettingsScreen extends React.Component {
                 >
                   <Text style={styles.modalBtnText}> Close </Text>
                 </TouchableOpacity>
-              </View>
+              </TouchableOpacity>
             </TouchableOpacity>
           </Modal>
         </View>

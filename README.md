@@ -14,7 +14,7 @@ https://facebook.github.io/react-native/docs/signed-apk-android
 android/app/build/outputs/bundle/release/app.aab
 
 TODO:
-- Fix modal flicker
+- The modal is not big enough for some skills
 - Fix the other modal inside click
 - Do not allow other actions if not logged in
 - Integrate Admobs
