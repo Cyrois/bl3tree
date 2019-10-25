@@ -17,10 +17,8 @@ https://invertase.io/oss/react-native-firebase/v6/admob/quick-start
 https://dev-yakuza.github.io/en/react-native/react-native-admob/
 
 TODO:
-- Add point counter
 - Optimize hero skills by only saving title
 - The modal is not big enough for some skills (made the modal a little more compact)
-- Do not allow other actions if not logged in
 - Integrate Admobs
 - Figure out how to make a paid version - no ads on paid version
 - Deploy to Google Play Store

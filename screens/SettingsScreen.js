@@ -48,16 +48,16 @@ class SettingsScreen extends React.Component {
   _loadBuilds() {
     let builds = []
     this.buildsStore.where("user", "==", this.props.userId).get()
-    .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-            let build = {
-              id: doc.id,
-              ...doc.data()
-            }
-            builds.push(build)
-        });
-        this.props.loadBuilds(builds)
-    });
+      .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+              let build = {
+                id: doc.id,
+                ...doc.data()
+              }
+              builds.push(build)
+          });
+          this.props.loadBuilds(builds)
+      });
   }
 
   _toggleActions(toggle) {
@@ -90,6 +90,7 @@ class SettingsScreen extends React.Component {
       .then(() => {
         this.props.setLoginModal(false)
         this.props.setCreateError('')
+        this._loadBuilds()
       })
       .catch(error => {
         console.log(error)
@@ -98,6 +99,17 @@ class SettingsScreen extends React.Component {
         } else {
           this.props.setLoginError(error.message)
         }
+      })
+  }
+
+  _handleLogout = () => {
+    console.log("logging out")
+    firebase.auth().signOut()
+      .then(() => {
+        this.props.setAccountEmail("")
+        this.props.setAccountPassword("")
+        this.props.setAccountId("")
+        this.props.loadBuilds([])
       })
   }
 
@@ -111,7 +123,7 @@ class SettingsScreen extends React.Component {
   }
 
   _saveBuild() {
-    if(this._isUserLoggedIn) {
+    if(this._isUserLoggedIn()) {
       let build = {
         hero: this.props.selectedHero,
         skills: this.props[this.props.selectedHero].equipped,
@@ -167,6 +179,16 @@ class SettingsScreen extends React.Component {
                 source={require('../assets/images/bl3Logo.jpeg')}
                 style={styles.bl3Logo} /> 
             </View>
+
+            {
+              this._isUserLoggedIn() &&
+              <TouchableOpacity
+                style={styles.logoutBtn}
+                onPress={this._handleLogout}
+              >
+                <Text style={{}}> Logout </Text>
+              </TouchableOpacity>
+            }
             
             {
               this._isUserLoggedIn() && 
@@ -264,7 +286,7 @@ class SettingsScreen extends React.Component {
                 style={styles.accordianIcon} /> 
             </TouchableOpacity>
             
-            { this.props.toggleBuilds &&
+            { this.props.toggleBuilds && this._isUserLoggedIn() &&
               this.props.builds.map((build, index) => {
                 return (
                   <View key={build.id}>
@@ -354,48 +376,50 @@ class SettingsScreen extends React.Component {
             <TouchableOpacity style={styles.outerModal} onPress={() => {this.props.setLoginModal(false)}}>
               <TouchableOpacity style={styles.innerModal} onPress={(e) => {e.preventDefault()}} activeOpacity={1}>
                 <Text style={styles.modalHeader}>Login</Text>
-                  <TextInput
-                    placeholder="Email"
-                    autoCapitalize="none"
-                    style={styles.textInput}
-                    onChangeText={email => this.props.setAccountEmail(email)}
-                    value={this.props.email}
-                  />
-                  <TextInput
-                    secureTextEntry
-                    placeholder="Password"
-                    autoCapitalize="none"
-                    style={styles.textInput}
-                    onChangeText={password => this.props.setAccountPassword(password)}
-                    value={this.props.password}
-                  />
 
-                  {
-                    !!this.props.loginAccountError &&
-                    <Text>{this.props.loginAccountError}</Text>
-                  }
-                  <TouchableOpacity
-                    style={styles.modalBtns}
-                    onPress={this._handleSignIn}
-                  >
-                    <Text style={styles.modalBtnText}> Sign In </Text>
-                  </TouchableOpacity>
-                  
-                  <View style={{marginTop: 20}}>
-                    <Text style={{fontFamily: TEXT_FONT}}> Don't have an account? <Text onPress={() => {
-                      this.props.setCreateAccountModal(true)
-                      this.props.setLoginModal(false)
-                      }} style={{color: RED_BG, fontFamily: TEXT_FONT}}> Sign Up </Text>
-                    </Text>
-                  </View>
+                <TextInput
+                  placeholder="Email"
+                  autoCapitalize="none"
+                  style={styles.textInput}
+                  onChangeText={email => this.props.setAccountEmail(email)}
+                  value={this.props.email}
+                />
 
-                  <TouchableOpacity
-                    style={styles.modalBtns}
-                    onPress={() => this.props.setLoginModal(false)}
-                  >
-                    <Text style={styles.modalBtnText}> Cancel </Text>
-                  </TouchableOpacity>
+                <TextInput
+                  secureTextEntry
+                  placeholder="Password"
+                  autoCapitalize="none"
+                  style={styles.textInput}
+                  onChangeText={password => this.props.setAccountPassword(password)}
+                  value={this.props.password}
+                />
+
+                {
+                  !!this.props.loginAccountError &&
+                  <Text>{this.props.loginAccountError}</Text>
+                }
+                <TouchableOpacity
+                  style={styles.modalBtns}
+                  onPress={this._handleSignIn}
+                >
+                  <Text style={styles.modalBtnText}> Sign In </Text>
                 </TouchableOpacity>
+                
+                <View style={{marginTop: 20}}>
+                  <Text style={{fontFamily: TEXT_FONT}}> Don't have an account? <Text onPress={() => {
+                    this.props.setCreateAccountModal(true)
+                    this.props.setLoginModal(false)
+                    }} style={{color: RED_BG, fontFamily: TEXT_FONT}}> Sign Up </Text>
+                  </Text>
+                </View>
+
+                <TouchableOpacity
+                  style={styles.modalBtns}
+                  onPress={() => this.props.setLoginModal(false)}
+                >
+                  <Text style={styles.modalBtnText}> Cancel </Text>
+                </TouchableOpacity>
+              </TouchableOpacity>
             </TouchableOpacity>
           </Modal>
         </View>
@@ -408,27 +432,37 @@ class SettingsScreen extends React.Component {
             onRequestClose={() => this.props.setSaveBuildModal(false)}>
             <TouchableOpacity style={styles.outerModal} onPress={() => {this.props.setSaveBuildModal(false)}}>
               <TouchableOpacity style={styles.innerModal} onPress={(e) => {e.preventDefault()}} activeOpacity={1}>
-                <Text style={{...styles.modalHeader, fontSize: 30}}>Name your build:</Text>
+                {
+                  !this._isUserLoggedIn && 
+                  <Text>Please login before using this function</Text>  
+                }
 
-                <TextInput
-                  autoFocus={!!this.buildNameTextInput}
-                  ref={this.buildNameTextInput}
-                  placeholder="Type a Name"
-                  autoCapitalize="words"
-                  style={{...styles.heroBtnText, marginVertical: 50}}
-                  onChangeText={buildName => this.props.setCurrentBuildName(buildName)}
-                  value={this.props.buildName}
-                />
-                  
-                <TouchableOpacity
-                  style={styles.modalBtns}
-                  onPress={() => {
-                    this._saveBuild()
-                    this.props.setSaveBuildModal(false)
-                  }}
-                >
-                  <Text style={styles.modalBtnText}> Save </Text>
-                </TouchableOpacity>
+                {
+                  this._isUserLoggedIn && 
+                  <View>
+                    <Text style={{...styles.modalHeader, fontSize: 30}}>Name your build:</Text>
+
+                    <TextInput
+                      autoFocus={!!this.buildNameTextInput}
+                      ref={this.buildNameTextInput}
+                      placeholder="Type a Name"
+                      autoCapitalize="words"
+                      style={{...styles.heroBtnText, marginVertical: 50}}
+                      onChangeText={buildName => this.props.setCurrentBuildName(buildName)}
+                      value={this.props.buildName}
+                    />
+                      
+                    <TouchableOpacity
+                      style={styles.modalBtns}
+                      onPress={() => {
+                        this._saveBuild()
+                        this.props.setSaveBuildModal(false)
+                      }}
+                    >
+                      <Text style={styles.modalBtnText}> Save </Text>
+                    </TouchableOpacity>
+                  </View>
+                }
 
                 <TouchableOpacity
                   style={styles.modalBtns}
@@ -640,6 +674,15 @@ const styles = StyleSheet.create({
     marginVertical: 40,
     alignItems: 'center',
   },
+
+  //Logout
+  logoutBtn: {
+    position: 'absolute',
+    right: 10,
+    top: 20,
+  },
+
+  //Menu
   sectionHeader: {
     fontSize: 40, 
     textAlign: 'center', 
@@ -672,7 +715,8 @@ const styles = StyleSheet.create({
   modalHeader: {
     color: RED_BG, 
     fontSize: 40, 
-    fontFamily: TEXT_FONT
+    fontFamily: TEXT_FONT,
+    marginBottom: 10,
   },
   modalBtns: {
     marginVertical: 10,
@@ -693,7 +737,8 @@ const styles = StyleSheet.create({
     fontFamily: TITLE_FONT
   },
   textInput: {
-    fontFamily: TEXT_FONT
+    fontFamily: TEXT_FONT,
+    marginVertical: 10,
   },
   divider: {
     borderColor: '#dedede', 
