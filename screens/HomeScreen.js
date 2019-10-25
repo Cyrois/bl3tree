@@ -408,7 +408,7 @@ class HomeScreen extends React.Component {
         </View>
         
 
-        <View>
+        <ScrollView>
           <Modal
             animationType="slide"
             transparent={true}
@@ -640,7 +640,7 @@ class HomeScreen extends React.Component {
               </TouchableOpacity>
             </TouchableOpacity>
           </Modal>
-        </View>
+        </ScrollView>
       </View>
     );
   }
