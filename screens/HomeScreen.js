@@ -18,7 +18,7 @@ import Branch from '../components/Branch.js';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators as actions } from '../actions';
-import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, YELLOW_FONT, RED_BG, TITLE_FONT, TEXT_FONT, ELEMENT, GREEN, RED, BLUE } from '../data/constants';
+import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, YELLOW_FONT, RED_BG, TITLE_FONT, TEXT_FONT, ELEMENT, GREEN, RED, BLUE, MAX_POINTS } from '../data/constants';
 import { TOGGLE_QUICK_SELECT } from '../types.js';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
@@ -399,6 +399,12 @@ class HomeScreen extends React.Component {
                 </TouchableOpacity>
               </View>
           </ScrollView>
+
+          <ImageBackground source={require("../assets/images/backgrounds/pointslot-default.png")} 
+            resizeMode='contain'
+            style={styles.pointslotBg}>
+            <Text style={{...styles.pointslotText, paddingLeft: this.props.pointsLeft < 39 ? 11 : 15}}>{MAX_POINTS - this.props.pointsLeft}/{MAX_POINTS}</Text>
+          </ImageBackground>
         </View>
         
 
@@ -443,15 +449,15 @@ class HomeScreen extends React.Component {
                 }
 
                 { !!(this.props.ranked[this.props.modalSkill.title] && this.props.ranked[this.props.modalSkill.title] > 0) &&
-                  <Text style={styles.defaultFont}>Current Rank:</Text>
+                  <Text style={{...styles.defaultFont, marginBottom: 4}}>Current Rank:</Text>
                 }
                 {this.props.modalSkill.stats && 
                   this.props.modalSkill.stats.map(stat => {
                     return (
-                      <View key={stat.type} style={{flexDirection:'row', flexWrap:'wrap'}}>
+                      <View key={stat.type}>
                         { !!(this.props.ranked[this.props.modalSkill.title] && this.props.ranked[this.props.modalSkill.title] > 0) &&
-                          <View style={{marginTop: 5}}>
-                            <Text style={{...styles.defaultFont, color:YELLOW_FONT}}>{stat.type}:</Text>
+                          <View style={{marginBottom: 2, flexDirection:'row', flexWrap:'wrap'}}>
+                            <Text style={{...styles.defaultFont, color:YELLOW_FONT}}>{stat.type}: </Text>
                             <Text style={styles.defaultFont}> {stat.preText}{stat.values[this.props.ranked[this.props.modalSkill.title] ? this.props.ranked[this.props.modalSkill.title] - 1 : 0]}{stat.postText}</Text>
                           </View>
                         }
@@ -462,16 +468,16 @@ class HomeScreen extends React.Component {
 
                 { (!this.props.ranked[this.props.modalSkill.title] || this.props.ranked[this.props.modalSkill.title] < this.props.modalSkill.maxRanks) &&
                   (Array.isArray(this.props.modalSkill.stats) && !!this.props.modalSkill.stats.length) &&
-                  <Text style={{...styles.defaultFont, marginVertical: 10}}>Next Rank:</Text>
+                  <Text style={{...styles.defaultFont, marginTop: 10, marginBottom: 4}}>Next Rank:</Text>
                 }
                 { this.props.modalSkill.stats && 
                   (Array.isArray(this.props.modalSkill.stats) && !!this.props.modalSkill.stats.length) &&
                   this.props.modalSkill.stats.map(stat => {
                     return (
-                      <View key={stat.type} style={{marginBottom: 5, flexDirection:'row', flexWrap:'wrap'}}>
+                      <View key={stat.type}>
                         { (!this.props.ranked[this.props.modalSkill.title] || this.props.ranked[this.props.modalSkill.title] < this.props.modalSkill.maxRanks) &&
-                          <View>
-                            <Text style={{...styles.defaultFont, color:YELLOW_FONT}}>{stat.type}:</Text>
+                          <View style={{marginBottom: 2, flexDirection:'row', flexWrap:'wrap'}}>
+                            <Text style={{...styles.defaultFont, color:YELLOW_FONT}}>{stat.type}: </Text>
                             <Text style={styles.defaultFont}>
                               {stat.preText}{stat.values[this.props.ranked[this.props.modalSkill.title] ? this.props.ranked[this.props.modalSkill.title] : 0]}{stat.postText}
                             </Text>
@@ -666,9 +672,23 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
 
+  //Points Used
+  pointslotBg: {
+    width: 60,
+    height: 36,
+    position: 'absolute',
+    right: 2,
+    top: 14,
+  },
+  pointslotText: {
+    color: '#fff',
+    fontSize: 22,
+    paddingTop: 7,
+    fontFamily: TITLE_FONT,
+  },
+
   //TREES
   treeContainer: {
-    // paddingTop: 10,
     paddingBottom: 60,
     paddingRight: 5,
     paddingLeft: 10,
@@ -727,7 +747,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(80,80,80,0.96)',
     paddingTop: '25%',
     paddingBottom: '10%',
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
     height: '100%',
   },
   innerModal: {
@@ -735,7 +755,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 5,
     borderColor: YELLOW_FONT,
-    padding: 30,
+    padding: 20,
     width: '100%'
   },
   skillModalButtons: {
@@ -743,15 +763,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: YELLOW_FONT,
     color: '#fff',
-    padding: 10
-  },
-  skillModalBtnText: {
+    padding: 10,
+    borderRadius: 2,
   },
   modalSkillTitle: {
     color: YELLOW_FONT, 
     fontSize: 30, 
     marginBottom: 10, 
-    fontFamily: "YoungPatriotSemi-Bold"
+    fontFamily: TITLE_FONT,
   },
   modalSkillContainer: {
     width: 90,

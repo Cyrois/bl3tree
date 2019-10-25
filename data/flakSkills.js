@@ -90,7 +90,7 @@ export default {
                     newStat("Handling", [1,2,2.9,3.8,4.8], "+", "% per stack"),
                     newStat("Gun Damage", [0.4,0.8,1.2,1.6,2.0], "+", "% per stack"),
                     newStat("Furious Attack Stacks", [10,10,10,10,10], "", ""),
-                    newStat("Furious Attack Duration", [4,4,4,4,4], "", "seconds"),
+                    newStat("Furious Attack Duration", [4,4,4,4,4], "", " seconds"),
                 ]
             },
             {
@@ -114,8 +114,8 @@ export default {
                 description: "Kill Skill - Action Skill Cooldown Time is reduced after killing an enemy, even more when Pet kills an enemy, and Attack Command cooldown is refreshed.",
                 image: require('../assets/images/skills/flak/EagerToImpress.png'),
                 stats: [
-                    newStat("Pet Kill Cooldown Time", [0.5,1,1.5,2,2.5], "-", "seconds"),
-                    newStat("Fl4k Kill Cooldown Time", [0.25,0.5,0.75,1,1.25], "-", "seconds"),
+                    newStat("Pet Kill Cooldown Time", [0.5,1,1.5,2,2.5], "-", " seconds"),
+                    newStat("Fl4k Kill Cooldown Time", [0.25,0.5,0.75,1,1.25], "-", " seconds"),
                 ]
             },
             {
@@ -141,7 +141,7 @@ export default {
                 stats: [
                     newStat("Fire Rate after Reloading", [2,4,6,8,10], "+", "%"),
                     newStat("Fire Rate", [2,4,6,8,10], "+", "%"),
-                    newStat("Overclocked Duration", [4,4,4,4,4], "", "seconds"),
+                    newStat("Overclocked Duration", [4,4,4,4,4], "", " seconds"),
                 ]
             },
             {
@@ -261,7 +261,7 @@ export default {
                 image: require('../assets/images/skills/flak/RageAndRecover.png'),
                 stats: [
                     newStat("Health Regeneration", [1.6,3.2,4.8,6.4,8], "+", "% of Missing Health/sec"),
-                    newStat("Rage and Recover Duration", [3,3,3,3,3], "", "seconds"),
+                    newStat("Rage and Recover Duration", [3,3,3,3,3], "", " seconds"),
                 ]
             },
             {
@@ -287,7 +287,7 @@ export default {
                 image: require('../assets/images/skills/flak/ThePowerInside.png'),
                 stats: [
                     newStat("Damage", [25], "+", "%"),
-                    newStat("The Power Inside Duration", [15], "", "seconds"),
+                    newStat("The Power Inside Duration", [15], "", " seconds"),
                 ]
             },
             {
@@ -364,7 +364,7 @@ export default {
                 stats: [
                     newStat("Reload Speed", [3,6,9,12,15], "+", "%"),
                     newStat("Critical Kill Reload Speed", [6,11,15,19,23], "+", "%"),
-                    newStat("Critical Kill Reload", [5,5,5,5,5], "", "seconds"),
+                    newStat("Critical Kill Reload", [5,5,5,5,5], "", " seconds"),
                 ]
             },
             {
@@ -403,7 +403,7 @@ export default {
                 image: require('../assets/images/skills/flak/HeadCount.png'),
                 stats: [
                     newStat("Cooldown Time Reduction Chance", [10,20,30], "+", "%"),
-                    newStat("Cooldown Time", [-2,-2,-2], "", "seconds"),
+                    newStat("Cooldown Time", [-2,-2,-2], "", " seconds"),
                 ]
             },
             {
@@ -504,7 +504,7 @@ export default {
                     newStat("Gun Damage", [8,17,25], "+", "%"),
                     newStat("Critical Hit Damage", [3.3,6.7,10], "+", "%"),
                     newStat("Handling", [14.3,25,33.3], "+", "%"),
-                    newStat("Duration", [120,120,120], "", "seconds"),
+                    newStat("Duration", [120,120,120], "", " seconds"),
                 ]
             },
             {
@@ -731,7 +731,7 @@ export default {
                 stats: [
                     newStat("Pet Movement Speed", [12], "+", "%"),
                     newStat("Pet Damage", [10], "+", "%"),
-                    newStat("Psycho Head On a Stick Duration", [8], "", "seconds"),
+                    newStat("Psycho Head On a Stick Duration", [8], "", " seconds"),
                 ]
             },
             {
@@ -790,7 +790,7 @@ export default {
                 stats: [
                     newStat("Damage Reduction", [30], "+", "%"),
                     newStat("Health Regeneration", [40], "+", "% of Max Pet Health"),
-                    newStat("Mutated Defenses Cooldown", [15], "", "seconds"),
+                    newStat("Mutated Defenses Cooldown", [15], "", " seconds"),
                 ]
             },
             {
@@ -859,7 +859,7 @@ export default {
                 description: "Melee Override Skill - Establishes dominance over an enemy, turning it to an ally (time is doubled if enemy is a beast), and will constantly lose health until dead.",
                 image: require('../assets/images/skills/flak/Dominance.png'),
                 stats: [
-                    newStat("Dominance Duration", [12], "", "seconds"),
+                    newStat("Dominance Duration", [12], "", " seconds"),
                     newStat("Target loses Max Health/sec", [-2], "", "% of Target Max Health/sec"),
                 ]
             },

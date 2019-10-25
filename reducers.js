@@ -401,7 +401,7 @@ const loadBuild = (state, buildToLoad) => {
     }
   })
 
-  let pointsLeft = 48
+  let pointsLeft = MAX_POINTS
   const rankedValues = Object.values(rankedSkills)
   rankedValues.forEach((value) => {
     pointsLeft -= value

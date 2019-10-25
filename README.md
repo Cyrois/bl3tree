@@ -13,9 +13,13 @@ https://stackoverflow.com/questions/35935060/how-can-i-generate-an-apk-that-can-
 https://facebook.github.io/react-native/docs/signed-apk-android
 android/app/build/outputs/bundle/release/app.aab
 
+https://invertase.io/oss/react-native-firebase/v6/admob/quick-start
+https://dev-yakuza.github.io/en/react-native/react-native-admob/
+
 TODO:
-- The modal is not big enough for some skills
-- Fix the other modal inside click
+- Add point counter
+- Optimize hero skills by only saving title
+- The modal is not big enough for some skills (made the modal a little more compact)
 - Do not allow other actions if not logged in
 - Integrate Admobs
 - Figure out how to make a paid version - no ads on paid version
