@@ -54,16 +54,20 @@ class HomeScreen extends React.Component {
     }
   }
 
-  _isAbleToUseSkill = (skill) => {
-    if(this.props.rowIndex == 1) {
-      return true;
-    }
-    let totalPointsForBranch = 0;
-    for(let i = 1; i < this.props.rowIndex; i++) {
-      totalPointsForBranch += this.props.pointsSpent[skill.tree][`row${i}`]
-    }
-    if(totalPointsForBranch >= (this.props.rowIndex - 1) * 5) {
-      return true
+  _isAbleToUseSkill = (skill, rowIndex) => {
+    if(skill.title) {
+      rowIndex = rowIndex ? rowIndex : this.props.rowIndex
+      if(rowIndex <= 1) {
+        return true
+      }
+  
+      let totalPointsForBranch = 0;
+      for(let i = 1; i < rowIndex; i++) {
+        totalPointsForBranch += this.props.pointsSpent[skill.tree][`row${i}`]
+      }
+      if(totalPointsForBranch >= (rowIndex - 1) * 5) {
+        return true
+      }
     }
     return false
   }
@@ -99,7 +103,7 @@ class HomeScreen extends React.Component {
               <View style={styles.skillContainer} key={"col_" + colIndex}>
                 {
                   !skill.hide && (
-                    <SkillButton skill={skill} onSkillPress={() => this._onSkillPress(skill, rowIndex)}></SkillButton>
+                    <SkillButton skill={skill} canUpgrade={this._isAbleToUseSkill(skill, rowIndex)} onSkillPress={() => this._onSkillPress(skill, rowIndex)}></SkillButton>
                   )
                 }
               </View>
