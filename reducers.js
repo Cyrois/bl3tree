@@ -1,7 +1,6 @@
 import {
   SET_CHARACTER,
   ADD_SKILL,
-  ADD_STAT,
   SET_MODAL_SKILL,
   RANK_SKILL,
   REMOVE_SKILL,
@@ -31,30 +30,19 @@ import {
   SET_CREATE_ERROR,
   SET_ACCOUNT_ID
 } from './types.js';
+
 import {
-  PASSIVE,
-  AUGMENT,
-  ACTION,
-  PET,
   FLAK,
   MOZE,
   ZANE,
   AMARA,
   MAX_POINTS
 } from './data/constants';
+
 import flakSkills from './data/flakSkills.js';
 import mozeSkills from './data/mozeSkills.js';
 import zaneSkills from './data/zaneSkills.js';
 import amaraSkills from './data/amaraSkills.js';
-import firebase from 'react-native-firebase';
-
-const newStat = (type, value, description) => {
-  return {
-    type,
-    value,
-    description
-  }
-}
 
 //Initial State
 const intialState = {
@@ -112,7 +100,7 @@ const intialState = {
   loadBuildCodeModalVisible: false,
   confirmLoadModalVisible: false,
   confirmDeleteModalVisible: false,
-  selectedHero: FLAK,
+  selectedHero: AMARA,
   quickSelectEnabled: false,
   toggleActions: true,
   toggleBuilds: true,

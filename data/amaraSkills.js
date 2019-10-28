@@ -1,4 +1,13 @@
-import { PASSIVE, AUGMENT, ACTION, ELEMENT, newStat } from './constants';
+import {
+    PASSIVE,
+    AUGMENT,
+    ACTION,
+    ELEMENT,
+    newStat,
+    RED,
+    GREEN,
+    BLUE
+} from './constants';
 
 export default {
     equipped: {
@@ -16,6 +25,7 @@ export default {
             {
                 title: "Phaseslam",
                 type: ACTION,
+                image: require('../assets/images/skills/amara/PhaseSlam.png'),
                 description: "Leap into the air and slam into the ground, dealing damage to and knocking up all nearby enemies.",
 				stats: [
                     newStat("Cooldown", [35], "", "seconds"),
@@ -37,6 +47,7 @@ export default {
                 title: "Root to Rise",
                 type: PASSIVE,
                 maxRanks: 5,
+                image: require('../assets/images/skills/amara/RootsToRise.png'),
                 description: "Increases Maximum Health.",
                 stats: [
                     newStat("Max Health", [8,16,24,32,40], "+", "%"),
@@ -46,6 +57,7 @@ export default {
                 title: "Personal Space",
                 type: PASSIVE,
                 maxRanks: 3,
+                image: require('../assets/images/skills/amara/PersonalSpace.png'),
                 description: "Weapon shots deal bonus damage, increasing with proximity to the target.",
                 stats: [
                     newStat("Bonus Damage", [12,24,36], "up to", "% of damage dealt"),
@@ -55,6 +67,7 @@ export default {
                 title: "Clarity",
                 type: PASSIVE,
                 maxRanks: 5,
+                image: require('../assets/images/skills/amara/Clarity.png'),
                 description: "Constantly regenerate health. The lower her health, the more powerful the regeneration. After using an action skill, this bonus is doubled for a few seconds.",
                 stats: [
                     newStat("Health Regeneration", [1,2,3,4,5], "Up to", "% of missing health per second"),
@@ -73,6 +86,7 @@ export default {
                 title: "Arms Deal",
                 type: PASSIVE,
                 maxRanks: 5,
+                image: require('../assets/images/skills/amara/ArmsDeal.png'),
                 description: "Increase Splash Damage and take reduced Splash Damage.",
                 stats: [
                     newStat("Splash Damage", [4,8,12,16,20], "+", "%"),
@@ -83,6 +97,7 @@ export default {
                 title: "Samsara",
                 type: PASSIVE,
                 maxRanks: 3,
+                image: require('../assets/images/skills/amara/Samsara.png'),
                 description: "Gain 1 stack of Samsara when you deal damage to an enemy with your action skill. Each stack increases Gun Damage and Health Regeneration. Stacks decay after a few seconds.",
                 stats: [
                     newStat("Gun Damage", [1.7,3.3,5], "+", "% per enemy damaged"),
@@ -95,6 +110,7 @@ export default {
                 title: "Helping Hand(s)",
                 type: PASSIVE,
                 maxRanks: 5,
+                image: require('../assets/images/skills/amara/HelpingHands.png'),
                 description: "For a few seconds after using her action skill, Amara's arms remain active and grant her damage reduction.",
                 stats: [
                     newStat("Damage Reduction", [12,21,28,35,40], "+", "%"),
@@ -104,6 +120,7 @@ export default {
             {
                 title: "Blight Tiger",
                 type: ELEMENT,
+                image: require('../assets/images/skills/amara/BlightTiger.png'),
                 description: "Converts Amara's action skill to corrosive damage."
             },
         ],
@@ -111,6 +128,7 @@ export default {
             {
                 title: "Fracture",
                 type: ACTION,
+                image: require('../assets/images/skills/amara/Fracture.png'),
                 description: "Amara summons a handful of fists that erupt from the ground, dealing damage to enemies in front of her.",
 				stats: [
                     newStat("Cooldown", [28], "", "seconds"),
@@ -121,6 +139,7 @@ export default {
                 title: "Mindfulness",
                 type: PASSIVE,
                 maxRanks: 3,
+                image: require('../assets/images/skills/amara/Mindfulness.png'),
                 description: "Whenever Amara takes damage, she gains a stack of Mindfulness, improving her Shield Regeneration Delay and Movement Speed. Stacks decay after a few seconds.",
                 stats: [
                     newStat("Shield Regeneration Delay", [9,17,23], "-", "%"),
@@ -133,6 +152,7 @@ export default {
                 title: "Find Your Center",
                 type: PASSIVE,
 				maxRanks: 1,
+                image: require('../assets/images/skills/amara/FindYourCenter.png'),
                 description: "Increases Melee Damage and, for a few seconds after using her action skill, increased melee range.",
                 stats: [
                     newStat("Melee Damage", [100], "+", "%"),
@@ -144,6 +164,7 @@ export default {
                 title: "Vigor",
                 type: PASSIVE,
 				maxRanks: 3,
+                image: require('../assets/images/skills/amara/Vigor.png'),
                 description: "Killing an enemy with Amara's action skill grants all allies increased movement speed for a few seconds.",
 				stats: [
                     newStat("Team Movement Speed", [3.3,6.7,10], "+", "%"),
@@ -154,6 +175,7 @@ export default {
                 title: "Revelation",
                 type: AUGMENT,
                 maxRanks: 5,
+                image: require('../assets/images/skills/amara/Revelation.png'),
                 description: "Action Skill now creates a Nova when it damages enemies, dealing damage to all nearby enemies.",
                 stats: [
                     newStat("Action Skill Duration", [15], "-", "%"),
@@ -165,6 +187,7 @@ export default {
             {
                 title: "Downfall",
                 type: ACTION,
+                image: require('../assets/images/skills/amara/Downfall.png'),
                 description: "Amara leaps into the air and shoots an Elemental Beam directly below her, followed by a Slam.",
                 stats: [
                     newStat("Cooldown", [47], "", "seconds"),
@@ -179,6 +202,7 @@ export default {
                 title: "One with Nature",
                 type: PASSIVE,
                 maxRanks: 5,
+                image: require('../assets/images/skills/amara/OneWithNature.png'),
                 description: "Increases Max Health and Elemental Damage Resistance to her Action Skill Element.",
                 stats: [
                     newStat("Max Health", [5,10,15,20,25], "+", "%"),
@@ -200,6 +224,7 @@ export default {
                 title: "Do unto Others",
                 type: PASSIVE,
                 maxRanks: 1,
+                image: require('../assets/images/skills/amara/DoUntoOthers.png'),
                 description: "Whenever an enemy damages Amara, she automatically throws an energy orb at them, dealing Action Skill Elemental Damage.",
                 stats: [
                     newStat("Cooldown", [8], "", "seconds"),
@@ -209,6 +234,7 @@ export default {
                 title: "Jab Cross",
                 type: PASSIVE,
                 maxRanks: 5,
+                image: require('../assets/images/skills/amara/JabCross.png'),
                 description: "Whenever dealing melee damage, gain increased Action Skill Damage and Gun Damage for a few seconds.",
                 stats: [
                     newStat("Gun Damage", [3,6,9,12,15], "+", "%"),
@@ -220,6 +246,7 @@ export default {
                 title: "Guardian Angel",
                 type: PASSIVE,
 				maxRanks: 1,
+                image: require('../assets/images/skills/amara/GuardianAngel.png'),
                 description: "In Fight for your Life, Amara immediately gains a Second Wind and creates an Action Skill Elemental Nova that knocks back nearby enemies.",
                 stats: [
                     newStat("Revived Health", [50], "", "%"),
@@ -229,6 +256,7 @@ export default {
             {
                 title: "Glamour",
                 type: AUGMENT,
+                image: require('../assets/images/skills/amara/Glamour.png'),
                 description: "Enemies damaged by Amara's action skill become confused and temporarily attack their allies. However, the Action Skill Cooldown will be increased. If Amara targets an enemy with Phasegrasp, enemies near the Grapsed target will be confused as well.",
                 stats: [
                     newStat("Confuse Duration", [8], "", "seconds"),
@@ -248,6 +276,7 @@ export default {
                 title: "Blitz",
                 type: PASSIVE,
                 maxRanks: 1,
+                image: require('../assets/images/skills/amara/Blitz.png'),
                 description: "",
                 stats: [
                     newStat("Cooldown", [8], "", "seconds"),
@@ -273,6 +302,7 @@ export default {
             {
                 title: "Phasecast",
                 type: ACTION,
+                image: require('../assets/images/skills/amara/PhaseCast.png'),
                 description: "Send forward an Astral Projection of Amara.",
 				stats: [
                     newStat("Cooldown", [28], "", "seconds"),
@@ -294,6 +324,7 @@ export default {
                 title: "Do Harm",
                 type: PASSIVE,
                 maxRanks: 5,
+                image: require('../assets/images/skills/amara/DoHarm.png'),
                 description: "Killing an enemy gives a stack of Rush. Activating her Action Skill consumes all Rush stacks. For every stack consumed, Amara's Action Skill Damage is temporarily increased.",
                 stats: [
                     newStat("Action Skill Damage", [0.9,1.8,2.7,3.6,4.5], "+", "% per stack consumed"),
@@ -305,6 +336,7 @@ export default {
                 title: "Fast Hands",
                 type: PASSIVE,
                 maxRanks: 3,
+                image: require('../assets/images/skills/amara/FastHands.png'),
                 description: "Reload Speed, Weapon Swap Speed and Mode Switch Speed improved.",
                 stats: [
                     newStat("Reload Speed", [7,14,19], "+", "%"),
@@ -463,34 +495,34 @@ export default {
                 hide: true,
             },
             {
-                title: "Browning in Brass",
+                title: "Remnant",
                 type: PASSIVE,
-                maxRanks: 5,
-                description: "Kill Skill - Grants a stack of Drowning in Bass for each kill that reduces Fire Rate but increases Gun Damage for you and allies.",
+                maxRanks: 3,
+                description: "When Amara kills an enemy with a Gun or Action Skill, she creates a homing projectile that seeks out a new enemy, dealing her Action Skill Elemental Damage and Overkill Damage.",
                 stats: [
-                    newStat("Moze Fire Rate", -0.5, "+0.5% per stack"),
-                    newStat("Gun Damage", 4.0, "+4.0% per stack"),
-                    newStat("Max Drowning in Brass Stacks", 3, ""),
-                    newStat("Drowning in Brass Duration", 15, "15 seconds"),
+                    newStat("Remnant Damage", [9,18,26], "", ""),
                 ]
             },
             {
                 hide: true
             },
             {
-                title: "Head Count",
+                title: "Awakening",
                 type: PASSIVE,
-                maxRanks: 5,
-                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                maxRanks: 3,
+                description: "Amara's Rush stacks gain increased effectiveness.",
                 stats: [
-                    newStat("Critical Hit Damage", 4, "+4%"),
-                    newStat("Handling", 17, "+17%"),
+                    newStat("Rush Stack Effectiveness", [10,20,30], "+", "%"),
                 ]
             },
             {
-                title: "Head Count",
-                type: ACTION,
-                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                title: "Tandava",
+                type: AUGMENT,
+                description: "Amara sends forward an Astral Projection of herself. When it hits a target, it explodes, damaging all nearby enemies.",
+				stats: [
+                    newStat("Cooldown", [35], "", "seconds"),
+                    newStat("Damage", [91], "", ""),
+                ]
             },
         ],
         [
@@ -501,14 +533,12 @@ export default {
                 hide: true
             },
             {
-                title: "Head Count",
+                title: "Avatar",
                 type: PASSIVE,
-                maxRanks: 3,
-                description: "Chance for Action Skill Cooldown to be reduced when scoring a Critical Hit",
+                maxRanks: 1,
+                description: "Amara's Action Skill can be activated while it's cooling down. This skill may only be used once per completed cooldown. Additionally, increases Amara's Max Rush Stacks. Upon killing an enemy with an Action Skill, it refunds half her Rush Stacks.",
                 stats: [
-                    newStat("Critical Hit Damage", 3, "% vs. Humans"),
-                    newStat("Cooldown Time Reduction Chance", 10, "+10%"),
-                    newStat("Cooldown Time", -2, "-2s"),
+                    newStat("Bonus Rush Stacks", [10], "+", ""),
                 ]
             },
             {
@@ -527,12 +557,13 @@ export default {
                 hide: true
             },
             {
-                title: "Phaseslam",
+                title: "Phasegrasp",
                 type: ACTION,
-                description: "Leap into the air and slam into the ground, dealing damage to and knocking up all nearby enemies.",
+                description: "Amara summons a giant fist that bursts from the ground and locks the targeted enemy in place. Enemies immune to this still take instant damage instead.",
 				stats: [
-                    newStat("Cooldown", [35], "", "seconds"),
-                    newStat("Damage", [98], "", ""),
+                    newStat("Skill Duration", [7], "", "seconds"),
+                    newStat("Grasp Immune Damage", [28], "", ""),
+                    newStat("Cooldown", [16], "", "seconds"),
                 ]
             },
             {
@@ -547,31 +578,33 @@ export default {
                 hide: true
             },
             {
-                title: "Root to Rise",
+                title: "Anima",
                 type: PASSIVE,
                 maxRanks: 5,
-                description: "Increases Maximum Health.",
+                description: "Amara's Status Effects deal increased damage over time and have increased duration. Her Action Skill Status Effect deals further increased damage.",
                 stats: [
-                    newStat("Max Health", [8,16,24,32,40], "+", "%"),
+                    newStat("Action Skill Status Effect Damage", [8,16,24,32,40], "+", "%"),
+                    newStat("Status Effect Damage", [4,8,12,16,20], "+", "%"),
+                    newStat("Status Effect Duration", [20,40,60,80,100], "+", "%"),
                 ]
             },
             {
-                title: "Personal Space",
+                title: "Steady Hand(s)",
                 type: PASSIVE,
                 maxRanks: 3,
-                description: "Weapon shots deal bonus damage, increasing with proximity to the target.",
+                description: "Amara gains increased Weapon Handling and Accuracy.",
                 stats: [
-                    newStat("Bonus Damage", [12,24,36], "up to", "% of damage dealt"),
+                    newStat("Handling", [14,24,32], "+", "%"),
+					newStat("Accuracy", [13,23,31], "+", "%"),
                 ]
             },
             {
-                title: "Clarity",
+                title: "Infusion",
                 type: PASSIVE,
                 maxRanks: 5,
-                description: "Constantly regenerate health. The lower her health, the more powerful the regeneration. After using an action skill, this bonus is doubled for a few seconds.",
+                description: "Convert a portion of damage dealt by Amara's weapons into her Action Skill Element.",
                 stats: [
-                    newStat("Health Regeneration", [1,2,3,4,5], "Up to", "% of missing health per second"),
-					newStat("Duration", [5,5,5,5,5], "", "seconds"),
+                    newStat("Converted Damage", [8,16,24,32,40], "", "%"),
                 ]
             },
             {
@@ -583,80 +616,73 @@ export default {
                 hide: true,
             },
             {
-                title: "Arms Deal",
+                title: "Tempest",
                 type: PASSIVE,
                 maxRanks: 5,
-                description: "Increase Splash Damage and take reduced Splash Damage.",
+                description: "Amara deals increased Elemental Damage. Shock Damage is further increased.",
                 stats: [
-                    newStat("Splash Damage", [4,8,12,16,20], "+", "%"),
-                    newStat("Splash Damage Reduction", [12,21,28,35,40], "+", "%"),
+                    newStat("Shock Damage", [4,8,12,16,20], "+", "%"),
+                    newStat("Elemental Damage", [6,12,18,24,30], "+", "%"),
                 ]
             },
             {
-                title: "Samsara",
+                title: "Illuminated Fist",
                 type: PASSIVE,
-                maxRanks: 3,
-                description: "Gain 1 stack of Samsara when you deal damage to an enemy with your action skill. Each stack increases Gun Damage and Health Regeneration. Stacks decay after a few seconds.",
+                maxRanks: 1,
+                description: "Amara gains increased Melee Damage and her Melee Damage is converted to her Action Skill Element.",
                 stats: [
-                    newStat("Gun Damage", [1.7,3.3,5], "+", "% per enemy damaged"),
-                    newStat("Health Regeneration", [1.7,3.3,5], "+", "% of Max Health per second; per enemy damaged"),
-                    newStat("Max Stacks", [5,5,5], "", "stacks"),
-					newStat("Duration", [20,20,20], "", "seconds"),
+                    newStat("Melee Damage", [75], "+", "%"),
                 ]
             },
             {
-                title: "Helping Hand(s)",
+                title: "Wildfire",
                 type: PASSIVE,
                 maxRanks: 5,
-                description: "For a few seconds after using her action skill, Amara's arms remain active and grant her damage reduction.",
+                description: "Whenever Amara applies a Status Effect to an enemy, it has a chance to spread to a nearby enemy.",
                 stats: [
-                    newStat("Damage Reduction", [12,21,28,35,40], "+", "%"),
-                    newStat("Duration", [15,15,15,15,15], "", "seconds"),
+                    newStat("Spread Chance", [8,16,24,32,40], "+", "%"),
                 ]
             },
             {
-                title: "Blight Tiger",
+                title: "Soulfire",
                 type: ELEMENT,
-                description: "Converts Amara's action skill to corrosive damage."
+                description: "Converts Amara's Action Skill to Incendiary Damage."
             },
         ],
         [
             {
-                title: "Fracture",
+                title: "The Eternal Fist",
                 type: ACTION,
-                description: "Amara summons a handful of fists that erupt from the ground, dealing damage to enemies in front of her.",
+                description: "Amara summons a giant fist that bursts from the ground and locks the targeted enemy in place. Whenever the Grasped enemy is killed, a new fist seeks out and Grasps a new target.",
 				stats: [
-                    newStat("Cooldown", [28], "", "seconds"),
-                    newStat("Damage", [88], "", ""),
+                    newStat("Bonus Targets", [4], "Up to +", ""),
+                    newStat("Grasp Immune Damage", [28], "", ""),
+					newStat("Cooldown", [20], "", "seconds"),
                 ]
             },
             {
                 hide: true,
             },
             {
-                title: "Mindfulness",
+                title: "Dread",
                 type: PASSIVE,
-                maxRanks: 3,
-                description: "Whenever Amara takes damage, she gains a stack of Mindfulness, improving her Shield Regeneration Delay and Movement Speed. Stacks decay after a few seconds.",
+                maxRanks: 1,
+                description: "Amara's Gun Damage is increased for a few seconds after an enemy is Grasped. Whenever any player kills a Grasped enemy, their weapon is reloaded.",
                 stats: [
-                    newStat("Shield Regeneration Delay", [9,17,23], "-", "%"),
-                    newStat("Movement Speed", [1.4,2.8,4.2], "+", "%"),
-                    newStat("Duration", [5,5,5], "", "seconds"),
-					newStat("Max Stacks", [25,25,25], "", "stacks"),
+                    newStat("Gun Damage", [15], "+", "%"),
+                    newStat("Duration", [8], "", "seconds"),
                 ]
             },
             {
                 hide: true,
             },
             {
-                title: "Find Your Center",
+                title: "Allure",
                 type: AUGMENT,
-				maxRanks: 1,
-                description: "Increases Melee Damage and, for a few seconds after using her action skill, increased melee range.",
+                description: "Amara's Action Skill creates a singularity that pulls in enemies.",
                 stats: [
-                    newStat("Melee Damage", [100], "+", "%"),
-                    newStat("Melee Range", [75], "+", "%"),
-					newStat("Duration", [20], "", "seconds"),
+                    newStat("Action Skill Damage", [20], "-", "%"),
+					newStat("Duration", [2.5], "", "seconds"),
                 ]
             },
         ],
@@ -665,78 +691,75 @@ export default {
                 hide:true
             },
             {
-                title: "Vigor",
+                title: "Indiscriminate",
                 type: PASSIVE,
 				maxRanks: 3,
-                description: "Killing an enemy with Amara's action skill grants all allies increased movement speed for a few seconds.",
+                description: "Amara's bullets that damage enemies have a chance to ricochet and deal decreased damage. Ricochet Chance and Damage are increased if the target is currently affected by Phasegrasp or Stillness of Mind.",
 				stats: [
                     newStat("Team Movement Speed", [3.3,6.7,10], "+", "%"),
                     newStat("Duration", [8,8,8], "", "seconds"),
                 ]
             },
             {
-                title: "Revelation",
+                title: "Deep Well",
                 type: PASSIVE,
-                maxRanks: 5,
-                description: "Action Skill now creates a Nova when it damages enemies, dealing damage to all nearby enemies.",
+                maxRanks: 1,
+                description: "Amara gains increased Magazine Size with elemental weapons.",
                 stats: [
-                    newStat("Action Skill Duration", [15], "-", "%"),
-                    newStat("Nova Damage", [18], "", ""),
+                    newStat("Magazine Size", [20], "+", "%"),
                 ]
             },
             {
-                title: "Downfall",
+                title: "Catharsis",
                 type: PASSIVE,
-                description: "Amara leaps into the air and shoots an Elemental Beam directly below her, followed by a Slam.",
+                maxRanks: 3,
+                description: "Whenever Amara triggers an elemental effect on an enemy, when that enemy dies it explodes, dealing her attuned element damage along with current elemental afflictions.",
                 stats: [
-                    newStat("Cooldown", [47], "", "seconds"),
-                    newStat("Damage", [95], "", ""),
-					newStat("Beam Damage", [14], "", "per second"),
+                    newStat("Damage", [4], "", ""),
+					newStat("Cooldown", [8], "", "seconds"),
                 ]
             },
             {
-                title: "One with Nature",
-                type: ACTION,
-                maxRanks: 5,
-                description: "Increases Max Health and Elemental Damage Resistance to her Action Skill Element.",
+                title: "Ties That Bind",
+                type: AUGMENT,
+                description: "Amara summons a giant fist that bursts from the ground and locks the enemy in place. Enemies that near the Grasped target are linked, sharing damage.",
                 stats: [
-                    newStat("Max Health", [5,10,15,20,25], "+", "%"),
-                    newStat("Elemental Damage Resistance", [12,21,28,35,40], "+", "%"),
+                    newStat("Link Damage", [35], "", "% of damage dealt"),
+                    newStat("Grasp Immune Damage", [34], "", ""),
+					newStat("Cooldown", [18], "", "seconds"),
                 ]
             },
         ],
         [
             {
-                title: "Do unto Others",
-                type: ACTION,
-                maxRanks: 1,
-                description: "Whenever an enemy damages Amara, she automatically throws an energy orb at them, dealing Action Skill Elemental Damage.",
+                title: "Fist Over Matter",
+                type: AUGMENT,
+                description: "Amara summons a giant fist that bursts from the ground and locks the enemy in place. After Grasping the enemy, large fists appear and constantly smash the area, dealing damage.",
                 stats: [
-                    newStat("Cooldown", [8], "", "seconds"),
+                    newStat("Damage", [35], "", ""),
+					newStat("Grasp Immune Damage", [39], "", ""),
+					newStat("Cooldown", [28], "", "seconds"),
                 ]
             },
             {
-                title: "Jab Cross",
+                title: "Sustainment",
                 type: PASSIVE,
-                maxRanks: 5,
-                description: "Whenever dealing melee damage, gain increased Action Skill Damage and Gun Damage for a few seconds.",
+				maxRanks: 5,
+                description: "Amara gains Life Steal whenever she deals Elemental Damage with her weapon.",
                 stats: [
-                    newStat("Gun Damage", [3,6,9,12,15], "+", "%"),
-                    newStat("Action Skill Damage", [15,30,45,60,75], "+", "%"),
-					newStat("Duration", [10,10,10,10,10], "", "seconds"),
+                    newStat("Life Steal", [4,8,12,16,20], "", "% of damage dealt"),
                 ]
             },
             {
                 hide: true
             },
             {
-                title: "Guardian Angel",
+                title: "Conflux",
                 type: PASSIVE,
-				maxRanks: 1,
-                description: "In Fight for your Life, Amara immediately gains a Second Wind and creates an Action Skill Elemental Nova that knocks back nearby enemies.",
+                maxRanks: 5,
+                description: "Whenever Amara applies a Status Effect to an enemy, she gains a chance to randomly Electrocute, Ignite, or Melt that enemy.",
                 stats: [
-                    newStat("Revived Health", [50], "", "%"),
-                    newStat("Cooldown", [120], "", "seconds"),
+                    newStat("Extra Effect Chance", [7,14,21,28,35], "", "%"),
                 ]
             },
             {
@@ -751,14 +774,12 @@ export default {
                 hide: true
             },
             {
-                title: "Glamour",
+                title: "Forceful Expression",
                 type: PASSIVE,
                 maxRanks: 1,
-                description: "Enemies damaged by Amara's action skill become confused and temporarily attack their allies. However, the Action Skill Cooldown will be increased. If Amara targets an enemy with Phasegrasp, enemies near the Grapsed target will be confused as well.",
+                description: "Amara's guns deal Bonus Elemental Damage based on her Action Skill Element.",
                 stats: [
-                    newStat("Confuse Duration", [8], "", "seconds"),
-                    newStat("Cooldown", [20], "+", "%"),
-                    newStat("Damage", [30], "-", "%"),
+                    newStat("Bonus Elemental Damage", [18], "", "% of Damage Dealt"),
                 ]
             },
             {
