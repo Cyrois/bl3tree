@@ -397,10 +397,10 @@ class StatsScreen extends React.Component {
             </View>
             
             {
-              this.props.stats && Object.keys(this.props.stats).map(stat => {
+              this.props.stats && Object.keys(this.props.stats).sort().map(stat => {
                 return (
-                  <View key={stat} style={{marginBottom: 5, flexDirection:'row', flexWrap:'wrap'}}>
-                    <Text style={{...styles.defaultFont, ...styles.yellowFont}}>{stat}:</Text>
+                  <View key={stat} style={{marginBottom: 8, flexDirection:'row', flexWrap:'wrap'}}>
+                    <Text style={{...styles.defaultFont, ...styles.yellowFont, fontWeight: 'bold'}}>{stat}:</Text>
                     <Text style={styles.defaultFont}> {this.props.stats[stat]}</Text>
                   </View>
                 )
@@ -550,7 +550,7 @@ const styles = StyleSheet.create({
     fontFamily: TITLE_FONT,
   },
   pointsLeftText: {
-    marginBottom: 5, 
+    marginBottom: 12, 
     flexDirection:'row', 
     flexWrap:'wrap', 
     justifyContent: 'center',

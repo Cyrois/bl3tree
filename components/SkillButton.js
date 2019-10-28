@@ -12,7 +12,7 @@ import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, TITLE_FONT, ELE
 
 class SkillButton extends React.Component {
     constructor(props) {
-        super(props);
+      super(props);
     }
 
     _getSkillBackgroundImage(skillType) {

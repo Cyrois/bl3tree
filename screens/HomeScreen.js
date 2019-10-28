@@ -504,7 +504,7 @@ class HomeScreen extends React.Component {
 
                 <View>
                   {!this._isAbleToUseSkill(this.props.modalSkill) &&
-                    <Text style={{color:'orange'}}>Spend more points to unlock this skill.</Text>
+                    <Text style={{color:'orange', marginVertical: 10, fontWeight: 'bold'}}>Spend more points to unlock this skill.</Text>
                   }
                   
                   {this.props.modalSkill.type === PASSIVE && this._isAbleToUseSkill(this.props.modalSkill) &&
