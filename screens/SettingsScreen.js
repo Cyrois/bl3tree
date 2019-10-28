@@ -12,7 +12,6 @@ import {
   Clipboard
 } from 'react-native';
 
-import TabBarIcon from '../components/TabBarIcon';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators as actions } from '../actions';
@@ -171,8 +170,27 @@ class SettingsScreen extends React.Component {
   }
 
   render() {
+    const Banner = firebase.admob.Banner;
+    const AdRequest = firebase.admob.AdRequest;
+    const request = new AdRequest();
+
+
+    const unitId =
+      Platform.OS === 'ios'
+        ? 'ca-app-pub-6277538657390605~3134969037'
+        : 'ca-app-pub-6277538657390605~9017851102';
+
     return (
       <View style={styles.container}>
+        {/* <Banner
+          unitId={unitId}
+          size={'SMART_BANNER'}
+          request={request.build()}
+          onAdLoaded={() => {
+            console.log('Advert loaded');
+          }}
+        /> */}
+
         <ScrollView contentContainerStyle={styles.contentContainer}>
             <View style={styles.bl3LogoContainer}>
               <Image

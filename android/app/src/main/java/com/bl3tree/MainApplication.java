@@ -9,6 +9,10 @@ import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+
+import io.invertase.firebase.admob.RNFirebaseAdMobPackage;
+import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
+import io.invertase.firebase.fabric.crashlytics.RNFirebaseCrashlyticsPackage;
 import io.invertase.firebase.firestore.RNFirebaseFirestorePackage;
 import io.invertase.firebase.auth.RNFirebaseAuthPackage;
 
@@ -29,6 +33,9 @@ public class MainApplication extends Application implements ReactApplication {
           // packages.add(new MyReactNativePackage());
         packages.add(new RNFirebaseFirestorePackage());
         packages.add(new RNFirebaseAuthPackage());
+        packages.add(new RNFirebaseAnalyticsPackage());
+        packages.add(new RNFirebaseAdMobPackage());
+        packages.add(new RNFirebaseCrashlyticsPackage());
           return packages;
         }
 

@@ -13,12 +13,13 @@ https://stackoverflow.com/questions/35935060/how-can-i-generate-an-apk-that-can-
 https://facebook.github.io/react-native/docs/signed-apk-android
 android/app/build/outputs/bundle/release/app.aab
 
-https://invertase.io/oss/react-native-firebase/v6/admob/quick-start
+https://dev-yakuza.github.io/en/react-native/react-native-firebase-admob/
 https://dev-yakuza.github.io/en/react-native/react-native-admob/
+
+https://medium.com/stackfame/how-to-npm-unistall-unused-packages-in-node-js-ea80afb6d1a7
 
 TODO:
 - Optimize hero skills by only saving title
-- The modal is not big enough for some skills (made the modal a little more compact)
 - Integrate Admobs
 - Figure out how to make a paid version - no ads on paid version
 - Deploy to Google Play Store
