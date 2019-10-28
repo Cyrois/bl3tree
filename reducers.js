@@ -183,6 +183,12 @@ const applyRankSkill = (state, skill, amount, rowIndex) => {
   }
   let pointsLeft = newState.pointsLeft
   let canPerformChange = false;
+
+  //If pressed max, but max value is greater than pointsLeft
+  if(amount > 0 && pointsLeft < amount) {
+    amount = pointsLeft
+  }
+
   if (pointsLeft > 0 && pointsLeft >= amount) {
     if (amount > 0) {
       if (rowIndex == 1) { //Can always add first row

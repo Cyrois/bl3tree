@@ -17,6 +17,7 @@ https://invertase.io/oss/react-native-firebase/v6/admob/quick-start
 https://dev-yakuza.github.io/en/react-native/react-native-admob/
 
 TODO:
+- Need to get pre/post text into the stats page
 - Optimize hero skills by only saving title
 - The modal is not big enough for some skills (made the modal a little more compact)
 - Integrate Admobs

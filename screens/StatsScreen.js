@@ -538,9 +538,10 @@ const styles = StyleSheet.create({
   statsSummaryContainer: {
     backgroundColor: 'rgb(3, 59, 135)',
     paddingHorizontal: 20,
-    paddingVertical: 10,
+    paddingTop: 10,
+    paddingBottom: 40,
     color: '#fff',
-    height: 800
+    minHeight: 800
   },
   statsSummaryHeader: {
     paddingVertical: 10,
