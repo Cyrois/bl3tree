@@ -449,6 +449,7 @@ class HomeScreen extends React.Component {
                 }
 
                 { !!(this.props.ranked[this.props.modalSkill.title] && this.props.ranked[this.props.modalSkill.title] > 0) &&
+                  (Array.isArray(this.props.modalSkill.stats) && !!this.props.modalSkill.stats.length) &&
                   <Text style={{...styles.defaultFont, marginBottom: 4}}>Current Rank:</Text>
                 }
                 {this.props.modalSkill.stats && 

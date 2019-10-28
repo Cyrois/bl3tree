@@ -238,17 +238,19 @@ const applyRankSkill = (state, skill, amount, rowIndex) => {
     newState.pointsSpent[skill.tree][`row${rowIndex}`] = pointsSpentOnTree + newAmount - oldAmount
 
     //Calculate the skill stats
-    for (const stat of skill.stats) {
-      let statSum = newState.stats[stat.type] ? newState.stats[stat.type] : 0
-      if (newAmount > 0) {
-        if (oldAmount > 0) {
+    if (Array.isArray(skill.stats) && !!skill.stats.length) {
+      for (const stat of skill.stats) {
+        let statSum = newState.stats[stat.type] ? newState.stats[stat.type] : 0
+        if (newAmount > 0) {
+          if (oldAmount > 0) {
+            statSum = statSum - stat.values[oldAmount - 1]
+          }
+          statSum = statSum + stat.values[newAmount - 1]
+        } else { //newAmount is 0
           statSum = statSum - stat.values[oldAmount - 1]
         }
-        statSum = statSum + stat.values[newAmount - 1]
-      } else { //newAmount is 0
-        statSum = statSum - stat.values[oldAmount - 1]
+        newState.stats[stat.type] = statSum
       }
-      newState.stats[stat.type] = statSum
     }
   }
   return newState
