@@ -18,6 +18,8 @@ https://dev-yakuza.github.io/en/react-native/react-native-admob/
 
 TODO:
 - Need to get pre/post text into the stats page
+- Zane can only attach augments to the specific action
+- Amara should start with shockra
 - Optimize hero skills by only saving title
 - The modal is not big enough for some skills (made the modal a little more compact)
 - Integrate Admobs
