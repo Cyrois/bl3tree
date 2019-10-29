@@ -9,10 +9,6 @@ import {
     newStat
 } from './constants';
 
-const STALKER = 'stalker'
-const HUNTER = 'hunter'
-const MASTER = 'master'
-
 export default {
     equipped: {
         pet: null,

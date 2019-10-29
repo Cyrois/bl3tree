@@ -265,7 +265,7 @@ class HomeScreen extends React.Component {
                 <View>
                   <View style={{...styles.redSkillTree, ...styles.treeContainer}}>
                     <Text style={styles.treeTitle}>
-                      Under Cover
+                      Doubled Agent
                     </Text>
 
                     <BranchShelf color={RED} horizontal='4.5%' top='48.5%'></BranchShelf>
@@ -277,14 +277,14 @@ class HomeScreen extends React.Component {
 
                     <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
-                        this.props.zane.underCover.map((row, rowIndex) => this._insertTree(row, rowIndex, RED))
+                        this.props.zane.doubledAgent.map((row, rowIndex) => this._insertTree(row, rowIndex, RED))
                       }
                     </View>
                   </View>
 
                   <View style={{...styles.blueSkillTree, ...styles.treeContainer}}>
                     <Text style={styles.treeTitle}>
-                      Doubled Agent
+                      Hitman
                     </Text>
 
                     <BranchShelf color={BLUE} horizontal='4.5%' top='48.5%'></BranchShelf>
@@ -296,14 +296,14 @@ class HomeScreen extends React.Component {
 
                     <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
-                        this.props.zane.doubledAgent.map((row, rowIndex) => this._insertTree(row, rowIndex, BLUE))
+                        this.props.zane.hitman.map((row, rowIndex) => this._insertTree(row, rowIndex, BLUE))
                       }
                     </View>
                   </View>
 
                   <View style={{...styles.greenSkillTree, ...styles.treeContainer}}>
                     <Text style={styles.treeTitle}>
-                      Hitman
+                      Under Cover
                     </Text>
 
                     <BranchShelf color={GREEN} horizontal='4.5%' top='48.5%'></BranchShelf>
@@ -315,7 +315,7 @@ class HomeScreen extends React.Component {
 
                     <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
-                        this.props.zane.hitman.map((row, rowIndex) => this._insertTree(row, rowIndex, GREEN))
+                        this.props.zane.underCover.map((row, rowIndex) => this._insertTree(row, rowIndex, GREEN))
                       }
                     </View>
                   </View>

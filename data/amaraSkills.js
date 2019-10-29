@@ -29,7 +29,7 @@ export default {
                 image: require('../assets/images/skills/amara/PhaseSlam.png'),
                 description: "Leap into the air and slam into the ground, dealing damage to and knocking up all nearby enemies.",
 				stats: [
-                    newStat("Cooldown", [35], "", "seconds"),
+                    newStat("Cooldown", [35], "", " seconds"),
                     newStat("Damage", [98], "", ""),
                 ]
             },
@@ -75,7 +75,7 @@ export default {
                 description: "Constantly regenerate health. The lower her health, the more powerful the regeneration. After using an action skill, this bonus is doubled for a few seconds.",
                 stats: [
                     newStat("Health Regeneration", [1,2,3,4,5], "Up to", "% of missing health per second"),
-					newStat("Duration", [5,5,5,5,5], "", "seconds"),
+					newStat("Duration", [5,5,5,5,5], "", " seconds"),
                 ]
             },
             {
@@ -109,7 +109,7 @@ export default {
                     newStat("Gun Damage", [1.7,3.3,5], "+", "% per enemy damaged"),
                     newStat("Health Regeneration", [1.7,3.3,5], "+", "% of Max Health per second; per enemy damaged"),
                     newStat("Max Stacks", [5,5,5], "", "stacks"),
-					newStat("Duration", [20,20,20], "", "seconds"),
+					newStat("Duration", [20,20,20], "", " seconds"),
                 ]
             },
             {
@@ -121,7 +121,7 @@ export default {
                 description: "For a few seconds after using her action skill, Amara's arms remain active and grant her damage reduction.",
                 stats: [
                     newStat("Damage Reduction", [12,21,28,35,40], "+", "%"),
-                    newStat("Duration", [15,15,15,15,15], "", "seconds"),
+                    newStat("Duration", [15,15,15,15,15], "", " seconds"),
                 ]
             },
             {
@@ -140,7 +140,7 @@ export default {
                 image: require('../assets/images/skills/amara/Fracture.png'),
                 description: "Amara summons a handful of fists that erupt from the ground, dealing damage to enemies in front of her.",
 				stats: [
-                    newStat("Cooldown", [28], "", "seconds"),
+                    newStat("Cooldown", [28], "", " seconds"),
                     newStat("Damage", [88], "", ""),
                 ]
             },
@@ -154,7 +154,7 @@ export default {
                 stats: [
                     newStat("Shield Regeneration Delay", [9,17,23], "-", "%"),
                     newStat("Movement Speed", [1.4,2.8,4.2], "+", "%"),
-                    newStat("Duration", [5,5,5], "", "seconds"),
+                    newStat("Duration", [5,5,5], "", " seconds"),
 					newStat("Max Stacks", [25,25,25], "", "stacks"),
                 ]
             },
@@ -168,7 +168,7 @@ export default {
                 stats: [
                     newStat("Melee Damage", [100], "+", "%"),
                     newStat("Melee Range", [75], "+", "%"),
-					newStat("Duration", [20], "", "seconds"),
+					newStat("Duration", [20], "", " seconds"),
                 ]
             },
             {
@@ -180,7 +180,7 @@ export default {
                 description: "Killing an enemy with Amara's action skill grants all allies increased movement speed for a few seconds.",
 				stats: [
                     newStat("Team Movement Speed", [3.3,6.7,10], "+", "%"),
-                    newStat("Duration", [8,8,8], "", "seconds"),
+                    newStat("Duration", [8,8,8], "", " seconds"),
                 ]
             },
             {
@@ -204,7 +204,7 @@ export default {
                 image: require('../assets/images/skills/amara/Downfall.png'),
                 description: "Amara leaps into the air and shoots an Elemental Beam directly below her, followed by a Slam.",
                 stats: [
-                    newStat("Cooldown", [47], "", "seconds"),
+                    newStat("Cooldown", [47], "", " seconds"),
                     newStat("Damage", [95], "", ""),
 					newStat("Beam Damage", [14], "", "per second"),
                 ]
@@ -243,7 +243,7 @@ export default {
                 image: require('../assets/images/skills/amara/DoUntoOthers.png'),
                 description: "Whenever an enemy damages Amara, she automatically throws an energy orb at them, dealing Action Skill Elemental Damage.",
                 stats: [
-                    newStat("Cooldown", [8], "", "seconds"),
+                    newStat("Cooldown", [8], "", " seconds"),
                 ]
             },
             {
@@ -256,7 +256,7 @@ export default {
                 stats: [
                     newStat("Gun Damage", [3,6,9,12,15], "+", "%"),
                     newStat("Action Skill Damage", [15,30,45,60,75], "+", "%"),
-					newStat("Duration", [10,10,10,10,10], "", "seconds"),
+					newStat("Duration", [10,10,10,10,10], "", " seconds"),
                 ]
             },
             {
@@ -268,7 +268,7 @@ export default {
                 description: "In Fight for your Life, Amara immediately gains a Second Wind and creates an Action Skill Elemental Nova that knocks back nearby enemies.",
                 stats: [
                     newStat("Revived Health", [50], "", "%"),
-                    newStat("Cooldown", [120], "", "seconds"),
+                    newStat("Cooldown", [120], "", " seconds"),
                 ]
             },
             {
@@ -278,7 +278,7 @@ export default {
                 image: require('../assets/images/skills/amara/Glamour.png'),
                 description: "Enemies damaged by Amara's action skill become confused and temporarily attack their allies. However, the Action Skill Cooldown will be increased. If Amara targets an enemy with Phasegrasp, enemies near the Grapsed target will be confused as well.",
                 stats: [
-                    newStat("Confuse Duration", [8], "", "seconds"),
+                    newStat("Confuse Duration", [8], "", " seconds"),
                     newStat("Cooldown", [20], "+", "%"),
                     newStat("Damage", [30], "-", "%"),
                 ]
@@ -299,7 +299,7 @@ export default {
                 image: require('../assets/images/skills/amara/Blitz.png'),
                 description: "",
                 stats: [
-                    newStat("Cooldown", [8], "", "seconds"),
+                    newStat("Cooldown", [8], "", " seconds"),
                     newStat("Melee Damage", [100], "+", "%"),
                 ]
             },
@@ -326,7 +326,7 @@ export default {
                 image: require('../assets/images/skills/amara/PhaseCast.png'),
                 description: "Send forward an Astral Projection of Amara.",
 				stats: [
-                    newStat("Cooldown", [28], "", "seconds"),
+                    newStat("Cooldown", [28], "", " seconds"),
 					newStat("Damage", [92], "", ""),
                 ]
             },
@@ -351,7 +351,7 @@ export default {
                 stats: [
                     newStat("Action Skill Damage", [0.9,1.8,2.7,3.6,4.5], "+", "% per stack consumed"),
 					newStat("Max Rush Stacks", [10,10,10,10,10], "", "stacks"),
-					newStat("Duration", [20,20,20,20,20], "", "seconds"),
+					newStat("Duration", [20,20,20,20,20], "", " seconds"),
                 ]
             },
             {
@@ -377,7 +377,7 @@ export default {
                 stats: [
                     newStat("Effect Chance", [0.6,1.2,1.8,2.4,3], "+", "% per stack consumed"),
                     newStat("Max stacks", [10,10,10,10,10], "", "stacks"),
-					newStat("Duration", [20,20,20,20,20], "", "seconds"),
+					newStat("Duration", [20,20,20,20,20], "", " seconds"),
                 ]
             },
             {
@@ -398,7 +398,7 @@ export default {
                 stats: [
                     newStat("Reload Speed", [0.4,0.8,1.2,1.6,2], "+", "% per stack"),
                     newStat("Reload Speed after action skill use", [0.6,1.2,1.8,2.3,2.9], "+", "% per stack"),
-                    newStat("Duration", [8,8,8,8,8], "", "seconds"),
+                    newStat("Duration", [8,8,8,8,8], "", " seconds"),
                 ]
             },
             {
@@ -411,7 +411,7 @@ export default {
                 stats: [
                     newStat("Accuracy", [17,29,38], "+", "%"),
                     newStat("Critical Hit Damage", [9,18,27], "+", "%"),
-                    newStat("Duration", [12,12,12], "", "seconds"),
+                    newStat("Duration", [12,12,12], "", " seconds"),
                 ]
             },
             {
@@ -446,7 +446,7 @@ export default {
 				stats: [
                     newStat("Elemental Projectiles", [3], "", "per enemy hit"),
 					newStat("Damage", [86], "", ""),
-					newStat("Cooldown", [28], "", "seconds"),
+					newStat("Cooldown", [28], "", " seconds"),
                 ]
             },
             {
@@ -479,7 +479,7 @@ export default {
                 stats: [
                     newStat("Cooldown", [15], "+", "%"),
                     newStat("Damage", [25], "-", "%"),
-					newStat("Max Duration", [6], "", "seconds"),
+					newStat("Max Duration", [6], "", " seconds"),
                 ]
             },
         ],
@@ -493,7 +493,7 @@ export default {
                 stats: [
                     newStat("Damage Bonus", [50], "+", "% per enemy hit"),
                     newStat("Damage", [88], "", ""),
-                    newStat("Cooldown", [30], "", "seconds"),
+                    newStat("Cooldown", [30], "", " seconds"),
                 ]
             },
             {
@@ -517,7 +517,7 @@ export default {
                 description: "Enemies take increased damage from all sources for a few seconds after being damaged by Amara's Action Skill",
                 stats: [
                     newStat("Damage Increase", [8.3,16.7,25], "+", "%"),
-                    newStat("Duration", [8,8,8], "", "seconds"),
+                    newStat("Duration", [8,8,8], "", " seconds"),
                 ]
             },
             {
@@ -530,7 +530,7 @@ export default {
                 stats: [
                     newStat("Gun Damage", [6.7,13.3,20], "+", "%"),
                     newStat("Gun Damage after action skill use", [6.7,13.3,20], "+", "%"),
-					newStat("Duration", [8,8,8], "", "seconds"),
+					newStat("Duration", [8,8,8], "", " seconds"),
                 ]
             },
             {
@@ -573,7 +573,7 @@ export default {
                 image: require('../assets/images/skills/amara/Tandava.png'),
                 description: "Amara sends forward an Astral Projection of herself. When it hits a target, it explodes, damaging all nearby enemies.",
 				stats: [
-                    newStat("Cooldown", [35], "", "seconds"),
+                    newStat("Cooldown", [35], "", " seconds"),
                     newStat("Damage", [91], "", ""),
                 ]
             },
@@ -618,9 +618,9 @@ export default {
                 image: require('../assets/images/skills/amara/PhaseGrasp.png'),
                 description: "Amara summons a giant fist that bursts from the ground and locks the targeted enemy in place. Enemies immune to this still take instant damage instead.",
 				stats: [
-                    newStat("Skill Duration", [7], "", "seconds"),
+                    newStat("Skill Duration", [7], "", " seconds"),
                     newStat("Grasp Immune Damage", [28], "", ""),
-                    newStat("Cooldown", [16], "", "seconds"),
+                    newStat("Cooldown", [16], "", " seconds"),
                 ]
             },
             {
@@ -730,7 +730,7 @@ export default {
 				stats: [
                     newStat("Bonus Targets", [4], "Up to +", ""),
                     newStat("Grasp Immune Damage", [28], "", ""),
-					newStat("Cooldown", [20], "", "seconds"),
+					newStat("Cooldown", [20], "", " seconds"),
                 ]
             },
             {
@@ -745,7 +745,7 @@ export default {
                 description: "Amara's Gun Damage is increased for a few seconds after an enemy is Grasped. Whenever any player kills a Grasped enemy, their weapon is reloaded.",
                 stats: [
                     newStat("Gun Damage", [15], "+", "%"),
-                    newStat("Duration", [8], "", "seconds"),
+                    newStat("Duration", [8], "", " seconds"),
                 ]
             },
             {
@@ -759,7 +759,7 @@ export default {
                 description: "Amara's Action Skill creates a singularity that pulls in enemies.",
                 stats: [
                     newStat("Action Skill Damage", [20], "-", "%"),
-					newStat("Duration", [2.5], "", "seconds"),
+					newStat("Duration", [2.5], "", " seconds"),
                 ]
             },
         ],
@@ -776,7 +776,7 @@ export default {
                 description: "Amara's bullets that damage enemies have a chance to ricochet and deal decreased damage. Ricochet Chance and Damage are increased if the target is currently affected by Phasegrasp or Stillness of Mind.",
 				stats: [
                     newStat("Team Movement Speed", [3.3,6.7,10], "+", "%"),
-                    newStat("Duration", [8,8,8], "", "seconds"),
+                    newStat("Duration", [8,8,8], "", " seconds"),
                 ]
             },
             {
@@ -799,7 +799,7 @@ export default {
                 description: "Whenever Amara triggers an elemental effect on an enemy, when that enemy dies it explodes, dealing her attuned element damage along with current elemental afflictions.",
                 stats: [
                     newStat("Damage", [4], "", ""),
-					newStat("Cooldown", [8], "", "seconds"),
+					newStat("Cooldown", [8], "", " seconds"),
                 ]
             },
             {
@@ -811,7 +811,7 @@ export default {
                 stats: [
                     newStat("Link Damage", [35], "", "% of damage dealt"),
                     newStat("Grasp Immune Damage", [34], "", ""),
-					newStat("Cooldown", [18], "", "seconds"),
+					newStat("Cooldown", [18], "", " seconds"),
                 ]
             },
         ],
@@ -825,7 +825,7 @@ export default {
                 stats: [
                     newStat("Damage", [35], "", ""),
 					newStat("Grasp Immune Damage", [39], "", ""),
-					newStat("Cooldown", [28], "", "seconds"),
+					newStat("Cooldown", [28], "", " seconds"),
                 ]
             },
             {

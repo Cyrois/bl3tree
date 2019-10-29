@@ -49,7 +49,7 @@ export default {
                 stats: [
                     newStat("Current Health Removed", [1, 2, 3, 4, 5], "", "%"),
                     newStat("Bonus Incendiary Damage", [3, 6, 9, 12, 15], "+", "%"),
-                    newStat("Duration", [5, 5, 5, 5, 5], "", "seconds"),
+                    newStat("Duration", [5, 5, 5, 5, 5], "", " seconds"),
                 ]
 
             },
@@ -61,7 +61,7 @@ export default {
                 image: require('../assets/images/skills/moze/SecurityBear.png'),
                 description: "Grants Iron Bear a bubble shield that reduces damage taken, and can be reactivated after a time.",
                 stats: [
-                    newStat("20% of Iron Bear Max Health added as Shields Bubble Recharge Delay", [5], "", "seconds"),
+                    newStat("20% of Iron Bear Max Health added as Shields Bubble Recharge Delay", [5], "", " seconds"),
                 ]
             },
             {
@@ -98,7 +98,7 @@ export default {
                     newStat("Moze Fire Rate", [0.5, 1, 1.5, 2, 2.5], "-", "% per stack"),
                     newStat("Gun Damage", [4, 8, 12, 16, 20], "+", "% per stack"),
                     newStat("Max Drowning in Brass Stacks", [3, 3, 3, 3, 3], "", "Stacks"),
-                    newStat("Drowning in Brass Duration", [15, 15, 15, 15, 15], "", "seconds"),
+                    newStat("Drowning in Brass Duration", [15, 15, 15, 15, 15], "", " seconds"),
                 ]
             },
             {
@@ -238,7 +238,7 @@ export default {
                 stats: [
                     newStat("Max Shields", [3, 6, 9, 12, 15], "+", "% per stack"),
                     newStat("Gun Damage", [2, 4, 6, 8, 10], "+", "% per stack"),
-                    newStat("Phalanx Doctrine Duration", [30, 30, 30, 30, 30], "", "seconds"),
+                    newStat("Phalanx Doctrine Duration", [30, 30, 30, 30, 30], "", " seconds"),
                 ]
             },
             {
@@ -279,7 +279,7 @@ export default {
                 description: "Whenever Moze's shield is fully depleted, she instantly restores a portion, and her Gun Damage is increased for a short time. This skill can only trigger after a full shield recharge.",
                 stats: [
                     newStat("Restores", [40], "+", "% of Max Shield"),
-                    newStat("Tenacious Defense Duration", [30], "", "seconds"),
+                    newStat("Tenacious Defense Duration", [30], "", " seconds"),
                     newStat("Gun Damage", [30], "+", "%"),
                 ]
             },
@@ -382,7 +382,7 @@ export default {
                 description: "After Moze scores a Critical Hit, she regenerates ammo for a few seconds.",
                 stats: [
                     newStat("Ammo Regeneration", [5], "+", "% of magazine"),
-                    newStat("Redistribution Duration", [3], "", "seconds"),
+                    newStat("Redistribution Duration", [3], "", " seconds"),
                 ]
             },
             {
@@ -513,7 +513,7 @@ export default {
                 image: require('../assets/images/skills/moze/SomeForRoad.png'),
                 description: "Moze gains infinite ammo for a few seconds after exiting Iron Bear.",
                 stats: [
-                    newStat("Some for the Road duration", [5], "", "seconds"),
+                    newStat("Some for the Road duration", [5], "", " seconds"),
                 ]
             },
             {
@@ -621,7 +621,7 @@ export default {
                 image: require('../assets/images/skills/moze/Grizzled.png'),
                 description: "Killing an enemy reduces Moze's remaining Active Skill Cooldown Time. This skill has diminishing returns.",
                 stats: [
-                    newStat("Iron Bear Cooldown Time", [1, 2, 3, 4, 5], "-", "seconds"),
+                    newStat("Iron Bear Cooldown Time", [1, 2, 3, 4, 5], "-", " seconds"),
                 ]
             },
             {
@@ -710,7 +710,7 @@ export default {
                 image: require('../assets/images/skills/moze/AutoBear.png'),
                 description: "After Moze exits Iron Bear, it will remain deployed in place for a short time. While Auto Bear is active, it will attack enemies until its duration ends, then self-destruct.",
                 stats: [
-                    newStat("Auto Bear Duration", [15], "", "seconds"),
+                    newStat("Auto Bear Duration", [15], "", " seconds"),
                 ]
             },
             {

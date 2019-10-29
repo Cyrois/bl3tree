@@ -100,7 +100,7 @@ const intialState = {
   loadBuildCodeModalVisible: false,
   confirmLoadModalVisible: false,
   confirmDeleteModalVisible: false,
-  selectedHero: AMARA,
+  selectedHero: FLAK,
   quickSelectEnabled: false,
   toggleActions: true,
   toggleBuilds: true,
@@ -449,8 +449,9 @@ const setHeroSelect = (state, modalVisible) => {
 }
 
 const selectHero = (state, hero) => {
+  let newState = reset(state)
   return {
-    ...state,
+    ...newState,
     selectedHero: hero
   }
 }
