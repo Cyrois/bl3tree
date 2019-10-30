@@ -69,8 +69,14 @@ class SettingsScreen extends React.Component {
   }
 
   _handleSignUp = () => {
-    console.log("hit sign up")
-    firebase
+    if(!this.props.email) {
+      this.props.setCreateError('Please enter your email')
+      return
+    } else if(!this.props.password) {
+      this.props.setCreateError('Please enter your password')
+      return
+    } else {
+      firebase
       .auth()
       .createUserWithEmailAndPassword(this.props.email, this.props.password)
       .then(() => {
@@ -81,25 +87,34 @@ class SettingsScreen extends React.Component {
         console.log(error)
         this.props.setCreateError(error.message)
       })
+    }
   }
 
   _handleSignIn = () => {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(this.props.email, this.props.password)
-      .then(() => {
-        this.props.setLoginModal(false)
-        this.props.setCreateError('')
-        this._loadBuilds()
-      })
-      .catch(error => {
-        console.log(error)
-        if(error.code === "auth/unknown") {
-          this.props.setLoginError("We detected something unusual, please try again later.")
-        } else {
-          this.props.setLoginError(error.message)
-        }
-      })
+    if(!this.props.email) {
+      // this.props.setCreateError('Please enter your email')
+      return
+    } else if(!this.props.password) {
+      // this.props.setCreateError('Please enter your password')
+      return
+    } else {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.props.email, this.props.password)
+        .then(() => {
+          this.props.setLoginModal(false)
+          this.props.setCreateError('')
+          this._loadBuilds()
+        })
+        .catch(error => {
+          console.log(error)
+          if(error.code === "auth/unknown") {
+            this.props.setLoginError("We detected something unusual, please try again later.")
+          } else {
+            this.props.setLoginError(error.message)
+          }
+        })
+    }
   }
 
   _handleLogout = () => {
@@ -709,6 +724,9 @@ const styles = StyleSheet.create({
   },
   innerModal: {
     backgroundColor: '#fff',
+    borderRadius: 5,
+    borderWidth: 5,
+    borderColor: RED_BG,
     padding: 20,
     width: '100%'
   },

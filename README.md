@@ -17,6 +17,7 @@ https://invertase.io/oss/react-native-firebase/v6/admob/quick-start
 https://dev-yakuza.github.io/en/react-native/react-native-admob/
 
 TODO:
+- Prevent login or signup if either field is blank
 - Need to get pre/post text into the stats page
 - Zane can only attach augments to the specific action
 - Amara should start with shockra
