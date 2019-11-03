@@ -212,7 +212,7 @@ export default {
                 stats: [
                     newStat("Cooldown", [47], "", " seconds"),
                     newStat("Damage", [95], "", ""),
-					newStat("Beam Damage", [14], "", "per second"),
+					newStat("Beam Damage", [14], "", " per second"),
                 ]
             },
             {
@@ -454,7 +454,7 @@ export default {
                 image: require('../assets/images/skills/amara/Deliverance.png'),
                 description: "When Astral Projection hits an enemy, it releases homing Elemental Projectiles that trigger her Action Skill Elemental Effect on enemies.",
 				stats: [
-                    newStat("Elemental Projectiles", [3], "", "per enemy hit"),
+                    newStat("Elemental Projectiles", [3], "", " per enemy hit"),
 					newStat("Damage", [86], "", ""),
 					newStat("Cooldown", [28], "", " seconds"),
                 ]
@@ -473,7 +473,7 @@ export default {
                     newStat("Soul Sap Lifesteal", [20], "+", "%"),
                     newStat("Allure Radius", [100], "+", "%"),
                     newStat("Glamour Duration", [50], "+", "%"),
-					newStat("Stillness of Mind", [0.75], "Breaks", "seconds after being damaged"),
+					newStat("Stillness of Mind", [0.75], "Breaks ", " seconds after being damaged"),
 					newStat("Revelation Damage", [25], "+", "%"),
                 ]
             },

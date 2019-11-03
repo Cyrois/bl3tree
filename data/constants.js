@@ -219,7 +219,7 @@ const getStatText = (statType) => {
    else if(statType === "gundamage+%") {return {type: "Gun Damage", preText: '+', postText: '%'}}
    else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "grenadechance%") {return {type: "Grenade Chance", preText: '', postText: '%'}}
-   else if(statType === "grenadechanceupto20%") {return {type: "Grenade Chance", preText: '', postText: 'up to 20%'}}
+   else if(statType === "grenadechanceupto%") {return {type: "Grenade Chance", preText: 'up to ', postText: '%'}}
    else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "shieldsrestored+%ofdigi-clonedamage") {return {type: "Shields Restored", preText: '+', postText: '% of Digi-Clone damage'}}
    else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}

@@ -270,7 +270,6 @@ const setSelectedModalSkill = (state, modalData, selectedSkillModalVisible) => {
 }
 
 const setCharacterSkill = (state, data) => {
-  console.log(data)
   const {
     character,
     skillType,

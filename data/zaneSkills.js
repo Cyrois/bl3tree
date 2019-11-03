@@ -126,7 +126,7 @@ export default {
                 image: require('../assets/images/skills/zane/DuctTapeMod.png'),
                 description: "First shot fired from Zane's gun has a chance to also fire a grenade. Chance is higher the more grenades in capacity.",
                 stats: [
-                    newStat("Grenade Chance", [4,8,12,16,20], "", "up to 20%"),
+                    newStat("Grenade Chance", [4,8,12,16,20], "up to ", "%"),
                     newStat("Cooldown", [8,8,8,8,8], "", " seconds"),
                 ]
             },

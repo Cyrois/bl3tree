@@ -18,7 +18,7 @@ import { MonoText } from '../components/StyledText';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators as actions } from '../actions';
-import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, RED_BG, YELLOW_FONT, TITLE_FONT, TEXT_FONT, getStatText } from '../data/constants';
+import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, RED_BG, YELLOW_FONT, TITLE_FONT, TEXT_FONT, getStatText, ELEMENT } from '../data/constants';
 
 class StatsScreen extends React.Component {
   _getSkillBackgroundImage(skillType) {
@@ -30,6 +30,8 @@ class StatsScreen extends React.Component {
       case ACTION:
         return require("../assets/images/backgrounds/skill-bg-action-default.png")
       case PET:
+        return require("../assets/images/backgrounds/skill-bg-pet-default.png")
+      case ELEMENT:
         return require("../assets/images/backgrounds/skill-bg-pet-default.png")
     }
   }
@@ -402,7 +404,7 @@ class StatsScreen extends React.Component {
                 return (
                   <View key={stat} style={{marginBottom: 8, flexDirection:'row', flexWrap:'wrap'}}>
                     <Text style={{...styles.defaultFont, ...styles.yellowFont, fontWeight: 'bold'}}>{text.type}:</Text>
-                    <Text style={styles.defaultFont}> {text.preText}{this.props.stats[stat]}{text.postText}</Text>
+                    <Text style={{...styles.defaultFont, marginTop: 2}}> {text.preText}{this.props.stats[stat]}{text.postText}</Text>
                   </View>
                 )
               })
