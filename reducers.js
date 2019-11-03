@@ -36,7 +36,8 @@ import {
   MOZE,
   ZANE,
   AMARA,
-  MAX_POINTS
+  MAX_POINTS,
+  normalizeStat
 } from './data/constants';
 
 import flakSkills from './data/flakSkills.js';
@@ -100,7 +101,7 @@ const intialState = {
   loadBuildCodeModalVisible: false,
   confirmLoadModalVisible: false,
   confirmDeleteModalVisible: false,
-  selectedHero: FLAK,
+  selectedHero: AMARA,
   quickSelectEnabled: false,
   toggleActions: true,
   toggleBuilds: true,
@@ -234,7 +235,8 @@ const applyRankSkill = (state, skill, amount, rowIndex) => {
     //Calculate the skill stats
     if (Array.isArray(skill.stats) && !!skill.stats.length) {
       for (const stat of skill.stats) {
-        let statSum = newState.stats[stat.type] ? newState.stats[stat.type] : 0
+        let statKey = normalizeStat(stat)
+        let statSum = newState.stats[statKey] ? newState.stats[statKey] : 0
         if (newAmount > 0) {
           if (oldAmount > 0) {
             statSum = statSum - stat.values[oldAmount - 1]
@@ -243,7 +245,7 @@ const applyRankSkill = (state, skill, amount, rowIndex) => {
         } else { //newAmount is 0
           statSum = statSum - stat.values[oldAmount - 1]
         }
-        newState.stats[stat.type] = statSum
+        newState.stats[statKey] = statSum
       }
     }
   }
@@ -390,9 +392,10 @@ const loadBuild = (state, buildToLoad) => {
   heroSkills.forEach((skill) => {
     if (rankedSkills[skill.title] > 0) {
       skill.stats.forEach((stat) => {
-        let statSum = newState.stats[stat.type] ? newState.stats[stat.type] : 0
+        let statKey = normalizeStat(stat)
+        let statSum = newState.stats[statKey] ? newState.stats[statKey] : 0
         statSum += stat.values[rankedSkills[skill.title] - 1]
-        newState.stats[stat.type] = statSum
+        newState.stats[statKey] = statSum
       })
     }
   })

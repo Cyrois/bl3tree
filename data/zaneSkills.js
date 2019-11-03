@@ -77,7 +77,6 @@ export default {
                 description: "Zane gains increased Action Skill Duration for every Action Skill.",
                 stats: [
                     newStat("Action Skill Duration", [3,6,9,12,15], "+", "% per active action skill."),
-                    newStat("Gun Damage", 3, "+3.0%"),
                 ]
             }, 
             {
@@ -252,10 +251,10 @@ export default {
                 image: require('../assets/images/skills/zane/BoomEnhance.png'),
                 description: "Digi-Clone consumes up to 3 Grenades when summoned. For every grenade consumed, Digi-Clone gains increased Gun Damage, Max Health, Fire Rate, and Reload Speed.",
                 stats: [
-                    newStat("Gun Damage", [20], "+", "% per grenade"),
-                    newStat("Max Health", [81], "+", "% per grenade"),
-					newStat("Fire Rate", [5], "+", "% per grenade"),
-                    newStat("Reload Speed", [31], "+", "% per grenade"),
+                    newStat("Clone Gun Damage", [20], "+", "% per grenade"),
+                    newStat("Clone Max Health", [81], "+", "% per grenade"),
+					newStat("Clone Fire Rate", [5], "+", "% per grenade"),
+                    newStat("Clone Reload Speed", [31], "+", "% per grenade"),
 					newStat("Digi-Clone Duration", [25], "+", "% per grenade"),
                 ]
             },

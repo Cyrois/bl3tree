@@ -13,7 +13,13 @@ export default {
     equipped: {
         action1: null,
         augment1: null,
-        action2: null,
+        element1: {
+            title: "Shockra",
+            type: ELEMENT,
+            tree: BLUE,
+            image: require('../assets/images/skills/amara/Shockra.png'),
+            description: "Converts your action skill damage to shock damage."
+        },
     },
     brawl: [
         [{
@@ -317,7 +323,11 @@ export default {
                 hide: true
             },
             {
-                hide: true
+                title: "Shockra",
+                type: ELEMENT,
+                tree: BLUE,
+                image: require('../assets/images/skills/amara/Shockra.png'),
+                description: "Converts your action skill damage to shock damage."
             },
             {
                 title: "Phasecast",

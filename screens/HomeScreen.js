@@ -93,11 +93,20 @@ class HomeScreen extends React.Component {
     this._setModal(false, "")
   }
 
+  _normalize = string => string.replace(/\s/g, "").toLowerCase()
+
   _insertTree = (row, rowIndex, color) => {
     return (
       <View key={"row_" + rowIndex} style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
         {
           row.map((skill, colIndex) => {
+            // if(skill.stats ) {
+            //   skill.stats.forEach(element => {
+            //     let ifStatement = this._normalize(element.type+element.preText+element.postText)
+            //     let print = `if(statType === "${ifStatement}") {return {type: "${element.type}", preText: '${element.preText}', postText: '${element.postText}'}}`
+            //     console.log(print)
+            //   });
+            // }
             skill.tree = color
             return (
               <View style={styles.skillContainer} key={"col_" + colIndex}>
@@ -440,6 +449,7 @@ class HomeScreen extends React.Component {
                     this.props.modalSkill.type === PASSIVE && 'Passive Ability' ||
                     this.props.modalSkill.type === ACTION && 'Action Skill' ||
                     this.props.modalSkill.type === AUGMENT && 'Action Skill Augment' ||
+                    this.props.modalSkill.type === ELEMENT && 'Action Skill Element' ||
                     this.props.modalSkill.type === PET && 'Pet'
                   }
                 </Text>
@@ -570,6 +580,19 @@ class HomeScreen extends React.Component {
                       }}
                     >
                       <Text style={{...styles.defaultFont, color: 'black'}}> Assign Pet </Text>
+                    </TouchableOpacity>
+                  }
+
+                  {
+                    this.props.modalSkill.type === ELEMENT && this._isAbleToUseSkill(this.props.modalSkill) && !this._isEquippedSkill(this.props.modalSkill) &&
+                    <TouchableOpacity
+                      style={styles.skillModalButtons}
+                      onPress={() => {
+                        this.props.setCharacterSkill(this.props.selectedHero, ELEMENT, "1", this.props.modalSkill)
+                        this._setModal(false, "")
+                      }}
+                    >
+                      <Text style={{...styles.defaultFont, color: 'black'}}> Equip Element </Text>
                     </TouchableOpacity>
                   }
 
