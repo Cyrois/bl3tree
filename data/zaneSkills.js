@@ -8,15 +8,16 @@ import {
     BLUE
 } from './constants';
 
-export default {
-    equipped: {
-        action1: null,
-        augment1: null,
-        augment2: null,
-        action2: null,
-        augment3: null,
-        augment4: null,
-    },
+let zaneEquipped = {
+    action1: null,
+    augment1: null,
+    augment2: null,
+    action2: null,
+    augment3: null,
+    augment4: null,
+}
+let zaneSkills = {
+    equipped: {...zaneEquipped},
     doubledAgent: [
         [{
                 hide: true
@@ -30,9 +31,9 @@ export default {
                 tree: RED,
                 image: require('../assets/images/skills/zane/DigiClone.png'),
                 description: "Spawn a Digi-Clone of Zane. This Clone stays in place, but distracts and fires at enemies. Zane may swap places with his clone.",
-				stats: [
+                stats: [
                     newStat("Duration", [15], "", " seconds"),
-					newStat("Cooldown", [28], "", " seconds"),
+                    newStat("Cooldown", [28], "", " seconds"),
                 ]
             },
             {
@@ -42,8 +43,7 @@ export default {
                 hide: true
             },
         ],
-        [
-            {
+        [{
                 hide: true
             },
             {
@@ -54,7 +54,7 @@ export default {
                 image: require('../assets/images/skills/zane/Synchronicity.png'),
                 description: "Whenever one or more of Zane's action skills are active, he gains increased Gun Damage for each active action skill.",
                 stats: [
-                    newStat("Gun Damage", [4,8,12,16,20], "+", "% per active action skill"),
+                    newStat("Gun Damage", [4, 8, 12, 16, 20], "+", "% per active action skill"),
                 ]
             },
             {
@@ -65,7 +65,7 @@ export default {
                 image: require('../assets/images/skills/zane/Praemunitus.png'),
                 description: "Zane and his Digi-Clone gain increased Magazine Size.",
                 stats: [
-                    newStat("Magazine Size", [8.3,16.7,25], "+", "%"),
+                    newStat("Magazine Size", [8.3, 16.7, 25], "+", "%"),
                 ]
             },
             {
@@ -76,15 +76,14 @@ export default {
                 image: require('../assets/images/skills/zane/BorrowedTime.png'),
                 description: "Zane gains increased Action Skill Duration for every Action Skill.",
                 stats: [
-                    newStat("Action Skill Duration", [3,6,9,12,15], "+", "% per active action skill."),
+                    newStat("Action Skill Duration", [3, 6, 9, 12, 15], "+", "% per active action skill."),
                 ]
-            }, 
+            },
             {
                 hide: true
             },
         ],
-        [
-            {
+        [{
                 title: "Binary System",
                 type: AUGMENT,
                 tree: RED,
@@ -102,9 +101,9 @@ export default {
                 image: require('../assets/images/skills/zane/DonnyBrook.png'),
                 description: "Whenever Zane kills an enemy, he and his Digi-Clone receive increased Gun Damage and gain Health Regeneration for a few seconds.",
                 stats: [
-                    newStat("Health Regeneration", [0.5,1,1.5,2,2.5], "+", "% of missing health per sec"),
-                    newStat("Gun Damage", [3,6,9,12,15], "+", "%"),
-                    newStat("Duration", [8,8,8,8,8], "", " seconds"),
+                    newStat("Health Regeneration", [0.5, 1, 1.5, 2, 2.5], "+", "% of missing health per sec"),
+                    newStat("Gun Damage", [3, 6, 9, 12, 15], "+", "%"),
+                    newStat("Duration", [8, 8, 8, 8, 8], "", " seconds"),
                 ]
             },
             {
@@ -126,22 +125,21 @@ export default {
                 image: require('../assets/images/skills/zane/DuctTapeMod.png'),
                 description: "First shot fired from Zane's gun has a chance to also fire a grenade. Chance is higher the more grenades in capacity.",
                 stats: [
-                    newStat("Grenade Chance", [4,8,12,16,20], "up to ", "%"),
-                    newStat("Cooldown", [8,8,8,8,8], "", " seconds"),
+                    newStat("Grenade Chance", [4, 8, 12, 16, 20], "up to ", "%"),
+                    newStat("Cooldown", [8, 8, 8, 8, 8], "", " seconds"),
                 ]
             },
             {
                 hide: true,
             },
         ],
-        [
-            {
+        [{
                 title: "Schadenfreude",
                 type: AUGMENT,
                 tree: RED,
                 image: require('../assets/images/skills/zane/SchadenFreude.png'),
                 description: "Whenever Zane's clone takes damage, his shield is restored by a portion of that damage.",
-				stats: [
+                stats: [
                     newStat("Shields Restored", [100], "+", "% of Digi-Clone damage"),
                 ]
             },
@@ -170,14 +168,13 @@ export default {
                 ]
             },
         ],
-        [
-            {
+        [{
                 title: "Doppelbanger",
                 type: AUGMENT,
                 tree: RED,
                 image: require('../assets/images/skills/zane/DoppelBanger.png'),
                 description: "You may command your clone to self-destruct, dealing Fire Damage to all nearby enemies. More damage is dealt them more Action Skill time remaining.",
-				stats: [
+                stats: [
                     newStat("Damage", [280], "Up to", ""),
                 ]
             },
@@ -189,8 +186,8 @@ export default {
                 image: require('../assets/images/skills/zane/PocketFull.png'),
                 description: "Gain Grenade Regeneration after killing an enemy.",
                 stats: [
-                    newStat("Grenade Regeneration", [7,13,20], "", "% per sec"),
-                    newStat("Duration", [8,8,8], "", " seconds"),
+                    newStat("Grenade Regeneration", [7, 13, 20], "", "% per sec"),
+                    newStat("Duration", [8, 8, 8], "", " seconds"),
                 ]
             },
             {
@@ -200,7 +197,7 @@ export default {
                 maxRanks: 1,
                 image: require('../assets/images/skills/zane/OldU.png'),
                 description: "During Fight For Your Life you may destroy your Digi-Clone to gain a Second Wind with full health.",
-				stats: [
+                stats: [
                     newStat("Max Health Restored", [100], "", "% of Max Health"),
                 ]
             },
@@ -212,7 +209,7 @@ export default {
                 image: require('../assets/images/skills/zane/SupersonicMan.png'),
                 description: "Gain increased Movement Speed for each active Action Skill.",
                 stats: [
-                    newStat("Movement Speed", [4,8,12], "+", "% per active action skill"),
+                    newStat("Movement Speed", [4, 8, 12], "+", "% per active action skill"),
                 ]
             },
             {
@@ -226,8 +223,7 @@ export default {
                 ]
             },
         ],
-        [
-            {
+        [{
                 hide: true
             },
             {
@@ -238,9 +234,9 @@ export default {
                 image: require('../assets/images/skills/zane/LikeAGhost.png'),
                 description: "Gain the chance for Zane and his Digi-Clone to ignore bullets. Chance is increased after activating an Action Skill, and stacks.",
                 stats: [
-                    newStat("Ignore Bullet Chance", [2,4,6], "", "%"),
-                    newStat("Additional Ignore Bullet Chance", [3,6,9], "", "%"),
-                    newStat("Duration", [8,8,8], "", " seconds"),
+                    newStat("Ignore Bullet Chance", [2, 4, 6], "", "%"),
+                    newStat("Additional Ignore Bullet Chance", [3, 6, 9], "", "%"),
+                    newStat("Duration", [8, 8, 8], "", " seconds"),
                 ]
             },
             {
@@ -253,9 +249,9 @@ export default {
                 stats: [
                     newStat("Clone Gun Damage", [20], "+", "% per grenade"),
                     newStat("Clone Max Health", [81], "+", "% per grenade"),
-					newStat("Clone Fire Rate", [5], "+", "% per grenade"),
+                    newStat("Clone Fire Rate", [5], "+", "% per grenade"),
                     newStat("Clone Reload Speed", [31], "+", "% per grenade"),
-					newStat("Digi-Clone Duration", [25], "+", "% per grenade"),
+                    newStat("Digi-Clone Duration", [25], "+", "% per grenade"),
                 ]
             },
             {
@@ -266,15 +262,14 @@ export default {
                 image: require('../assets/images/skills/zane/TrickOfLight.png'),
                 description: "Deal Bonus Shock Damage to enemies that aren't targeting Zane.",
                 stats: [
-                    newStat("Bonus Damage", [6,12,18], "+", "% of damage dealt"),
+                    newStat("Bonus Damage", [6, 12, 18], "+", "% of damage dealt"),
                 ]
             },
             {
                 hide: true,
             },
         ],
-        [
-            {
+        [{
                 hide: true
             },
             {
@@ -313,10 +308,10 @@ export default {
                 tree: BLUE,
                 image: require('../assets/images/skills/zane/SNTNL.png'),
                 description: "Send into battle an automated SNTNL drone that continually flies through the environment and attacks enemies with its Machine Guns.",
-				stats: [
+                stats: [
                     newStat("Duration", [24], "", " seconds"),
-					newStat("Cooldown", [60], "", " seconds"),
-					newStat("Machine Gun Damage", [4], "", "")
+                    newStat("Cooldown", [60], "", " seconds"),
+                    newStat("Machine Gun Damage", [4], "", "")
                 ]
             },
             {
@@ -326,8 +321,7 @@ export default {
                 hide: true
             },
         ],
-        [
-            {
+        [{
                 hide: true
             },
             {
@@ -338,8 +332,8 @@ export default {
                 image: require('../assets/images/skills/zane/ViolentSpeed.png'),
                 description: "Increases Movement Speed after killing an enemy.",
                 stats: [
-                    newStat("Movement Speed", [4,8,12,16,20], "+", "%"),
-					newStat("Duration", [8,8,8,8,8], "", " seconds"),
+                    newStat("Movement Speed", [4, 8, 12, 16, 20], "+", "%"),
+                    newStat("Duration", [8, 8, 8, 8, 8], "", " seconds"),
                 ]
             },
             {
@@ -350,8 +344,8 @@ export default {
                 image: require('../assets/images/skills/zane/ColdBore.png'),
                 description: "Gain increased Weapon Swap Speed. Shot fired after swapping weapons deals Bonus Cryo Damage.",
                 stats: [
-                    newStat("Weapon Swap Speed", [13,23,31,38,43], "+", "%"),
-					newStat("Bonus Cryo Damage", [6,12,18,24,30], "+", "%"),
+                    newStat("Weapon Swap Speed", [13, 23, 31, 38, 43], "+", "%"),
+                    newStat("Bonus Cryo Damage", [6, 12, 18, 24, 30], "+", "%"),
                 ]
             },
             {
@@ -362,21 +356,20 @@ export default {
                 image: require('../assets/images/skills/zane/ViolentMomentum.png'),
                 description: "Gun Damage is increased while moving. Gun Damage bonus increases the greater the move speed.",
                 stats: [
-                    newStat("Gun Damage", [4,8,12,16,20], "+", "% at default walk speed"),
+                    newStat("Gun Damage", [4, 8, 12, 16, 20], "+", "% at default walk speed"),
                 ]
             },
             {
                 hide: true
             },
         ],
-        [
-            {
+        [{
                 title: "Winter's Drone",
                 type: AUGMENT,
                 tree: BLUE,
                 image: require('../assets/images/skills/zane/WintersDrone.png'),
                 description: "Converts SNTNL's primary weapons to Cryo Damage.",
-				stats: [
+                stats: [
                     newStat("Drone Damage", [20], "-", "%"),
                 ]
             },
@@ -388,9 +381,9 @@ export default {
                 image: require('../assets/images/skills/zane/CoolHand.png'),
                 description: "Gain increased Reload Speed, and gain bonus Reload Speed after killing an enemy.",
                 stats: [
-                    newStat("Reload Speed", [2.9,5.7,8.3,10.7,13], "+", "%"),
-                    newStat("Reload Speed", [4,7,11,14,17], "+", "% after kill"),
-                    newStat("Duration", [8,8,8,8,8], "", " seconds"),
+                    newStat("Reload Speed", [2.9, 5.7, 8.3, 10.7, 13], "+", "%"),
+                    newStat("Reload Speed", [4, 7, 11, 14, 17], "+", "% after kill"),
+                    newStat("Duration", [8, 8, 8, 8, 8], "", " seconds"),
                 ]
             },
             {
@@ -412,16 +405,15 @@ export default {
                 image: require('../assets/images/skills/zane/Salvation.png'),
                 description: "Weapons gain Life Steal after killing an enemy.",
                 stats: [
-                    newStat("Life Steal", [2,4,6,8,10], "+", "% of damage dealt"),
-                    newStat("Duration", [8,8,8,8,8], "", " seconds"),
+                    newStat("Life Steal", [2, 4, 6, 8, 10], "+", "% of damage dealt"),
+                    newStat("Duration", [8, 8, 8, 8, 8], "", " seconds"),
                 ]
             },
             {
                 hide: true,
             },
         ],
-        [
-            {
+        [{
                 title: "Bad Dose",
                 type: AUGMENT,
                 tree: BLUE,
@@ -431,7 +423,7 @@ export default {
                     newStat("Fire Rate", [2], "+", "% per enemy"),
                     newStat("Movement Speed", [6], "+", "% per enemy"),
                     newStat("Damage", [4], "", "per second"),
-					newStat("Duration", [12], "", " seconds"),
+                    newStat("Duration", [12], "", " seconds"),
                     newStat("Cooldown", [8], "", " seconds"),
                 ]
             },
@@ -445,7 +437,7 @@ export default {
                 maxRanks: 1,
                 image: require('../assets/images/skills/zane/DeathFollowsClose.png'),
                 description: "All Kill Skills gain increased Effect and Duration.",
-				stats: [
+                stats: [
                     newStat("Kill Skill Duration", [7], "+", " seconds"),
                     newStat("Kill Skill Bonus", [25], "+", "%"),
                 ]
@@ -465,8 +457,7 @@ export default {
                 ]
             },
         ],
-        [
-            {
+        [{
                 title: "Boomsday",
                 type: AUGMENT,
                 tree: BLUE,
@@ -484,8 +475,8 @@ export default {
                 image: require('../assets/images/skills/zane/ViolentViolence.png'),
                 description: "Gain increased Fire Rate after killing an enemy.",
                 stats: [
-                    newStat("Fire Rate", [4,8,12,16,20], "+", "%"),
-                    newStat("Duration", [8,8,8,8,8], "", " seconds"),
+                    newStat("Fire Rate", [4, 8, 12, 16, 20], "+", "%"),
+                    newStat("Duration", [8, 8, 8, 8, 8], "", " seconds"),
                 ]
             },
             {
@@ -499,7 +490,7 @@ export default {
                 image: require('../assets/images/skills/zane/PlayingDirty.png'),
                 description: "Your next five shots have a chance to fire an additional projectile after killing an enemy.",
                 stats: [
-                    newStat("Extra Shot Chance", [10,20,30,40,50], "", "%"),
+                    newStat("Extra Shot Chance", [10, 20, 30, 40, 50], "", "%"),
                 ]
             },
             {
@@ -514,8 +505,7 @@ export default {
                 ]
             },
         ],
-        [
-            {
+        [{
                 hide: true
             },
             {
@@ -539,8 +529,7 @@ export default {
                 hide: true,
             },
         ],
-        [
-            {
+        [{
                 hide: true
             },
             {
@@ -575,10 +564,10 @@ export default {
                 tree: GREEN,
                 image: require('../assets/images/skills/zane/Barrier.png'),
                 description: "Drop a deployable Barrier that blocks incoming projectiles. Zane and his allies can shoot through the Barrier, dealing increased Gun Damage. Additionally, you may pick it up, decreasing it's size and bonus effects.",
-				stats: [
+                stats: [
                     newStat("Duration", [14], "", " seconds"),
-					newStat("Cooldown", [24], "", " seconds"),
-					newStat("Damage Amp", [25], "+", "%"),
+                    newStat("Cooldown", [24], "", " seconds"),
+                    newStat("Damage Amp", [25], "+", "%"),
                 ]
             },
             {
@@ -588,8 +577,7 @@ export default {
                 hide: true
             },
         ],
-        [
-            {
+        [{
                 hide: true
             },
             {
@@ -622,22 +610,21 @@ export default {
                 image: require('../assets/images/skills/zane/ReadyForAction.png'),
                 description: "Gain improved Shield Recharge Rate and Shield Recharge Delay.",
                 stats: [
-                    newStat("Sheild Recharge Rate:", [6,12,18,24,30], "+", "%"),
-                    newStat("Sheild Recharge Delay:", [7,14,19,24,29], "-", "%"),
+                    newStat("Sheild Recharge Rate:", [6, 12, 18, 24, 30], "+", "%"),
+                    newStat("Sheild Recharge Delay:", [7, 14, 19, 24, 29], "-", "%"),
                 ]
             },
             {
                 hide: true
             },
         ],
-        [
-            {
+        [{
                 title: "Charged Relay",
                 type: AUGMENT,
                 tree: GREEN,
                 image: require('../assets/images/skills/zane/ChargedRelay.png'),
                 description: "Whenever Zane or an ally touches the Barrier, they gain increased Movement Speed and Fire Rate.",
-				stats: [
+                stats: [
                     newStat("Reload Speed", [20], "+", "%"),
                     newStat("Movement Speed", [11], "+", "%"),
                     newStat("Duration", [8], "", " seconds after moving away from Barrier"),
@@ -680,8 +667,7 @@ export default {
                 hide: true,
             },
         ],
-        [
-            {
+        [{
                 title: "Nanites or Some Shite",
                 type: AUGMENT,
                 tree: GREEN,
@@ -722,8 +708,7 @@ export default {
                 ]
             },
         ],
-        [
-            {
+        [{
                 title: "Retaliation",
                 type: AUGMENT,
                 tree: GREEN,
@@ -753,7 +738,7 @@ export default {
                 image: require('../assets/images/skills/zane/BestServedCold.png'),
                 description: "Creates a Cryo Nova whenever an enemy is killed, dealing damage to all nearby enemies.",
                 stats: [
-                    newStat("Damage", [2,4,6,8,11], "", ""),
+                    newStat("Damage", [2, 4, 6, 8, 11], "", ""),
                     newStat("Cooldown", [3], "", " seconds"),
                 ]
             },
@@ -781,8 +766,7 @@ export default {
                 ]
             },
         ],
-        [
-            {
+        [{
                 hide: true
             },
             {
@@ -793,7 +777,7 @@ export default {
                 image: require('../assets/images/skills/zane/Refreshment.png'),
                 description: "Gain some damage dealt back as health when attacking a frozen enemy.",
                 stats: [
-                    newStat("Life Steal", [8,16,24], "", "% of damage dealt"),
+                    newStat("Life Steal", [8, 16, 24], "", "% of damage dealt"),
                 ]
             },
             {
@@ -825,8 +809,7 @@ export default {
                 hide: true,
             },
         ],
-        [
-            {
+        [{
                 hide: true
             },
             {
@@ -850,3 +833,5 @@ export default {
     ],
 
 }
+
+export {zaneSkills, zaneEquipped}

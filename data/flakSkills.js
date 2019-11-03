@@ -9,13 +9,14 @@ import {
     newStat
 } from './constants';
 
-export default {
-    equipped: {
-        pet: null,
-        action1: null,
-        augment1: null,
-        augment2: null,
-    },
+let flakEquipped = {
+    pet: null,
+    action1: null,
+    augment1: null,
+    augment2: null,
+}
+let flakSkills = {
+    equipped: {...flakEquipped},
     stalker: [
         [{
                 hide: true
@@ -866,3 +867,5 @@ export default {
     ],
 
 }
+
+export {flakSkills, flakEquipped}

@@ -38,13 +38,14 @@ import {
   ZANE,
   AMARA,
   MAX_POINTS,
-  normalizeStat
+  normalizeStat,
+  newStat
 } from './data/constants';
 
-import flakSkills from './data/flakSkills.js';
-import mozeSkills from './data/mozeSkills.js';
-import zaneSkills from './data/zaneSkills.js';
-import amaraSkills from './data/amaraSkills.js';
+import {flakSkills, flakEquipped} from './data/flakSkills.js';
+import {mozeSkills, mozeEquipped} from './data/mozeSkills.js';
+import {zaneSkills, zaneEquipped} from './data/zaneSkills.js';
+import {amaraSkills, amaraEquipped} from './data/amaraSkills.js';
 
 //Initial State
 const intialState = {
@@ -117,7 +118,7 @@ const applySetCharacter = state => {
 }
 
 const reset = state => {
-  return {
+  let newState = {
     ...state,
     ranked: {},
     stats: {},
@@ -149,6 +150,11 @@ const reset = state => {
       },
     },
   }
+  newState.flak.equipped = {...flakEquipped}
+  newState.moze.equipped = {...mozeEquipped}
+  newState.zane.equipped = {...zaneEquipped}
+  newState.amara.equipped = {...amaraEquipped}
+  return newState
 }
 
 const applyAddSkill = state => {

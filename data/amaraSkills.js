@@ -9,8 +9,7 @@ import {
     BLUE
 } from './constants';
 
-export default {
-    equipped: {
+let amaraEquipped = {
         action1: null,
         augment1: null,
         element1: {
@@ -20,7 +19,9 @@ export default {
             image: require('../assets/images/skills/amara/Shockra.png'),
             description: "Converts your action skill damage to shock damage."
         },
-    },
+}
+let amaraSkills = {
+    equipped: {...amaraEquipped},
     brawl: [
         [{
                 hide: true
@@ -894,3 +895,5 @@ export default {
         ],
     ],
 }
+
+export {amaraSkills, amaraEquipped}

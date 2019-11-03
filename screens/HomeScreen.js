@@ -396,19 +396,19 @@ class HomeScreen extends React.Component {
               <View style={styles.resetPointsBtnContainer}>
                 <TouchableOpacity
                   style={styles.resetPointsBtn}
-                  onPress={() => this.props.reset()}
+                  onPress={() => this.props.toggle(TOGGLE_QUICK_SELECT)}
                 >
-                  <Text style={styles.resetPointsText}> Reset Points </Text>
+                  <Text style={styles.resetPointsText}> {this.props.quickSelectEnabled ? "Disable Quick Select" : "Enable Quick Select"} </Text>
+                  <Text style={styles.resetPointsText}> (Auto Rank Up) </Text>
                 </TouchableOpacity>
               </View>
 
               <View style={styles.resetPointsBtnContainer}>
                 <TouchableOpacity
                   style={styles.resetPointsBtn}
-                  onPress={() => this.props.toggle(TOGGLE_QUICK_SELECT)}
+                  onPress={() => this.props.reset()}
                 >
-                  <Text style={styles.resetPointsText}> {this.props.quickSelectEnabled ? "Disable Quick Select" : "Enable Quick Select"} </Text>
-                  <Text style={styles.resetPointsText}> (Auto Rank Up) </Text>
+                  <Text style={styles.resetPointsText}> Reset Points </Text>
                 </TouchableOpacity>
               </View>
           </ScrollView>

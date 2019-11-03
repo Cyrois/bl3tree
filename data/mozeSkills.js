@@ -8,13 +8,14 @@ import {
     BLUE
 } from './constants';
 
-export default {
-    equipped: {
-        action1: null,
-        augment1: null,
-        action2: null,
-        augment2: null,
-    },
+let mozeEquipped = {
+    action1: null,
+    augment1: null,
+    action2: null,
+    augment2: null,
+}
+let mozeSkills = {
+    equipped: {...mozeEquipped},
     shieldOfRetribution: [
         [{
                 hide: true
@@ -838,3 +839,5 @@ export default {
         ],
     ],
 }
+
+export {mozeSkills, mozeEquipped}
