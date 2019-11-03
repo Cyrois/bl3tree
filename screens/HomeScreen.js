@@ -613,7 +613,7 @@ class HomeScreen extends React.Component {
                     this.props.modalSkill.type === ACTION && 
                     this._isAbleToUseSkill(this.props.modalSkill) && 
                     !this._isEquippedSkill(this.props.modalSkill) &&
-                    (this.props.selectHero === MOZE || this.props.selectHero === ZANE) && 
+                    (this.props.selectedHero === MOZE || this.props.selectedHero === ZANE) && 
                     <TouchableOpacity
                       style={styles.skillModalButtons}
                       onPress={() => {
@@ -629,11 +629,18 @@ class HomeScreen extends React.Component {
                     this.props.modalSkill.type === AUGMENT && 
                     this._isAbleToUseSkill(this.props.modalSkill) && 
                     !this._isEquippedSkill(this.props.modalSkill) &&
-                    (this.props.selectHero !== ZANE) && 
                     <TouchableOpacity
                       style={styles.skillModalButtons}
                       onPress={() => {
-                        this.props.setCharacterSkill(this.props.selectedHero, AUGMENT, "1", this.props.modalSkill)
+                        let slot = "1"
+                        if(this.props.selectedHero === ZANE) {
+                          if(this.props.zane.equipped.action1.tree === this.props.modalSkill.tree) {
+                            slot = "1"
+                          } else if(this.props.zane.equipped.action2.tree === this.props.modalSkill.tree) {
+                            slot = "3"
+                          }
+                        }
+                        this.props.setCharacterSkill(this.props.selectedHero, AUGMENT, slot, this.props.modalSkill)
                         this._setModal(false, "")
                       }}
                     >
@@ -645,12 +652,19 @@ class HomeScreen extends React.Component {
                     this.props.modalSkill.type === AUGMENT && 
                     this._isAbleToUseSkill(this.props.modalSkill) && 
                     !this._isEquippedSkill(this.props.modalSkill) &&
-                    (this.props.selectHero !== AMARA) && 
-                    (this.props.selectHero !== ZANE) &&  
+                    (this.props.selectedHero === MOZE || this.props.selectedHero === ZANE) && 
                     <TouchableOpacity
                       style={styles.skillModalButtons}
                       onPress={() => {
-                        this.props.setCharacterSkill(this.props.selectedHero, AUGMENT, "2", this.props.modalSkill)
+                        let slot = "2"
+                        if(this.props.selectedHero === ZANE) {
+                          if(this.props.zane.equipped.action1.tree === this.props.modalSkill.tree) {
+                            slot = "2"
+                          } else if(this.props.zane.equipped.action2.tree === this.props.modalSkill.tree) {
+                            slot = "4"
+                          }
+                        }
+                        this.props.setCharacterSkill(this.props.selectedHero, AUGMENT, slot, this.props.modalSkill)
                         this._setModal(false, "")
                       }}
                     >

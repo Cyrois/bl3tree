@@ -277,14 +277,14 @@ class StatsScreen extends React.Component {
                   <View style={styles.skillContainerAction}>
                   </View>
                   <View style={styles.skillContainerAugment}>
-                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.zane.equipped.augment2, true, "an augment")}>
+                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.zane.equipped.augment3, true, "an augment")}>
                       <ImageBackground source={this._getSkillBackgroundImage(AUGMENT)} 
                           style={styles.skillImageBg}
                           resizeMode='contain'>
                         {
-                          this.props.zane.equipped.augment2 &&
+                          this.props.zane.equipped.augment3 &&
                           <Image
-                            source={this.props.zane.equipped.augment2.image}
+                            source={this.props.zane.equipped.augment3.image}
                             style={styles.skillImage} 
                             resizeMode='contain'/>
                         }
@@ -295,14 +295,14 @@ class StatsScreen extends React.Component {
 
                 <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
                   <View style={styles.skillContainerAugment}>
-                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.zane.equipped.augment3, true, "an augment")}>
+                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.zane.equipped.augment2, true, "an augment")}>
                       <ImageBackground source={this._getSkillBackgroundImage(AUGMENT)} 
                           style={styles.skillImageBg}
                           resizeMode='contain'>
                         {
-                          this.props.zane.equipped.augment3 &&
+                          this.props.zane.equipped.augment2 &&
                           <Image
-                            source={this.props.zane.equipped.augment3.image}
+                            source={this.props.zane.equipped.augment2.image}
                             style={styles.skillImage} 
                             resizeMode='contain'/>
                         }

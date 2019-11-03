@@ -101,7 +101,7 @@ const intialState = {
   loadBuildCodeModalVisible: false,
   confirmLoadModalVisible: false,
   confirmDeleteModalVisible: false,
-  selectedHero: AMARA,
+  selectedHero: ZANE,
   quickSelectEnabled: false,
   toggleActions: true,
   toggleBuilds: true,
@@ -270,15 +270,14 @@ const setSelectedModalSkill = (state, modalData, selectedSkillModalVisible) => {
 }
 
 const setCharacterSkill = (state, data) => {
+  console.log(data)
   const {
     character,
     skillType,
     slot,
     skill
   } = data
-  const newState = {
-    ...state
-  }
+  const newState = {...state}
   newState[character].equipped["" + skillType + slot] = skill
   return newState
 }
