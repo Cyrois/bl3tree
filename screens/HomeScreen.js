@@ -634,9 +634,9 @@ class HomeScreen extends React.Component {
                       onPress={() => {
                         let slot = "1"
                         if(this.props.selectedHero === ZANE) {
-                          if(this.props.zane.equipped.action1.tree === this.props.modalSkill.tree) {
+                          if(this.props.zane.equipped.action1 && this.props.zane.equipped.action1.tree === this.props.modalSkill.tree) {
                             slot = "1"
-                          } else if(this.props.zane.equipped.action2.tree === this.props.modalSkill.tree) {
+                          } else if(this.props.zane.equipped.action2 && this.props.zane.equipped.action2.tree === this.props.modalSkill.tree) {
                             slot = "3"
                           }
                         }
@@ -658,10 +658,12 @@ class HomeScreen extends React.Component {
                       onPress={() => {
                         let slot = "2"
                         if(this.props.selectedHero === ZANE) {
-                          if(this.props.zane.equipped.action1.tree === this.props.modalSkill.tree) {
+                          if(this.props.zane.equipped.action1 && this.props.zane.equipped.action1.tree === this.props.modalSkill.tree) {
                             slot = "2"
-                          } else if(this.props.zane.equipped.action2.tree === this.props.modalSkill.tree) {
+                          } else if(this.props.zane.equipped.action2 && this.props.zane.equipped.action2.tree === this.props.modalSkill.tree) {
                             slot = "4"
+                          } else {
+                            slot = ""
                           }
                         }
                         this.props.setCharacterSkill(this.props.selectedHero, AUGMENT, slot, this.props.modalSkill)

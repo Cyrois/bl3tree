@@ -17,7 +17,6 @@ https://invertase.io/oss/react-native-firebase/v6/admob/quick-start
 https://dev-yakuza.github.io/en/react-native/react-native-admob/
 
 TODO:
-- Zane can only attach augments to the specific action
 - Optimize hero skills by only saving title
 - The modal is not big enough for some skills (made the modal a little more compact)
 - Integrate Admobs

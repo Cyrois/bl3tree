@@ -251,7 +251,6 @@ const getStatText = (statType) => {
    else if(statType === "dronedamage-%") {return {type: "Drone Damage", preText: '-', postText: '%'}}
    else if(statType === "reloadspeed+%") {return {type: "Reload Speed", preText: '+', postText: '%'}}
    else if(statType === "reloadspeed+%afterkill") {return {type: "Reload Speed", preText: '+', postText: '% after kill'}}
-   else if(statType === "duration15secondsundefined") {return {type: "Duration", preText: '15 seconds', postText: 'undefined'}}
    else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "lelse ifesteal+%ofdamagedealt") {return {type: "Lelse ife Steal", preText: '+', postText: '% of damage dealt'}}
    else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}

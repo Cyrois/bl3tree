@@ -390,7 +390,7 @@ export default {
                 stats: [
                     newStat("Reload Speed", [2.9,5.7,8.3,10.7,13], "+", "%"),
                     newStat("Reload Speed", [4,7,11,14,17], "+", "% after kill"),
-                    newStat("Duration", [8,8,8,8,8], "15 seconds"),
+                    newStat("Duration", [8,8,8,8,8], "", " seconds"),
                 ]
             },
             {
