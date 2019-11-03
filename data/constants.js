@@ -329,7 +329,7 @@ const getStatText = (statType) => {
    else if(statType === "soulsaplifesteal+%") {return {type: "Soul Sap Lifesteal", preText: '+', postText: '%'}}
    else if(statType === "allureradius+%") {return {type: "Allure Radius", preText: '+', postText: '%'}}
    else if(statType === "glamourduration+%") {return {type: "Glamour Duration", preText: '+', postText: '%'}}
-   else if(statType === "stillnessofmindbreakssecondsafterbeingdamaged") {return {type: "Stillness of Mind", preText: 'Breaks', postText: 'seconds after being damaged'}}
+   else if(statType === "stillnessofmindbreakssecondsafterbeingdamaged") {return {type: "Stillness of Mind", preText: 'Breaks ', postText: ' seconds after being damaged'}}
    else if(statType === "revelationdamage+%") {return {type: "Revelation Damage", preText: '+', postText: '%'}}
    else if(statType === "cooldown+%") {return {type: "Cooldown", preText: '+', postText: '%'}}
    else if(statType === "damage-%") {return {type: "Damage", preText: '-', postText: '%'}}

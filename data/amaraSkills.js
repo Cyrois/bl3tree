@@ -879,6 +879,7 @@ export default {
                 type: PASSIVE,
                 tree: RED,
                 maxRanks: 1,
+                image: require('../assets/images/skills/amara/ForcefulExpression.png'),
                 description: "Amara's guns deal Bonus Elemental Damage based on her Action Skill Element.",
                 stats: [
                     newStat("Bonus Elemental Damage", [18], "", "% of Damage Dealt"),
