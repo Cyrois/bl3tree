@@ -28,7 +28,8 @@ import {
   SET_LOGIN_MODAL,
   SET_LOGIN_ERROR,
   SET_CREATE_ERROR,
-  SET_ACCOUNT_ID
+  SET_ACCOUNT_ID,
+  SET_SAVE_BUILD_ERROR
 } from './types.js';
 
 import {
@@ -97,6 +98,7 @@ const intialState = {
   buildCode: '',
   builds: [],
   saveBuildModalVisible: false,
+  saveBuildError: '',
   heroSelectModalVisible: false,
   loadBuildCodeModalVisible: false,
   confirmLoadModalVisible: false,
@@ -442,6 +444,13 @@ const setSaveBuildModal = (state, modalVisible) => {
   }
 }
 
+const setSaveBuildError = (state, error) => {
+  return {
+    ...state,
+    saveBuildError: error
+  }
+}
+
 const setHeroSelect = (state, modalVisible) => {
   return {
     ...state,
@@ -525,6 +534,8 @@ const reducer = (state = intialState, action) => {
       return setConfirmDelete(state, action.data)
     case SET_SAVE_BUILD_MODAL:
       return setSaveBuildModal(state, action.data)
+    case SET_SAVE_BUILD_ERROR:
+      return setSaveBuildError(state, action.data)
     case SET_HERO_SELECT:
       return setHeroSelect(state, action.data)
     case SELECT_HERO:

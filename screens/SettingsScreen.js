@@ -139,6 +139,10 @@ class SettingsScreen extends React.Component {
 
   _saveBuild() {
     if(this._isUserLoggedIn()) {
+      if(Array.isArray(this.props.builds) && this.props.builds.length > 10) {
+        this.props.setSaveBuildError("You have reached the maximum of 10 builds, please delete a build before saving a new one.")
+        return
+      }
       let build = {
         hero: this.props.selectedHero,
         skills: this.props[this.props.selectedHero].equipped,
@@ -151,7 +155,7 @@ class SettingsScreen extends React.Component {
       }
       this.buildsStore.add(document)
         .then(() => this._loadBuilds())
-        .catch(error => console.log(error))
+        .catch(error => this.props.setSaveBuildError("An error occured while saving your build."))
     }
   }
 
@@ -466,6 +470,11 @@ class SettingsScreen extends React.Component {
                       onChangeText={buildName => this.props.setCurrentBuildName(buildName)}
                       value={this.props.buildName}
                     />
+
+                    {
+                      !!this.props.saveBuildError &&
+                      <Text>{this.props.saveBuildError}</Text>
+                    }
                       
                     <TouchableOpacity
                       style={styles.modalBtns}
@@ -794,6 +803,7 @@ mapDispatchToProps = dispatch => {
     setBuildCode: bindActionCreators(actions.setBuildCode, dispatch),
     confirmLoadBuild: bindActionCreators(actions.confirmLoadBuild, dispatch),
     setSaveBuildModal: bindActionCreators(actions.setSaveBuildModal, dispatch),
+    setSaveBuildError: bindActionCreators(actions.setSaveBuildError, dispatch),
     setHeroSelect: bindActionCreators(actions.setHeroSelect, dispatch),
     selectHero: bindActionCreators(actions.selectHero, dispatch),
     toggle: bindActionCreators(actions.toggle, dispatch),
