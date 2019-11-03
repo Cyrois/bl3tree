@@ -252,7 +252,7 @@ const getStatText = (statType) => {
    else if(statType === "reloadspeed+%") {return {type: "Reload Speed", preText: '+', postText: '%'}}
    else if(statType === "reloadspeed+%afterkill") {return {type: "Reload Speed", preText: '+', postText: '% after kill'}}
    else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
-   else if(statType === "lelse ifesteal+%ofdamagedealt") {return {type: "Lelse ife Steal", preText: '+', postText: '% of damage dealt'}}
+   else if(statType === "lifesteal+%ofdamagedealt") {return {type: "Life Steal", preText: '+', postText: '% of damage dealt'}}
    else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "firerate+%perenemy") {return {type: "Fire Rate", preText: '+', postText: '% per enemy'}}
    else if(statType === "movementspeed+%perenemy") {return {type: "Movement Speed", preText: '+', postText: '% per enemy'}}
@@ -297,7 +297,7 @@ const getStatText = (statType) => {
    else if(statType === "damagereduction+%") {return {type: "Damage Reduction", preText: '+', postText: '%'}}
    else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "shockdamage") {return {type: "Shock Damage", preText: '', postText: ''}}
-   else if(statType === "lelse ifesteal%ofdamagedealt") {return {type: "Lelse ife Steal", preText: '', postText: '% of damage dealt'}}
+   else if(statType === "lifesteal%ofdamagedealt") {return {type: "Life Steal", preText: '', postText: '% of damage dealt'}}
    else if(statType === "healthregenerationupto%ofmaxhealth/sec") {return {type: "Health Regeneration", preText: 'up to ', postText: '% of max health/sec'}}
    else if(statType === "regenerationdurationseconds") {return {type: "Regeneration Duration", preText: '', postText: ' seconds'}}
    else if(statType === "accuracy+%persecond") {return {type: "Accuracy", preText: '+', postText: '% per second'}}
@@ -322,11 +322,11 @@ const getStatText = (statType) => {
    else if(statType === "criticalhitdamage+%") {return {type: "Critical Hit Damage", preText: '+', postText: '%'}}
    else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "cooldownrate+%") {return {type: "Cooldown Rate", preText: '+', postText: '%'}}
-   else if(statType === "lelse ifesteal%ofallskilldamagedealt") {return {type: "Lelse ife Steal", preText: '', postText: '% of all skill damage dealt'}}
+   else if(statType === "lifesteal%ofallskilldamagedealt") {return {type: "Life Steal", preText: '', postText: '% of all skill damage dealt'}}
    else if(statType === "elementalprojectilesperenemyhit") {return {type: "Elemental Projectiles", preText: '', postText: 'per enemy hit'}}
    else if(statType === "damage") {return {type: "Damage", preText: '', postText: ''}}
    else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
-   else if(statType === "soulsaplelse ifesteal+%") {return {type: "Soul Sap Lelse ifesteal", preText: '+', postText: '%'}}
+   else if(statType === "soulsaplifesteal+%") {return {type: "Soul Sap Lifesteal", preText: '+', postText: '%'}}
    else if(statType === "allureradius+%") {return {type: "Allure Radius", preText: '+', postText: '%'}}
    else if(statType === "glamourduration+%") {return {type: "Glamour Duration", preText: '+', postText: '%'}}
    else if(statType === "stillnessofmindbreakssecondsafterbeingdamaged") {return {type: "Stillness of Mind", preText: 'Breaks', postText: 'seconds after being damaged'}}
@@ -380,7 +380,7 @@ const getStatText = (statType) => {
    else if(statType === "damage") {return {type: "Damage", preText: '', postText: ''}}
    else if(statType === "graspimmunedamage") {return {type: "Grasp Immune Damage", preText: '', postText: ''}}
    else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
-   else if(statType === "lelse ifesteal%ofdamagedealt") {return {type: "Lelse ife Steal", preText: '', postText: '% of damage dealt'}}
+   else if(statType === "lifesteal%ofdamagedealt") {return {type: "Life Steal", preText: '', postText: '% of damage dealt'}}
    else if(statType === "extraeffectchance%") {return {type: "Extra Effect Chance", preText: '', postText: '%'}}
    else if(statType === "bonuselementaldamage%ofdamagedealt") {return {type: "Bonus Elemental Damage", preText: '', postText: '% of Damage Dealt'}}
    else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
