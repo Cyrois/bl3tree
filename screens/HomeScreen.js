@@ -54,16 +54,20 @@ class HomeScreen extends React.Component {
     }
   }
 
-  _isAbleToUseSkill = (skill) => {
-    if(this.props.rowIndex == 1) {
-      return true;
-    }
-    let totalPointsForBranch = 0;
-    for(let i = 1; i < this.props.rowIndex; i++) {
-      totalPointsForBranch += this.props.pointsSpent[skill.tree][`row${i}`]
-    }
-    if(totalPointsForBranch >= (this.props.rowIndex - 1) * 5) {
-      return true
+  _isAbleToUseSkill = (skill, rowIndex) => {
+    if(skill.title) {
+      rowIndex = rowIndex ? rowIndex : this.props.rowIndex
+      if(rowIndex <= 1) {
+        return true
+      }
+  
+      let totalPointsForBranch = 0;
+      for(let i = 1; i < rowIndex; i++) {
+        totalPointsForBranch += this.props.pointsSpent[skill.tree][`row${i}`]
+      }
+      if(totalPointsForBranch >= (rowIndex - 1) * 5) {
+        return true
+      }
     }
     return false
   }
@@ -89,17 +93,26 @@ class HomeScreen extends React.Component {
     this._setModal(false, "")
   }
 
+  _normalize = string => string.replace(/\s/g, "").toLowerCase()
+
   _insertTree = (row, rowIndex, color) => {
     return (
       <View key={"row_" + rowIndex} style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
         {
           row.map((skill, colIndex) => {
+            // if(skill.stats ) {
+            //   skill.stats.forEach(element => {
+            //     let ifStatement = this._normalize(element.type+element.preText+element.postText)
+            //     let print = `if(statType === "${ifStatement}") {return {type: "${element.type}", preText: '${element.preText}', postText: '${element.postText}'}}`
+            //     console.log(print)
+            //   });
+            // }
             skill.tree = color
             return (
               <View style={styles.skillContainer} key={"col_" + colIndex}>
                 {
                   !skill.hide && (
-                    <SkillButton skill={skill} onSkillPress={() => this._onSkillPress(skill, rowIndex)}></SkillButton>
+                    <SkillButton skill={skill} canUpgrade={this._isAbleToUseSkill(skill, rowIndex)} onSkillPress={() => this._onSkillPress(skill, rowIndex)}></SkillButton>
                   )
                 }
               </View>
@@ -261,7 +274,7 @@ class HomeScreen extends React.Component {
                 <View>
                   <View style={{...styles.redSkillTree, ...styles.treeContainer}}>
                     <Text style={styles.treeTitle}>
-                      Under Cover
+                      Doubled Agent
                     </Text>
 
                     <BranchShelf color={RED} horizontal='4.5%' top='48.5%'></BranchShelf>
@@ -273,14 +286,14 @@ class HomeScreen extends React.Component {
 
                     <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
-                        this.props.zane.underCover.map((row, rowIndex) => this._insertTree(row, rowIndex, RED))
+                        this.props.zane.doubledAgent.map((row, rowIndex) => this._insertTree(row, rowIndex, RED))
                       }
                     </View>
                   </View>
 
                   <View style={{...styles.blueSkillTree, ...styles.treeContainer}}>
                     <Text style={styles.treeTitle}>
-                      Doubled Agent
+                      Hitman
                     </Text>
 
                     <BranchShelf color={BLUE} horizontal='4.5%' top='48.5%'></BranchShelf>
@@ -292,14 +305,14 @@ class HomeScreen extends React.Component {
 
                     <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
-                        this.props.zane.doubledAgent.map((row, rowIndex) => this._insertTree(row, rowIndex, BLUE))
+                        this.props.zane.hitman.map((row, rowIndex) => this._insertTree(row, rowIndex, BLUE))
                       }
                     </View>
                   </View>
 
                   <View style={{...styles.greenSkillTree, ...styles.treeContainer}}>
                     <Text style={styles.treeTitle}>
-                      Hitman
+                      Under Cover
                     </Text>
 
                     <BranchShelf color={GREEN} horizontal='4.5%' top='48.5%'></BranchShelf>
@@ -311,7 +324,7 @@ class HomeScreen extends React.Component {
 
                     <View style={{width: '100%', margin: 'auto', alignSelf: 'center', zIndex: 300}}>
                       {
-                        this.props.zane.hitman.map((row, rowIndex) => this._insertTree(row, rowIndex, GREEN))
+                        this.props.zane.underCover.map((row, rowIndex) => this._insertTree(row, rowIndex, GREEN))
                       }
                     </View>
                   </View>
@@ -383,19 +396,19 @@ class HomeScreen extends React.Component {
               <View style={styles.resetPointsBtnContainer}>
                 <TouchableOpacity
                   style={styles.resetPointsBtn}
-                  onPress={() => this.props.reset()}
+                  onPress={() => this.props.toggle(TOGGLE_QUICK_SELECT)}
                 >
-                  <Text style={styles.resetPointsText}> Reset Points </Text>
+                  <Text style={styles.resetPointsText}> {this.props.quickSelectEnabled ? "Disable Quick Select" : "Enable Quick Select"} </Text>
+                  <Text style={styles.resetPointsText}> (Auto Rank Up) </Text>
                 </TouchableOpacity>
               </View>
 
               <View style={styles.resetPointsBtnContainer}>
                 <TouchableOpacity
                   style={styles.resetPointsBtn}
-                  onPress={() => this.props.toggle(TOGGLE_QUICK_SELECT)}
+                  onPress={() => this.props.reset()}
                 >
-                  <Text style={styles.resetPointsText}> {this.props.quickSelectEnabled ? "Disable Quick Select" : "Enable Quick Select"} </Text>
-                  <Text style={styles.resetPointsText}> (Auto Rank Up) </Text>
+                  <Text style={styles.resetPointsText}> Reset Points </Text>
                 </TouchableOpacity>
               </View>
           </ScrollView>
@@ -436,6 +449,7 @@ class HomeScreen extends React.Component {
                     this.props.modalSkill.type === PASSIVE && 'Passive Ability' ||
                     this.props.modalSkill.type === ACTION && 'Action Skill' ||
                     this.props.modalSkill.type === AUGMENT && 'Action Skill Augment' ||
+                    this.props.modalSkill.type === ELEMENT && 'Action Skill Element' ||
                     this.props.modalSkill.type === PET && 'Pet'
                   }
                 </Text>
@@ -500,7 +514,7 @@ class HomeScreen extends React.Component {
 
                 <View>
                   {!this._isAbleToUseSkill(this.props.modalSkill) &&
-                    <Text style={{color:'orange'}}>Spend more points to unlock this skill.</Text>
+                    <Text style={{color:'orange', marginVertical: 10, fontWeight: 'bold'}}>Spend more points to unlock this skill.</Text>
                   }
                   
                   {this.props.modalSkill.type === PASSIVE && this._isAbleToUseSkill(this.props.modalSkill) &&
@@ -570,6 +584,19 @@ class HomeScreen extends React.Component {
                   }
 
                   {
+                    this.props.modalSkill.type === ELEMENT && this._isAbleToUseSkill(this.props.modalSkill) && !this._isEquippedSkill(this.props.modalSkill) &&
+                    <TouchableOpacity
+                      style={styles.skillModalButtons}
+                      onPress={() => {
+                        this.props.setCharacterSkill(this.props.selectedHero, ELEMENT, "1", this.props.modalSkill)
+                        this._setModal(false, "")
+                      }}
+                    >
+                      <Text style={{...styles.defaultFont, color: 'black'}}> Equip Element </Text>
+                    </TouchableOpacity>
+                  }
+
+                  {
                     this.props.modalSkill.type === ACTION && this._isAbleToUseSkill(this.props.modalSkill) && !this._isEquippedSkill(this.props.modalSkill) &&
                     <TouchableOpacity
                       style={styles.skillModalButtons}
@@ -586,7 +613,7 @@ class HomeScreen extends React.Component {
                     this.props.modalSkill.type === ACTION && 
                     this._isAbleToUseSkill(this.props.modalSkill) && 
                     !this._isEquippedSkill(this.props.modalSkill) &&
-                    (this.props.selectHero === MOZE || this.props.selectHero === ZANE) && 
+                    (this.props.selectedHero === MOZE || this.props.selectedHero === ZANE) && 
                     <TouchableOpacity
                       style={styles.skillModalButtons}
                       onPress={() => {
@@ -602,11 +629,20 @@ class HomeScreen extends React.Component {
                     this.props.modalSkill.type === AUGMENT && 
                     this._isAbleToUseSkill(this.props.modalSkill) && 
                     !this._isEquippedSkill(this.props.modalSkill) &&
-                    (this.props.selectHero !== ZANE) && 
                     <TouchableOpacity
                       style={styles.skillModalButtons}
                       onPress={() => {
-                        this.props.setCharacterSkill(this.props.selectedHero, AUGMENT, "1", this.props.modalSkill)
+                        let slot = "1"
+                        if(this.props.selectedHero === ZANE) {
+                          if(this.props.zane.equipped.action1 && this.props.zane.equipped.action1.tree === this.props.modalSkill.tree) {
+                            slot = "1"
+                          } else if(this.props.zane.equipped.action2 && this.props.zane.equipped.action2.tree === this.props.modalSkill.tree) {
+                            slot = "3"
+                          } else {
+                            slot = ""
+                          }
+                        }
+                        this.props.setCharacterSkill(this.props.selectedHero, AUGMENT, slot, this.props.modalSkill)
                         this._setModal(false, "")
                       }}
                     >
@@ -618,12 +654,21 @@ class HomeScreen extends React.Component {
                     this.props.modalSkill.type === AUGMENT && 
                     this._isAbleToUseSkill(this.props.modalSkill) && 
                     !this._isEquippedSkill(this.props.modalSkill) &&
-                    (this.props.selectHero !== AMARA) && 
-                    (this.props.selectHero !== ZANE) &&  
+                    (this.props.selectedHero === MOZE || this.props.selectedHero === ZANE) && 
                     <TouchableOpacity
                       style={styles.skillModalButtons}
                       onPress={() => {
-                        this.props.setCharacterSkill(this.props.selectedHero, AUGMENT, "2", this.props.modalSkill)
+                        let slot = "2"
+                        if(this.props.selectedHero === ZANE) {
+                          if(this.props.zane.equipped.action1 && this.props.zane.equipped.action1.tree === this.props.modalSkill.tree) {
+                            slot = "2"
+                          } else if(this.props.zane.equipped.action2 && this.props.zane.equipped.action2.tree === this.props.modalSkill.tree) {
+                            slot = "4"
+                          } else {
+                            slot = ""
+                          }
+                        }
+                        this.props.setCharacterSkill(this.props.selectedHero, AUGMENT, slot, this.props.modalSkill)
                         this._setModal(false, "")
                       }}
                     >

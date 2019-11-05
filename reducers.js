@@ -1,7 +1,6 @@
 import {
   SET_CHARACTER,
   ADD_SKILL,
-  ADD_STAT,
   SET_MODAL_SKILL,
   RANK_SKILL,
   REMOVE_SKILL,
@@ -29,32 +28,24 @@ import {
   SET_LOGIN_MODAL,
   SET_LOGIN_ERROR,
   SET_CREATE_ERROR,
-  SET_ACCOUNT_ID
+  SET_ACCOUNT_ID,
+  SET_SAVE_BUILD_ERROR
 } from './types.js';
+
 import {
-  PASSIVE,
-  AUGMENT,
-  ACTION,
-  PET,
   FLAK,
   MOZE,
   ZANE,
   AMARA,
-  MAX_POINTS
+  MAX_POINTS,
+  normalizeStat,
+  newStat
 } from './data/constants';
-import flakSkills from './data/flakSkills.js';
-import mozeSkills from './data/mozeSkills.js';
-import zaneSkills from './data/zaneSkills.js';
-import amaraSkills from './data/amaraSkills.js';
-import firebase from 'react-native-firebase';
 
-const newStat = (type, value, description) => {
-  return {
-    type,
-    value,
-    description
-  }
-}
+import {flakSkills, flakEquipped} from './data/flakSkills.js';
+import {mozeSkills, mozeEquipped} from './data/mozeSkills.js';
+import {zaneSkills, zaneEquipped} from './data/zaneSkills.js';
+import {amaraSkills, amaraEquipped} from './data/amaraSkills.js';
 
 //Initial State
 const intialState = {
@@ -108,11 +99,12 @@ const intialState = {
   buildCode: '',
   builds: [],
   saveBuildModalVisible: false,
+  saveBuildError: '',
   heroSelectModalVisible: false,
   loadBuildCodeModalVisible: false,
   confirmLoadModalVisible: false,
   confirmDeleteModalVisible: false,
-  selectedHero: FLAK,
+  selectedHero: ZANE,
   quickSelectEnabled: false,
   toggleActions: true,
   toggleBuilds: true,
@@ -126,7 +118,7 @@ const applySetCharacter = state => {
 }
 
 const reset = state => {
-  return {
+  let newState = {
     ...state,
     ranked: {},
     stats: {},
@@ -158,6 +150,11 @@ const reset = state => {
       },
     },
   }
+  newState.flak.equipped = {...flakEquipped}
+  newState.moze.equipped = {...mozeEquipped}
+  newState.zane.equipped = {...zaneEquipped}
+  newState.amara.equipped = {...amaraEquipped}
+  return newState
 }
 
 const applyAddSkill = state => {
@@ -183,6 +180,12 @@ const applyRankSkill = (state, skill, amount, rowIndex) => {
   }
   let pointsLeft = newState.pointsLeft
   let canPerformChange = false;
+
+  //If pressed max, but max value is greater than pointsLeft
+  if(amount > 0 && pointsLeft < amount) {
+    amount = pointsLeft
+  }
+
   if (pointsLeft > 0 && pointsLeft >= amount) {
     if (amount > 0) {
       if (rowIndex == 1) { //Can always add first row
@@ -238,9 +241,10 @@ const applyRankSkill = (state, skill, amount, rowIndex) => {
     newState.pointsSpent[skill.tree][`row${rowIndex}`] = pointsSpentOnTree + newAmount - oldAmount
 
     //Calculate the skill stats
-    if(Array.isArray(skill.stats) && !!skill.stats.length) {
+    if (Array.isArray(skill.stats) && !!skill.stats.length) {
       for (const stat of skill.stats) {
-        let statSum = newState.stats[stat.type] ? newState.stats[stat.type] : 0
+        let statKey = normalizeStat(stat)
+        let statSum = newState.stats[statKey] ? newState.stats[statKey] : 0
         if (newAmount > 0) {
           if (oldAmount > 0) {
             statSum = statSum - stat.values[oldAmount - 1]
@@ -249,7 +253,7 @@ const applyRankSkill = (state, skill, amount, rowIndex) => {
         } else { //newAmount is 0
           statSum = statSum - stat.values[oldAmount - 1]
         }
-        newState.stats[stat.type] = statSum
+        newState.stats[statKey] = statSum
       }
     }
   }
@@ -280,9 +284,7 @@ const setCharacterSkill = (state, data) => {
     slot,
     skill
   } = data
-  const newState = {
-    ...state
-  }
+  const newState = {...state}
   newState[character].equipped["" + skillType + slot] = skill
   return newState
 }
@@ -396,9 +398,10 @@ const loadBuild = (state, buildToLoad) => {
   heroSkills.forEach((skill) => {
     if (rankedSkills[skill.title] > 0) {
       skill.stats.forEach((stat) => {
-        let statSum = newState.stats[stat.type] ? newState.stats[stat.type] : 0
+        let statKey = normalizeStat(stat)
+        let statSum = newState.stats[statKey] ? newState.stats[statKey] : 0
         statSum += stat.values[rankedSkills[skill.title] - 1]
-        newState.stats[stat.type] = statSum
+        newState.stats[statKey] = statSum
       })
     }
   })
@@ -447,6 +450,13 @@ const setSaveBuildModal = (state, modalVisible) => {
   }
 }
 
+const setSaveBuildError = (state, error) => {
+  return {
+    ...state,
+    saveBuildError: error
+  }
+}
+
 const setHeroSelect = (state, modalVisible) => {
   return {
     ...state,
@@ -455,8 +465,9 @@ const setHeroSelect = (state, modalVisible) => {
 }
 
 const selectHero = (state, hero) => {
+  let newState = reset(state)
   return {
-    ...state,
+    ...newState,
     selectedHero: hero
   }
 }
@@ -529,6 +540,8 @@ const reducer = (state = intialState, action) => {
       return setConfirmDelete(state, action.data)
     case SET_SAVE_BUILD_MODAL:
       return setSaveBuildModal(state, action.data)
+    case SET_SAVE_BUILD_ERROR:
+      return setSaveBuildError(state, action.data)
     case SET_HERO_SELECT:
       return setHeroSelect(state, action.data)
     case SELECT_HERO:

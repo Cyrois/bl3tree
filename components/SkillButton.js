@@ -12,7 +12,7 @@ import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, TITLE_FONT, ELE
 
 class SkillButton extends React.Component {
     constructor(props) {
-        super(props);
+      super(props);
     }
 
     _getSkillBackgroundImage(skillType) {
@@ -42,7 +42,9 @@ class SkillButton extends React.Component {
             { this.props.skill.type === PASSIVE &&
             <ImageBackground source={require("../assets/images/backgrounds/pointslot-default.png")} 
                 style={styles.pointslotBg}>
-                <Text style={styles.pointslotText}>{this.props.ranked[this.props.skill.title] ? this.props.ranked[this.props.skill.title] : 0}/{this.props.skill.maxRanks}</Text>
+                <Text style={{...styles.pointslotText, color: this.props.canUpgrade ? '#fff' : 'grey'}}>
+                  {this.props.ranked[this.props.skill.title] ? this.props.ranked[this.props.skill.title] : 0}/{this.props.skill.maxRanks}
+                </Text>
             </ImageBackground>
             }
         </TouchableOpacity>
@@ -81,12 +83,11 @@ const styles = StyleSheet.create({
 });
 
 mapStateToProps = state => {
-return { ... state }
+  return { ... state }
 }
 
 mapDispatchToProps = dispatch => {
-return {
-}
+  return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SkillButton);

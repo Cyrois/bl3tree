@@ -2,16 +2,20 @@ import {
     PASSIVE,
     AUGMENT,
     ACTION,
-    newStat
+    newStat,
+    RED,
+    GREEN,
+    BLUE
 } from './constants';
 
-export default {
-    equipped: {
-        action1: null,
-        augment1: null,
-        action2: null,
-        augment2: null,
-    },
+let mozeEquipped = {
+    action1: null,
+    augment1: null,
+    action2: null,
+    augment2: null,
+}
+let mozeSkills = {
+    equipped: {...mozeEquipped},
     shieldOfRetribution: [
         [{
                 hide: true
@@ -21,6 +25,7 @@ export default {
             },
             {
                 title: "Railgun",
+                tree: RED,
                 type: ACTION,
                 description: "This weapon fires electrified high-velocity projectiles that deal Shock Damage.",
                 image: require('../assets/images/skills/moze/RailGun.png'),
@@ -37,6 +42,7 @@ export default {
             },
             {
                 title: "Selfless Vengeance",
+                tree: RED,
                 type: PASSIVE,
                 maxRanks: 5,
                 image: require('../assets/images/skills/moze/SelflessVengeance.png'),
@@ -44,22 +50,24 @@ export default {
                 stats: [
                     newStat("Current Health Removed", [1, 2, 3, 4, 5], "", "%"),
                     newStat("Bonus Incendiary Damage", [3, 6, 9, 12, 15], "+", "%"),
-                    newStat("Duration", [5, 5, 5, 5, 5], "", "seconds"),
+                    newStat("Duration", [5, 5, 5, 5, 5], "", " seconds"),
                 ]
 
             },
             {
                 title: "Security Bear",
+                tree: RED,
                 type: PASSIVE,
                 maxRanks: 1,
                 image: require('../assets/images/skills/moze/SecurityBear.png'),
                 description: "Grants Iron Bear a bubble shield that reduces damage taken, and can be reactivated after a time.",
                 stats: [
-                    newStat("20% of Iron Bear Max Health added as Shields Bubble Recharge Delay", [5], "", "seconds"),
+                    newStat("20% of Iron Bear Max Health added as Shields Bubble Recharge Delay", [5], "", " seconds"),
                 ]
             },
             {
                 title: "Armored Infantry",
+                tree: RED,
                 type: PASSIVE,
                 maxRanks: 5,
                 image: require('../assets/images/skills/moze/ArmoredInfantry.png'),
@@ -75,12 +83,14 @@ export default {
         ],
         [{
                 title: "Hell on Rails",
+                tree: RED,
                 type: AUGMENT,
                 description: "Railgun now fires superheated rounds that deal Incendiary Damage, but drain +30% fuel per shot.",
                 image: require('../assets/images/skills/moze/HellOnRails.png'),
             },
             {
                 title: "Drowning in Brass",
+                tree: RED,
                 type: PASSIVE,
                 maxRanks: 5,
                 image: require('../assets/images/skills/moze/DrowningBrass.png'),
@@ -89,11 +99,12 @@ export default {
                     newStat("Moze Fire Rate", [0.5, 1, 1.5, 2, 2.5], "-", "% per stack"),
                     newStat("Gun Damage", [4, 8, 12, 16, 20], "+", "% per stack"),
                     newStat("Max Drowning in Brass Stacks", [3, 3, 3, 3, 3], "", "Stacks"),
-                    newStat("Drowning in Brass Duration", [15, 15, 15, 15, 15], "", "seconds"),
+                    newStat("Drowning in Brass Duration", [15, 15, 15, 15, 15], "", " seconds"),
                 ]
             },
             {
                 title: "Thin Red Line",
+                tree: RED,
                 type: PASSIVE,
                 maxRanks: 3,
                 image: require('../assets/images/skills/moze/ThinRedLine.png'),
@@ -104,6 +115,7 @@ export default {
             },
             {
                 title: "Vladof Ingenuity",
+                tree: RED,
                 type: PASSIVE,
                 maxRanks: 5,
                 image: require('../assets/images/skills/moze/VladofIngenuity.png'),
@@ -115,6 +127,7 @@ export default {
             },
             {
                 title: "Bear Fist",
+                tree: RED,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/BearFist.png'),
                 description: "Deal massive damage to a single target at close range with this pneumatic fist.",
@@ -122,6 +135,7 @@ export default {
         ],
         [{
                 title: "Capacitive Armature",
+                tree: RED,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/CapacitiveArmature.png'),
                 description: "When Railgun hits an enemy, it chains to nearby enemies, dealing reduced Shock Damage to more targets.",
@@ -131,6 +145,7 @@ export default {
             },
             {
                 title: "Full Can of Whoop-Ass",
+                tree: RED,
                 type: PASSIVE,
                 maxRanks: 1,
                 image: require('../assets/images/skills/moze/FullCanWhoopAss.png'),
@@ -141,6 +156,7 @@ export default {
             },
             {
                 title: "Experimental Munitions",
+                tree: RED,
                 type: PASSIVE,
                 maxRanks: 1,
                 image: require('../assets/images/skills/moze/ExperimentalMunitions.png'),
@@ -154,6 +170,7 @@ export default {
             },
             {
                 title: "Wild Swing",
+                tree: RED,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/WildSwing.png'),
                 description: "Whenever Bear Fist hits an enemy, it does random bonus Elemental Damage to it and all nearby enemies.",
@@ -164,6 +181,7 @@ export default {
         ],
         [{
                 title: "Corrosive Sabot Round",
+                tree: RED,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/CorrosiveSabotRound.png'),
                 description: "Railgun now fires a specialty round that deals reduced damage and explodes after a short delay.",
@@ -176,6 +194,7 @@ export default {
             },
             {
                 title: "Behind the Iron Curtain",
+                tree: RED,
                 type: PASSIVE,
                 maxRanks: 3,
                 image: require('../assets/images/skills/moze/BehindCurtain.png'),
@@ -190,6 +209,7 @@ export default {
             },
             {
                 title: "Desperate Measures",
+                tree: RED,
                 type: PASSIVE,
                 maxRanks: 3,
                 image: require('../assets/images/skills/moze/DesperateMeasures.png'),
@@ -200,6 +220,7 @@ export default {
             },
             {
                 title: "Close the Distance",
+                tree: RED,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/CloseDistance.png'),
                 description: "Instead of punching, Bear Fist now launches its fist forward and grabs enemies at greatly increased range, dealing Shock Damage and pulling them back to Iron Bear.",
@@ -210,6 +231,7 @@ export default {
             },
             {
                 title: "Phalanx Doctrine",
+                tree: RED,
                 type: PASSIVE,
                 maxRanks: 5,
                 image: require('../assets/images/skills/moze/PhalanxDoctrine.png'),
@@ -217,11 +239,12 @@ export default {
                 stats: [
                     newStat("Max Shields", [3, 6, 9, 12, 15], "+", "% per stack"),
                     newStat("Gun Damage", [2, 4, 6, 8, 10], "+", "% per stack"),
-                    newStat("Phalanx Doctrine Duration", [30, 30, 30, 30, 30], "", "seconds"),
+                    newStat("Phalanx Doctrine Duration", [30, 30, 30, 30, 30], "", " seconds"),
                 ]
             },
             {
                 title: "Force Feedback",
+                tree: RED,
                 type: PASSIVE,
                 maxRanks: 1,
                 image: require('../assets/images/skills/moze/ForceFeedback.png'),
@@ -232,6 +255,7 @@ export default {
             },
             {
                 title: "Shockhammer",
+                tree: RED,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/Shockhammer.png'),
                 description: "Bear Fist is now capable of sustained rapid fire punching. Also, Bear Fist has reduced Fuel Drain and deals Bonus Shock Damage with each hit.",
@@ -249,13 +273,14 @@ export default {
             },
             {
                 title: "Tenacious Defense",
+                tree: RED,
                 type: PASSIVE,
                 maxRanks: 1,
                 image: require('../assets/images/skills/moze/TenaciousDef.png'),
                 description: "Whenever Moze's shield is fully depleted, she instantly restores a portion, and her Gun Damage is increased for a short time. This skill can only trigger after a full shield recharge.",
                 stats: [
                     newStat("Restores", [40], "+", "% of Max Shield"),
-                    newStat("Tenacious Defense Duration", [30], "", "seconds"),
+                    newStat("Tenacious Defense Duration", [30], "", " seconds"),
                     newStat("Gun Damage", [30], "+", "%"),
                 ]
             },
@@ -276,6 +301,7 @@ export default {
             },
             {
                 title: "Minigun",
+                tree: GREEN,
                 type: ACTION,
                 image: require('../assets/images/skills/moze/MiniGun.png'),
                 description: "The Minigun is capable of sustained rapid fire. Firing for long periods will overheat it, rendering it inoperable for a few seconds.",
@@ -292,6 +318,7 @@ export default {
             },
             {
                 title: "Cloud of Lead",
+                tree: GREEN,
                 type: PASSIVE,
                 maxRanks: 5,
                 image: require('../assets/images/skills/moze/CloudLead.png'),
@@ -303,6 +330,7 @@ export default {
             },
             {
                 title: "Dakka Bear",
+                tree: GREEN,
                 type: PASSIVE,
                 maxRanks: 1,
                 image: require('../assets/images/skills/moze/DakkaBear.png'),
@@ -310,6 +338,7 @@ export default {
             },
             {
                 title: "Matched Set",
+                tree: GREEN,
                 type: PASSIVE,
                 maxRanks: 5,
                 image: require('../assets/images/skills/moze/MatchingSet.png'),
@@ -325,6 +354,7 @@ export default {
         ],
         [{
                 title: "Let Off Some Steam",
+                tree: GREEN,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/LetOffSteam.png'),
                 description: "Minigun deals more damage as heat increases, and can be fired for longer before overheating.",
@@ -335,6 +365,7 @@ export default {
             },
             {
                 title: "Stoke the Embers",
+                tree: GREEN,
                 type: PASSIVE,
                 maxRanks: 3,
                 image: require('../assets/images/skills/moze/StokeTheEmbers.png'),
@@ -345,17 +376,19 @@ export default {
             },
             {
                 title: "Redistribution",
+                tree: GREEN,
                 type: PASSIVE,
                 maxRanks: 1,
                 image: require('../assets/images/skills/moze/Redistribution.png'),
                 description: "After Moze scores a Critical Hit, she regenerates ammo for a few seconds.",
                 stats: [
                     newStat("Ammo Regeneration", [5], "+", "% of magazine"),
-                    newStat("Redistribution Duration", [3], "", "seconds"),
+                    newStat("Redistribution Duration", [3], "", " seconds"),
                 ]
             },
             {
                 title: "Scrappy",
+                tree: GREEN,
                 type: PASSIVE,
                 maxRanks: 5,
                 image: require('../assets/images/skills/moze/Scrappy.png'),
@@ -368,6 +401,7 @@ export default {
             },
             {
                 title: "Salamander",
+                tree: GREEN,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/Salamander.png'),
                 description: "The Salamander is a flamethrower that deals Incendiary Damage to enemies at close range. The Salamander has infinite ammo but drains fuel with use.",
@@ -375,6 +409,7 @@ export default {
         ],
         [{
                 title: "General Winter",
+                tree: GREEN,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/GeneralWinter.png'),
                 description: "Minigun fires Cryo Rounds which reduce Heat Gain and Fuel Drain, but deal reduced damage.",
@@ -387,6 +422,7 @@ export default {
             },
             {
                 title: "Rushin' Offensive",
+                tree: GREEN,
                 type: PASSIVE,
                 maxRanks: 1,
                 image: require('../assets/images/skills/moze/RushinOffensive.png'),
@@ -394,6 +430,7 @@ export default {
             },
             {
                 title: "Scorching RPM's",
+                tree: GREEN,
                 type: PASSIVE,
                 maxRanks: 5,
                 image: require('../assets/images/skills/moze/ScorchingRPMs.png'),
@@ -408,6 +445,7 @@ export default {
             },
             {
                 title: "Fuel Economy",
+                tree: GREEN,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/FuelEconomy.png'),
                 description: "Reduces Salamander's Fuel Drain. Additionally, Iron Bear's Movement Speed is increased after damaging an enemy with Salamander.",
@@ -419,6 +457,7 @@ export default {
         ],
         [{
                 title: "Exploding. Bullets.",
+                tree: GREEN,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/ExplodingBullets.png'),
                 description: "Minigun fires Explosive Rounds that deal increased Splash Damage, but its Fire Rate is decreased.",
@@ -432,6 +471,7 @@ export default {
             },
             {
                 title: "The Iron Bank",
+                tree: GREEN,
                 type: PASSIVE,
                 maxRanks: 5,
                 image: require('../assets/images/skills/moze/IronBank.png'),
@@ -442,6 +482,7 @@ export default {
             },
             {
                 title: "Specialist Bear",
+                tree: GREEN,
                 type: PASSIVE,
                 maxRanks: 1,
                 image: require('../assets/images/skills/moze/SpecialistBear.png'),
@@ -452,6 +493,7 @@ export default {
             },
             {
                 title: "Chemical Warfare",
+                tree: GREEN,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/ChemicalWarfare.png'),
                 description: "The Salamander now deals Corrosive Damage. Additionally, Salamander's Melt Damage is increased.",
@@ -466,16 +508,18 @@ export default {
             },
             {
                 title: "Some for the Road",
+                tree: GREEN,
                 type: PASSIVE,
                 maxRanks: 1,
                 image: require('../assets/images/skills/moze/SomeForRoad.png'),
                 description: "Moze gains infinite ammo for a few seconds after exiting Iron Bear.",
                 stats: [
-                    newStat("Some for the Road duration", [5], "", "seconds"),
+                    newStat("Some for the Road duration", [5], "", " seconds"),
                 ]
             },
             {
                 title: "Click, Click..",
+                tree: GREEN,
                 type: PASSIVE,
                 maxRanks: 3,
                 image: require('../assets/images/skills/moze/ClickClick.png'),
@@ -489,6 +533,7 @@ export default {
             },
             {
                 title: "Molten Roar",
+                tree: GREEN,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/MoltenRoar.png'),
                 description: "The Salamander burst-fires 3 projectiles with increased Fuel Drain, the first of which leaves a large Incendiary area.",
@@ -505,6 +550,7 @@ export default {
             },
             {
                 title: "Forge",
+                tree: GREEN,
                 type: PASSIVE,
                 maxRanks: 1,
                 image: require('../assets/images/skills/moze/Forge.png'),
@@ -530,6 +576,7 @@ export default {
             },
             {
                 title: "V-35 Grenade Launcher",
+                tree: BLUE,
                 type: ACTION,
                 image: require('../assets/images/skills/moze/V_35.png'),
                 description: "The V-35 is a semi-automatic grenade launcher. Its grenades are not affected by Moze's equipped grenade mod.",
@@ -546,6 +593,7 @@ export default {
             },
             {
                 title: "Fire in the Skag Den",
+                tree: BLUE,
                 type: PASSIVE,
                 maxRanks: 5,
                 image: require('../assets/images/skills/moze/FireSkagDen.png'),
@@ -556,6 +604,7 @@ export default {
             },
             {
                 title: "Deadlines",
+                tree: BLUE,
                 type: PASSIVE,
                 maxRanks: 3,
                 image: require('../assets/images/skills/moze/Deadlines.png'),
@@ -567,12 +616,13 @@ export default {
             },
             {
                 title: "Grizzled",
+                tree: BLUE,
                 type: PASSIVE,
                 maxRanks: 5,
                 image: require('../assets/images/skills/moze/Grizzled.png'),
                 description: "Killing an enemy reduces Moze's remaining Active Skill Cooldown Time. This skill has diminishing returns.",
                 stats: [
-                    newStat("Iron Bear Cooldown Time", [1, 2, 3, 4, 5], "-", "seconds"),
+                    newStat("Iron Bear Cooldown Time", [1, 2, 3, 4, 5], "-", " seconds"),
                 ]
             },
             {
@@ -581,6 +631,7 @@ export default {
         ],
         [{
                 title: "Shaped Charge",
+                tree: BLUE,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/ShapedCharge.png'),
                 description: "Direct hits with the V-35 deal increased damage.",
@@ -590,6 +641,7 @@ export default {
             },
             {
                 title: "Means of Destruction",
+                tree: BLUE,
                 type: PASSIVE,
                 maxRanks: 3,
                 image: require('../assets/images/skills/moze/MeansOfDestruction.png'),
@@ -601,6 +653,7 @@ export default {
             },
             {
                 title: "Torgue Cross-Promotion",
+                tree: BLUE,
                 type: PASSIVE,
                 maxRanks: 3,
                 image: require('../assets/images/skills/moze/TorgueCrossPromo.png'),
@@ -611,6 +664,7 @@ export default {
             },
             {
                 title: "Stainless Steel Bear",
+                tree: BLUE,
                 type: PASSIVE,
                 maxRanks: 5,
                 image: require('../assets/images/skills/moze/StainlessSteel.png'),
@@ -622,6 +676,7 @@ export default {
             },
             {
                 title: "Vanquisher Rocket Pod",
+                tree: BLUE,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/Vanquisher.png'),
                 description: "The Vanquisher Rocket Pod is a rocket launcher capable of rapid-firing volleys of unguided explosive rockets.",
@@ -629,6 +684,7 @@ export default {
         ],
         [{
                 title: "Musical Chairs",
+                tree: BLUE,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/MusicalChairs.png'),
                 description: "Occasionally, the V-35 fires a Singularity Grenade that pulls in nearby enemies before exploding.",
@@ -638,6 +694,7 @@ export default {
             },
             {
                 title: "Pull the Holy Pin",
+                tree: BLUE,
                 type: PASSIVE,
                 maxRanks: 3,
                 image: require('../assets/images/skills/moze/PullTheHolyPin.png'),
@@ -648,12 +705,13 @@ export default {
             },
             {
                 title: "Auto Bear",
+                tree: BLUE,
                 type: PASSIVE,
                 maxRanks: 1,
                 image: require('../assets/images/skills/moze/AutoBear.png'),
                 description: "After Moze exits Iron Bear, it will remain deployed in place for a short time. While Auto Bear is active, it will attack enemies until its duration ends, then self-destruct.",
                 stats: [
-                    newStat("Auto Bear Duration", [15], "", "seconds"),
+                    newStat("Auto Bear Duration", [15], "", " seconds"),
                 ]
             },
             {
@@ -661,6 +719,7 @@ export default {
             },
             {
                 title: "Active Tracking",
+                tree: BLUE,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/ActiveTracking.png'),
                 description: "The Vanquisher Rocket Pod now fires homing rocket volleys and has increased Reload Speed. Can target up to 6 enemies.",
@@ -671,6 +730,7 @@ export default {
         ],
         [{
                 title: "Lock and Speedload",
+                tree: BLUE,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/LockSpeedLoad.png'),
                 description: "The V-35's Reload Speed is greatly increased and it now fires a 5-round burst.",
@@ -680,6 +740,7 @@ export default {
             },
             {
                 title: "Vampyr",
+                tree: BLUE,
                 type: PASSIVE,
                 maxRanks: 5,
                 image: require('../assets/images/skills/moze/Vampyr.png'),
@@ -693,6 +754,7 @@ export default {
             },
             {
                 title: "Why Can't I Carry All These Grenades?",
+                tree: BLUE,
                 type: PASSIVE,
                 maxRanks: 3,
                 image: require('../assets/images/skills/moze/WhyCantICarry.png'),
@@ -703,6 +765,7 @@ export default {
             },
             {
                 title: "Target Softening",
+                tree: BLUE,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/TargetSoftening.png'),
                 description: "The Vanquisher Rocket Pod deals greatly reduced damage per rocket, but fires in a 6-rocket spread. Additionally, enemies hit by Vanquisher Rocket Pod rockets take increased damage.",
@@ -717,6 +780,7 @@ export default {
             },
             {
                 title: "To The Last",
+                tree: BLUE,
                 type: PASSIVE,
                 maxRanks: 1,
                 image: require('../assets/images/skills/moze/ToTheLast.png'),
@@ -724,6 +788,7 @@ export default {
             },
             {
                 title: "Explosive Punctuation",
+                tree: BLUE,
                 type: PASSIVE,
                 maxRanks: 5,
                 image: require('../assets/images/skills/moze/ExplosivePunctuation.png'),
@@ -737,6 +802,7 @@ export default {
             },
             {
                 title: "Hammerdown Protocol",
+                tree: BLUE,
                 type: AUGMENT,
                 image: require('../assets/images/skills/moze/Hammerdown.png'),
                 description: "Instead of a volley of conventional rockets, the Vanquisher Rocket Pod launches a single rocket with a nuclear warhead, dealing massive Radiation Damage.",
@@ -754,6 +820,7 @@ export default {
             },
             {
                 title: "Short Fuse",
+                tree: BLUE,
                 type: PASSIVE,
                 maxRanks: 1,
                 image: require('../assets/images/skills/moze/ShortFuse.png'),
@@ -772,3 +839,5 @@ export default {
         ],
     ],
 }
+
+export {mozeSkills, mozeEquipped}

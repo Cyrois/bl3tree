@@ -68,8 +68,14 @@ class SettingsScreen extends React.Component {
   }
 
   _handleSignUp = () => {
-    console.log("hit sign up")
-    firebase
+    if(!this.props.email) {
+      this.props.setCreateError('Please enter your email')
+      return
+    } else if(!this.props.password) {
+      this.props.setCreateError('Please enter your password')
+      return
+    } else {
+      firebase
       .auth()
       .createUserWithEmailAndPassword(this.props.email, this.props.password)
       .then(() => {
@@ -80,25 +86,34 @@ class SettingsScreen extends React.Component {
         console.log(error)
         this.props.setCreateError(error.message)
       })
+    }
   }
 
   _handleSignIn = () => {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(this.props.email, this.props.password)
-      .then(() => {
-        this.props.setLoginModal(false)
-        this.props.setCreateError('')
-        this._loadBuilds()
-      })
-      .catch(error => {
-        console.log(error)
-        if(error.code === "auth/unknown") {
-          this.props.setLoginError("We detected something unusual, please try again later.")
-        } else {
-          this.props.setLoginError(error.message)
-        }
-      })
+    if(!this.props.email) {
+      // this.props.setCreateError('Please enter your email')
+      return
+    } else if(!this.props.password) {
+      // this.props.setCreateError('Please enter your password')
+      return
+    } else {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.props.email, this.props.password)
+        .then(() => {
+          this.props.setLoginModal(false)
+          this.props.setCreateError('')
+          this._loadBuilds()
+        })
+        .catch(error => {
+          console.log(error)
+          if(error.code === "auth/unknown") {
+            this.props.setLoginError("We detected something unusual, please try again later.")
+          } else {
+            this.props.setLoginError(error.message)
+          }
+        })
+    }
   }
 
   _handleLogout = () => {
@@ -123,6 +138,10 @@ class SettingsScreen extends React.Component {
 
   _saveBuild() {
     if(this._isUserLoggedIn()) {
+      if(Array.isArray(this.props.builds) && this.props.builds.length > 10) {
+        this.props.setSaveBuildError("You have reached the maximum of 10 builds, please delete a build before saving a new one.")
+        return
+      }
       let build = {
         hero: this.props.selectedHero,
         skills: this.props[this.props.selectedHero].equipped,
@@ -135,7 +154,7 @@ class SettingsScreen extends React.Component {
       }
       this.buildsStore.add(document)
         .then(() => this._loadBuilds())
-        .catch(error => console.log(error))
+        .catch(error => this.props.setSaveBuildError("An error occured while saving your build."))
     }
   }
 
@@ -469,6 +488,11 @@ class SettingsScreen extends React.Component {
                       onChangeText={buildName => this.props.setCurrentBuildName(buildName)}
                       value={this.props.buildName}
                     />
+
+                    {
+                      !!this.props.saveBuildError &&
+                      <Text>{this.props.saveBuildError}</Text>
+                    }
                       
                     <TouchableOpacity
                       style={styles.modalBtns}
@@ -561,7 +585,7 @@ class SettingsScreen extends React.Component {
                     <Text style={styles.heroBtnText}> Moze </Text>
                   </TouchableOpacity>
 
-                  {/* <TouchableOpacity
+                  <TouchableOpacity
                     style={styles.modalBtns}
                     onPress={() => this._selectHero(ZANE)}
                   >
@@ -573,7 +597,7 @@ class SettingsScreen extends React.Component {
                     onPress={() => this._selectHero(AMARA)}
                   >
                     <Text style={styles.heroBtnText}> Amara </Text>
-                  </TouchableOpacity> */}
+                  </TouchableOpacity>
 
                   <TouchableOpacity
                     style={{marginTop: 20, ...styles.modalBtns}}
@@ -727,6 +751,9 @@ const styles = StyleSheet.create({
   },
   innerModal: {
     backgroundColor: '#fff',
+    borderRadius: 5,
+    borderWidth: 5,
+    borderColor: RED_BG,
     padding: 20,
     width: '100%'
   },
@@ -794,6 +821,7 @@ mapDispatchToProps = dispatch => {
     setBuildCode: bindActionCreators(actions.setBuildCode, dispatch),
     confirmLoadBuild: bindActionCreators(actions.confirmLoadBuild, dispatch),
     setSaveBuildModal: bindActionCreators(actions.setSaveBuildModal, dispatch),
+    setSaveBuildError: bindActionCreators(actions.setSaveBuildError, dispatch),
     setHeroSelect: bindActionCreators(actions.setHeroSelect, dispatch),
     selectHero: bindActionCreators(actions.selectHero, dispatch),
     toggle: bindActionCreators(actions.toggle, dispatch),

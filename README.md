@@ -19,6 +19,8 @@ https://dev-yakuza.github.io/en/react-native/react-native-admob/
 https://medium.com/stackfame/how-to-npm-unistall-unused-packages-in-node-js-ea80afb6d1a7
 
 TODO:
+- Should overwrite existing build if loaded build
+- Certain stats do not sum up properly; i.e. cooldown
 - Optimize hero skills by only saving title
 - Integrate Admobs
 - Figure out how to make a paid version - no ads on paid version

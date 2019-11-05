@@ -18,7 +18,7 @@ import { MonoText } from '../components/StyledText';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators as actions } from '../actions';
-import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, RED_BG, YELLOW_FONT, TITLE_FONT, TEXT_FONT } from '../data/constants';
+import { PASSIVE, AUGMENT, ACTION, PET, FLAK, MOZE, ZANE, AMARA, RED_BG, YELLOW_FONT, TITLE_FONT, TEXT_FONT, getStatText, ELEMENT } from '../data/constants';
 
 class StatsScreen extends React.Component {
   _getSkillBackgroundImage(skillType) {
@@ -30,6 +30,8 @@ class StatsScreen extends React.Component {
       case ACTION:
         return require("../assets/images/backgrounds/skill-bg-action-default.png")
       case PET:
+        return require("../assets/images/backgrounds/skill-bg-pet-default.png")
+      case ELEMENT:
         return require("../assets/images/backgrounds/skill-bg-pet-default.png")
     }
   }
@@ -277,14 +279,14 @@ class StatsScreen extends React.Component {
                   <View style={styles.skillContainerAction}>
                   </View>
                   <View style={styles.skillContainerAugment}>
-                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.zane.equipped.augment2, true, "an augment")}>
+                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.zane.equipped.augment3, true, "an augment")}>
                       <ImageBackground source={this._getSkillBackgroundImage(AUGMENT)} 
                           style={styles.skillImageBg}
                           resizeMode='contain'>
                         {
-                          this.props.zane.equipped.augment2 &&
+                          this.props.zane.equipped.augment3 &&
                           <Image
-                            source={this.props.zane.equipped.augment2.image}
+                            source={this.props.zane.equipped.augment3.image}
                             style={styles.skillImage} 
                             resizeMode='contain'/>
                         }
@@ -295,14 +297,14 @@ class StatsScreen extends React.Component {
 
                 <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
                   <View style={styles.skillContainerAugment}>
-                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.zane.equipped.augment3, true, "an augment")}>
+                    <TouchableOpacity onPress={() => this._onSkillPress(this.props.zane.equipped.augment2, true, "an augment")}>
                       <ImageBackground source={this._getSkillBackgroundImage(AUGMENT)} 
                           style={styles.skillImageBg}
                           resizeMode='contain'>
                         {
-                          this.props.zane.equipped.augment3 &&
+                          this.props.zane.equipped.augment2 &&
                           <Image
-                            source={this.props.zane.equipped.augment3.image}
+                            source={this.props.zane.equipped.augment2.image}
                             style={styles.skillImage} 
                             resizeMode='contain'/>
                         }
@@ -397,11 +399,12 @@ class StatsScreen extends React.Component {
             </View>
             
             {
-              this.props.stats && Object.keys(this.props.stats).map(stat => {
+              this.props.stats && Object.keys(this.props.stats).sort().map(stat => {
+                let text = getStatText(stat)
                 return (
-                  <View key={stat} style={{marginBottom: 5, flexDirection:'row', flexWrap:'wrap'}}>
-                    <Text style={{...styles.defaultFont, ...styles.yellowFont}}>{stat}:</Text>
-                    <Text style={styles.defaultFont}> {this.props.stats[stat]}</Text>
+                  <View key={stat} style={{marginBottom: 8, flexDirection:'row', flexWrap:'wrap'}}>
+                    <Text style={{...styles.defaultFont, ...styles.yellowFont, fontWeight: 'bold'}}>{text.type}:</Text>
+                    <Text style={{...styles.defaultFont, marginTop: 2}}> {text.preText}{this.props.stats[stat]}{text.postText}</Text>
                   </View>
                 )
               })
@@ -538,9 +541,10 @@ const styles = StyleSheet.create({
   statsSummaryContainer: {
     backgroundColor: 'rgb(3, 59, 135)',
     paddingHorizontal: 20,
-    paddingVertical: 10,
+    paddingTop: 10,
+    paddingBottom: 40,
     color: '#fff',
-    height: 800
+    minHeight: 800
   },
   statsSummaryHeader: {
     paddingVertical: 10,
@@ -550,7 +554,7 @@ const styles = StyleSheet.create({
     fontFamily: TITLE_FONT,
   },
   pointsLeftText: {
-    marginBottom: 5, 
+    marginBottom: 12, 
     flexDirection:'row', 
     flexWrap:'wrap', 
     justifyContent: 'center',
