@@ -123,6 +123,14 @@ class HomeScreen extends React.Component {
     )
   }
 
+  _calculateTreeProgress = treeColor => {
+    let totalPointsForColor = 0;
+    for (let i = 1; i < 6; i++) {
+      totalPointsForColor += this.props.pointsSpent[treeColor][`row${i}`]
+    }
+    return "" + (20 + 3 * totalPointsForColor) + '%'
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -140,6 +148,7 @@ class HomeScreen extends React.Component {
                 this.props.selectedHero === FLAK &&
                 <View>
                   <View style={{...styles.greenSkillTree, ...styles.treeContainer}}>
+                    <View style={{...styles.skillProgress, ...styles.greenSkillTree, height: this._calculateTreeProgress(GREEN)}}></View>
                     <Text style={styles.treeTitle}>
                       Stalker
                     </Text>
@@ -160,6 +169,7 @@ class HomeScreen extends React.Component {
                   </View>
 
                   <View style={{...styles.redSkillTree, ...styles.treeContainer}}>
+                    <View style={{...styles.skillProgress, ...styles.redSkillTree, height: this._calculateTreeProgress(RED)}}></View>
                     <Text style={styles.treeTitle}>
                       Hunter
                     </Text>
@@ -180,6 +190,7 @@ class HomeScreen extends React.Component {
                   </View>
 
                   <View style={{...styles.blueSkillTree, ...styles.treeContainer}}>
+                    <View style={{...styles.skillProgress, ...styles.blueSkillTree, height: this._calculateTreeProgress(BLUE)}}></View>
                     <Text style={styles.treeTitle}>
                       Master
                     </Text>
@@ -205,6 +216,7 @@ class HomeScreen extends React.Component {
                 this.props.selectedHero === MOZE &&
                 <View>
                   <View style={{...styles.redSkillTree, ...styles.treeContainer}}>
+                    <View style={{...styles.skillProgress, ...styles.redSkillTree, height: this._calculateTreeProgress(RED)}}></View>
                     <Text style={styles.treeTitle}>
                       Sheild of Retribution
                     </Text>
@@ -226,6 +238,7 @@ class HomeScreen extends React.Component {
                   </View>
 
                   <View style={{...styles.greenSkillTree, ...styles.treeContainer}}>
+                    <View style={{...styles.skillProgress, ...styles.greenSkillTree, height: this._calculateTreeProgress(GREEN)}}></View>
                     <Text style={styles.treeTitle}>
                       Bottomless Mags
                     </Text>
@@ -247,6 +260,7 @@ class HomeScreen extends React.Component {
                   </View>
 
                   <View style={{...styles.blueSkillTree, ...styles.treeContainer}}>
+                    <View style={{...styles.skillProgress, ...styles.blueSkillTree, height: this._calculateTreeProgress(BLUE)}}></View>
                     <Text style={styles.treeTitle}>
                       Demolition Woman
                     </Text>
@@ -272,7 +286,8 @@ class HomeScreen extends React.Component {
               {
                 this.props.selectedHero === ZANE &&
                 <View>
-                  <View style={{...styles.redSkillTree, ...styles.treeContainer}}>
+                  <View style={{...styles.treeContainer, ...styles.redSkillTree}}>
+                    <View style={{...styles.skillProgress, ...styles.redSkillTree, height: this._calculateTreeProgress(RED)}}></View>
                     <Text style={styles.treeTitle}>
                       Doubled Agent
                     </Text>
@@ -292,6 +307,7 @@ class HomeScreen extends React.Component {
                   </View>
 
                   <View style={{...styles.blueSkillTree, ...styles.treeContainer}}>
+                    <View style={{...styles.skillProgress, ...styles.blueSkillTree, height: this._calculateTreeProgress(BLUE)}}></View>
                     <Text style={styles.treeTitle}>
                       Hitman
                     </Text>
@@ -311,6 +327,7 @@ class HomeScreen extends React.Component {
                   </View>
 
                   <View style={{...styles.greenSkillTree, ...styles.treeContainer}}>
+                    <View style={{...styles.skillProgress, ...styles.greenSkillTree, height: this._calculateTreeProgress(GREEN)}}></View>
                     <Text style={styles.treeTitle}>
                       Under Cover
                     </Text>
@@ -335,6 +352,7 @@ class HomeScreen extends React.Component {
                 this.props.selectedHero === AMARA &&
                 <View>
                   <View style={{...styles.blueSkillTree, ...styles.treeContainer}}>
+                    <View style={{...styles.skillProgress, ...styles.blueSkillTree, height: this._calculateTreeProgress(BLUE)}}></View>
                     <Text style={styles.treeTitle}>
                       Mystical Assault
                     </Text>
@@ -354,6 +372,7 @@ class HomeScreen extends React.Component {
                   </View>
 
                   <View style={{...styles.redSkillTree, ...styles.treeContainer}}>
+                    <View style={{...styles.skillProgress, ...styles.redSkillTree, height: this._calculateTreeProgress(RED)}}></View>
                     <Text style={styles.treeTitle}>
                       Fist of the Elements
                     </Text>
@@ -373,6 +392,7 @@ class HomeScreen extends React.Component {
                   </View>
 
                   <View style={{...styles.greenSkillTree, ...styles.treeContainer}}>
+                    <View style={{...styles.skillProgress, ...styles.greenSkillTree, height: this._calculateTreeProgress(GREEN)}}></View>
                     <Text style={styles.treeTitle}>
                       Brawl
                     </Text>
@@ -605,7 +625,7 @@ class HomeScreen extends React.Component {
                         this._setModal(false, "")
                       }}
                     >
-                      <Text> Equip Slot 1 </Text>
+                      <Text style={{...styles.defaultFont, color: 'black'}}> Equip Slot 1 </Text>
                     </TouchableOpacity>
                   }
 
@@ -621,7 +641,7 @@ class HomeScreen extends React.Component {
                         this._setModal(false, "")
                       }}
                     >
-                      <Text> Equip Slot 2 </Text>
+                      <Text style={{...styles.defaultFont, color: 'black'}}> Equip Slot 2 </Text>
                     </TouchableOpacity>
                   }
 
@@ -738,12 +758,21 @@ const styles = StyleSheet.create({
     paddingBottom: 60,
     paddingRight: 5,
     paddingLeft: 10,
+    // backgroundColor: 'rgba(38, 41, 43, 0.75)',
   },
   greenSkillTree: {
     backgroundColor: 'rgba(69, 133, 4, 0.75)',
   },
   redSkillTree: {
     backgroundColor: 'rgba(99, 33, 6, 0.75)',
+  },
+  skillProgress: {
+    minHeight: '20%',
+    maxHeight: '90%', 
+    width: '64%', 
+    position: 'absolute', 
+    top: '16%', 
+    left: '20%'
   },
   blueSkillTree: {
     backgroundColor: 'rgba(3, 59, 135, 0.75)',
@@ -767,23 +796,23 @@ const styles = StyleSheet.create({
 
   //BOTTOM BTNS
   resetPointsBtnContainer: {
-    backgroundColor: 'rgba(3, 59, 135, 0.75)',
-    color: 'rgba(3, 59, 135, 0.5)',
-    padding: 10,
+    backgroundColor: RED_BG,
+    color: YELLOW_FONT,
+    paddingTop: 20,
   },
   resetPointsBtn: {
-    backgroundColor: 'rgba(3, 59, 135, 0.75)',
+    backgroundColor: YELLOW_FONT,
     padding: 10,
     marginHorizontal: 40,
     marginBottom: 10,
     borderWidth: 3,
     borderRadius: 4,
-    borderColor: '#fff',
+    borderColor: 'black',
     textAlign: 'center',
   },
   resetPointsText: {
     fontSize: 16,
-    color: '#fff',
+    color: 'black',
     textAlign: 'center',
   },
 

@@ -27,10 +27,10 @@ class SettingsScreen extends React.Component {
     this.buildsStore = firebase.firestore().collection('builds');
     
     let googleUser = firebase.auth().currentUser;
-    console.log(googleUser)
     if(googleUser) {
       this.props.setAccountEmail(googleUser.email);
       this.props.setAccountId(googleUser.uid);
+      console.log("user logged in, loading builds...")
       this._loadBuilds()
     }
   }
@@ -56,6 +56,7 @@ class SettingsScreen extends React.Component {
               }
               builds.push(build)
           });
+          console.log(builds)
           this.props.loadBuilds(builds)
       });
   }
