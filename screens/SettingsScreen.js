@@ -26,13 +26,13 @@ class SettingsScreen extends React.Component {
     this.buildNameTextInput = React.createRef();
     this.buildsStore = firebase.firestore().collection('builds');
     
-    let googleUser = firebase.auth().currentUser;
-    if(googleUser) {
-      this.props.setAccountEmail(googleUser.email);
-      this.props.setAccountId(googleUser.uid);
-      console.log("user logged in, loading builds...")
-      this._loadBuilds()
-    }
+    firebase.auth().onAuthStateChanged(user => {
+      if(user) {
+        this.props.setAccountEmail(user.email)
+        this.props.setAccountId(user.uid);
+        this._loadBuilds()
+      }
+    })
   }
 
   componentDidMount() {
@@ -47,6 +47,9 @@ class SettingsScreen extends React.Component {
 
   _loadBuilds() {
     let builds = []
+    if(!this.buildsStore) {
+      this.buildsStore = firebase.firestore().collection('builds');
+    }
     this.buildsStore.where("user", "==", this.props.userId).get()
       .then(querySnapshot => {
           querySnapshot.forEach(doc => {
