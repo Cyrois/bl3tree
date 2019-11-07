@@ -29,7 +29,9 @@ import {
   SET_LOGIN_ERROR,
   SET_CREATE_ERROR,
   SET_ACCOUNT_ID,
-  SET_SAVE_BUILD_ERROR
+  SET_SAVE_BUILD_ERROR,
+  SET_CONFIRM_PASSWORD,
+  SET_FORGOT_PASSWORD_MODAL
 } from './types.js';
 
 import {
@@ -90,10 +92,12 @@ const intialState = {
   amara: amaraSkills,
   createAccountModalVisible: false,
   createAccountError: '',
+  forgotPasswordModalVisible: false,
   loginModalVisible: false,
   loginAccountError: '',
   email: '',
   password: '',
+  confirmPassword: '',
   userId: '',
   buildName: '',
   buildCode: '',
@@ -317,6 +321,13 @@ const setLoginError = (state, error) => {
   }
 }
 
+const setForgotPasswordModal = (state, modalVisible) => {
+  return {
+    ...state,
+    forgotPasswordModalVisible: modalVisible
+  }
+}
+
 const setAccountEmail = (state, email) => {
   return {
     ...state,
@@ -328,6 +339,13 @@ const setAccountPassword = (state, password) => {
   return {
     ...state,
     password: password
+  }
+}
+
+const setConfirmPassword = (state, password) => {
+  return {
+    ...state,
+    confirmPassword: password
   }
 }
 
@@ -516,10 +534,14 @@ const reducer = (state = intialState, action) => {
       return setLoginModal(state, action.data)
     case SET_LOGIN_ERROR:
       return setLoginError(state, action.data)
+    case SET_FORGOT_PASSWORD_MODAL:
+      return setForgotPasswordModal(state, action.data)
     case SET_ACCOUNT_EMAIL:
       return setAccountEmail(state, action.data)
     case SET_ACCOUNT_PASSWORD:
       return setAccountPassword(state, action.data)
+    case SET_CONFIRM_PASSWORD:
+      return setConfirmPassword(state, action.data)
     case SET_ACCOUNT_ID:
       return setAccountId(state, action.data)
     case SET_CURRENT_BUILD_NAME:

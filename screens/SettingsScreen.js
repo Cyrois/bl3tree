@@ -73,11 +73,15 @@ class SettingsScreen extends React.Component {
   }
 
   _handleSignUp = () => {
+    this.props.setCreateError("")
     if(!this.props.email) {
       this.props.setCreateError('Please enter your email')
       return
     } else if(!this.props.password) {
       this.props.setCreateError('Please enter your password')
+      return
+    } else if(this.props.password !== this.props.confirmPassword) {
+      this.props.setCreateError("Your passwords don't match, please re-type them.")
       return
     } else {
       firebase
@@ -121,8 +125,16 @@ class SettingsScreen extends React.Component {
     }
   }
 
+  _handleForgotPassword = () => {
+    firebase.auth().sendPasswordResetEmail(this.props.email)
+      .then(function (user) {
+        alert('Please check your email...')
+      }).catch(function (e) {
+        console.log(e)
+      })
+  }
+
   _handleLogout = () => {
-    console.log("logging out")
     firebase.auth().signOut()
       .then(() => {
         this.props.setAccountEmail("")
@@ -360,6 +372,15 @@ class SettingsScreen extends React.Component {
                   value={this.props.password}
                 />
 
+                <TextInput
+                  secureTextEntry
+                  placeholder="Confirm Password"
+                  autoCapitalize="none"
+                  style={styles.textInput}
+                  onChangeText={password => this.props.setConfirmPassword(password)}
+                  value={this.props.confirmPassword}
+                />
+
                 {
                   !!this.props.createAccountError &&
                   <Text>{this.props.createAccountError}</Text>
@@ -436,9 +457,53 @@ class SettingsScreen extends React.Component {
                   </Text>
                 </View>
 
+                <View style={{marginTop: 10, marginBottom: 10}}>
+                  <Text style={{fontFamily: TEXT_FONT}}> Forgot your password? <Text onPress={() => {
+                    this.props.setForgotPasswordModal(true)
+                    this.props.setLoginModal(false)
+                    }} style={{color: RED_BG, fontFamily: TEXT_FONT}}> Reset Password </Text>
+                  </Text>
+                </View>
+
                 <TouchableOpacity
                   style={styles.modalBtns}
                   onPress={() => this.props.setLoginModal(false)}
+                >
+                  <Text style={styles.modalBtnText}> Cancel </Text>
+                </TouchableOpacity>
+              </TouchableOpacity>
+            </TouchableOpacity>
+          </Modal>
+        </View>
+
+        <View>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={this.props.forgotPasswordModalVisible}
+            onRequestClose={() => this.props.setForgotPasswordModal(false)}>
+            <TouchableOpacity style={styles.outerModal} onPress={() => {this.props.setForgotPasswordModal(false)}}>
+              <TouchableOpacity style={styles.innerModal} onPress={(e) => {e.preventDefault()}} activeOpacity={1}>
+                <Text style={styles.modalHeader}>Reset Password</Text>
+
+                <TextInput
+                  placeholder="Email"
+                  autoCapitalize="none"
+                  style={styles.textInput}
+                  onChangeText={email => this.props.setAccountEmail(email)}
+                  value={this.props.email}
+                />
+
+                <TouchableOpacity
+                  style={styles.modalBtns}
+                  onPress={this._handleForgotPassword}
+                >
+                  <Text style={styles.modalBtnText}> Send Reset Link </Text>
+                </TouchableOpacity>
+                
+                <TouchableOpacity
+                  style={styles.modalBtns}
+                  onPress={() => this.props.setForgotPasswordModal(false)}
                 >
                   <Text style={styles.modalBtnText}> Cancel </Text>
                 </TouchableOpacity>
@@ -769,7 +834,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     fontFamily: TEXT_FONT,
-    marginVertical: 10,
+    marginVertical: 0,
   },
   divider: {
     borderColor: '#dedede', 
@@ -795,8 +860,10 @@ mapDispatchToProps = dispatch => {
     setCreateError: bindActionCreators(actions.setCreateError, dispatch),
     setLoginModal: bindActionCreators(actions.setLoginModal, dispatch),
     setLoginError: bindActionCreators(actions.setLoginError, dispatch),
+    setForgotPasswordModal: bindActionCreators(actions.setForgotPasswordModal, dispatch),
     setAccountEmail: bindActionCreators(actions.setAccountEmail, dispatch),
     setAccountPassword: bindActionCreators(actions.setAccountPassword, dispatch),
+    setConfirmPassword: bindActionCreators(actions.setConfirmPassword, dispatch),
     setAccountId: bindActionCreators(actions.setAccountId, dispatch),
     setCurrentBuildName: bindActionCreators(actions.setCurrentBuildName, dispatch),
     loadBuilds: bindActionCreators(actions.loadBuilds, dispatch),

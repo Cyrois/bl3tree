@@ -1,4 +1,36 @@
-import { SET_CHARACTER, ADD_SKILL, ADD_STAT, SET_MODAL_SKILL, SET_FLAK_PET, SET_FLAK_ACTION, SET_FLAK_AUGMENT, RANK_SKILL, REMOVE_SKILL, SET_HERO_SELECT, SELECT_HERO, TOGGLE_QUICK_SELECT, RESET, SET_SAVE_BUILD_MODAL, SET_CREATE_ACCOUNT_MODAL, SET_ACCOUNT_EMAIL, SET_ACCOUNT_PASSWORD, SET_CHARACTER_SKILL, SET_SELECTED_MODAL_SKILL, TOGGLE, SET_CURRENT_BUILD_NAME, LOAD_BUILDS, LOAD_SAVED_BUILD, SET_CONFIRM_LOAD, LOAD_BUILD_CODE, SET_BUILD_CODE, LOAD_BUILD, SET_CONFIRM_DELETE, SET_LOGIN_MODAL, SET_LOGIN_ERROR, SET_CREATE_ERROR, SET_ACCOUNT_ID, SET_SAVE_BUILD_ERROR } from './types.js';
+import {
+    SET_CHARACTER,
+    ADD_SKILL,
+    SET_MODAL_SKILL,
+    RANK_SKILL,
+    REMOVE_SKILL,
+    SET_HERO_SELECT,
+    SELECT_HERO,
+    TOGGLE_QUICK_SELECT,
+    RESET,
+    SET_SAVE_BUILD_MODAL,
+    SET_CREATE_ACCOUNT_MODAL,
+    SET_FORGOT_PASSWORD_MODAL,
+    SET_ACCOUNT_EMAIL,
+    SET_ACCOUNT_PASSWORD,
+    SET_CHARACTER_SKILL,
+    SET_SELECTED_MODAL_SKILL,
+    TOGGLE,
+    SET_CURRENT_BUILD_NAME,
+    LOAD_BUILDS,
+    LOAD_SAVED_BUILD,
+    SET_CONFIRM_LOAD,
+    LOAD_BUILD_CODE,
+    SET_BUILD_CODE,
+    LOAD_BUILD,
+    SET_CONFIRM_DELETE,
+    SET_LOGIN_MODAL,
+    SET_LOGIN_ERROR,
+    SET_CREATE_ERROR,
+    SET_ACCOUNT_ID,
+    SET_SAVE_BUILD_ERROR,
+    SET_CONFIRM_PASSWORD
+} from './types.js';
 
 const setCharacter = () => {
     return {
@@ -90,6 +122,13 @@ const setLoginError = (error) =>  {
     }
 }
 
+const setForgotPasswordModal = (visible) => {
+    return {
+        type: SET_FORGOT_PASSWORD_MODAL,
+        data: visible,
+    }
+}
+
 const setAccountEmail = (email) =>  {
     return {
         type: SET_ACCOUNT_EMAIL,
@@ -100,6 +139,13 @@ const setAccountEmail = (email) =>  {
 const setAccountPassword = (password) =>  {
     return {
         type: SET_ACCOUNT_PASSWORD,
+        data: password,
+    }
+}
+
+const setConfirmPassword = (password) =>  {
+    return {
+        type: SET_CONFIRM_PASSWORD,
         data: password,
     }
 }
@@ -216,8 +262,10 @@ const actionCreators = {
     setCreateError,
     setLoginModal,
     setLoginError,
+    setForgotPasswordModal,
     setAccountEmail,
     setAccountPassword,
+    setConfirmPassword, 
     setAccountId,
     setCurrentBuildName,
     loadBuilds,
