@@ -123,12 +123,26 @@ class HomeScreen extends React.Component {
     )
   }
 
-  _calculateTreeProgress = treeColor => {
+  _calculateTreeBgProgress = (treeColor, initialTop = 20) => {
     let totalPointsForColor = 0;
     for (let i = 1; i < 6; i++) {
       totalPointsForColor += this.props.pointsSpent[treeColor][`row${i}`]
     }
-    return "" + (20 + 3 * totalPointsForColor) + '%'
+    if(totalPointsForColor == 25) {
+      return '100%'  
+    }
+    return "" + (initialTop + 3 * totalPointsForColor) + '%'
+  }
+
+  _calculateTreeBgImageProgress = (treeColor, initialTop = 30.9) => {
+    let totalPointsForColor = 0;
+    for (let i = 1; i < 6; i++) {
+      totalPointsForColor += this.props.pointsSpent[treeColor][`row${i}`]
+    }
+    if(totalPointsForColor == 25) {
+      return '100%'  
+    }
+    return "" + (initialTop + 2.7 * totalPointsForColor) + '%'
   }
 
   render() {
@@ -148,7 +162,9 @@ class HomeScreen extends React.Component {
                 this.props.selectedHero === FLAK &&
                 <View>
                   <View style={{...styles.greenSkillTree, ...styles.treeContainer}}>
-                    <View style={{...styles.skillProgress, ...styles.greenSkillTree, height: this._calculateTreeProgress(GREEN)}}></View>
+                    <View style={{...styles.skillProgress, ...styles.greenSkillTree, height: this._calculateTreeBgProgress(GREEN)}}></View>
+                    <ImageBackground resizeMode='stretch' source={require("../assets/images/branch-progress.png")} 
+                      style={{...styles.skillProgress, ...styles.skillProgressImg, top: this._calculateTreeBgImageProgress(GREEN)}}></ImageBackground>
                     <Text style={styles.treeTitle}>
                       Stalker
                     </Text>
@@ -169,7 +185,9 @@ class HomeScreen extends React.Component {
                   </View>
 
                   <View style={{...styles.redSkillTree, ...styles.treeContainer}}>
-                    <View style={{...styles.skillProgress, ...styles.redSkillTree, height: this._calculateTreeProgress(RED)}}></View>
+                    <View style={{...styles.skillProgress, ...styles.redSkillTree, height: this._calculateTreeBgProgress(RED)}}></View>
+                    <ImageBackground resizeMode='stretch' source={require("../assets/images/branch-progress.png")} 
+                      style={{...styles.skillProgress, ...styles.skillProgressImg, top: this._calculateTreeBgImageProgress(RED)}}></ImageBackground>
                     <Text style={styles.treeTitle}>
                       Hunter
                     </Text>
@@ -190,7 +208,9 @@ class HomeScreen extends React.Component {
                   </View>
 
                   <View style={{...styles.blueSkillTree, ...styles.treeContainer}}>
-                    <View style={{...styles.skillProgress, ...styles.blueSkillTree, height: this._calculateTreeProgress(BLUE)}}></View>
+                    <View style={{...styles.skillProgress, ...styles.blueSkillTree, height: this._calculateTreeBgProgress(BLUE)}}></View>
+                    <ImageBackground resizeMode='stretch' source={require("../assets/images/branch-progress.png")} 
+                      style={{...styles.skillProgress, ...styles.skillProgressImg, top: this._calculateTreeBgImageProgress(BLUE)}}></ImageBackground>
                     <Text style={styles.treeTitle}>
                       Master
                     </Text>
@@ -216,7 +236,9 @@ class HomeScreen extends React.Component {
                 this.props.selectedHero === MOZE &&
                 <View>
                   <View style={{...styles.redSkillTree, ...styles.treeContainer}}>
-                    <View style={{...styles.skillProgress, ...styles.redSkillTree, height: this._calculateTreeProgress(RED)}}></View>
+                    <View style={{...styles.skillProgress, ...styles.redSkillTree, height: this._calculateTreeBgProgress(RED)}}></View>
+                    <ImageBackground resizeMode='stretch' source={require("../assets/images/branch-progress.png")} 
+                      style={{...styles.skillProgress, ...styles.skillProgressImg, top: this._calculateTreeBgImageProgress(RED)}}></ImageBackground>
                     <Text style={styles.treeTitle}>
                       Sheild of Retribution
                     </Text>
@@ -238,7 +260,9 @@ class HomeScreen extends React.Component {
                   </View>
 
                   <View style={{...styles.greenSkillTree, ...styles.treeContainer}}>
-                    <View style={{...styles.skillProgress, ...styles.greenSkillTree, height: this._calculateTreeProgress(GREEN)}}></View>
+                    <View style={{...styles.skillProgress, ...styles.greenSkillTree, height: this._calculateTreeBgProgress(GREEN)}}></View>
+                    <ImageBackground resizeMode='stretch' source={require("../assets/images/branch-progress.png")} 
+                      style={{...styles.skillProgress, ...styles.skillProgressImg, top: this._calculateTreeBgImageProgress(GREEN)}}></ImageBackground>
                     <Text style={styles.treeTitle}>
                       Bottomless Mags
                     </Text>
@@ -260,7 +284,9 @@ class HomeScreen extends React.Component {
                   </View>
 
                   <View style={{...styles.blueSkillTree, ...styles.treeContainer}}>
-                    <View style={{...styles.skillProgress, ...styles.blueSkillTree, height: this._calculateTreeProgress(BLUE)}}></View>
+                    <View style={{...styles.skillProgress, ...styles.blueSkillTree, height: this._calculateTreeBgProgress(BLUE)}}></View>
+                    <ImageBackground resizeMode='stretch' source={require("../assets/images/branch-progress.png")} 
+                      style={{...styles.skillProgress, ...styles.skillProgressImg, top: this._calculateTreeBgImageProgress(BLUE)}}></ImageBackground>
                     <Text style={styles.treeTitle}>
                       Demolition Woman
                     </Text>
@@ -287,7 +313,9 @@ class HomeScreen extends React.Component {
                 this.props.selectedHero === ZANE &&
                 <View>
                   <View style={{...styles.treeContainer, ...styles.redSkillTree}}>
-                    <View style={{...styles.skillProgress, ...styles.redSkillTree, height: this._calculateTreeProgress(RED)}}></View>
+                    <View style={{...styles.skillProgress, ...styles.redSkillTree, height: this._calculateTreeBgProgress(RED)}}></View>
+                    <ImageBackground resizeMode='stretch' source={require("../assets/images/branch-progress.png")} 
+                      style={{...styles.skillProgress, ...styles.skillProgressImg, top: this._calculateTreeBgImageProgress(RED)}}></ImageBackground>
                     <Text style={styles.treeTitle}>
                       Doubled Agent
                     </Text>
@@ -307,7 +335,9 @@ class HomeScreen extends React.Component {
                   </View>
 
                   <View style={{...styles.blueSkillTree, ...styles.treeContainer}}>
-                    <View style={{...styles.skillProgress, ...styles.blueSkillTree, height: this._calculateTreeProgress(BLUE)}}></View>
+                    <View style={{...styles.skillProgress, ...styles.blueSkillTree, height: this._calculateTreeBgProgress(BLUE)}}></View>
+                    <ImageBackground resizeMode='stretch' source={require("../assets/images/branch-progress.png")} 
+                      style={{...styles.skillProgress, ...styles.skillProgressImg, top: this._calculateTreeBgImageProgress(BLUE)}}></ImageBackground>
                     <Text style={styles.treeTitle}>
                       Hitman
                     </Text>
@@ -327,7 +357,9 @@ class HomeScreen extends React.Component {
                   </View>
 
                   <View style={{...styles.greenSkillTree, ...styles.treeContainer}}>
-                    <View style={{...styles.skillProgress, ...styles.greenSkillTree, height: this._calculateTreeProgress(GREEN)}}></View>
+                    <View style={{...styles.skillProgress, ...styles.greenSkillTree, height: this._calculateTreeBgProgress(GREEN)}}></View>
+                    <ImageBackground resizeMode='stretch' source={require("../assets/images/branch-progress.png")} 
+                      style={{...styles.skillProgress, ...styles.skillProgressImg, top: this._calculateTreeBgImageProgress(GREEN)}}></ImageBackground>
                     <Text style={styles.treeTitle}>
                       Under Cover
                     </Text>
@@ -352,7 +384,9 @@ class HomeScreen extends React.Component {
                 this.props.selectedHero === AMARA &&
                 <View>
                   <View style={{...styles.blueSkillTree, ...styles.treeContainer}}>
-                    <View style={{...styles.skillProgress, ...styles.blueSkillTree, height: this._calculateTreeProgress(BLUE)}}></View>
+                    <View style={{...styles.skillProgress, ...styles.blueSkillTree, height: this._calculateTreeBgProgress(BLUE)}}></View>
+                    <ImageBackground resizeMode='stretch' source={require("../assets/images/branch-progress.png")} 
+                      style={{...styles.skillProgress, ...styles.skillProgressImg, top: this._calculateTreeBgImageProgress(BLUE)}}></ImageBackground>
                     <Text style={styles.treeTitle}>
                       Mystical Assault
                     </Text>
@@ -372,7 +406,9 @@ class HomeScreen extends React.Component {
                   </View>
 
                   <View style={{...styles.redSkillTree, ...styles.treeContainer}}>
-                    <View style={{...styles.skillProgress, ...styles.redSkillTree, height: this._calculateTreeProgress(RED)}}></View>
+                    <View style={{...styles.skillProgress, ...styles.redSkillTree, height: this._calculateTreeBgProgress(RED)}}></View>
+                    <ImageBackground resizeMode='stretch' source={require("../assets/images/branch-progress.png")} 
+                      style={{...styles.skillProgress, ...styles.skillProgressImg, top: this._calculateTreeBgImageProgress(RED)}}></ImageBackground>
                     <Text style={styles.treeTitle}>
                       Fist of the Elements
                     </Text>
@@ -392,7 +428,9 @@ class HomeScreen extends React.Component {
                   </View>
 
                   <View style={{...styles.greenSkillTree, ...styles.treeContainer}}>
-                    <View style={{...styles.skillProgress, ...styles.greenSkillTree, height: this._calculateTreeProgress(GREEN)}}></View>
+                    <View style={{...styles.skillProgress, ...styles.greenSkillTree, height: this._calculateTreeBgProgress(GREEN)}}></View>
+                    <ImageBackground resizeMode='stretch' source={require("../assets/images/branch-progress.png")} 
+                      style={{...styles.skillProgress, ...styles.skillProgressImg, top: this._calculateTreeBgImageProgress(GREEN)}}></ImageBackground>
                     <Text style={styles.treeTitle}>
                       Brawl
                     </Text>
@@ -773,6 +811,10 @@ const styles = StyleSheet.create({
     position: 'absolute', 
     top: '16%', 
     left: '20%'
+  },
+  skillProgressImg: {
+    width: '80%', 
+    height: 20
   },
   blueSkillTree: {
     backgroundColor: 'rgba(3, 59, 135, 0.75)',
