@@ -27,6 +27,7 @@ let zaneSkills = {
             },
             {
                 title: "Digi-Clone",
+                row: 0,
                 type: ACTION,
                 tree: RED,
                 image: require('../assets/images/skills/zane/DigiClone.png'),
@@ -48,6 +49,7 @@ let zaneSkills = {
             },
             {
                 title: "Synchronicity",
+                row: 1,
                 type: PASSIVE,
                 tree: RED,
                 maxRanks: 5,
@@ -59,6 +61,7 @@ let zaneSkills = {
             },
             {
                 title: "Praemunitus",
+                row: 1,
                 type: PASSIVE,
                 tree: RED,
                 maxRanks: 3,
@@ -70,6 +73,7 @@ let zaneSkills = {
             },
             {
                 title: "Borrowed Time",
+                row: 1,
                 type: PASSIVE,
                 tree: RED,
                 maxRanks: 5,
@@ -85,6 +89,7 @@ let zaneSkills = {
         ],
         [{
                 title: "Binary System",
+                row: 2,
                 type: AUGMENT,
                 tree: RED,
                 image: require('../assets/images/skills/zane/BinarySystem.png'),
@@ -95,6 +100,7 @@ let zaneSkills = {
             },
             {
                 title: "Donnybrook",
+                row: 2,
                 type: PASSIVE,
                 tree: RED,
                 maxRanks: 5,
@@ -108,6 +114,7 @@ let zaneSkills = {
             },
             {
                 title: "Fractal Frags",
+                row: 2,
                 type: PASSIVE,
                 tree: RED,
                 maxRanks: 3,
@@ -119,6 +126,7 @@ let zaneSkills = {
             },
             {
                 title: "Duct Tape Mod",
+                row: 2,
                 type: PASSIVE,
                 tree: RED,
                 maxRanks: 5,
@@ -135,6 +143,7 @@ let zaneSkills = {
         ],
         [{
                 title: "Schadenfreude",
+                row: 3,
                 type: AUGMENT,
                 tree: RED,
                 image: require('../assets/images/skills/zane/SchadenFreude.png'),
@@ -148,6 +157,7 @@ let zaneSkills = {
             },
             {
                 title: "Quick Breather",
+                row: 3,
                 type: PASSIVE,
                 tree: RED,
                 maxRanks: 1,
@@ -159,6 +169,7 @@ let zaneSkills = {
             },
             {
                 title: "Which One's Real?",
+                row: 3,
                 type: AUGMENT,
                 tree: RED,
                 image: require('../assets/images/skills/zane/WhichOnesReal.png'),
@@ -170,6 +181,7 @@ let zaneSkills = {
         ],
         [{
                 title: "Doppelbanger",
+                row: 4,
                 type: AUGMENT,
                 tree: RED,
                 image: require('../assets/images/skills/zane/DoppelBanger.png'),
@@ -180,6 +192,7 @@ let zaneSkills = {
             },
             {
                 title: "Pocket Full of Grenades",
+                row: 4,
                 type: PASSIVE,
                 tree: RED,
                 maxRanks: 3,
@@ -192,6 +205,7 @@ let zaneSkills = {
             },
             {
                 title: "Old-U",
+                row: 4,
                 type: PASSIVE,
                 tree: RED,
                 maxRanks: 1,
@@ -203,6 +217,7 @@ let zaneSkills = {
             },
             {
                 title: "Supersonic Man",
+                row: 4,
                 type: PASSIVE,
                 tree: RED,
                 maxRanks: 3,
@@ -214,6 +229,7 @@ let zaneSkills = {
             },
             {
                 title: "Digital Distribution",
+                row: 4,
                 type: AUGMENT,
                 tree: RED,
                 image: require('../assets/images/skills/zane/DigitalDistribution.png'),
@@ -228,6 +244,7 @@ let zaneSkills = {
             },
             {
                 title: "Like a Ghost",
+                row: 5,
                 type: PASSIVE,
                 tree: RED,
                 maxRanks: 3,
@@ -241,6 +258,7 @@ let zaneSkills = {
             },
             {
                 title: "Boom. Enhance.",
+                row: 5,
                 type: PASSIVE,
                 tree: RED,
                 maxRanks: 1,
@@ -256,6 +274,7 @@ let zaneSkills = {
             },
             {
                 title: "Trick of the Light",
+                row: 5,
                 type: PASSIVE,
                 tree: RED,
                 maxRanks: 5,
@@ -277,6 +296,7 @@ let zaneSkills = {
             },
             {
                 title: "Double Barrel",
+                row: 6,
                 type: PASSIVE,
                 tree: RED,
                 maxRanks: 1,
@@ -304,6 +324,7 @@ let zaneSkills = {
             },
             {
                 title: "SNTNL",
+                row: 0,
                 type: ACTION,
                 tree: BLUE,
                 image: require('../assets/images/skills/zane/SNTNL.png'),
@@ -326,6 +347,7 @@ let zaneSkills = {
             },
             {
                 title: "Violent Speed",
+                row: 1,
                 type: PASSIVE,
                 tree: BLUE,
                 maxRanks: 5,
@@ -338,6 +360,7 @@ let zaneSkills = {
             },
             {
                 title: "Cold Bore",
+                row: 1,
                 type: PASSIVE,
                 tree: BLUE,
                 maxRanks: 5,
@@ -350,6 +373,7 @@ let zaneSkills = {
             },
             {
                 title: "Violent Momentum",
+                row: 1,
                 type: PASSIVE,
                 tree: BLUE,
                 maxRanks: 5,
@@ -365,6 +389,7 @@ let zaneSkills = {
         ],
         [{
                 title: "Winter's Drone",
+                row: 2,
                 type: AUGMENT,
                 tree: BLUE,
                 image: require('../assets/images/skills/zane/WintersDrone.png'),
@@ -375,6 +400,7 @@ let zaneSkills = {
             },
             {
                 title: "Cool Hand",
+                row: 2,
                 type: PASSIVE,
                 tree: BLUE,
                 maxRanks: 5,
@@ -388,6 +414,7 @@ let zaneSkills = {
             },
             {
                 title: "Drone Delivery",
+                row: 2,
                 type: PASSIVE,
                 tree: BLUE,
                 maxRanks: 1,
@@ -399,6 +426,7 @@ let zaneSkills = {
             },
             {
                 title: "Salvation",
+                row: 2,
                 type: PASSIVE,
                 tree: BLUE,
                 maxRanks: 5,
@@ -415,6 +443,7 @@ let zaneSkills = {
         ],
         [{
                 title: "Bad Dose",
+                row: 3,
                 type: AUGMENT,
                 tree: BLUE,
                 image: require('../assets/images/skills/zane/BadDose.png'),
@@ -432,6 +461,7 @@ let zaneSkills = {
             },
             {
                 title: "Death Follows Close",
+                row: 3,
                 type: PASSIVE,
                 tree: BLUE,
                 maxRanks: 1,
@@ -447,6 +477,7 @@ let zaneSkills = {
             },
             {
                 title: "Static Field",
+                row: 3,
                 type: AUGMENT,
                 tree: BLUE,
                 image: require('../assets/images/skills/zane/StaticField.png'),
@@ -459,6 +490,7 @@ let zaneSkills = {
         ],
         [{
                 title: "Boomsday",
+                row: 4,
                 type: AUGMENT,
                 tree: BLUE,
                 image: require('../assets/images/skills/zane/BoomsDay.png'),
@@ -469,6 +501,7 @@ let zaneSkills = {
             },
             {
                 title: "Violent Violence",
+                row: 4,
                 type: PASSIVE,
                 tree: BLUE,
                 maxRanks: 5,
@@ -484,6 +517,7 @@ let zaneSkills = {
             },
             {
                 title: "Playing Dirty",
+                row: 4,
                 type: PASSIVE,
                 tree: BLUE,
                 maxRanks: 5,
@@ -495,6 +529,7 @@ let zaneSkills = {
             },
             {
                 title: "Almighty Ordnance",
+                row: 4,
                 type: AUGMENT,
                 tree: BLUE,
                 image: require('../assets/images/skills/zane/AlmightyOrdnance.png'),
@@ -513,6 +548,7 @@ let zaneSkills = {
             },
             {
                 title: "Good Misfortune",
+                row: 5,
                 type: PASSIVE,
                 tree: BLUE,
                 maxRanks: 3,
@@ -537,6 +573,7 @@ let zaneSkills = {
             },
             {
                 title: "Seein' Red",
+                row: 6,
                 type: PASSIVE,
                 tree: BLUE,
                 maxRanks: 1,
@@ -560,6 +597,7 @@ let zaneSkills = {
             },
             {
                 title: "Barrier",
+                row: 0,
                 type: ACTION,
                 tree: GREEN,
                 image: require('../assets/images/skills/zane/Barrier.png'),
@@ -582,6 +620,7 @@ let zaneSkills = {
             },
             {
                 title: "Adrenaline",
+                row: 1,
                 type: PASSIVE,
                 tree: GREEN,
                 maxRanks: 5,
@@ -593,6 +632,7 @@ let zaneSkills = {
             },
             {
                 title: "Hearty Stock",
+                row: 1,
                 type: PASSIVE,
                 tree: GREEN,
                 maxRanks: 3,
@@ -604,14 +644,15 @@ let zaneSkills = {
             },
             {
                 title: "Ready for Action",
+                row: 1,
                 type: PASSIVE,
                 tree: GREEN,
                 maxRanks: 5,
                 image: require('../assets/images/skills/zane/ReadyForAction.png'),
                 description: "Gain improved Shield Recharge Rate and Shield Recharge Delay.",
                 stats: [
-                    newStat("Sheild Recharge Rate:", [6, 12, 18, 24, 30], "+", "%"),
-                    newStat("Sheild Recharge Delay:", [7, 14, 19, 24, 29], "-", "%"),
+                    newStat("Shield Recharge Rate", [6, 12, 18, 24, 30], "+", "%"),
+                    newStat("Shield Recharge Delay", [7, 14, 19, 24, 29], "-", "%"),
                 ]
             },
             {
@@ -620,6 +661,7 @@ let zaneSkills = {
         ],
         [{
                 title: "Charged Relay",
+                row: 2,
                 type: AUGMENT,
                 tree: GREEN,
                 image: require('../assets/images/skills/zane/ChargedRelay.png'),
@@ -632,6 +674,7 @@ let zaneSkills = {
             },
             {
                 title: "Brain Freeze",
+                row: 2,
                 type: PASSIVE,
                 tree: GREEN,
                 maxRanks: 5,
@@ -643,6 +686,7 @@ let zaneSkills = {
             },
             {
                 title: "Stiff Upper Lip",
+                row: 2,
                 type: PASSIVE,
                 tree: GREEN,
                 maxRanks: 3,
@@ -654,6 +698,7 @@ let zaneSkills = {
             },
             {
                 title: "Rise to the Occasion",
+                row: 2,
                 type: PASSIVE,
                 tree: GREEN,
                 maxRanks: 5,
@@ -669,6 +714,7 @@ let zaneSkills = {
         ],
         [{
                 title: "Nanites or Some Shite",
+                row: 3,
                 type: AUGMENT,
                 tree: GREEN,
                 image: require('../assets/images/skills/zane/NanitesOrSomeShit.png'),
@@ -684,6 +730,7 @@ let zaneSkills = {
             },
             {
                 title: "Confident Competence",
+                row: 3,
                 type: PASSIVE,
                 tree: GREEN,
                 maxRanks: 1,
@@ -699,6 +746,7 @@ let zaneSkills = {
             },
             {
                 title: "All-rounder",
+                row: 3,
                 type: AUGMENT,
                 tree: GREEN,
                 image: require('../assets/images/skills/zane/AllRounder.png'),
@@ -710,6 +758,7 @@ let zaneSkills = {
         ],
         [{
                 title: "Retaliation",
+                row: 4,
                 type: AUGMENT,
                 tree: GREEN,
                 image: require('../assets/images/skills/zane/Retaliation.png'),
@@ -721,6 +770,7 @@ let zaneSkills = {
             },
             {
                 title: "Really Expensive Jacket",
+                row: 4,
                 type: PASSIVE,
                 tree: GREEN,
                 maxRanks: 1,
@@ -732,6 +782,7 @@ let zaneSkills = {
             },
             {
                 title: "Best Served Cold",
+                row: 4,
                 type: PASSIVE,
                 tree: GREEN,
                 maxRanks: 5,
@@ -744,6 +795,7 @@ let zaneSkills = {
             },
             {
                 title: "Futility Belt",
+                row: 4,
                 type: PASSIVE,
                 tree: GREEN,
                 maxRanks: 1,
@@ -756,6 +808,7 @@ let zaneSkills = {
             },
             {
                 title: "Deterrence Field",
+                row: 4,
                 type: AUGMENT,
                 tree: GREEN,
                 maxRanks: 5,
@@ -771,6 +824,7 @@ let zaneSkills = {
             },
             {
                 title: "Refreshment",
+                row: 5,
                 type: PASSIVE,
                 tree: GREEN,
                 maxRanks: 3,
@@ -782,6 +836,7 @@ let zaneSkills = {
             },
             {
                 title: "Calm, Cool, Collected",
+                row: 5,
                 type: PASSIVE,
                 tree: GREEN,
                 maxRanks: 1,
@@ -794,6 +849,7 @@ let zaneSkills = {
             },
             {
                 title: "Nerves of Steel",
+                row: 5,
                 type: PASSIVE,
                 tree: GREEN,
                 maxRanks: 3,
@@ -817,6 +873,7 @@ let zaneSkills = {
             },
             {
                 title: "Distributed Denial",
+                row: 6,
                 type: PASSIVE,
                 tree: GREEN,
                 maxRanks: 1,

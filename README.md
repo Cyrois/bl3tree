@@ -17,6 +17,7 @@ https://invertase.io/oss/react-native-firebase/v6/admob/quick-start
 https://dev-yakuza.github.io/en/react-native/react-native-admob/
 
 TODO:
+- Need a refresh builds button
 - Should overwrite existing build if loaded build
 - Certain stats do not sum up properly; i.e. cooldown
 - Optimize hero skills by only saving title

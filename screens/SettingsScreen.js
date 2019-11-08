@@ -128,6 +128,7 @@ class SettingsScreen extends React.Component {
   _handleForgotPassword = () => {
     firebase.auth().sendPasswordResetEmail(this.props.email)
       .then(function (user) {
+        this.setForgotPasswordModal(false)
         alert('Please check your email...')
       }).catch(function (e) {
         console.log(e)
@@ -343,6 +344,20 @@ class SettingsScreen extends React.Component {
                 )
               })
             }
+
+            {
+              this._isUserLoggedIn() && 
+              Array.isArray(this.props.builds) && this.props.builds.length === 0 &&
+              <View>
+                <View style={styles.divider}></View>
+                <TouchableOpacity
+                  style={styles.mainButton}
+                  onPress={this._loadBuilds}
+                >
+                  <Text style={styles.mainButtonText}>Reload builds</Text>
+                </TouchableOpacity>
+              </View>
+            }
         </ScrollView>
 
         <View>
@@ -544,8 +559,14 @@ class SettingsScreen extends React.Component {
                       !!this.props.saveBuildError &&
                       <Text>{this.props.saveBuildError}</Text>
                     }
+
+                    {
+                      !this._isUserLoggedIn() &&
+                      <Text style={{alignSelf: 'center'}}>Please sign in before saving your build.</Text>
+                    }
                       
                     <TouchableOpacity
+                      disabled={!this._isUserLoggedIn()}
                       style={styles.modalBtns}
                       onPress={() => {
                         this._saveBuild()
@@ -759,6 +780,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingTop: Platform.OS === 'ios' ? 30 : 0,
     marginTop: -2,
+    paddingBottom: 30,
   },
   contentContainer: {
     
@@ -816,6 +838,7 @@ const styles = StyleSheet.create({
   },
   modalBtns: {
     marginVertical: 10,
+    borderRadius: 4,
     alignItems: 'center',
     backgroundColor: RED_BG,
     padding: 10

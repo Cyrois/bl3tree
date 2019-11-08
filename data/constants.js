@@ -275,8 +275,8 @@ const getStatText = (statType) => {
    else if(statType === "damageamp+%") {return {type: "Damage Amp", preText: '+', postText: '%'}}
    else if(statType === "actionskillcooldownrateupto+%") {return {type: "Action Skill Cooldown Rate", preText: 'Up to +', postText: '%'}}
    else if(statType === "maxsheilds+%") {return {type: "Max Sheilds", preText: '+', postText: '%'}}
-   else if(statType === "sheildrechargerate:+%") {return {type: "Sheild Recharge Rate:", preText: '+', postText: '%'}}
-   else if(statType === "sheildrechargedelay:-%") {return {type: "Sheild Recharge Delay:", preText: '-', postText: '%'}}
+   else if(statType === "shieldrechargerate+%") {return {type: "Sheild Recharge Rate", preText: '+', postText: '%'}}
+   else if(statType === "shieldrechargedelay-%") {return {type: "Sheild Recharge Delay", preText: '-', postText: '%'}}
    else if(statType === "reloadspeed+%") {return {type: "Reload Speed", preText: '+', postText: '%'}}
    else if(statType === "movementspeed+%") {return {type: "Movement Speed", preText: '+', postText: '%'}}
    else if(statType === "durationsecondsaftermovingawayfrombarrier") {return {type: "Duration", preText: '', postText: ' seconds after moving away from Barrier'}}

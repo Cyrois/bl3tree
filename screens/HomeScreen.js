@@ -100,6 +100,7 @@ class HomeScreen extends React.Component {
       <View key={"row_" + rowIndex} style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
         {
           row.map((skill, colIndex) => {
+            // Leaving here in case I need to regenerate the if statements
             // if(skill.stats ) {
             //   skill.stats.forEach(element => {
             //     let ifStatement = this._normalize(element.type+element.preText+element.postText)
@@ -185,7 +186,7 @@ class HomeScreen extends React.Component {
                   </View>
 
                   <View style={{...styles.redSkillTree, ...styles.treeContainer}}>
-                    <View style={{...styles.skillProgress, ...styles.redSkillTree, height: this._calculateTreeBgProgress(RED)}}></View>
+                    {this.props.pointsSpent.red && <View style={{...styles.skillProgress, ...styles.redSkillTree, height: this._calculateTreeBgProgress(RED)}}></View>}
                     <ImageBackground resizeMode='stretch' source={require("../assets/images/branch-progress.png")} 
                       style={{...styles.skillProgress, ...styles.skillProgressImg, top: this._calculateTreeBgImageProgress(RED)}}></ImageBackground>
                     <Text style={styles.treeTitle}>
