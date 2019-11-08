@@ -186,7 +186,7 @@ class HomeScreen extends React.Component {
                   </View>
 
                   <View style={{...styles.redSkillTree, ...styles.treeContainer}}>
-                    {this.props.pointsSpent.red && <View style={{...styles.skillProgress, ...styles.redSkillTree, height: this._calculateTreeBgProgress(RED)}}></View>}
+                    <View style={{...styles.skillProgress, ...styles.redSkillTree, height: this._calculateTreeBgProgress(RED)}}></View>
                     <ImageBackground resizeMode='stretch' source={require("../assets/images/branch-progress.png")} 
                       style={{...styles.skillProgress, ...styles.skillProgressImg, top: this._calculateTreeBgImageProgress(RED)}}></ImageBackground>
                     <Text style={styles.treeTitle}>
@@ -805,6 +805,9 @@ const styles = StyleSheet.create({
   redSkillTree: {
     backgroundColor: 'rgba(99, 33, 6, 0.75)',
   },
+  blueSkillTree: {
+    backgroundColor: 'rgba(3, 59, 135, 0.75)',
+  },
   skillProgress: {
     minHeight: '20%',
     maxHeight: '90%', 
@@ -817,9 +820,7 @@ const styles = StyleSheet.create({
     width: '80%', 
     height: 20
   },
-  blueSkillTree: {
-    backgroundColor: 'rgba(3, 59, 135, 0.75)',
-  },
+  
   treeTitle: {
     fontSize: 30, 
     textAlign: 'center',

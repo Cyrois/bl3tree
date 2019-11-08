@@ -66,11 +66,11 @@ class StatsScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.contentContainer}>
+          <Text style={styles.sectionHeader}>{
+            this.props.selectedHero === FLAK ? "FL4K" : this.props.selectedHero.toUpperCase()
+            }
+          </Text>
           <View style={styles.selectedSkillsContainer}>
-            <Text style={styles.sectionHeader}>{
-              this.props.selectedHero === FLAK ? "FL4K" : this.props.selectedHero.toUpperCase()
-              }
-            </Text>
             {
               this.props.selectedHero === FLAK &&
               <View style={{height: '10%'}}>
@@ -491,6 +491,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingTop: Platform.OS === 'ios' ? 30 : 0,
     marginTop: -2,
+    height: 1300
   },
   contentContainer: {
   },
@@ -508,12 +509,6 @@ const styles = StyleSheet.create({
   },
   yellowFont: {
     color:'yellow', 
-  },
-  skillContainer: {
-    width: '12%',
-    height: 86,
-    padding: 2,
-    marginHorizontal: Platform.OS === 'ios' ? -12 : -18,
   },
   skillContainerAugment: {
     width: '20%',
@@ -536,15 +531,18 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   selectedSkillsContainer: {
-    backgroundColor: RED_BG,
+    // backgroundColor: RED_BG,
+    backgroundColor: 'rgba(99, 33, 6, 0.85)',
+    paddingVertical: 10,
   },
   statsSummaryContainer: {
-    backgroundColor: 'rgb(3, 59, 135)',
+    backgroundColor: 'rgba(3, 59, 135, 0.85)',
+    // backgroundColor: 'rgb(3, 59, 135)',
     paddingHorizontal: 20,
     paddingTop: 10,
     paddingBottom: 40,
     color: '#fff',
-    minHeight: 800
+    height: 1200
   },
   statsSummaryHeader: {
     paddingVertical: 10,

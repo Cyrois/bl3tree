@@ -415,14 +415,17 @@ const loadBuild = (state, buildToLoad) => {
 
   heroSkills.forEach((skill) => {
     if (rankedSkills[skill.title] > 0) {
+      console.log(skill.title)
       console.log(skill.stats)
       //recalculate the stats
-      skill.stats.forEach((stat) => {
-        let statKey = normalizeStat(stat)
-        let statSum = newState.stats[statKey] ? newState.stats[statKey] : 0
-        statSum += stat.values[rankedSkills[skill.title] - 1]
-        newState.stats[statKey] = statSum
-      })
+      if(Array.isArray(skill.stats) && skill.stats.length > 0) {
+        skill.stats.forEach((stat) => {
+          let statKey = normalizeStat(stat)
+          let statSum = newState.stats[statKey] ? newState.stats[statKey] : 0
+          statSum += stat.values[rankedSkills[skill.title] - 1]
+          newState.stats[statKey] = statSum
+        })
+      }
 
       //recalculate the pointsSpent
       let newPointsSpent = newState.pointsSpent[skill.tree][`row${skill.row}`] ? newState.pointsSpent[skill.tree][`row${skill.row}`] : 0
@@ -438,7 +441,6 @@ const loadBuild = (state, buildToLoad) => {
     pointsLeft -= value
   })
   newState.pointsLeft = pointsLeft
-  console.log(newState.pointsSpent)
   return newState
 }
 

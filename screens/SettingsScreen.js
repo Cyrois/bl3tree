@@ -48,8 +48,9 @@ class SettingsScreen extends React.Component {
   _loadBuilds() {
     let builds = []
     if(!this.buildsStore) {
-      this.buildsStore = firebase.firestore().collection('builds');
+      this.buildsStore = firebase.firestore().collection('builds')
     }
+    console.log(`Using userId: ${this.props.userId}`)
     this.buildsStore.where("user", "==", this.props.userId).get()
       .then(querySnapshot => {
           querySnapshot.forEach(doc => {
@@ -59,6 +60,7 @@ class SettingsScreen extends React.Component {
               }
               builds.push(build)
           });
+          console.log("builds...")
           console.log(builds)
           this.props.loadBuilds(builds)
       });
