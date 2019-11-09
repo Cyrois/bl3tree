@@ -21,9 +21,7 @@ TODO:
 - Should overwrite existing build if loaded build
 - Certain stats do not sum up properly; i.e. cooldown
 - Optimize hero skills by only saving title
-- The modal is not big enough for some skills (made the modal a little more compact)
-- Integrate Admobs
-- Figure out how to make a paid version - no ads on paid version
+- Integrate Admobs - in app purchases
 - Deploy to Google Play Store
 - Deploy to Apple Store
 
