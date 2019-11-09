@@ -41,7 +41,7 @@ const normalizeStat = stat => normalizeString(stat.type + stat.preText + stat.po
 const normalizeString = string => string.replace(/\s/g, "").toLowerCase()
 
 const getStatText = (statType) => {
-    if(statType === "maxhealth+%") {return {type: 'Max Health', preText: '+', postText: '%'}}
+   if(statType === "maxhealth+%") {return {type: 'Max Health', preText: '+', postText: '%'}}
    else if(statType === "healthregeneration+%ofmaxhealth/sec") {return {type: 'Health Regeneration', preText: '+', postText: '% of Max Health/sec'}}
    else if(statType === "attackcommanddamage+%") {return {type: 'Attack Command Damage', preText: '+', postText: '%'}}
    else if(statType === "attackcommandcooldown-%") {return {type: 'Attack Command Cooldown', preText: '-', postText: '%'}}
@@ -124,7 +124,6 @@ const getStatText = (statType) => {
 
    else if(statType === "currenthealthremoved%") {return {type: "Current Health Removed", preText: '', postText: '%'}}
    else if(statType === "bonusincendiarydamage+%") {return {type: "Bonus Incendiary Damage", preText: '+', postText: '%'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "20%ofironbearmaxhealthaddedasshieldsbubblerechargedelayseconds") {return {type: "20% of Iron Bear Max Health added as Shields Bubble Recharge Delay", preText: '', postText: ' seconds'}}
    else if(statType === "damagereduction+%") {return {type: "Damage Reduction", preText: '+', postText: '%'}}
    else if(statType === "gundamage+%") {return {type: "Gun Damage", preText: '+', postText: '%'}}
@@ -209,29 +208,22 @@ const getStatText = (statType) => {
    else if(statType === "secondaryexplosionchance%") {return {type: "Secondary Explosion Chance", preText: '', postText: '%'}}
    else if(statType === "secondaryexplosiondamage%ofgundamage") {return {type: "Secondary Explosion Damage", preText: '', postText: '% of Gun Damage'}}
 
- else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "gundamage+%peractiveactionskill") {return {type: "Gun Damage", preText: '+', postText: '% per active action skill'}}
    else if(statType === "magazinesize+%") {return {type: "Magazine Size", preText: '+', postText: '%'}}
    else if(statType === "actionskillduration+%peractiveactionskill.") {return {type: "Action Skill Duration", preText: '+', postText: '% per active action skill.'}}
    else if(statType === "novadamage") {return {type: "Nova Damage", preText: '', postText: ''}}
    else if(statType === "healthregeneration+%ofmissinghealthpersec") {return {type: "Health Regeneration", preText: '+', postText: '% of missing health per sec'}}
    else if(statType === "gundamage+%") {return {type: "Gun Damage", preText: '+', postText: '%'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "grenadechance%") {return {type: "Grenade Chance", preText: '', postText: '%'}}
    else if(statType === "grenadechanceupto%") {return {type: "Grenade Chance", preText: 'up to ', postText: '%'}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "shieldsrestored+%ofdigi-clonedamage") {return {type: "Shields Restored", preText: '+', postText: '% of Digi-Clone damage'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "damageupto") {return {type: "Damage", preText: 'Up to', postText: ''}}
    else if(statType === "grenaderegeneration%persec") {return {type: "Grenade Regeneration", preText: '', postText: '% per sec'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "maxhealthrestored%ofmaxhealth") {return {type: "Max Health Restored", preText: '', postText: '% of Max Health'}}
    else if(statType === "movementspeed+%peractiveactionskill") {return {type: "Movement Speed", preText: '+', postText: '% per active action skill'}}
    else if(statType === "sharedhealthdamage+%") {return {type: "Shared Health Damage", preText: '+', postText: '%'}}
    else if(statType === "ignorebulletchance%") {return {type: "Ignore Bullet Chance", preText: '', postText: '%'}}
    else if(statType === "additionalignorebulletchance%") {return {type: "Additional Ignore Bullet Chance", preText: '', postText: '%'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "clonegundamage+%pergrenade") {return {type: "Clone Gun Damage", preText: '+', postText: '% per grenade'}}
    else if(statType === "clonemaxhealth+%pergrenade") {return {type: "Clone Max Health", preText: '+', postText: '% per grenade'}}
    else if(statType === "clonefirerate+%pergrenade") {return {type: "Clone Fire Rate", preText: '+', postText: '% per grenade'}}
@@ -240,38 +232,27 @@ const getStatText = (statType) => {
    else if(statType === "bonusdamage+%ofdamagedealt") {return {type: "Bonus Damage", preText: '+', postText: '% of damage dealt'}}
    else if(statType === "gundamage+%") {return {type: "Gun Damage", preText: '+', postText: '%'}}
    else if(statType === "itemduping+%") {return {type: "Item Duping", preText: '+', postText: '%'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "machinegundamage") {return {type: "Machine Gun Damage", preText: '', postText: ''}}
    else if(statType === "movementspeed+%") {return {type: "Movement Speed", preText: '+', postText: '%'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "weaponswapspeed+%") {return {type: "Weapon Swap Speed", preText: '+', postText: '%'}}
    else if(statType === "bonuscryodamage+%") {return {type: "Bonus Cryo Damage", preText: '+', postText: '%'}}
    else if(statType === "gundamage+%atdefaultwalkspeed") {return {type: "Gun Damage", preText: '+', postText: '% at default walk speed'}}
    else if(statType === "dronedamage-%") {return {type: "Drone Damage", preText: '-', postText: '%'}}
    else if(statType === "reloadspeed+%") {return {type: "Reload Speed", preText: '+', postText: '%'}}
    else if(statType === "reloadspeed+%afterkill") {return {type: "Reload Speed", preText: '+', postText: '% after kill'}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "lifesteal+%ofdamagedealt") {return {type: "Life Steal", preText: '+', postText: '% of damage dealt'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "firerate+%perenemy") {return {type: "Fire Rate", preText: '+', postText: '% per enemy'}}
    else if(statType === "movementspeed+%perenemy") {return {type: "Movement Speed", preText: '+', postText: '% per enemy'}}
    else if(statType === "damagepersecond") {return {type: "Damage", preText: '', postText: 'per second'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "killskillduration+seconds") {return {type: "Kill Skill Duration", preText: '+', postText: ' seconds'}}
    else if(statType === "killskillbonus+%") {return {type: "Kill Skill Bonus", preText: '+', postText: '%'}}
    else if(statType === "shielddamagepersecond") {return {type: "Shield Damage", preText: '', postText: 'per second'}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "rocketdamage") {return {type: "Rocket Damage", preText: '', postText: ''}}
    else if(statType === "firerate+%") {return {type: "Fire Rate", preText: '+', postText: '%'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "extrashotchance%") {return {type: "Extra Shot Chance", preText: '', postText: '%'}}
    else if(statType === "missiledamage") {return {type: "Missile Damage", preText: '', postText: ''}}
    else if(statType === "missilesperbarrage") {return {type: "Missiles per Barrage", preText: '', postText: ''}}
    else if(statType === "durationreturnupto%maxduration") {return {type: "Duration Return", preText: 'up to', postText: '% max duration'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "damageamp+%") {return {type: "Damage Amp", preText: '+', postText: '%'}}
    else if(statType === "actionskillcooldownrateupto+%") {return {type: "Action Skill Cooldown Rate", preText: 'Up to +', postText: '%'}}
    else if(statType === "maxsheilds+%") {return {type: "Max Sheilds", preText: '+', postText: '%'}}
@@ -290,12 +271,9 @@ const getStatText = (statType) => {
    else if(statType === "accuracyupto+%") {return {type: "Accuracy", preText: 'up to +', postText: '%'}}
    else if(statType === "cooldown+%") {return {type: "Cooldown", preText: '+', postText: '%'}}
    else if(statType === "gundamage+%") {return {type: "Gun Damage", preText: '+', postText: '%'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "statuseffectduration-%") {return {type: "Status Effect Duration", preText: '-', postText: '%'}}
    else if(statType === "damage") {return {type: "Damage", preText: '', postText: ''}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "damagereduction+%") {return {type: "Damage Reduction", preText: '+', postText: '%'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "shockdamage") {return {type: "Shock Damage", preText: '', postText: ''}}
    else if(statType === "lifesteal%ofdamagedealt") {return {type: "Life Steal", preText: '', postText: '% of damage dealt'}}
    else if(statType === "healthregenerationupto%ofmaxhealth/sec") {return {type: "Health Regeneration", preText: 'up to ', postText: '% of max health/sec'}}
@@ -304,28 +282,22 @@ const getStatText = (statType) => {
    else if(statType === "handling+%persecond") {return {type: "Handling", preText: '+', postText: '% per second'}}
    else if(statType === "maxstacks") {return {type: "Max Stacks", preText: '', postText: ''}}
 
- else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "damage") {return {type: "Damage", preText: '', postText: ''}}
    else if(statType === "actionskilldamage+%perstackconsumed") {return {type: "Action Skill Damage", preText: '+', postText: '% per stack consumed'}}
    else if(statType === "maxrushstacksstacks") {return {type: "Max Rush Stacks", preText: '', postText: 'stacks'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "reloadspeed+%") {return {type: "Reload Speed", preText: '+', postText: '%'}}
    else if(statType === "weaponswapspeed+%") {return {type: "Weapon Swap Speed", preText: '+', postText: '%'}}
    else if(statType === "modeswitchspeed+%") {return {type: "Mode Switch Speed", preText: '+', postText: '%'}}
    else if(statType === "effectchance+%perstackconsumed") {return {type: "Effect Chance", preText: '+', postText: '% per stack consumed'}}
    else if(statType === "maxstacksstacks") {return {type: "Max stacks", preText: '', postText: 'stacks'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "reloadspeed+%perstack") {return {type: "Reload Speed", preText: '+', postText: '% per stack'}}
    else if(statType === "reloadspeedafteractionskilluse+%perstack") {return {type: "Reload Speed after action skill use", preText: '+', postText: '% per stack'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "accuracy+%") {return {type: "Accuracy", preText: '+', postText: '%'}}
    else if(statType === "criticalhitdamage+%") {return {type: "Critical Hit Damage", preText: '+', postText: '%'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "cooldownrate+%") {return {type: "Cooldown Rate", preText: '+', postText: '%'}}
    else if(statType === "lifesteal%ofallskilldamagedealt") {return {type: "Life Steal", preText: '', postText: '% of all skill damage dealt'}}
    else if(statType === "elementalprojectilesperenemyhit") {return {type: "Elemental Projectiles", preText: '', postText: 'per enemy hit'}}
    else if(statType === "damage") {return {type: "Damage", preText: '', postText: ''}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "soulsaplifesteal+%") {return {type: "Soul Sap Lifesteal", preText: '+', postText: '%'}}
    else if(statType === "allureradius+%") {return {type: "Allure Radius", preText: '+', postText: '%'}}
    else if(statType === "glamourduration+%") {return {type: "Glamour Duration", preText: '+', postText: '%'}}
@@ -336,22 +308,17 @@ const getStatText = (statType) => {
    else if(statType === "maxdurationseconds") {return {type: "Max Duration", preText: '', postText: ' seconds'}}
    else if(statType === "damagebonus+%perenemyhit") {return {type: "Damage Bonus", preText: '+', postText: '% per enemy hit'}}
    else if(statType === "damage") {return {type: "Damage", preText: '', postText: ''}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "firerate+%") {return {type: "Fire Rate", preText: '+', postText: '%'}}
    else if(statType === "chargetime+%") {return {type: "Charge Time", preText: '+', postText: '%'}}
    else if(statType === "damageincrease+%") {return {type: "Damage Increase", preText: '+', postText: '%'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "gundamage+%") {return {type: "Gun Damage", preText: '+', postText: '%'}}
    else if(statType === "gundamageafteractionskilluse+%") {return {type: "Gun Damage after action skill use", preText: '+', postText: '%'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "remnantdamage") {return {type: "Remnant Damage", preText: '', postText: ''}}
    else if(statType === "rushstackeffectiveness+%") {return {type: "Rush Stack Effectiveness", preText: '+', postText: '%'}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "damage") {return {type: "Damage", preText: '', postText: ''}}
    else if(statType === "bonusrushstacks+") {return {type: "Bonus Rush Stacks", preText: '+', postText: ''}}
    else if(statType === "skilldurationseconds") {return {type: "Skill Duration", preText: '', postText: ' seconds'}}
    else if(statType === "graspimmunedamage") {return {type: "Grasp Immune Damage", preText: '', postText: ''}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "actionskillstatuseffectdamage+%") {return {type: "Action Skill Status Effect Damage", preText: '+', postText: '%'}}
    else if(statType === "statuseffectdamage+%") {return {type: "Status Effect Damage", preText: '+', postText: '%'}}
    else if(statType === "statuseffectduration+%") {return {type: "Status Effect Duration", preText: '+', postText: '%'}}
@@ -364,68 +331,49 @@ const getStatText = (statType) => {
    else if(statType === "spreadchance+%") {return {type: "Spread Chance", preText: '+', postText: '%'}}
    else if(statType === "bonustargetsupto+") {return {type: "Bonus Targets", preText: 'Up to +', postText: ''}}
    else if(statType === "graspimmunedamage") {return {type: "Grasp Immune Damage", preText: '', postText: ''}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "gundamage+%") {return {type: "Gun Damage", preText: '+', postText: '%'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "actionskilldamage-%") {return {type: "Action Skill Damage", preText: '-', postText: '%'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "teammovementspeed+%") {return {type: "Team Movement Speed", preText: '+', postText: '%'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "magazinesize+%") {return {type: "Magazine Size", preText: '+', postText: '%'}}
    else if(statType === "damage") {return {type: "Damage", preText: '', postText: ''}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "linkdamage%ofdamagedealt") {return {type: "Link Damage", preText: '', postText: '% of damage dealt'}}
    else if(statType === "graspimmunedamage") {return {type: "Grasp Immune Damage", preText: '', postText: ''}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "damage") {return {type: "Damage", preText: '', postText: ''}}
    else if(statType === "graspimmunedamage") {return {type: "Grasp Immune Damage", preText: '', postText: ''}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "lifesteal%ofdamagedealt") {return {type: "Life Steal", preText: '', postText: '% of damage dealt'}}
    else if(statType === "extraeffectchance%") {return {type: "Extra Effect Chance", preText: '', postText: '%'}}
    else if(statType === "bonuselementaldamage%ofdamagedealt") {return {type: "Bonus Elemental Damage", preText: '', postText: '% of Damage Dealt'}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "damage") {return {type: "Damage", preText: '', postText: ''}}
    else if(statType === "maxhealth+%") {return {type: "Max Health", preText: '+', postText: '%'}}
    else if(statType === "bonusdamageupto%ofdamagedealt") {return {type: "Bonus Damage", preText: 'up to', postText: '% of damage dealt'}}
    else if(statType === "healthregenerationupto%ofmissinghealthpersecond") {return {type: "Health Regeneration", preText: 'Up to', postText: '% of missing health per second'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "splashdamage+%") {return {type: "Splash Damage", preText: '+', postText: '%'}}
    else if(statType === "splashdamagereduction+%") {return {type: "Splash Damage Reduction", preText: '+', postText: '%'}}
    else if(statType === "gundamage+%perenemydamaged") {return {type: "Gun Damage", preText: '+', postText: '% per enemy damaged'}}
    else if(statType === "healthregeneration+%ofmaxhealthpersecond;perenemydamaged") {return {type: "Health Regeneration", preText: '+', postText: '% of Max Health per second; per enemy damaged'}}
    else if(statType === "maxstacksstacks") {return {type: "Max Stacks", preText: '', postText: 'stacks'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "damagereduction+%") {return {type: "Damage Reduction", preText: '+', postText: '%'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "damage") {return {type: "Damage", preText: '', postText: ''}}
    else if(statType === "shieldregenerationdelay-%") {return {type: "Shield Regeneration Delay", preText: '-', postText: '%'}}
    else if(statType === "movementspeed+%") {return {type: "Movement Speed", preText: '+', postText: '%'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "maxstacksstacks") {return {type: "Max Stacks", preText: '', postText: 'stacks'}}
    else if(statType === "meleedamage+%") {return {type: "Melee Damage", preText: '+', postText: '%'}}
    else if(statType === "meleerange+%") {return {type: "Melee Range", preText: '+', postText: '%'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "teammovementspeed+%") {return {type: "Team Movement Speed", preText: '+', postText: '%'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "actionskillduration-%") {return {type: "Action Skill Duration", preText: '-', postText: '%'}}
    else if(statType === "novadamage") {return {type: "Nova Damage", preText: '', postText: ''}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "damage") {return {type: "Damage", preText: '', postText: ''}}
    else if(statType === "beamdamagepersecond") {return {type: "Beam Damage", preText: '', postText: 'per second'}}
    else if(statType === "maxhealth+%") {return {type: "Max Health", preText: '+', postText: '%'}}
    else if(statType === "elementaldamageresistance+%") {return {type: "Elemental Damage Resistance", preText: '+', postText: '%'}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "gundamage+%") {return {type: "Gun Damage", preText: '+', postText: '%'}}
    else if(statType === "actionskilldamage+%") {return {type: "Action Skill Damage", preText: '+', postText: '%'}}
-   else if(statType === "durationseconds") {return {type: "Duration", preText: '', postText: ' seconds'}}
    else if(statType === "revivedhealth%") {return {type: "Revived Health", preText: '', postText: '%'}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "confusedurationseconds") {return {type: "Confuse Duration", preText: '', postText: ' seconds'}}
    else if(statType === "cooldown+%") {return {type: "Cooldown", preText: '+', postText: '%'}}
    else if(statType === "damage-%") {return {type: "Damage", preText: '-', postText: '%'}}
-   else if(statType === "cooldownseconds") {return {type: "Cooldown", preText: '', postText: ' seconds'}}
    else if(statType === "meleedamage+%") {return {type: "Melee Damage", preText: '+', postText: '%'}}
+   else { return null }
 }
 
 export {

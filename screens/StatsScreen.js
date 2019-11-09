@@ -401,12 +401,14 @@ class StatsScreen extends React.Component {
             {
               this.props.stats && Object.keys(this.props.stats).sort().map(stat => {
                 let text = getStatText(stat)
-                return (
-                  <View key={stat} style={{marginBottom: 8, flexDirection:'row', flexWrap:'wrap'}}>
-                    <Text style={{...styles.defaultFont, ...styles.yellowFont, fontWeight: 'bold'}}>{text.type}:</Text>
-                    <Text style={{...styles.defaultFont, marginTop: 2}}> {text.preText}{this.props.stats[stat]}{text.postText}</Text>
-                  </View>
-                )
+                if(text) {
+                  return (
+                    <View key={stat} style={{marginBottom: 8, flexDirection:'row', flexWrap:'wrap'}}>
+                      <Text style={{...styles.defaultFont, ...styles.yellowFont, fontWeight: 'bold'}}>{text.type}:</Text>
+                      <Text style={{...styles.defaultFont, marginTop: 2}}> {text.preText}{this.props.stats[stat]}{text.postText}</Text>
+                    </View>
+                  )
+                }
               })
             }
           </View>
