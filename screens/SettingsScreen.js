@@ -782,7 +782,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingTop: Platform.OS === 'ios' ? 30 : 0,
     marginTop: -2,
-    paddingBottom: 30,
   },
   contentContainer: {
     
