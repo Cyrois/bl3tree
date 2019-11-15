@@ -29,7 +29,8 @@ import {
     SET_CREATE_ERROR,
     SET_ACCOUNT_ID,
     SET_SAVE_BUILD_ERROR,
-    SET_CONFIRM_PASSWORD
+    SET_CONFIRM_PASSWORD,
+    SHOW_RELOAD_BUILDS
 } from './types.js';
 
 const setCharacter = () => {
@@ -192,6 +193,13 @@ const loadBuildCodeModal = visible => {
     }
 }
 
+const showReloadBuilds = visible => {
+    return {
+        type: SHOW_RELOAD_BUILDS,
+        data: visible
+    }
+}
+
 const deleteBuildModal = visible => {
     return {
         type: SET_CONFIRM_DELETE,
@@ -272,6 +280,7 @@ const actionCreators = {
     loadBuild,
     loadSavedBuild,
     loadBuildCodeModal,
+    showReloadBuilds,
     deleteBuildModal,
     setBuildCode,
     confirmLoadBuild,

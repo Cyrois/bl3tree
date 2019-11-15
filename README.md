@@ -17,6 +17,9 @@ https://invertase.io/oss/react-native-firebase/v6/admob/quick-start
 https://dev-yakuza.github.io/en/react-native/react-native-admob/
 
 TODO:
+http://romannurik.github.io/AndroidAssetStudio/icons-launcher.html#foreground.type=image&foreground.space.trim=1&foreground.space.pad=0.05&foreColor=rgba(96%2C%20125%2C%20139%2C%200)&backColor=rgb(255%2C%20255%2C%20255)&crop=0&backgroundShape=square&effects=none&name=ic_launcher
+https://medium.com/better-programming/react-native-add-app-icons-and-launch-screens-onto-ios-and-android-apps-3bfbc20b7d4c
+https://stackoverflow.com/questions/26615889/how-to-change-the-launcher-logo-of-an-app-in-android-studio
 - Need a refresh builds button
 - Should overwrite existing build if loaded build
 - Certain stats do not sum up properly; i.e. cooldown

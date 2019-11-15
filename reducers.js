@@ -31,7 +31,8 @@ import {
   SET_ACCOUNT_ID,
   SET_SAVE_BUILD_ERROR,
   SET_CONFIRM_PASSWORD,
-  SET_FORGOT_PASSWORD_MODAL
+  SET_FORGOT_PASSWORD_MODAL,
+  SHOW_RELOAD_BUILDS
 } from './types.js';
 
 import {
@@ -102,6 +103,7 @@ const intialState = {
   buildName: '',
   buildCode: '',
   builds: [],
+  showReloadBuild: true,
   saveBuildModalVisible: false,
   saveBuildError: '',
   heroSelectModalVisible: false,
@@ -415,8 +417,6 @@ const loadBuild = (state, buildToLoad) => {
 
   heroSkills.forEach((skill) => {
     if (rankedSkills[skill.title] > 0) {
-      console.log(skill.title)
-      console.log(skill.stats)
       //recalculate the stats
       if(Array.isArray(skill.stats) && skill.stats.length > 0) {
         skill.stats.forEach((stat) => {
@@ -448,6 +448,13 @@ const loadBuildCodeModal = (state, modalVisible) => {
   return {
     ...state,
     loadBuildCodeModalVisible: modalVisible
+  }
+}
+
+const showReloadBuild = (state, visible) => {
+  return {
+    ...state,
+    showReloadBuild: visible
   }
 }
 
@@ -565,6 +572,8 @@ const reducer = (state = intialState, action) => {
       return loadSavedBuild(state, action.data)
     case LOAD_BUILD_CODE:
       return loadBuildCodeModal(state, action.data)
+    case SHOW_RELOAD_BUILDS:
+      return showReloadBuild(state, action.data)
     case SET_BUILD_CODE:
       return setBuildCode(state, action.data)
     case SET_CONFIRM_LOAD:

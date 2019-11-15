@@ -74,7 +74,7 @@ class SettingsScreen extends React.Component {
     this.props.toggleBuilds(toggle)
   }
 
-  _handleSignUp = () => {
+  _handleSignUpEmail = () => {
     this.props.setCreateError("")
     if(!this.props.email) {
       this.props.setCreateError('Please enter your email')
@@ -98,6 +98,21 @@ class SettingsScreen extends React.Component {
         this.props.setCreateError(error.message)
       })
     }
+  }
+
+  _handleSignUpAnon = () => {
+    this.props.setCreateError("")
+    firebase
+      .auth()
+      .signInAnonymously()
+      .then(() => {
+        this.props.setCreateAccountModal(false)
+        this.props.setCreateError('') 
+      })
+      .catch(error => {
+        console.log(error)
+        this.props.setCreateError(error.message)
+      })
   }
 
   _handleSignIn = () => {
@@ -350,11 +365,14 @@ class SettingsScreen extends React.Component {
             {
               this._isUserLoggedIn() && 
               Array.isArray(this.props.builds) && this.props.builds.length === 0 &&
+              this.props.showReloadBuild &&
               <View>
-                <View style={styles.divider}></View>
                 <TouchableOpacity
                   style={styles.mainButton}
-                  onPress={this._loadBuilds}
+                  onPress={() => {
+                    this.props.showReloadBuilds(false)
+                    this._loadBuilds
+                  }}
                 >
                   <Text style={styles.mainButtonText}>Reload builds</Text>
                 </TouchableOpacity>
@@ -404,9 +422,16 @@ class SettingsScreen extends React.Component {
                 }
                 <TouchableOpacity
                   style={styles.modalBtns}
-                  onPress={this._handleSignUp}
+                  onPress={this._handleSignUpEmail}
                 >
                   <Text style={styles.modalBtnText}> Create New Account </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={styles.modalBtns}
+                  onPress={this._handleSignUpAnon}
+                >
+                  <Text style={styles.modalBtnText}> Continue as Guest </Text>
                 </TouchableOpacity>
                 
                 <View style={{marginTop: 20}}>
@@ -894,6 +919,7 @@ mapDispatchToProps = dispatch => {
     loadBuild: bindActionCreators(actions.loadBuild, dispatch),
     loadSavedBuild: bindActionCreators(actions.loadSavedBuild, dispatch),
     loadBuildCodeModal: bindActionCreators(actions.loadBuildCodeModal, dispatch),
+    showReloadBuilds: bindActionCreators(actions.showReloadBuilds, dispatch),
     deleteBuildModal: bindActionCreators(actions.deleteBuildModal, dispatch),
     setBuildCode: bindActionCreators(actions.setBuildCode, dispatch),
     confirmLoadBuild: bindActionCreators(actions.confirmLoadBuild, dispatch),
