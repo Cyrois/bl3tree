@@ -229,6 +229,7 @@ class SettingsScreen extends React.Component {
         <ScrollView contentContainerStyle={styles.contentContainer}>
             <View style={styles.bl3LogoContainer}>
               <Image
+                resizeMode='contain'
                 source={require('../assets/images/bl3Logo.jpeg')}
                 style={styles.bl3Logo} /> 
             </View>
@@ -245,7 +246,7 @@ class SettingsScreen extends React.Component {
             
             {
               this._isUserLoggedIn() && 
-              this.props.email &&
+              !!this.props.email &&
                 <View>
                   <Text style={{...styles.sectionHeader, fontSize: 14, fontFamily: TEXT_FONT}}>
                     Logged In As: {this.props.email}
@@ -377,6 +378,13 @@ class SettingsScreen extends React.Component {
                 >
                   <Text style={styles.mainButtonText}>Reload builds</Text>
                 </TouchableOpacity>
+              </View>
+            }
+
+            {
+              !this._isUserLoggedIn() && 
+              <View style={styles.mainButton}>
+                <Text style={styles.mainButtonText}>Log in to see your builds!</Text>
               </View>
             }
         </ScrollView>
@@ -813,8 +821,11 @@ const styles = StyleSheet.create({
     
   },
   bl3LogoContainer: {
-    marginVertical: 40,
+    marginVertical: -70,
     alignItems: 'center',
+  },
+  bl3Logo: {
+    width: '70%'
   },
 
   //Logout
