@@ -70,10 +70,11 @@ class StatsScreen extends React.Component {
             this.props.selectedHero === FLAK ? "FL4K" : this.props.selectedHero.toUpperCase()
             }
           </Text>
+          
           <View style={styles.selectedSkillsContainer}>
             {
               this.props.selectedHero === FLAK &&
-              <View style={{height: '10%'}}>
+              <View style={{height: 80}}>
                 <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
                   <View style={styles.skillContainerAction}>
                     <TouchableOpacity onPress={() => this._onSkillPress(this.props.flak.equipped.pet, true, "a pet")}>
@@ -141,7 +142,7 @@ class StatsScreen extends React.Component {
 
             {
               this.props.selectedHero === MOZE &&
-              <View style={{height: '16%'}}>
+              <View style={{height: 160}}>
                 <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
                   <View style={styles.skillContainerAction}>
                     <TouchableOpacity onPress={() => this._onSkillPress(this.props.moze.equipped.action1, true, "an action")}>
@@ -220,7 +221,7 @@ class StatsScreen extends React.Component {
 
             {
               this.props.selectedHero === ZANE &&
-              <View style={{height: '22%'}}>
+              <View style={{height: 240}}>
                 <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
                   <View style={styles.skillContainerAction}>
                     <TouchableOpacity onPress={() => this._onSkillPress(this.props.zane.equipped.action1, true, "an action")}>
@@ -336,7 +337,7 @@ class StatsScreen extends React.Component {
 
             {
               this.props.selectedHero === AMARA &&
-              <View style={{height: '10%'}}>
+              <View style={{height: 80}}>
                 <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
                   <View style={styles.skillContainerAction}>
                     <TouchableOpacity onPress={() => this._onSkillPress(this.props.amara.equipped.action1, true, "an action")}>
