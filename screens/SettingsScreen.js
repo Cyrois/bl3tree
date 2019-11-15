@@ -245,6 +245,7 @@ class SettingsScreen extends React.Component {
             
             {
               this._isUserLoggedIn() && 
+              this.props.email &&
                 <View>
                   <Text style={{...styles.sectionHeader, fontSize: 14, fontFamily: TEXT_FONT}}>
                     Logged In As: {this.props.email}
