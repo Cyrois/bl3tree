@@ -226,7 +226,7 @@ class SettingsScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView contentContainerStyle={styles.contentContainer}>
+        <ScrollView>
             <View style={styles.bl3LogoContainer}>
               <Image
                 resizeMode='contain'
@@ -383,9 +383,12 @@ class SettingsScreen extends React.Component {
 
             {
               !this._isUserLoggedIn() && 
-              <View style={styles.mainButton}>
-                <Text style={styles.mainButtonText}>Log in to see your builds!</Text>
-              </View>
+              <TouchableOpacity
+                  style={styles.mainButton}
+                  onPress={() => this.props.setLoginModal(true)}
+                >
+                  <Text style={styles.mainButtonText}> Log in to see your builds!</Text>
+              </TouchableOpacity>
             }
         </ScrollView>
 
@@ -816,9 +819,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingTop: Platform.OS === 'ios' ? 30 : 0,
     marginTop: -2,
-  },
-  contentContainer: {
-    
   },
   bl3LogoContainer: {
     marginVertical: -70,
