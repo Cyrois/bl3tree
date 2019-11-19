@@ -281,7 +281,7 @@ let zaneSkills = {
                 image: require('../assets/images/skills/zane/TrickOfLight.png'),
                 description: "Deal Bonus Shock Damage to enemies that aren't targeting Zane.",
                 stats: [
-                    newStat("Bonus Damage", [6, 12, 18], "+", "% of damage dealt"),
+                    newStat("Bonus Damage As Shock", [6, 12, 18], "+", "% of damage dealt"),
                 ]
             },
             {
@@ -639,7 +639,7 @@ let zaneSkills = {
                 image: require('../assets/images/skills/zane/HeartyStock.png'),
                 description: "Gain increased Maximum Shield Capacity.",
                 stats: [
-                    newStat("Max Sheilds", [10, 20, 30], "+", "%"),
+                    newStat("Max Shields", [10, 20, 30], "+", "%"),
                 ]
             },
             {

@@ -427,9 +427,9 @@ const loadBuild = (state, buildToLoad) => {
         })
       }
 
-      //recalculate the pointsSpent
+      //recalculate the pointsSpent per tree
       let newPointsSpent = newState.pointsSpent[skill.tree][`row${skill.row}`] ? newState.pointsSpent[skill.tree][`row${skill.row}`] : 0
-      newPointsSpent = rankedSkills[skill.title]
+      newPointsSpent += rankedSkills[skill.title]
       newState.pointsSpent[skill.tree][`row${skill.row}`] = newPointsSpent
     }
   })

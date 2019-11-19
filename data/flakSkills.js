@@ -326,7 +326,7 @@ let flakSkills = {
                 title: "Interplanetary Stalker",
                 type: PASSIVE,
                 maxRanks: 5,
-                description: "Hunter Kill Skill: Gains a stack of Interplanetary Stalker when an enemy is killed, which gives a bonus to all damage dealt. Gains a unique stacking bonus depending on the type of enemy killed.",
+                description: "Hunter Kill Skill: Gains a stack of Interplanetary Stalker when an enemy is killed, which gives a bonus to all damage dealt. Gains a unique stacking bonus depending on the type of enemy killed. Can stack 3 times per bonus type.",
                 image: require('../assets/images/skills/flak/InterplanetaryStalker.png'),
                 stats: [
                     newStat("Damage", [2,4,6,8,10], "+", "% /stack"),
@@ -667,7 +667,7 @@ let flakSkills = {
                 description: "Regenerate health whenever pet attacks, and vice-versa.",
                 image: require('../assets/images/skills/flak/WhoRescuedWho.png'),
                 stats: [
-                    newStat("Converts % of Damage Dealth into Pet Health", [1,2,3,4,5], "+", "% of Damage Dealth into Pet Health"),
+                    newStat("Converts % of Damage Dealt into Pet Health", [1,2,3,4,5], "+", "% of Damage Dealth into Pet Health"),
                     newStat("Health Regeneration", [0.4,0.8,1.2,1.6,2], "+", "% of Max Health/sec"),
                 ]
             },
@@ -680,7 +680,7 @@ let flakSkills = {
                 description: "When pet takes damage, some damage is returned to attacker.",
                 image: require('../assets/images/skills/flak/HeBites.png'),
                 stats: [
-                    newStat("Damage Reflected", [5,10,15], "+", "%"),
+                    newStat("Damage Reflected By Pet", [5,10,15], "+", "%"),
                 ]
             },
             {
@@ -737,7 +737,7 @@ let flakSkills = {
                 description: "When damage is taken, a portion is shared to the pet instead.",
                 image: require('../assets/images/skills/flak/HiveMind.png'),
                 stats: [
-                    newStat("Damage Shared", [5,10,15], "+", "%"),
+                    newStat("Damage Shared With Pet", [5,10,15], "+", "%"),
                 ]
             },
             {
@@ -782,8 +782,8 @@ let flakSkills = {
                 description: "When pet is at low health, it gains Damage Reduction and Health Regeneration.",
                 image: require('../assets/images/skills/flak/MutatedDefenses.png'),
                 stats: [
-                    newStat("Damage Reduction", [30], "+", "%"),
-                    newStat("Health Regeneration", [40], "+", "% of Max Pet Health"),
+                    newStat("Pet Damage Reduction", [30], "+", "%"),
+                    newStat("Pet Health Regeneration", [40], "+", "% of Max Pet Health"),
                     newStat("Mutated Defenses Cooldown", [15], "", " seconds"),
                 ]
             },
@@ -831,7 +831,7 @@ let flakSkills = {
                 description: "When at low health, a portion of all damage is shared to their pet instead.",
                 image: require('../assets/images/skills/flak/SharedSpirit.png'),
                 stats: [
-                    newStat("Damage Shared", [50], "+", "%"),
+                    newStat("Damage Shared With Pet", [50], "+", "%"),
                 ]
             },
             {

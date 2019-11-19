@@ -700,7 +700,7 @@ let mozeSkills = {
                 image: require('../assets/images/skills/moze/PullTheHolyPin.png'),
                 description: "Moze's grenades have a chance to score a Critical Hit, dealing greatly increased damage. Sources of Critical Hit Damage do not affect grenade Critical Hits.",
                 stats: [
-                    newStat("Critical Hit Chance", [10, 20, 30], "+", "%"),
+                    newStat("Grenade Critical Hit Chance", [10, 20, 30], "+", "%"),
                 ]
             },
             {
